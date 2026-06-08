@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ESTRO — Agenzia di comunicazione creativa. Trasformiamo idee in forma." />
+  <meta name="theme-color" content="#121212" />
+
+  <title>ESTRO — Comunicazione Creativa</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ESTRO — Comunicazione Creativa" />
+  <meta property="og:description" content="Trasformiamo idee in forma." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts: GT America via system fallback chain; AAKIRA via local if available -->
+  <style>
+    @font-face {
+      font-family: 'AAKIRA';
+      src: local('AAKIRA Expanded Super Bold'), local('AAKIRA-ExpandedSuperBold');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GT America';
+      src: local('GT America'), local('GTAmerica');
+      font-weight: 400 700;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- ══ NAV ══════════════════════════════════════════════ -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="/" aria-label="ESTRO — Homepage">
+        <img src="assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="nav__links" aria-label="Menu principale">
+        <a class="nav__link" href="#chi-siamo">Chi siamo</a>
+        <a class="nav__link" href="#servizi">Servizi</a>
+        <a class="nav__link" href="#lavori">Lavori</a>
+        <a class="nav__link" href="#contatti">Contatti</a>
+      </nav>
+      <a class="nav__cta" href="#contatti">Inizia un progetto</a>
+      <button class="nav__hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══ MOBILE MENU ═══════════════════════════════════════ -->
+  <div class="nav__mobile" aria-hidden="true">
+    <button class="nav__mobile-close btn btn--ghost" aria-label="Chiudi menu">✕ Chiudi</button>
+    <nav class="nav__mobile-links">
+      <a class="nav__mobile-link" href="#chi-siamo">Chi siamo</a>
+      <a class="nav__mobile-link" href="#servizi">Servizi</a>
+      <a class="nav__mobile-link" href="#lavori">Lavori</a>
+      <a class="nav__mobile-link" href="#contatti">Contatti</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ══ HERO ══════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg">
+        <div class="hero__noise"></div>
+        <div class="hero__gradient"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Agenzia di comunicazione creativa</p>
+
+          <h1 class="hero__title" id="hero-title">
+            <span class="line"><span class="line-inner">Le idee</span></span>
+            <span class="line"><span class="line-inner">prendono <em>forma</em></span></span>
+            <span class="line"><span class="line-inner">qui.</span></span>
+          </h1>
+
+          <p class="hero__sub reveal">
+            ESTRO trasforma visioni in comunicazione autentica. Strategia, design, identità visiva per brand che vogliono lasciare il segno.
+          </p>
+
+          <div class="hero__actions reveal reveal-delay-1">
+            <a class="btn btn--primary" href="#lavori">Esplora i lavori</a>
+            <a class="btn btn--outline" href="#contatti">Parlaci del tuo progetto</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero__footer">
+          <span class="hero__tag">Milano · IT</span>
+          <div class="hero__marquee-wrap" aria-hidden="true">
+            <div class="hero__marquee">
+              <span>Branding</span><span class="sep">✦</span>
+              <span>Visual Identity</span><span class="sep">✦</span>
+              <span>Campagne</span><span class="sep">✦</span>
+              <span>Digital</span><span class="sep">✦</span>
+              <span>Strategia</span><span class="sep">✦</span>
+              <span>Editoria</span><span class="sep">✦</span>
+              <span>Motion</span><span class="sep">✦</span>
+              <!-- duplicate for seamless loop -->
+              <span>Branding</span><span class="sep">✦</span>
+              <span>Visual Identity</span><span class="sep">✦</span>
+              <span>Campagne</span><span class="sep">✦</span>
+              <span>Digital</span><span class="sep">✦</span>
+              <span>Strategia</span><span class="sep">✦</span>
+              <span>Editoria</span><span class="sep">✦</span>
+              <span>Motion</span><span class="sep">✦</span>
+            </div>
+          </div>
+          <div class="hero__scroll-hint">
+            <span class="hero__scroll-line"></span>
+            Scroll
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CHI SIAMO ══════════════════════════════════════════ -->
+    <section class="section about" id="chi-siamo" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__text-col">
+            <p class="section__label reveal">Chi siamo</p>
+            <h2 class="section__heading reveal reveal-delay-1" id="about-title">
+              Creatività<br />come metodo,<br /><em>cultura</em> come<br />linguaggio.
+            </h2>
+            <p class="about__body reveal reveal-delay-2">
+              ESTRO è un'agenzia di comunicazione creativa nata dalla convinzione che <strong>ogni brand abbia una storia unica da raccontare</strong>. Il nostro lavoro è trovare la forma più autentica per raccontarla — con coerenza, visione e un'attenzione ossessiva ai dettagli.
+            </p>
+            <p class="about__body reveal reveal-delay-3" style="margin-top: var(--space-6);">
+              Siamo strateghi, designer, storyteller. Lavoriamo alla confluenza tra <strong>cultura visiva e comunicazione d'impresa</strong>, costruendo identità che durano.
+            </p>
+            <div class="about__stats">
+              <div class="stat reveal reveal-delay-1">
+                <div class="stat__number">8+</div>
+                <div class="stat__label">Anni di esperienza</div>
+              </div>
+              <div class="stat reveal reveal-delay-2">
+                <div class="stat__number">120</div>
+                <div class="stat__label">Progetti completati</div>
+              </div>
+              <div class="stat reveal reveal-delay-3">
+                <div class="stat__number">40+</div>
+                <div class="stat__label">Brand seguiti</div>
+              </div>
+              <div class="stat reveal reveal-delay-4">
+                <div class="stat__number">3</div>
+                <div class="stat__label">Premi internazionali</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__visual reveal reveal-delay-2" aria-hidden="true">
+            <div class="about__visual-inner">
+              <div class="about__visual-grid"></div>
+              <div class="about__visual-accent">ESTRO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVIZI ════════════════════════════════════════════ -->
+    <section class="section services" id="servizi" aria-labelledby="services-title">
+      <div class="container">
+        <div class="services__header">
+          <div>
+            <p class="section__label reveal">Cosa facciamo</p>
+            <h2 class="section__heading reveal reveal-delay-1" id="services-title">
+              Dalla strategia<br />all'<em>esecuzione</em>.
+            </h2>
+          </div>
+          <p class="services__intro reveal reveal-delay-2">
+            Non seguiamo i trend — li anticipiamo. Ogni disciplina che pratichiamo è al servizio di un obiettivo preciso: rendere il vostro brand riconoscibile, coerente, desiderabile.
+          </p>
+        </div>
+
+        <div class="services__list">
+          <div class="service-card reveal">
+            <div class="service-card__num">01</div>
+            <h3 class="service-card__title">Brand Identity</h3>
+            <p class="service-card__desc">Costruiamo sistemi di identità visiva solidi e coerenti — dai loghi ai design system completi — che comunicano chi siete prima ancora che parliate.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-card__num">02</div>
+            <h3 class="service-card__title">Strategia Creativa</h3>
+            <p class="service-card__desc">Dalla brand strategy al posizionamento, definiamo il territorio narrativo del vostro brand e costruiamo le fondamenta per una comunicazione efficace.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-card__num">03</div>
+            <h3 class="service-card__title">Campagne</h3>
+            <p class="service-card__desc">Concept, direzione artistica, produzione. Realizziamo campagne di comunicazione che lasciano un ricordo duraturo nei pubblici che vi interessano.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-card__num">04</div>
+            <h3 class="service-card__title">Digital & Social</h3>
+            <p class="service-card__desc">Presenza digitale pensata per il brand, non per l'algoritmo. Costruiamo ecosistemi digitali coerenti, dal web design ai contenuti social.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-card__num">05</div>
+            <h3 class="service-card__title">Editoria & Print</h3>
+            <p class="service-card__desc">Dal catalogo al libro, dalla rivista al packaging. Il digitale non ha ucciso la carta — l'ha resa più preziosa. Progettiamo artefatti che si tengono in mano.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-card__num">06</div>
+            <h3 class="service-card__title">Motion & Video</h3>
+            <p class="service-card__desc">Animazioni, video istituzionali, content video. Diamo movimento alla vostra identità con un approccio cinematografico e una cura artigianale.</p>
+            <div class="service-card__arrow">↗</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LAVORI ══════════════════════════════════════════════ -->
+    <section class="section work" id="lavori" aria-labelledby="work-title">
+      <div class="container">
+        <div class="work__header">
+          <div>
+            <p class="section__label reveal">Lavori selezionati</p>
+            <h2 class="section__heading reveal reveal-delay-1" id="work-title">
+              Progetti che<br />parlano da soli.
+            </h2>
+          </div>
+          <a class="work__link reveal reveal-delay-2" href="#contatti">
+            Vedi tutti
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="work__grid">
+          <article class="project-card reveal">
+            <div class="project-card__media">
+              <div class="project-card__placeholder">
+                <span class="project-card__placeholder-text">FORMA</span>
+              </div>
+              <div class="project-card__overlay">
+                <div class="project-card__overlay-inner">
+                  <p class="project-card__cat">Brand Identity</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Cantina Meridionale</h3>
+              <div class="project-card__meta">
+                <span class="project-card__tag">Vino</span>
+                <span class="project-card__tag">Identity</span>
+                <span class="project-card__tag">Packaging</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1">
+            <div class="project-card__media">
+              <div class="project-card__placeholder">
+                <span class="project-card__placeholder-text">IDEA</span>
+              </div>
+              <div class="project-card__overlay">
+                <div class="project-card__overlay-inner">
+                  <p class="project-card__cat">Campagna</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Istituto di Cultura</h3>
+              <div class="project-card__meta">
+                <span class="project-card__tag">Cultura</span>
+                <span class="project-card__tag">Campagna</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-2">
+            <div class="project-card__media">
+              <div class="project-card__placeholder">
+                <span class="project-card__placeholder-text">MOTO</span>
+              </div>
+              <div class="project-card__overlay">
+                <div class="project-card__overlay-inner">
+                  <p class="project-card__cat">Motion</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Studio Architettura RM</h3>
+              <div class="project-card__meta">
+                <span class="project-card__tag">Architettura</span>
+                <span class="project-card__tag">Motion</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal reveal-delay-1">
+            <div class="project-card__media">
+              <div class="project-card__placeholder">
+                <span class="project-card__placeholder-text">SEGNO</span>
+              </div>
+              <div class="project-card__overlay">
+                <div class="project-card__overlay-inner">
+                  <p class="project-card__cat">Digital</p>
+                </div>
+              </div>
+            </div>
+            <div class="project-card__info">
+              <h3 class="project-card__title">Fashion House Milano</h3>
+              <div class="project-card__meta">
+                <span class="project-card__tag">Moda</span>
+                <span class="project-card__tag">Digital</span>
+                <span class="project-card__tag">Social</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ MANIFESTO ══════════════════════════════════════════ -->
+    <section class="manifesto section" aria-label="Manifesto">
+      <div class="manifesto__bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="manifesto__content">
+          <h2 class="manifesto__title reveal">
+            Hai un'idea.<br /><em>Noi</em> le<br />diamo forma.
+          </h2>
+          <p class="manifesto__sub reveal reveal-delay-1">
+            Ogni progetto inizia con un ascolto profondo. Poi viene la visione. Poi il lavoro — preciso, coraggioso, riconoscibile.
+          </p>
+          <div class="reveal reveal-delay-2">
+            <a class="btn btn--primary" href="#contatti">Iniziamo insieme</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTATTI ════════════════════════════════════════════ -->
+    <section class="section contact" id="contatti" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__left">
+            <p class="section__label reveal">Contatti</p>
+            <h2 class="section__heading reveal reveal-delay-1" id="contact-title">
+              Parliamo<br />del tuo<br /><em>progetto</em>.
+            </h2>
+            <p class="contact__body reveal reveal-delay-2">
+              Raccontaci la tua idea — bastano poche righe. Ti rispondiamo entro 24 ore con una prima valutazione e, se c'è allineamento, organizziamo un incontro.
+            </p>
+            <div class="contact__links reveal reveal-delay-3">
+              <a class="contact__item" href="mailto:ciao@estro.it">
+                <span class="contact__item-label">Email</span>
+                ciao@estro.it
+              </a>
+              <a class="contact__item" href="tel:+390201234567">
+                <span class="contact__item-label">Telefono</span>
+                +39 02 0123 4567
+              </a>
+              <div class="contact__item">
+                <span class="contact__item-label">Indirizzo</span>
+                Via della Creatività 12, Milano
+              </div>
+            </div>
+          </div>
+
+          <form class="contact__form reveal reveal-delay-2" novalidate>
+            <div class="form-field">
+              <label for="name">Nome e cognome</label>
+              <input type="text" id="name" name="name" placeholder="Mario Rossi" autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="mario@azienda.it" autocomplete="email" />
+            </div>
+            <div class="form-field">
+              <label for="company">Azienda / Brand</label>
+              <input type="text" id="company" name="company" placeholder="Nome azienda" autocomplete="organization" />
+            </div>
+            <div class="form-field">
+              <label for="message">Raccontaci il progetto</label>
+              <textarea id="message" name="message" placeholder="Di cosa hai bisogno? Anche poche righe vanno bene…"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn--primary">
+                Invia il messaggio
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <a class="nav__logo" href="/" aria-label="ESTRO — Homepage">
+        <img src="assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="footer__social" aria-label="Social media">
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Instagram</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">LinkedIn</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Behance</a>
+      </nav>
+      <p class="footer__copy">© 2024 ESTRO. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
