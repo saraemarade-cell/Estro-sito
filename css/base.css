@@ -1,7 +1,7 @@
 /* ─── FONTS ───────────────────────────────────────────── */
 @font-face {
-  font-family: 'AKIRAA';
-  src: local('AKIRAA Expanded Super Bold'), local('AKIRAA-ExpandedSuperBold');
+  font-family: 'AAKIRA';
+  src: local('AAKIRA Expanded Super Bold'), local('AAKIRA-ExpandedSuperBold'), local('AKIRAA Expanded Super Bold');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
