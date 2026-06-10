@@ -1,10 +1,10 @@
-// Nav scroll state
+// ─── Nav scroll ───────────────────────────────────────
 const nav = document.querySelector('.nav');
-const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Hero title reveal on load
+// ─── Hero title reveal ────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
     document.querySelectorAll('.hero__title .line-inner').forEach(el => {
@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Intersection Observer for .reveal
+// ─── Reveal on scroll ─────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -21,59 +21,44 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// Mobile menu
-const hamburger = document.querySelector('.nav__hamburger');
+// ─── Mobile menu ──────────────────────────────────────
+const hamburger  = document.querySelector('.nav__hamburger');
 const mobileMenu = document.querySelector('.nav__mobile');
 const mobileClose = document.querySelector('.nav__mobile-close');
 
-if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-}
+const openMenu  = () => { mobileMenu.classList.add('open'); mobileMenu.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; hamburger.setAttribute('aria-expanded','true'); };
+const closeMenu = () => { mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; hamburger.setAttribute('aria-expanded','false'); };
 
-if (mobileClose && mobileMenu) {
-  mobileClose.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-}
+hamburger?.addEventListener('click', openMenu);
+mobileClose?.addEventListener('click', closeMenu);
+document.querySelectorAll('.nav__mobile-link').forEach(l => l.addEventListener('click', closeMenu));
 
-document.querySelectorAll('.nav__mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-});
+// close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-// Cursor glow (desktop only)
-if (window.matchMedia('(pointer: fine)').matches) {
+// ─── Cursor glow (desktop) ────────────────────────────
+if (window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches) {
   const glow = document.createElement('div');
-  glow.style.cssText = `
-    position: fixed; pointer-events: none; z-index: 9999;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,255,127,0.04) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-    top: 0; left: 0;
-  `;
+  Object.assign(glow.style, {
+    position: 'fixed', pointerEvents: 'none', zIndex: '9999',
+    width: '400px', height: '400px', borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(0,255,127,0.035) 0%, transparent 65%)',
+    transform: 'translate(-50%,-50%)', top: '0', left: '0',
+  });
   document.body.appendChild(glow);
 
   let mx = 0, my = 0, gx = 0, gy = 0;
   window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-
-  const animGlow = () => {
-    gx += (mx - gx) * 0.08;
-    gy += (my - gy) * 0.08;
+  const tick = () => {
+    gx += (mx - gx) * 0.07;
+    gy += (my - gy) * 0.07;
     glow.style.left = gx + 'px';
-    glow.style.top = gy + 'px';
-    requestAnimationFrame(animGlow);
+    glow.style.top  = gy + 'px';
+    requestAnimationFrame(tick);
   };
-  animGlow();
+  tick();
 }
