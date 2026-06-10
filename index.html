@@ -326,6 +326,36 @@
       </div>
     </section>
 
+    <!-- ══ CONTATTI HOME ════════════════════════════════════ -->
+    <section class="section contact-home" id="contatti" aria-label="Contatti">
+      <div class="container contact-home__inner">
+        <h2 class="contact-home__heading reveal">CONTATTI</h2>
+        <p class="contact-home__sub reveal">SCRIVICI, FACCI DOMANDE, FISSIAMO UN APPUNTAMENTO!</p>
+        <form class="contact-home__form reveal" action="contatti.html" method="get" novalidate>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="text" name="nome" placeholder="Nome*" required />
+            <input class="contact-home__field" type="text" name="cognome" placeholder="Cognome*" required />
+          </div>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="email" name="email" placeholder="Email*" required />
+            <input class="contact-home__field" type="tel" name="telefono" placeholder="Telefono" />
+          </div>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="text" name="azienda" placeholder="Azienda" />
+            <input class="contact-home__field" type="url" name="sito" placeholder="Sito Web" />
+          </div>
+          <textarea class="contact-home__field contact-home__textarea" name="messaggio" placeholder="Scrivi pure qui" rows="5"></textarea>
+          <label class="contact-home__privacy">
+            <input type="checkbox" required />
+            <span>Autorizzo il trattamento dei dati secondo la <a href="privacy.html">Privacy Policy</a></span>
+          </label>
+          <div class="contact-home__submit-wrap">
+            <button class="btn contact-home__submit" type="submit">Invia</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
     <!-- ══ GATTO PRE-FOOTER ════════════════════════════════════ -->
     <div class="gatto-footer" aria-hidden="true">
       <img src="foto home/gatto-pre-footer.webp" alt="" />
