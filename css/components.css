@@ -1941,22 +1941,30 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   overflow: hidden;
 }
 
-.cta-brush__blob {
+.cta-brush__wrap {
   position: relative;
-  background: var(--black);
-  border-radius: 60% 55% 62% 50% / 40% 45% 40% 48%;
-  min-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-inline: clamp(-2rem, -4vw, -6rem);
-  padding: var(--space-20) var(--space-16);
+  min-height: 320px;
+}
+
+.cta-brush__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
 }
 
 .cta-brush__content {
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: var(--space-20) var(--space-8);
 }
 
 .cta-brush__title {
@@ -2030,7 +2038,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 @media (max-width: 768px) {
   .tips-grid { grid-template-columns: 1fr; }
-  .cta-brush__blob { border-radius: 10px; margin-inline: 0; }
+  .cta-brush__wrap { min-height: 240px; }
 }
 
 /* ─── CONTACT HOME ───────────────────────────────────── */
