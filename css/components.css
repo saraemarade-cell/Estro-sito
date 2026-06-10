@@ -2014,15 +2014,12 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 .tip-card { display: flex; flex-direction: column; gap: var(--space-3); }
 
 .tip-card__img {
-  aspect-ratio: 4/3;
   border-radius: 4px;
   overflow: hidden;
 }
 .tip-card__img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
   display: block;
   transition: transform var(--dur-slow) var(--ease-out);
 }
