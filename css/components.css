@@ -1961,12 +1961,13 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   object-position: center;
   pointer-events: none;
   user-select: none;
+  z-index: 0;
 }
 
 .cta-brush__content {
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: var(--space-8);
 }
 
