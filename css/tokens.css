@@ -25,7 +25,7 @@
   --white-90: rgba(255,255,255,0.92);
 
   /* Typography */
-  --font-primary:   'Vanguard Sans Serif', 'Vanguard', 'Impact', 'Arial Black', sans-serif;
+  --font-primary:   'VanguardCF', 'Impact', 'Arial Black', sans-serif;
   --font-secondary: 'Poppins', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 
   /* Type scale */
