@@ -75,7 +75,7 @@ if (window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches) {
   Object.assign(glow.style, {
     position: 'fixed', pointerEvents: 'none', zIndex: '9999',
     width: '400px', height: '400px', borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(0,255,127,0.035) 0%, transparent 65%)',
+    background: 'radial-gradient(circle, rgba(219,0,90,0.04) 0%, transparent 65%)',
     transform: 'translate(-50%,-50%)', top: '0', left: '0',
   });
   document.body.appendChild(glow);
