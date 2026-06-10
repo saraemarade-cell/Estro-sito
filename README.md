@@ -58,18 +58,18 @@ The website should feel like a modern creative communication agency rather than 
 ## Color System
 
 ```css
---night: #121212;
+--primary: #DB005A;
+--black: #000000;
 --white: #FFFFFF;
---spring-green: #00FF7F;
---electric-indigo: #6300FF;
---raspberry: #DA0759;
 ```
 
-Use Night as the dominant background.
+Use White as the dominant background.
 
-Accent colors should be used sparingly.
+Use the primary color (#DB005A) as the main brand color across the interface.
 
-Prefer high contrast.
+Black should be used primarily to ensure readability of text and essential UI elements.
+
+Use high contrast and apply the primary color consistently while avoiding visual overload.
 
 ---
 
@@ -77,7 +77,7 @@ Prefer high contrast.
 
 ### Primary Font
 
-AAKIRA Expanded Super Bold
+Vanguard Sans Serif
 
 Use for:
 
@@ -87,7 +87,7 @@ Use for:
 
 ### Secondary Font
 
-GT America Family
+Poppins and Roboto
 
 Use for:
 
