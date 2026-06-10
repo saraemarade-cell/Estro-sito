@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ESTRO — Graphic Design: identità visiva, materiali di comunicazione e layout editoriali per ogni touchpoint del brand." />
+  <meta name="theme-color" content="#121212" />
+  <title>Graphic Design — ESTRO</title>
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="../index.html" aria-label="ESTRO — Homepage">
+        <img src="../assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="nav__links" aria-label="Menu principale">
+        <a class="nav__link" href="../index.html">Home</a>
+        <div class="nav__dropdown">
+          <button class="nav__dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+            Servizi
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="nav__dropdown-menu" role="menu">
+            <a class="nav__dropdown-item" href="google-ads.html" role="menuitem">Google ADS</a>
+            <a class="nav__dropdown-item" href="social-ads.html" role="menuitem">Social ADS</a>
+            <a class="nav__dropdown-item" href="social-media-management.html" role="menuitem">Social Media Management</a>
+            <a class="nav__dropdown-item" href="influencer-marketing.html" role="menuitem">Influencer Marketing</a>
+            <a class="nav__dropdown-item" href="strategia-digitale.html" role="menuitem">Strategia Digitale</a>
+            <a class="nav__dropdown-item" href="graphic-design.html" role="menuitem">Graphic Design</a>
+            <a class="nav__dropdown-item" href="web-design.html" role="menuitem">Web Design</a>
+            <a class="nav__dropdown-item" href="produzione-contenuti.html" role="menuitem">Produzione Contenuti</a>
+            <a class="nav__dropdown-item" href="modellazione-3d.html" role="menuitem">Modellazione 3D</a>
+            <a class="nav__dropdown-item" href="servizio-ai.html" role="menuitem">Servizio AI</a>
+          </div>
+        </div>
+        <a class="nav__link" href="../contatti.html">Contatti</a>
+      </nav>
+      <a class="nav__cta" href="../contatti.html">Inizia un progetto</a>
+      <button class="nav__hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav__mobile" aria-hidden="true">
+    <button class="nav__mobile-close btn btn--ghost" aria-label="Chiudi menu">✕ Chiudi</button>
+    <nav class="nav__mobile-links">
+      <a class="nav__mobile-link" href="../index.html">Home</a>
+      <div>
+        <p class="nav__mobile-label">Servizi</p>
+        <div class="nav__mobile-services">
+          <a class="nav__mobile-service" href="google-ads.html">Google ADS</a>
+          <a class="nav__mobile-service" href="social-ads.html">Social ADS</a>
+          <a class="nav__mobile-service" href="social-media-management.html">Social Media</a>
+          <a class="nav__mobile-service" href="influencer-marketing.html">Influencer Mktg</a>
+          <a class="nav__mobile-service" href="strategia-digitale.html">Strategia Digitale</a>
+          <a class="nav__mobile-service" href="graphic-design.html">Graphic Design</a>
+          <a class="nav__mobile-service" href="web-design.html">Web Design</a>
+          <a class="nav__mobile-service" href="produzione-contenuti.html">Prod. Contenuti</a>
+          <a class="nav__mobile-service" href="modellazione-3d.html">3D Render</a>
+          <a class="nav__mobile-service" href="servizio-ai.html">Servizio AI</a>
+        </div>
+      </div>
+      <a class="nav__mobile-link" href="../contatti.html">Contatti</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <section class="page-hero page-hero--services" aria-labelledby="page-title">
+      <div class="page-hero__bg">
+        <div class="page-hero__noise"></div>
+        <div class="page-hero__gradient"></div>
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep">／</span>
+          <a href="../servizi.html">Servizi</a>
+          <span class="breadcrumb__sep">／</span>
+          <span class="breadcrumb__current">Graphic Design</span>
+        </nav>
+        <div class="page-hero__inner">
+          <div>
+            <p class="page-hero__kicker">Servizio 06</p>
+            <h1 class="page-hero__title" id="page-title">Graphic<br /><em>Design</em></h1>
+          </div>
+          <div>
+            <p class="page-hero__sub reveal">Identità visiva, materiali di comunicazione, layout editoriali e grafiche per ogni touchpoint del brand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-detail">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div>
+            <p class="section__label reveal">Il servizio</p>
+            <div class="service-detail__body reveal reveal-delay-1">
+              <p>Il design grafico è il linguaggio visivo del brand. Ogni scelta — tipografia, colore, composizione, spazio — <strong>comunica prima ancora che si legga una parola</strong>. Progettiamo con intenzione, non per istinto.</p>
+              <p>Dal logo al sistema di identità completo, dai materiali stampati alle grafiche digitali: manteniamo una coerenza visiva rigorosa su ogni supporto, in ogni formato, ad ogni scala.</p>
+            </div>
+            <div class="reveal reveal-delay-2" style="margin-top: var(--space-10);">
+              <a class="btn btn--primary" href="../contatti.html">Richiedi un preventivo</a>
+            </div>
+          </div>
+          <div>
+            <div class="service-detail__panel reveal reveal-delay-1">
+              <p class="service-detail__panel-title">Cosa include</p>
+              <ul class="service-detail__list">
+                <li class="service-detail__item">Logo e sistema di identità visiva</li>
+                <li class="service-detail__item">Brand guidelines e brandbook</li>
+                <li class="service-detail__item">Materiali stampa (brochure, flyer, poster)</li>
+                <li class="service-detail__item">Grafiche per social media</li>
+                <li class="service-detail__item">Packaging e etichette</li>
+                <li class="service-detail__item">Template editoriali</li>
+                <li class="service-detail__item">Presentazioni e pitch deck</li>
+              </ul>
+            </div>
+            <div class="service-detail__cta-box reveal reveal-delay-2">
+              <span class="service-detail__cta-label">Vuoi saperne di più?</span>
+              <a class="btn btn--outline" href="../contatti.html">Parliamo del tuo progetto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <a class="nav__logo" href="../index.html" aria-label="ESTRO — Homepage">
+        <img src="../assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="footer__social" aria-label="Social media">
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Instagram</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">LinkedIn</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Behance</a>
+      </nav>
+      <p class="footer__copy">© 2024 ESTRO. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
