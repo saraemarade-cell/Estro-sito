@@ -1,3 +1,32 @@
+// ─── Dropdown ─────────────────────────────────────────
+document.querySelectorAll('.nav__dropdown').forEach(dropdown => {
+  const toggle = dropdown.querySelector('.nav__dropdown-toggle');
+  const menu   = dropdown.querySelector('.nav__dropdown-menu');
+
+  // open/close on click (touch + keyboard users)
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = dropdown.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    menu.setAttribute('aria-hidden', !open);
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', () => {
+    dropdown.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+
+  // close on Escape
+  dropdown.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      dropdown.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+  });
+});
+
 // ─── Nav scroll ───────────────────────────────────────
 const nav = document.querySelector('.nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);

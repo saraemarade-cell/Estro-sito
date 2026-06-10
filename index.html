@@ -23,8 +23,26 @@
       </a>
       <nav class="nav__links" aria-label="Menu principale">
         <a class="nav__link nav__link--active" href="index.html">Home</a>
-        <a class="nav__link" href="servizi.html">Servizi</a>
-        <a class="nav__link" href="index.html#lavori">Lavori</a>
+        <div class="nav__dropdown">
+          <button class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Servizi
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="nav__dropdown-menu" role="menu">
+            <a class="nav__dropdown-item" href="servizi/google-ads.html" role="menuitem">Google ADS</a>
+            <a class="nav__dropdown-item" href="servizi/social-ads.html" role="menuitem">Social ADS</a>
+            <a class="nav__dropdown-item" href="servizi/social-media-management.html" role="menuitem">Social Media Management</a>
+            <a class="nav__dropdown-item" href="servizi/influencer-marketing.html" role="menuitem">Influencer Marketing</a>
+            <a class="nav__dropdown-item" href="servizi/strategia-digitale.html" role="menuitem">Strategia Digitale</a>
+            <a class="nav__dropdown-item" href="servizi/graphic-design.html" role="menuitem">Graphic Design</a>
+            <a class="nav__dropdown-item" href="servizi/web-design.html" role="menuitem">Web Design</a>
+            <a class="nav__dropdown-item" href="servizi/produzione-contenuti.html" role="menuitem">Produzione Contenuti</a>
+            <a class="nav__dropdown-item" href="servizi/modellazione-3d.html" role="menuitem">Modellazione 3D</a>
+            <a class="nav__dropdown-item" href="servizi/servizio-ai.html" role="menuitem">Servizio AI</a>
+          </div>
+        </div>
         <a class="nav__link" href="contatti.html">Contatti</a>
       </nav>
       <a class="nav__cta" href="contatti.html">Inizia un progetto</a>
@@ -34,13 +52,25 @@
     </div>
   </header>
 
-  <!-- ══ MOBILE MENU ═══════════════════════════════════════ -->
   <div class="nav__mobile" aria-hidden="true">
     <button class="nav__mobile-close btn btn--ghost" aria-label="Chiudi menu">✕ Chiudi</button>
     <nav class="nav__mobile-links">
       <a class="nav__mobile-link" href="index.html">Home</a>
-      <a class="nav__mobile-link" href="servizi.html">Servizi</a>
-      <a class="nav__mobile-link" href="index.html#lavori">Lavori</a>
+      <div>
+        <p class="nav__mobile-label">Servizi</p>
+        <div class="nav__mobile-services">
+          <a class="nav__mobile-service" href="servizi/google-ads.html">Google ADS</a>
+          <a class="nav__mobile-service" href="servizi/social-ads.html">Social ADS</a>
+          <a class="nav__mobile-service" href="servizi/social-media-management.html">Social Media</a>
+          <a class="nav__mobile-service" href="servizi/influencer-marketing.html">Influencer Mktg</a>
+          <a class="nav__mobile-service" href="servizi/strategia-digitale.html">Strategia Digitale</a>
+          <a class="nav__mobile-service" href="servizi/graphic-design.html">Graphic Design</a>
+          <a class="nav__mobile-service" href="servizi/web-design.html">Web Design</a>
+          <a class="nav__mobile-service" href="servizi/produzione-contenuti.html">Prod. Contenuti</a>
+          <a class="nav__mobile-service" href="servizi/modellazione-3d.html">3D Render</a>
+          <a class="nav__mobile-service" href="servizi/servizio-ai.html">Servizio AI</a>
+        </div>
+      </div>
       <a class="nav__mobile-link" href="contatti.html">Contatti</a>
     </nav>
   </div>

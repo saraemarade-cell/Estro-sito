@@ -95,6 +95,114 @@
   transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast);
 }
 
+/* ─── DROPDOWN ────────────────────────────────────────── */
+.nav__dropdown {
+  position: relative;
+}
+
+.nav__dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  transition: color var(--dur-fast) var(--ease-out);
+  cursor: pointer;
+  padding-bottom: 2px;
+  position: relative;
+  background: none;
+  border: none;
+  font-family: var(--font-secondary);
+}
+
+.nav__dropdown-toggle::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--spring-green);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.nav__dropdown-toggle svg {
+  transition: transform var(--dur-base) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.nav__dropdown:hover .nav__dropdown-toggle,
+.nav__dropdown-toggle.active {
+  color: var(--white);
+}
+.nav__dropdown:hover .nav__dropdown-toggle::after,
+.nav__dropdown-toggle.active::after {
+  width: 100%;
+}
+.nav__dropdown:hover .nav__dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+
+.nav__dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-5));
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+  background: rgba(18,18,18,0.96);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--white-08);
+  padding: var(--space-5);
+  min-width: 440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background-color: var(--white-06);
+}
+
+.nav__dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--spring-green) 0%, transparent 60%);
+}
+
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown.open .nav__dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav__dropdown-item {
+  display: block;
+  background: var(--night);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+.nav__dropdown-item:hover {
+  background: var(--white-04);
+  color: var(--spring-green);
+}
+
+.nav__dropdown-item--active {
+  color: var(--white);
+}
+
 /* ═══════════════════════════════════════════════════════
    MOBILE MENU
 ═══════════════════════════════════════════════════════ */
@@ -126,12 +234,15 @@
 .nav__mobile-links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
+  overflow-y: auto;
+  max-height: 100%;
+  padding-block: var(--space-4);
 }
 
 .nav__mobile-link {
   font-family: var(--font-primary);
-  font-size: clamp(2.5rem, 10vw, var(--text-5xl));
+  font-size: clamp(2rem, 8vw, var(--text-4xl));
   text-transform: uppercase;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -139,6 +250,43 @@
   transition: color var(--dur-fast) var(--ease-out);
 }
 .nav__mobile-link:hover { color: var(--spring-green); }
+
+.nav__mobile-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white-20);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.nav__mobile-label::before {
+  content: '';
+  width: 14px; height: 1px;
+  background: var(--spring-green);
+}
+
+.nav__mobile-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--white-06);
+  border: 1px solid var(--white-06);
+}
+
+.nav__mobile-service {
+  display: block;
+  background: var(--night);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  transition: color var(--dur-fast), background var(--dur-fast);
+}
+.nav__mobile-service:hover { color: var(--spring-green); background: var(--white-04); }
 
 /* ═══════════════════════════════════════════════════════
    HERO
