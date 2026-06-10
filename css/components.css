@@ -1940,8 +1940,8 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 /* ─── CTA PENNELLATA ─────────────────────────────────── */
 .cta-brush {
-  padding-block: var(--space-16);
   overflow: hidden;
+  position: relative;
 }
 
 .cta-brush__wrap {
@@ -1949,6 +1949,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: clamp(280px, 35vw, 480px);
 }
 
 .cta-brush__img {
@@ -1956,7 +1957,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
   object-position: center;
   pointer-events: none;
   user-select: none;
@@ -1966,7 +1967,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   text-align: center;
   position: relative;
   z-index: 1;
-  padding: clamp(var(--space-16), 8vw, var(--space-32)) var(--space-8);
+  padding: var(--space-8);
 }
 
 .cta-brush__title {
