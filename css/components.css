@@ -1576,12 +1576,15 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 .hero-home__title .line { display: block; overflow: hidden; }
 .hero-home__title .line-inner {
   display: block;
-  transform: translateY(110%);
-  transition: transform var(--dur-enter) var(--ease-out);
+  animation: heroLineUp var(--dur-enter) var(--ease-out) both;
 }
-.hero-home__title .line-inner.visible { transform: translateY(0); }
-.hero-home__title .line:nth-child(2) .line-inner { transition-delay: 80ms; }
-.hero-home__title .line:nth-child(3) .line-inner { transition-delay: 160ms; }
+.hero-home__title .line:nth-child(2) .line-inner { animation-delay: 80ms; }
+.hero-home__title .line:nth-child(3) .line-inner { animation-delay: 160ms; }
+
+@keyframes heroLineUp {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
 
 .line--solid { color: var(--primary); }
 .line--outline {

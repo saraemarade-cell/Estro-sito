@@ -42,14 +42,6 @@ const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// ─── Hero title reveal ────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.hero__title .line-inner, .hero-home__title .line-inner').forEach(el => {
-      el.classList.add('visible');
-    });
-  });
-});
 
 // ─── Reveal on scroll ─────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
