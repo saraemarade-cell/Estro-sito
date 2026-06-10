@@ -1885,3 +1885,150 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   .svc-grid__list { grid-template-columns: 1fr 1fr; }
   .hero-home__title { font-size: clamp(3rem, 18vw, 5rem); }
 }
+
+/* ─── CASE STUDIES ───────────────────────────────────── */
+.case-studies { padding-block: var(--space-24); }
+
+.case-studies__heading {
+  font-family: var(--font-primary);
+  font-size: clamp(var(--text-4xl), 10vw, var(--text-8xl));
+  font-weight: 800;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--primary);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-16);
+}
+
+.case-studies__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12) var(--space-8);
+  align-items: center;
+  justify-items: center;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.cs-logo {
+  font-family: var(--font-secondary);
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  color: var(--black);
+  text-align: center;
+  cursor: default;
+  transition: color var(--dur-fast), transform var(--dur-fast);
+}
+.cs-logo:hover { color: var(--primary); transform: scale(1.08); }
+.cs-logo strong { display: inline-block; background: var(--black); color: var(--white); padding: 0 4px; font-weight: 900; }
+.cs-logo--light { font-weight: 300; letter-spacing: 0.06em; }
+.cs-logo--tracked { letter-spacing: 0.12em; font-size: clamp(0.8rem, 1.4vw, 1.2rem); }
+.cs-logo--grunge { font-style: italic; font-weight: 900; text-transform: uppercase; }
+.cs-logo--bold { font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.cs-logo--serif { font-style: italic; font-weight: 400; }
+.cs-logo--script { font-style: italic; font-size: clamp(0.85rem, 1.3vw, 1.1rem); font-weight: 400; }
+.cs-logo--redbull { text-transform: uppercase; font-weight: 900; }
+.cs-logo--stacked { line-height: 1.1; font-weight: 900; letter-spacing: 0.05em; }
+
+@media (max-width: 600px) {
+  .case-studies__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ─── CTA PENNELLATA ─────────────────────────────────── */
+.cta-brush {
+  padding-block: var(--space-16);
+  overflow: hidden;
+}
+
+.cta-brush__blob {
+  position: relative;
+  background: var(--black);
+  border-radius: 60% 55% 62% 50% / 40% 45% 40% 48%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: clamp(-2rem, -4vw, -6rem);
+  padding: var(--space-20) var(--space-16);
+}
+
+.cta-brush__content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-brush__title {
+  font-family: var(--font-secondary);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  margin-bottom: var(--space-8);
+}
+
+.cta-brush .btn--primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+/* ─── TIPS & TRICKS ──────────────────────────────────── */
+.tips-section { padding-block: var(--space-24); border-top: var(--border); }
+
+.tips-section__heading {
+  font-family: var(--font-primary);
+  font-size: clamp(var(--text-4xl), 10vw, var(--text-8xl));
+  font-weight: 800;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0,0,0,0.12);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-12);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.tip-card { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.tip-card__img {
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  background: var(--black-06);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.tip-card__img--1 { background-color: #e91e8c; }
+.tip-card__img--2 { background-color: #f06292; }
+.tip-card__img--3 { background-color: #f8bbd0; }
+
+.tip-card__date {
+  font-size: var(--text-xs);
+  color: var(--black-40);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.tip-card__title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .tips-grid { grid-template-columns: 1fr; }
+  .cta-brush__blob { border-radius: 10px; margin-inline: 0; }
+}
