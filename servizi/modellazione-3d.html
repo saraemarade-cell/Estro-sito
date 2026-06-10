@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ESTRO — Modellazione e Renderizzazione 3D: visualizzazioni tridimensionali di prodotti, spazi e concetti." />
+  <meta name="theme-color" content="#121212" />
+  <title>Modellazione e Renderizzazione 3D — ESTRO</title>
+  <style>
+    @font-face { font-family: 'AAKIRA'; src: local('AAKIRA Expanded Super Bold'), local('AAKIRA-ExpandedSuperBold'); font-weight: 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'GT America'; src: local('GT America'), local('GTAmerica'); font-weight: 400 700; font-style: normal; font-display: swap; }
+  </style>
+  <link rel="stylesheet" href="../css/tokens.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="../index.html" aria-label="ESTRO — Homepage">
+        <img src="../assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="nav__links" aria-label="Menu principale">
+        <a class="nav__link" href="../index.html">Home</a>
+        <a class="nav__link nav__link--active" href="../servizi.html">Servizi</a>
+        <a class="nav__link" href="../index.html#lavori">Lavori</a>
+        <a class="nav__link" href="../contatti.html">Contatti</a>
+      </nav>
+      <a class="nav__cta" href="../contatti.html">Inizia un progetto</a>
+      <button class="nav__hamburger" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav__mobile" aria-hidden="true">
+    <button class="nav__mobile-close btn btn--ghost" aria-label="Chiudi menu">✕ Chiudi</button>
+    <nav class="nav__mobile-links">
+      <a class="nav__mobile-link" href="../index.html">Home</a>
+      <a class="nav__mobile-link" href="../servizi.html">Servizi</a>
+      <a class="nav__mobile-link" href="../index.html#lavori">Lavori</a>
+      <a class="nav__mobile-link" href="../contatti.html">Contatti</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <section class="page-hero page-hero--services" aria-labelledby="page-title">
+      <div class="page-hero__bg">
+        <div class="page-hero__noise"></div>
+        <div class="page-hero__gradient"></div>
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumb__sep">／</span>
+          <a href="../servizi.html">Servizi</a>
+          <span class="breadcrumb__sep">／</span>
+          <span class="breadcrumb__current">Modellazione e Renderizzazione 3D</span>
+        </nav>
+        <div class="page-hero__inner">
+          <div>
+            <p class="page-hero__kicker">Servizio 09</p>
+            <h1 class="page-hero__title" id="page-title">3D Render<br />&amp; <em>Modellazione</em></h1>
+          </div>
+          <div>
+            <p class="page-hero__sub reveal">Visualizzazioni tridimensionali di prodotti, spazi e concetti. Render fotorealistici per comunicare prima ancora di produrre.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section service-detail">
+      <div class="container">
+        <div class="service-detail__grid">
+          <div>
+            <p class="section__label reveal">Il servizio</p>
+            <div class="service-detail__body reveal reveal-delay-1">
+              <p>Il 3D permette di comunicare qualcosa che <strong>non esiste ancora</strong> — o che esiste ma non può essere fotografato come dovrebbe. Progettiamo e renderizziamo con un occhio alla qualità fotorealistica e uno alla narrazione visiva.</p>
+              <p>Prodotti, interni, architetture, scenografie digitali: ogni progetto è affrontato con attenzione alla luce, ai materiali, alla composizione — per immagini che convincono e ispirano.</p>
+            </div>
+            <div class="reveal reveal-delay-2" style="margin-top: var(--space-10);">
+              <a class="btn btn--primary" href="../contatti.html">Richiedi un preventivo</a>
+            </div>
+          </div>
+          <div>
+            <div class="service-detail__panel reveal reveal-delay-1">
+              <p class="service-detail__panel-title">Cosa include</p>
+              <ul class="service-detail__list">
+                <li class="service-detail__item">Modellazione 3D da sketch o brief</li>
+                <li class="service-detail__item">Render fotorealistici di prodotto</li>
+                <li class="service-detail__item">Visualizzazione di interni e spazi</li>
+                <li class="service-detail__item">Scenografie digitali per campagne</li>
+                <li class="service-detail__item">Animazioni 3D e turntable</li>
+                <li class="service-detail__item">Asset per AR/VR</li>
+                <li class="service-detail__item">Post-produzione e compositing</li>
+              </ul>
+            </div>
+            <div class="service-detail__cta-box reveal reveal-delay-2">
+              <span class="service-detail__cta-label">Vuoi saperne di più?</span>
+              <a class="btn btn--outline" href="../contatti.html">Parliamo del tuo progetto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <a class="nav__logo" href="../index.html" aria-label="ESTRO — Homepage">
+        <img src="../assets/Estro_logo05 (1).webp" alt="ESTRO" />
+      </a>
+      <nav class="footer__social" aria-label="Social media">
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Instagram</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">LinkedIn</a>
+        <a class="footer__social-link" href="#" rel="noopener noreferrer">Behance</a>
+      </nav>
+      <p class="footer__copy">© 2024 ESTRO. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
