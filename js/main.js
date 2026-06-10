@@ -45,7 +45,7 @@ onScroll();
 // ─── Hero title reveal ────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
-    document.querySelectorAll('.hero__title .line-inner').forEach(el => {
+    document.querySelectorAll('.hero__title .line-inner, .hero-home__title .line-inner').forEach(el => {
       el.classList.add('visible');
     });
   });
