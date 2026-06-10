@@ -1987,6 +1987,8 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   background: var(--primary);
   color: var(--white);
 }
+.cta-brush .btn--primary::before { background: var(--white); }
+.cta-brush .btn--primary:hover { background: var(--white); color: var(--black); }
 
 /* ─── TIPS & TRICKS ──────────────────────────────────── */
 .tips-section { padding-block: var(--space-24); border-top: var(--border); }
