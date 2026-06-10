@@ -911,6 +911,233 @@
 
 .nav__mobile-link:hover { color: var(--spring-green); }
 
+/* ─── NAV ACTIVE STATE ────────────────────────────────── */
+.nav__link--active {
+  color: var(--white);
+}
+
+.nav__link--active::after {
+  width: 100%;
+}
+
+/* ─── PAGE HERO (inner pages) ─────────────────────────── */
+.page-hero {
+  padding-top: 140px;
+  padding-bottom: clamp(var(--space-16), 6vw, var(--space-32));
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--white-06);
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page-hero__gradient {
+  position: absolute;
+  inset: 0;
+}
+
+.page-hero--services .page-hero__gradient {
+  background:
+    radial-gradient(ellipse 50% 80% at 100% 0%, rgba(99,0,255,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 0% 100%, rgba(0,255,127,0.05) 0%, transparent 50%);
+}
+
+.page-hero--contact .page-hero__gradient {
+  background:
+    radial-gradient(ellipse 50% 70% at 0% 0%, rgba(218,7,89,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 100% 100%, rgba(99,0,255,0.08) 0%, transparent 50%);
+}
+
+.page-hero__noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px;
+  opacity: 0.4;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: var(--space-8);
+}
+
+.page-hero__kicker {
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--spring-green);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.page-hero__kicker::before {
+  content: '';
+  display: block;
+  width: 20px; height: 1px;
+  background: var(--spring-green);
+}
+
+.page-hero__title {
+  font-family: var(--font-primary);
+  font-size: clamp(3rem, 7vw, var(--text-8xl));
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  grid-column: 1 / -1;
+}
+
+.page-hero__title em {
+  font-style: normal;
+  color: var(--spring-green);
+}
+
+.page-hero__sub {
+  font-size: var(--text-lg);
+  color: var(--white-60);
+  line-height: 1.5;
+  max-width: 44ch;
+  align-self: end;
+}
+
+.page-hero__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-4);
+  align-self: end;
+}
+
+.page-hero__meta-item {
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  text-align: right;
+}
+
+/* ─── SERVICES PAGE — FULL LIST ───────────────────────── */
+.services-full {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 2fr auto;
+  gap: var(--space-8);
+  align-items: start;
+  padding-block: var(--space-10);
+  border-bottom: 1px solid var(--white-06);
+  position: relative;
+  transition: background var(--dur-base) var(--ease-out);
+  cursor: default;
+}
+
+.service-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: var(--spring-green);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.service-row:hover { background: var(--white-04); }
+.service-row:hover::before { width: 2px; }
+
+.service-row__num {
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  color: var(--electric-indigo);
+  padding-top: 6px;
+}
+
+.service-row__title {
+  font-family: var(--font-primary);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.service-row__desc {
+  font-size: var(--text-base);
+  color: var(--white-60);
+  line-height: 1.65;
+  max-width: 52ch;
+}
+
+.service-row__tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  padding-top: 4px;
+}
+
+.service-row__tag {
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-40);
+}
+
+/* ─── CONTACT PAGE ────────────────────────────────────── */
+.contact-page {
+  border-top: 0;
+}
+
+.contact-page .contact__grid {
+  grid-template-columns: 5fr 7fr;
+}
+
+.contact-info-block {
+  padding: var(--space-10) var(--space-8);
+  border: 1px solid var(--white-06);
+  margin-top: var(--space-10);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--spring-green), transparent);
+}
+
+.contact-info-block__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  margin-bottom: var(--space-6);
+}
+
+.contact-info-block__value {
+  font-family: var(--font-primary);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+a.contact-info-block__value:hover {
+  color: var(--spring-green);
+}
+
 /* ─── ENTER ANIMATIONS ────────────────────────────────── */
 .reveal {
   opacity: 0;
@@ -943,6 +1170,16 @@
 @media (max-width: 768px) {
   .nav__links, .nav__cta { display: none; }
   .nav__hamburger { display: flex; }
+
+  .page-hero__inner { grid-template-columns: 1fr; }
+  .page-hero__meta { align-items: flex-start; }
+
+  .service-row { grid-template-columns: 40px 1fr; grid-template-rows: auto auto auto; }
+  .service-row__title { grid-column: 2; }
+  .service-row__desc { grid-column: 1 / -1; }
+  .service-row__tags { grid-column: 1 / -1; flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+
+  .contact-page .contact__grid { grid-template-columns: 1fr; }
 
   .hero__content { grid-template-columns: 1fr; }
   .hero__title { font-size: clamp(3rem, 14vw, 5rem); }
