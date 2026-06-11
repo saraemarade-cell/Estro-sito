@@ -125,11 +125,9 @@ main { margin: 0; padding: 0; }
 }
 
 .svc-item {
-  background: rgba(255,255,255,0.12) !important;
+  background: rgba(0,0,0,0.45) !important;
   padding: clamp(2.5rem, 3.5vw, 4rem) clamp(1.75rem, 2.5vw, 3rem) clamp(3rem, 4vw, 5rem) !important;
-  border: 1px solid rgba(255,255,255,0.25) !important;
-  border-right: 1px solid rgba(255,255,255,0.25) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.25) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -139,7 +137,7 @@ main { margin: 0; padding: 0; }
 }
 .svc-item:nth-child(5n) { border-right: 1px solid rgba(255,255,255,0.25) !important; }
 .svc-item:hover {
-  background: rgba(255,255,255,0.22) !important;
+  background: rgba(0,0,0,0.65) !important;
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
@@ -170,22 +168,22 @@ main { margin: 0; padding: 0; }
   line-height: 1.2 !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
-  color: #000 !important;
-  text-shadow: none !important;
+  color: #fff !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4) !important;
   transition: color 200ms !important;
 }
 .svc-item__name a { color: inherit !important; }
 .svc-item:hover .svc-item__name,
-.svc-item:hover .svc-item__name a { color: #000 !important; }
+.svc-item:hover .svc-item__name a { color: #fff !important; }
 
 /* descrizione */
 .svc-item__desc {
   font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
-  color: rgba(0,0,0,0.6) !important;
+  color: rgba(255,255,255,0.7) !important;
   line-height: 1.65 !important;
   margin-top: auto;
 }
-.svc-item__desc strong { color: #000 !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item__desc strong { color: #fff !important; font-weight: 600 !important; font-style: normal !important; }
 
 /* responsive */
 @media (max-width: 1024px) {
