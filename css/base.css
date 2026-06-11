@@ -1,15 +1,64 @@
 /* ─── FONTS ───────────────────────────────────────────── */
 @font-face {
-  font-family: 'AAKIRA';
-  src: local('AAKIRA Expanded Super Bold'), local('AAKIRA-ExpandedSuperBold'), local('AKIRAA Expanded Super Bold');
-  font-weight: 900;
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Thin.otf') format('opentype');
+  font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'GT America';
-  src: local('GT America'), local('GTAmerica');
-  font-weight: 400 700;
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-ThinOblique.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-DemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'VanguardCF';
+  src: url('Vanguard/VanguardCF-Heavy.otf') format('opentype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
@@ -26,8 +75,8 @@ html {
 }
 
 body {
-  background-color: var(--night);
-  color: var(--white);
+  background-color: var(--bg);
+  color: var(--black);
   font-family: var(--font-secondary);
   font-size: var(--text-base);
   line-height: 1.6;
@@ -42,7 +91,7 @@ ul, ol { list-style: none; }
 
 button { font-family: var(--font-secondary); cursor: pointer; border: none; background: none; }
 
-::selection { background: var(--spring-green); color: var(--night); }
+::selection { background: var(--primary); color: var(--white); }
 
 /* ─── LAYOUT ──────────────────────────────────────────── */
 .container {
@@ -61,6 +110,6 @@ button { font-family: var(--font-secondary); cursor: pointer; border: none; back
 
 /* ─── SCROLLBAR ───────────────────────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--night); }
-::-webkit-scrollbar-thumb { background: var(--white-10); }
-::-webkit-scrollbar-thumb:hover { background: var(--spring-green); }
+::-webkit-scrollbar-track { background: var(--white); }
+::-webkit-scrollbar-thumb { background: var(--black-10); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
