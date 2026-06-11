@@ -4357,3 +4357,130 @@ body:has(.hero-video) .nav:not(.scrolled) {
   display: block;
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   VHERO v2 — layout split: testo 30% | video 70%
+═══════════════════════════════════════════════════════ */
+
+.vhero {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin-top: var(--nav-h, 82px);
+  width: 100%;
+  height: calc(100vh - var(--nav-h, 82px));
+  background: #0a0a0a;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Colonna sinistra: testo centrato verticalmente ───── */
+.vhero__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(var(--space-8), 4vw, var(--space-16))
+           clamp(var(--space-6), 3vw, var(--space-12));
+  background: #0a0a0a;
+  position: relative;
+  z-index: 1;
+  /* Sottile separatore a destra */
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Titolo */
+.vhero__title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-primary);
+  font-size: clamp(2.2rem, 4.5vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+  margin: 0 0 clamp(var(--space-6), 3vh, var(--space-10)) 0;
+}
+
+/* "LE IDEE": bianco */
+.vhero__title span:nth-child(1) { color: var(--white); }
+
+/* "PRENDONO": rosa brand */
+.vhero__title span:nth-child(2) { color: var(--primary); }
+
+/* "FORMA": bianco */
+.vhero__title span:nth-child(3) { color: var(--white); }
+
+/* Tagline */
+.vhero__tagline {
+  font-family: var(--font-secondary);
+  font-size: clamp(0.6rem, 0.8vw, var(--text-xs));
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+/* Sottotitolo */
+.vhero__sub {
+  font-family: var(--font-secondary);
+  font-size: clamp(0.65rem, 0.85vw, var(--text-sm));
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin: 0 0 clamp(var(--space-6), 3vh, var(--space-10)) 0;
+}
+
+/* CTA: uguale agli altri btn--primary della pagina */
+.vhero__cta {
+  align-self: flex-start;
+}
+
+/* ── Colonna destra: video riempie tutto ──────────────── */
+.vhero__right {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Cover centrato: il video riempie la colonna destra
+   mantenendo l'aspect ratio 16:9, centrato */
+.vhero__iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 56.25vw;      /* 100% larghezza × 9/16 */
+  min-height: 100%;
+  min-width: 177.78vh;  /* 100% altezza × 16/9 */
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Responsive: mobile stack verticale ───────────────── */
+@media (max-width: 768px) {
+  .vhero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: auto;
+    min-height: calc(100vh - var(--nav-h, 82px));
+  }
+  .vhero__left {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: var(--space-10) var(--space-6);
+  }
+  .vhero__title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .vhero__right {
+    height: 56vw; /* aspect ratio sul mobile */
+  }
+  .vhero__iframe {
+    min-width: unset;
+    min-height: unset;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    top: 0;
+    left: 0;
+  }
+}
+
