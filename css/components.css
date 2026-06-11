@@ -3096,3 +3096,307 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   .clients__logos { grid-template-columns: repeat(3, 1fr); }
   .svc-grid__list { grid-template-columns: repeat(1, 1fr); }
 }
+
+/* ═══════════════════════════════════════════════════════
+   BOLD PASS — Contrasto, pop, creatività unica
+   Fix: leggibilità assoluta + audacia visiva
+   Nessuna modifica a testi, colori brand, o struttura
+═══════════════════════════════════════════════════════ */
+
+/* ── NAV: testo bianco su hero nero (solo homepage) ─── */
+body:has(.hero-home) .nav:not(.scrolled) {
+  background: transparent;
+}
+body:has(.hero-home) .nav:not(.scrolled) .nav__link,
+body:has(.hero-home) .nav:not(.scrolled) .nav__dropdown-toggle {
+  color: rgba(255,255,255,0.82);
+}
+body:has(.hero-home) .nav:not(.scrolled) .nav__link:hover,
+body:has(.hero-home) .nav:not(.scrolled) .nav__dropdown-toggle:hover {
+  color: var(--white);
+}
+body:has(.hero-home) .nav:not(.scrolled) .nav__logo img {
+  filter: brightness(0) invert(1);
+}
+body:has(.hero-home) .nav:not(.scrolled) .nav__cta {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+body:has(.hero-home) .nav:not(.scrolled) .nav__hamburger span {
+  background: var(--white);
+}
+
+/* ── HERO: sfondo nero, massimo contrasto ─────────────
+   Sfondo #0a0a0a: il più bold dei brand color
+   Il cat su nero: mix-blend-mode lighten preserva l'img
+   ──────────────────────────────────────────────────── */
+.hero-home {
+  background: #0a0a0a;
+}
+.hero-home::before { opacity: 0.3; }
+.hero-home::after {
+  background:
+    radial-gradient(ellipse 55% 65% at 100% 0%, rgba(219,0,90,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 0% 100%, rgba(219,0,90,0.06) 0%, transparent 50%);
+}
+
+/* Cat: lighten integra sfondo bianco su hero nero senza artefatti */
+.hero-home__cat img {
+  mix-blend-mode: lighten;
+}
+
+/* Titolo: z-index sopra il gatto */
+.hero-home__title {
+  z-index: 4;
+}
+
+/* OUTLINE: FIX CONTRASTO — il testo invisibile diventa
+   uno statement grafico forte. Stroke bianco su nero = 
+   lettering da manifesto editoriale di lusso */
+.line--outline {
+  color: transparent;
+  -webkit-text-stroke: 2.5px rgba(255,255,255,0.88);
+  letter-spacing: -0.04em;
+}
+
+/* Solid: rosa puro, esplosivo */
+.line--solid {
+  color: var(--primary);
+}
+
+/* Strip: sfondo nero, testo chiaro */
+.hero-home__below {
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 4;
+}
+.hero-home__tagline {
+  color: var(--primary);
+}
+.hero-home__sub {
+  color: rgba(255,255,255,0.42);
+}
+
+/* Btn nel hero: outline bianco */
+.hero-home__below .btn--primary {
+  background: var(--primary);
+  color: var(--white);
+}
+.hero-home__below .btn--primary:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ── SERVIZI: numeri bold, non trasparenti ────────────
+   Nuova logica: numero in rosa solido con alta opacità
+   sul default, poi full-saturation all'hover
+   ──────────────────────────────────────────────────── */
+.svc-item__num {
+  -webkit-text-stroke: 0;
+  color: var(--primary);
+  opacity: 0.22;
+  transition: opacity 200ms, color 200ms;
+}
+.svc-item:hover .svc-item__num {
+  opacity: 1;
+  color: var(--primary);
+}
+
+/* ── CLIENTS: heading a contrasto pieno ──────────────── */
+.clients__heading {
+  color: var(--black);
+  -webkit-text-stroke: 0;
+  /* Accent: spessa linea rosa a sinistra */
+  padding-left: var(--space-6);
+  border-left: 5px solid var(--primary);
+  text-align: left;
+  margin-inline: 0;
+}
+
+/* ── CASE STUDIES: heading solido e leggibile ─────────
+   Grande, nero, senza stroke trasparente
+   Accent: numero a sinistra in rosa
+   ──────────────────────────────────────────────────── */
+.case-studies__heading {
+  color: var(--black);
+  -webkit-text-stroke: 0;
+  position: relative;
+}
+/* Punto rosso decorativo prima dell'heading */
+.case-studies__heading::before {
+  content: '●';
+  color: var(--primary);
+  font-size: 0.22em;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ── TIPS: heading nero solido ──────────────────────── */
+.tips-section__heading {
+  color: var(--black);
+  -webkit-text-stroke: 0;
+}
+/* Accent: lineetta rosa prima */
+.tips-section__heading::before {
+  content: '';
+  display: block;
+  width: clamp(40px, 5vw, 64px);
+  height: 4px;
+  background: var(--primary);
+  margin-bottom: var(--space-5);
+  border-radius: 2px;
+}
+
+/* ── CONTACT: heading bianco solido, senza stroke ───── */
+.contact-home__heading {
+  color: var(--white);
+  -webkit-text-stroke: 0;
+}
+
+/* ── SEZIONI: separatori più decisi ───────────────────
+   Ogni sezione ha un carattere visivo proprio
+   ──────────────────────────────────────────────────── */
+
+/* Services: bordo superiore nero full-width */
+.svc-grid {
+  border-top: 3px solid var(--black);
+}
+
+/* Video: bg leggermente scuro, più cinematografico */
+.video-section {
+  background: #0f0f0f;
+}
+
+/* About: bg bianco puro, più luminoso a contrasto */
+.about-section {
+  background: var(--white);
+}
+.about-section__big {
+  -webkit-text-stroke-color: rgba(219,0,90,0.18);
+  color: transparent;
+}
+.about-section__heading {
+  color: var(--black);
+}
+.about-section__body {
+  color: rgba(0,0,0,0.58);
+}
+
+/* Clients: bg leggermente warm */
+.clients-section {
+  background: #f9f8f6;
+}
+.client-logo {
+  background: #f9f8f6;
+  color: rgba(0,0,0,0.7);
+  font-weight: 600;
+}
+.client-logo--xl {
+  color: var(--black);
+  font-weight: 800;
+}
+.client-logo:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* Case studies: bg off-black per contrasto totale */
+.case-studies {
+  background: #0a0a0a;
+}
+.case-studies__heading {
+  color: var(--white);
+}
+.case-studies__heading::before {
+  color: var(--primary);
+}
+.case-studies__grid {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.06);
+}
+.cs-logo {
+  background: #111;
+  color: rgba(255,255,255,0.82);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.cs-logo:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+.cs-logo:hover::before { height: 0; } /* no top bar needed su rosa */
+.cs-logo strong {
+  background: var(--primary);
+  color: var(--white);
+  padding: 1px 5px;
+}
+
+/* CTA brush: già forte, miglioramento testo leggibile */
+.cta-brush__title {
+  text-shadow:
+    0 2px 60px rgba(0,0,0,0.5),
+    0 0 120px rgba(0,0,0,0.3);
+  letter-spacing: -0.03em;
+}
+
+/* Tips: card più rich, titolo leggibile nero */
+.tip-card__title {
+  color: var(--black);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  text-transform: none;
+}
+.tip-card {
+  background: var(--white);
+  border-bottom: 2px solid transparent;
+  transition: border-color 250ms;
+  padding-bottom: var(--space-2);
+}
+.tip-card:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* Gatto pre-footer: separatore prima in rosa */
+.gatto-footer {
+  border-top: 4px solid var(--primary);
+}
+
+/* Footer: bg nero per chiusura forte */
+.footer {
+  background: #0a0a0a;
+  border-top: none;
+}
+.footer__inner {
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.footer__copy {
+  color: rgba(255,255,255,0.4);
+}
+.footer__social-link {
+  color: rgba(255,255,255,0.6);
+}
+.footer__social-link:hover {
+  color: var(--primary);
+}
+/* Logo footer in bianco */
+.footer .nav__logo img {
+  filter: brightness(0) invert(1);
+}
+
+/* ── RESPONSIVE BOLD ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .line--outline { -webkit-text-stroke-width: 2px; }
+  .clients__heading {
+    border-left-width: 4px;
+    padding-left: var(--space-4);
+  }
+}
+@media (max-width: 480px) {
+  .line--outline { -webkit-text-stroke-width: 1.5px; }
+  .svc-grid { border-top-width: 2px; }
+}
+
