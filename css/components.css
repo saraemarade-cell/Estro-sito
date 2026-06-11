@@ -4274,3 +4274,52 @@ body:has(.hero-video) .nav:not(.scrolled) {
   .hero-title__heading { font-size: clamp(2.5rem, 13vw, 5rem); }
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   VIDEO FULL VIEWPORT — definitivo
+   Sezione occupa tutta la viewport dalla nav in giù.
+   Iframe riempie il 100% della sezione.
+   YouTube adatta il contenuto internamente.
+═══════════════════════════════════════════════════════ */
+
+.hero-video {
+  /* Inizia subito sotto la nav */
+  margin-top: var(--nav-h);
+  /* Occupa esattamente il resto della viewport */
+  width: 100vw;
+  height: calc(100vh - var(--nav-h));
+  /* Reset tutto il precedente */
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  padding: 0;
+  flex-direction: unset;
+  align-items: unset;
+  justify-content: unset;
+}
+
+.hero-video__wrap {
+  /* Riempie l'intera sezione */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* Reset aspect-ratio precedente */
+  aspect-ratio: unset;
+  max-height: unset;
+}
+
+/* L'iframe occupa tutto lo spazio disponibile.
+   YouTube mostra il video adattato (con bande nere se necessario)
+   ma non lo taglia — il contenuto è sempre visibile per intero. */
+.hero-video__wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+  display: block;
+}
+
