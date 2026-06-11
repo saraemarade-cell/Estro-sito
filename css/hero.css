@@ -126,7 +126,7 @@ main { margin: 0; padding: 0; }
 
 .svc-item {
   background: rgba(0,0,0,0.45) !important;
-  padding: clamp(2.5rem, 3.5vw, 4rem) clamp(1.75rem, 2.5vw, 3rem) clamp(3rem, 4vw, 5rem) !important;
+  padding: clamp(1.25rem, 1.8vw, 2rem) clamp(1rem, 1.5vw, 1.75rem) clamp(1.5rem, 2vw, 2.5rem) !important;
   border: 1px solid rgba(255,255,255,0.12) !important;
   display: flex;
   flex-direction: column;
@@ -148,11 +148,11 @@ main { margin: 0; padding: 0; }
 /* numeri: bianco opaco sfumato */
 .svc-item__num {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(4rem, 6vw, 7.5rem) !important;
+  font-size: clamp(2.5rem, 3.8vw, 5rem) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   -webkit-text-stroke: none !important;
-  margin-bottom: clamp(1rem, 1.5vw, 1.75rem) !important;
+  margin-bottom: clamp(0.5rem, 0.8vw, 1rem) !important;
   display: block;
   color: rgba(255,255,255,0.55) !important;
   transition: color 200ms !important;
