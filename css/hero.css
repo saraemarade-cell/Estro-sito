@@ -1,73 +1,64 @@
 /* ═══════════════════════════════════════════════════════
-   hero.css — layout hero definitivo
+   hero.css — definitivo
 ═══════════════════════════════════════════════════════ */
 
-:root { --nav-h: 82px; }
-
-/* ── Sezione hero: griglia 30/70, altezza esplicita ────── */
+/* ── Hero: griglia 30/70, altezza viewport ───────────── */
 .vhero {
   display: grid !important;
   grid-template-columns: 30% 70% !important;
-  /* Altezza della riga esplicitamente dichiarata:
-     garantisce che entrambe le celle abbiano altezza definita */
-  grid-template-rows: calc(100vh - 82px) !important;
   width: 100%;
   margin-top: 82px;
+  height: calc(100vh - 82px);
   background: #0a0a0a;
-  overflow: hidden;
 }
 
 /* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
+  height: calc(100vh - 82px);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.25rem;
   padding: 3rem 2.5rem;
   background: #0a0a0a;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
-  /* La cella si estende per tutta la riga */
-  height: calc(100vh - 82px);
-  box-sizing: border-box;
+  border-right: 1px solid rgba(255,255,255,0.07);
   overflow: hidden;
 }
 
-/* ── Colonna destra: centra il video ─────────────────── */
+/* ── Colonna destra: contenitore relativo ────────────── */
 .vhero__right {
-  /* Altezza esplicita = altezza della riga grid */
+  position: relative;
   height: calc(100vh - 82px);
-  box-sizing: border-box;
-  /* Flex center: centra il video-box orizzontalmente e verticalmente */
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: #000;
   overflow: hidden;
 }
 
-/* ── Box video: 16:9, contained ─────────────────────── */
+/* ── Video box: centrato con transform ───────────────── */
 .vhero__video-box {
-  /* Larghezza massima = larghezza della colonna destra,
-     ma mai più alta dell'altezza della colonna.
-     min() garantisce che con aspect-ratio 16:9
-     il box stia sempre dentro il contenitore. */
+  /* Centra il box nel contenitore */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Dimensione: il più piccolo tra
+     - larghezza piena della colonna (100%)
+     - altezza colonna × 16/9 (per non sforare in altezza) */
   width: min(100%, calc((100vh - 82px) * 16 / 9));
   aspect-ratio: 16 / 9;
-  position: relative;
-  flex-shrink: 0;
 }
 
+/* ── Iframe: riempie il box esattamente ──────────────── */
 .vhero__iframe {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   border: none;
   pointer-events: none;
-  display: block;
 }
 
-/* ── Testo ───────────────────────────────────────────── */
+/* ── Testi ───────────────────────────────────────────── */
 .vhero__title {
   display: flex;
   flex-direction: column;
@@ -95,7 +86,7 @@
 .vhero__sub {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.65rem, 0.85vw, 0.85rem);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255,255,255,0.5);
   line-height: 1.65;
   margin: 0;
 }
@@ -104,10 +95,10 @@
 
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
-  background: rgba(255, 255, 255, 0.97) !important;
+  background: rgba(255,255,255,0.97) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.07) !important;
 }
 
 /* ── Mobile ──────────────────────────────────────────── */
@@ -115,24 +106,27 @@
   .vhero {
     display: flex !important;
     flex-direction: column !important;
-    grid-template-rows: unset !important;
-    min-height: calc(100vh - 82px);
-    overflow: visible;
+    height: auto !important;
   }
   .vhero__left {
     height: auto;
     padding: 2.5rem 1.5rem;
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
   .vhero__right {
-    height: auto;
-    aspect-ratio: 16 / 9;
+    height: 0 !important;
+    padding-bottom: 56.25%; /* aspect ratio 16:9 */
     width: 100%;
   }
   .vhero__video-box {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    min(unset);
+    aspect-ratio: unset;
+    transform: none;
+    top: 0;
+    left: 0;
   }
   .vhero__title { font-size: clamp(2rem, 10vw, 3rem); }
 }
