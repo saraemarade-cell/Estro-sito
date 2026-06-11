@@ -241,6 +241,17 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
 }
 
+/* cerchio decorativo: nascosto */
+.about-section__circle { display: none !important; }
+
+/* foto: spostata in basso, sfondo bianco rimosso con mix-blend-mode */
+.about-section__img-wrap {
+  margin-top: clamp(4rem, 8vw, 8rem) !important;
+}
+.about-section__img-wrap img {
+  mix-blend-mode: multiply !important;
+}
+
 /* coda: flush al bordo destro viewport */
 .about-section,
 .about-section .container,
