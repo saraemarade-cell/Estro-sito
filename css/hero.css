@@ -252,12 +252,8 @@ main { margin: 0; padding: 0; }
   z-index: 1;
 }
 .about-section__img-wrap img {
-  mix-blend-mode: darken !important;
-  background: transparent !important;
-}
-.about-section__img-wrap,
-.about-section__left {
-  background: #fff !important;
+  clip-path: inset(10% round 0px) !important;
+  mix-blend-mode: normal !important;
 }
 
 /* coda: flush al bordo destro viewport */
