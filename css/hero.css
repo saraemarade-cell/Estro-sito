@@ -3,21 +3,19 @@
    Carica dopo components.css, sovrascrive tutti i conflitti.
 ═══════════════════════════════════════════════════════ */
 
-/* ── Layout hero: griglia 30% | 70% ─────────────────── */
+/* ── Layout hero: griglia 30% testo | 70% video ─────── */
 .vhero {
   display: grid !important;
   grid-template-columns: 30% 70% !important;
   width: 100%;
-  /* Parte subito sotto la nav (82px) */
   margin-top: 82px;
-  /* Riempie il resto della viewport */
   height: calc(100vh - 82px);
   background: #0a0a0a;
   overflow: hidden;
   position: relative;
 }
 
-/* ── Colonna sinistra: testo centrato verticalmente ───── */
+/* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
   display: flex;
   flex-direction: column;
@@ -28,7 +26,6 @@
   border-right: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* ── Titolo ─────────────────────────────────────────── */
 .vhero__title {
   display: flex;
   flex-direction: column;
@@ -39,12 +36,10 @@
   font-weight: 900;
   margin: 0;
 }
+.vhero__title span:nth-child(1) { color: #ffffff; }
+.vhero__title span:nth-child(2) { color: #DB005A; }
+.vhero__title span:nth-child(3) { color: #ffffff; }
 
-.vhero__title span:nth-child(1) { color: #ffffff; }  /* LE IDEE */
-.vhero__title span:nth-child(2) { color: #DB005A; }  /* PRENDONO */
-.vhero__title span:nth-child(3) { color: #ffffff; }  /* FORMA */
-
-/* ── Tagline ─────────────────────────────────────────── */
 .vhero__tagline {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.55rem, 0.75vw, 0.7rem);
@@ -56,7 +51,6 @@
   line-height: 1.5;
 }
 
-/* ── Sottotitolo ─────────────────────────────────────── */
 .vhero__sub {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.65rem, 0.85vw, 0.85rem);
@@ -65,34 +59,45 @@
   margin: 0;
 }
 
-/* ── CTA: allineato al resto della pagina ────────────── */
 .vhero__cta {
   align-self: flex-start;
   margin-top: 0.5rem;
 }
 
-/* ── Colonna destra: video che riempie l'area ─────────── */
+/* ── Colonna destra: video contain (nessun crop) ─────────
+   Logica:
+   - Il contenitore flex centra il video
+   - width: min(100%, altezza-contenitore × 16/9)
+     → prende la larghezza massima che NON fa uscire il video
+       in altezza dal contenitore
+   - aspect-ratio: 16/9 → altezza calcolata automaticamente
+   - Risultato: video sempre intero, mai croppato, mai zoomato
+   ───────────────────────────────────────────────────────── */
 .vhero__right {
-  position: relative;
-  overflow: hidden;
+  /* Flex per centrare il video (bande nere se non copre) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #000;
+  overflow: hidden;
 }
 
-/* Cover centrato: il video scala per riempire
-   il 70% della sezione senza bande nere */
 .vhero__iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* Dimensioni cover 16:9 */
-  width: 100%;
-  height: 56.25vw;
-  min-height: 100%;
-  min-width: 177.78vh;
-  transform: translate(-50%, -50%);
+  display: block;
   border: none;
   pointer-events: none;
-  display: block;
+
+  /* Contain 16:9 — il video è sempre visibile per intero:
+     - min() sceglie il minore tra:
+         100%  → larghezza massima del contenitore
+         (altezza-contenitore) × 16/9 → larghezza che non supera l'altezza
+     - aspect-ratio calcola l'altezza automaticamente */
+  width: min(100%, calc((100vh - 82px) * (16 / 9)));
+  aspect-ratio: 16 / 9;
+
+  /* Garanzie extra di sicurezza */
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* ── Nav: sfondo bianco sopra la hero ───────────────── */
@@ -103,7 +108,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
 }
 
-/* ── Responsive ──────────────────────────────────────── */
+/* ── Responsive mobile: stack verticale ─────────────── */
 @media (max-width: 768px) {
   .vhero {
     display: flex !important;
@@ -118,23 +123,21 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
-  .vhero__title {
-    font-size: clamp(2rem, 10vw, 3rem);
-  }
+  .vhero__title { font-size: clamp(2rem, 10vw, 3rem); }
 
+  /* Sul mobile il video occupa la larghezza piena in 16:9 */
   .vhero__right {
-    height: 56vw;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .vhero__iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    min-width: unset;
-    min-height: unset;
-    transform: none;
+    aspect-ratio: unset;
+    max-width: none;
+    max-height: none;
   }
 }
