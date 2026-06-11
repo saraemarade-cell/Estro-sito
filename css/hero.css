@@ -147,20 +147,21 @@ main { margin: 0; padding: 0; }
 .svc-item::before { display: none !important; }
 .svc-item::after  { display: none !important; }
 
-/* numeri: colori vivaci diversi per ogni posizione, sempre leggibili */
+/* numeri: bianco opaco sfumato */
 .svc-item__num {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(3rem, 4.5vw, 5.5rem) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   -webkit-text-stroke: none !important;
-  opacity: 1 !important;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
   display: block;
-  color: #000 !important;
+  color: rgba(255,255,255,0.28) !important;
+  transition: color 200ms !important;
 }
+.svc-item:hover .svc-item__num { color: rgba(255,255,255,0.55) !important; }
 
-/* nome servizio: bianco pieno, massimo contrasto */
+/* nome servizio: nero, alta leggibilità */
 .svc-item__name {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(0.85rem, 1.05vw, 1.15rem) !important;
@@ -169,22 +170,22 @@ main { margin: 0; padding: 0; }
   line-height: 1.2 !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
-  color: #fff !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  color: #000 !important;
+  text-shadow: none !important;
   transition: color 200ms !important;
 }
 .svc-item__name a { color: inherit !important; }
 .svc-item:hover .svc-item__name,
-.svc-item:hover .svc-item__name a { color: #fff !important; }
+.svc-item:hover .svc-item__name a { color: #000 !important; }
 
 /* descrizione */
 .svc-item__desc {
   font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
-  color: rgba(255,255,255,0.75) !important;
+  color: rgba(0,0,0,0.6) !important;
   line-height: 1.65 !important;
   margin-top: auto;
 }
-.svc-item__desc strong { color: #fff !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item__desc strong { color: #000 !important; font-weight: 600 !important; font-style: normal !important; }
 
 /* responsive */
 @media (max-width: 1024px) {
