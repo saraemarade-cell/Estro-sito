@@ -157,20 +157,8 @@ main { margin: 0; padding: 0; }
   opacity: 1 !important;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
   display: block;
-  color: #fff !important;
+  color: #000 !important;
 }
-
-/* colori alternati per i numeri */
-.svc-item:nth-child(1)  .svc-item__num,
-.svc-item:nth-child(6)  .svc-item__num { color: #fff !important; }
-.svc-item:nth-child(2)  .svc-item__num,
-.svc-item:nth-child(7)  .svc-item__num { color: #ffe066 !important; }
-.svc-item:nth-child(3)  .svc-item__num,
-.svc-item:nth-child(8)  .svc-item__num { color: #a8f0e8 !important; }
-.svc-item:nth-child(4)  .svc-item__num,
-.svc-item:nth-child(9)  .svc-item__num { color: #ffc2d4 !important; }
-.svc-item:nth-child(5)  .svc-item__num,
-.svc-item:nth-child(10) .svc-item__num { color: #c8f5a0 !important; }
 
 /* nome servizio: bianco pieno, massimo contrasto */
 .svc-item__name {
