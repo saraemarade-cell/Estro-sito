@@ -15,7 +15,7 @@ main { margin: 0; padding: 0; }
   grid-template-columns: 30% 70% !important;
   width: 100%;
   margin-top: 82px;
-  height: calc(100vh - 82px);
+  height: min(calc(70vw * 9 / 16), calc(100vh - 82px));
   background: #0a0a0a;
 }
 
@@ -40,7 +40,7 @@ main { margin: 0; padding: 0; }
 /* ── Colonna destra: contenitore relativo ────────────── */
 .vhero__right {
   position: relative;
-  height: calc(100vh - 82px);
+  height: min(calc(70vw * 9 / 16), calc(100vh - 82px));
   background: #000;
   overflow: hidden;
 }
