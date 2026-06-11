@@ -315,7 +315,9 @@ main { margin: 0; padding: 0; }
   color: #DB005A !important;
   -webkit-text-stroke: 0 !important;
   line-height: 1.05 !important;
-  max-width: 12ch;
+  max-width: none !important;
+  border-left: none !important;
+  padding-left: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
   margin-bottom: clamp(2rem, 4vw, 3rem) !important;
