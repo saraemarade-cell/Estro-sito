@@ -4323,3 +4323,37 @@ body:has(.hero-video) .nav:not(.scrolled) {
   display: block;
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   .vhero — video hero, classe isolata senza conflitti
+   Occupa tutta la viewport dalla nav in giù, centrato.
+═══════════════════════════════════════════════════════ */
+
+.vhero {
+  /* Flusso normale — parte subito sotto la nav */
+  display: block;
+  position: relative;
+  margin-top: var(--nav-h, 82px);
+  width: 100%;
+  /* Riempie tutta la viewport rimasta sotto la nav */
+  height: calc(100vh - var(--nav-h, 82px));
+  background: #000;
+  overflow: hidden;
+}
+
+.vhero__iframe {
+  /* Centrato nella sezione */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Cover 16:9: scala per coprire l'intero spazio, video centrato */
+  width: 100%;
+  height: 56.25vw;      /* 100vw × 9/16 */
+  min-height: 100%;
+  min-width: 177.78vh;  /* 100vh × 16/9 */
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
+  display: block;
+}
+
