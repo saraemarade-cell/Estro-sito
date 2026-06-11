@@ -211,6 +211,36 @@ main { margin: 0; padding: 0; }
   .svc-item__num { font-size: clamp(2.5rem, 10vw, 3.5rem) !important; }
 }
 
+/* ══ ABOUT SECTION ══════════════════════════════════════ */
+.about-section {
+  overflow: visible !important;
+}
+
+/* "ABOUT" watermark: enorme, esce a destra */
+.about-section__big {
+  font-size: clamp(10rem, 22vw, 22rem) !important;
+  white-space: nowrap !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: -2% !important;
+  right: auto !important;
+  transform: translateY(-50%) !important;
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px rgba(219,0,90,0.18) !important;
+  z-index: 0 !important;
+  pointer-events: none;
+  overflow: visible !important;
+}
+
+/* heading: leggibile, peso bilanciato */
+.about-section__heading {
+  font-size: clamp(1.6rem, 3.2vw, 3.5rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.02em !important;
+  color: #000 !important;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
   background: rgba(255,255,255,0.97) !important;
