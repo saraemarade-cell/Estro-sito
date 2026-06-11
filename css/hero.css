@@ -227,7 +227,7 @@ main { margin: 0; padding: 0; }
   transform: translateY(-50%) !important;
   color: transparent !important;
   -webkit-text-stroke: 1.5px rgba(219,0,90,0.18) !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.01em !important;
   z-index: 0 !important;
   pointer-events: none;
   overflow: visible !important;
@@ -245,12 +245,15 @@ main { margin: 0; padding: 0; }
 /* cerchio decorativo: nascosto */
 .about-section__circle { display: none !important; }
 
-/* foto: spostata in basso, sfondo bianco rimosso con mix-blend-mode */
+/* foto: sotto la parola ABOUT, sfondo bianco rimosso */
 .about-section__img-wrap {
-  margin-top: clamp(4rem, 8vw, 8rem) !important;
+  margin-top: clamp(12rem, 20vw, 22rem) !important;
+  position: relative;
+  z-index: 1;
 }
 .about-section__img-wrap img {
   mix-blend-mode: multiply !important;
+  background: transparent !important;
 }
 
 /* coda: flush al bordo destro viewport */
