@@ -1,23 +1,23 @@
 /* ═══════════════════════════════════════════════════════
    hero.css — layout hero definitivo
-   Carica dopo components.css, sovrascrive tutti i conflitti.
 ═══════════════════════════════════════════════════════ */
 
-/* ── Sezione hero ────────────────────────────────────── */
+:root { --nav-h: 82px; }
+
+/* ── Sezione hero: griglia 30/70, altezza esplicita ────── */
 .vhero {
   display: grid !important;
   grid-template-columns: 30% 70% !important;
-  /* L'altezza si adatta al contenuto (video in 16:9) */
-  /* min-height garantisce che la hero non sia più corta del viewport */
-  min-height: calc(100vh - 82px);
+  /* Altezza della riga esplicitamente dichiarata:
+     garantisce che entrambe le celle abbiano altezza definita */
+  grid-template-rows: calc(100vh - 82px) !important;
   width: 100%;
   margin-top: 82px;
   background: #0a0a0a;
-  /* NO overflow: hidden — non vogliamo mai clippage */
-  position: relative;
+  overflow: hidden;
 }
 
-/* ── Colonna sinistra: testo ─────────────────────────── */
+/* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
   display: flex;
   flex-direction: column;
@@ -26,47 +26,48 @@
   padding: 3rem 2.5rem;
   background: #0a0a0a;
   border-right: 1px solid rgba(255, 255, 255, 0.07);
-  /* La colonna si estende per tutta l'altezza della griglia */
-  align-self: stretch;
+  /* La cella si estende per tutta la riga */
+  height: calc(100vh - 82px);
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* ── Colonna destra: centra il video in orizzontale e verticale */
+/* ── Colonna destra: centra il video ─────────────────── */
 .vhero__right {
-  /* La cella griglia diventa un flex container che centra il video */
+  /* Altezza esplicita = altezza della riga grid */
+  height: calc(100vh - 82px);
+  box-sizing: border-box;
+  /* Flex center: centra il video-box orizzontalmente e verticalmente */
   display: flex;
   align-items: center;
   justify-content: center;
   background: #000;
-  /* La cella occupa tutta l'altezza della riga */
-  align-self: stretch;
-  overflow: visible;
+  overflow: hidden;
 }
 
-/* Il box del video mantiene il 16:9 ed è centrato nel flex */
+/* ── Box video: 16:9, contained ─────────────────────── */
 .vhero__video-box {
+  /* Larghezza massima = larghezza della colonna destra,
+     ma mai più alta dell'altezza della colonna.
+     min() garantisce che con aspect-ratio 16:9
+     il box stia sempre dentro il contenitore. */
+  width: min(100%, calc((100vh - 82px) * 16 / 9));
   aspect-ratio: 16 / 9;
-  /* Larghezza massima = tutta la colonna */
-  width: 100%;
-  /* Altezza massima = altezza della cella (evita overflow verticale) */
-  max-height: 100%;
-  /* Se la cella è più stretta, si adatta */
-  max-width: 100%;
   position: relative;
   flex-shrink: 0;
-  background: #000;
 }
 
 .vhero__iframe {
-  display: block;
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: none;
   pointer-events: none;
+  display: block;
 }
 
-/* ── Titolo ─────────────────────────────────────────── */
+/* ── Testo ───────────────────────────────────────────── */
 .vhero__title {
   display: flex;
   flex-direction: column;
@@ -77,11 +78,10 @@
   font-weight: 900;
   margin: 0;
 }
-.vhero__title span:nth-child(1) { color: #ffffff; }
+.vhero__title span:nth-child(1) { color: #fff; }
 .vhero__title span:nth-child(2) { color: #DB005A; }
-.vhero__title span:nth-child(3) { color: #ffffff; }
+.vhero__title span:nth-child(3) { color: #fff; }
 
-/* ── Tagline ─────────────────────────────────────────── */
 .vhero__tagline {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.55rem, 0.75vw, 0.7rem);
@@ -90,10 +90,8 @@
   text-transform: uppercase;
   color: #DB005A;
   margin: 0;
-  line-height: 1.5;
 }
 
-/* ── Sottotitolo ─────────────────────────────────────── */
 .vhero__sub {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(0.65rem, 0.85vw, 0.85rem);
@@ -102,13 +100,9 @@
   margin: 0;
 }
 
-/* ── CTA ─────────────────────────────────────────────── */
-.vhero__cta {
-  align-self: flex-start;
-  margin-top: 0.5rem;
-}
+.vhero__cta { align-self: flex-start; }
 
-/* ── Nav: visibile sopra la hero ─────────────────────── */
+/* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
   background: rgba(255, 255, 255, 0.97) !important;
   backdrop-filter: blur(20px);
@@ -121,27 +115,24 @@
   .vhero {
     display: flex !important;
     flex-direction: column !important;
-    min-height: auto;
+    grid-template-rows: unset !important;
+    min-height: calc(100vh - 82px);
+    overflow: visible;
   }
-
   .vhero__left {
+    height: auto;
     padding: 2.5rem 1.5rem;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    align-self: auto;
   }
-
   .vhero__right {
-    width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
-    align-self: auto;
-    overflow: hidden;
+    width: 100%;
   }
   .vhero__video-box {
     width: 100%;
-    height: 100%;
-    max-height: none;
+    min(unset);
   }
-
   .vhero__title { font-size: clamp(2rem, 10vw, 3rem); }
 }
