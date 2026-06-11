@@ -309,12 +309,15 @@ main { margin: 0; padding: 0; }
 .clients__heading {
   text-align: center !important;
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(1.4rem, 2.5vw, 2.5rem) !important;
+  font-size: 59px !important;
   font-weight: 800 !important;
   letter-spacing: -0.01em !important;
   color: #DB005A !important;
   -webkit-text-stroke: 0 !important;
-  line-height: 1.1 !important;
+  line-height: 1.05 !important;
+  max-width: 12ch;
+  margin-left: auto !important;
+  margin-right: auto !important;
   margin-bottom: clamp(2rem, 4vw, 3rem) !important;
 }
 
