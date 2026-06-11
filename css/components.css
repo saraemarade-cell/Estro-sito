@@ -1423,11 +1423,11 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--spring-gree
 }
 
 .clients__track--fwd .clients__row {
-  animation: clients-fwd 28s linear infinite;
+  animation: clients-fwd 50s linear infinite;
 }
 
 .clients__track--rev .clients__row {
-  animation: clients-rev 28s linear infinite;
+  animation: clients-rev 50s linear infinite;
 }
 
 .clients__logo {
