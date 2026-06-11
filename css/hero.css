@@ -298,6 +298,95 @@ main { margin: 0; padding: 0; }
   transform: rotate(-4deg) !important;
 }
 
+/* ══ CLIENTS SECTION ════════════════════════════════════ */
+.clients-section {
+  padding-block: clamp(5rem, 10vw, 9rem) !important;
+  background: #fff !important;
+  border-top: none !important;
+  overflow: hidden;
+}
+
+.clients__heading {
+  text-align: center !important;
+  font-size: clamp(1rem, 1.8vw, 1.5rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  color: rgba(0,0,0,0.35) !important;
+  -webkit-text-stroke: 0 !important;
+  text-transform: uppercase;
+  margin-bottom: clamp(3rem, 6vw, 5rem) !important;
+}
+
+/* Marquee-style rows: due righe che scorrono in direzioni opposte */
+.clients__logos {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: clamp(1.5rem, 3vw, 2.5rem) !important;
+  background: none !important;
+  grid-template-columns: none !important;
+}
+
+/* ogni logo */
+.client-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: clamp(0.85rem, 1.2vw, 1.15rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  color: rgba(0,0,0,0.28) !important;
+  text-transform: uppercase !important;
+  padding: 0 clamp(1.5rem, 2.5vw, 2.5rem) !important;
+  white-space: nowrap !important;
+  transition: color 200ms ease !important;
+  flex: none !important;
+}
+.client-logo:hover { color: var(--primary) !important; }
+
+/* Riga dispari: sfondo leggermente tintato, separatore */
+.clients__logos > .client-logo:nth-child(odd) { background: none !important; }
+
+/* Struttura a due strisce orizzontali con fade ai bordi */
+.clients-section .container {
+  position: relative;
+}
+.clients-section .container::before,
+.clients-section .container::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: clamp(3rem, 8vw, 8rem);
+  z-index: 2;
+  pointer-events: none;
+}
+.clients-section .container::before {
+  left: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+.clients-section .container::after {
+  right: 0;
+  background: linear-gradient(to left, #fff, transparent);
+}
+
+/* Raggruppa loghi in due righe con flex-wrap */
+.clients__logos {
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+}
+
+/* Divisore visivo tra loghi */
+.client-logo {
+  border-right: 1px solid rgba(0,0,0,0.08) !important;
+  padding: clamp(0.75rem, 1.2vw, 1rem) clamp(1.25rem, 2vw, 2rem) !important;
+  line-height: 1 !important;
+}
+.client-logo:last-child { border-right: none !important; }
+
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
   background: rgba(255,255,255,0.97) !important;
