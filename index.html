@@ -83,29 +83,31 @@
     <!-- ══ HERO ══════════════════════════════════════════════ -->
     <section class="hero-home" aria-labelledby="hero-title">
 
-      <!-- Video background fullscreen in loop -->
+      <!-- Video fullscreen sotto la nav, in loop automatico -->
       <div class="hero-home__video-bg" aria-hidden="true">
         <iframe
-          src="https://www.youtube.com/embed/jBtAKjvbDo0?autoplay=1&mute=1&loop=1&playlist=jBtAKjvbDo0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1"
-          allow="autoplay; encrypted-media; picture-in-picture"
+          src="https://www.youtube.com/embed/jBtAKjvbDo0?autoplay=1&mute=1&loop=1&playlist=jBtAKjvbDo0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1&enablejsapi=0"
+          allow="autoplay; encrypted-media"
           frameborder="0"
           loading="eager"
+          title=""
         ></iframe>
       </div>
-      <div class="hero-home__overlay" aria-hidden="true"></div>
 
-      <div class="container">
+      <!-- Panel slide-up: titolo + testi + CTA impilati verticalmente -->
+      <div class="hero-home__panel">
         <h1 class="hero-home__title" id="hero-title">
-          <span class="line"><span class="line-inner line--solid">LE IDEE</span></span>
-          <span class="line"><span class="line-inner line--outline">PRENDONO</span></span>
-          <span class="line"><span class="line-inner line--solid">FORMA</span></span>
+          <span class="line--solid">LE IDEE</span>
+          <span class="line--outline">PRENDONO</span>
+          <span class="line--pink">FORMA</span>
         </h1>
-        <div class="hero-home__below reveal">
+        <div class="hero-home__info">
           <p class="hero-home__tagline">SCOPRI LA CREATIVITÀ CHE LASCIA IL SEGNO</p>
           <p class="hero-home__sub">Mettiamo lo zampino un po' ovunque!</p>
-          <a class="btn btn--primary" href="contatti.html">CONTATTACI</a>
+          <a class="btn btn--primary hero-home__cta" href="contatti.html">CONTATTACI</a>
         </div>
       </div>
+
     </section>
 
     <!-- ══ SERVIZI GRID ══════════════════════════════════════ -->
