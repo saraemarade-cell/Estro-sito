@@ -17,6 +17,16 @@ main { margin: 0; padding: 0; }
   margin-top: 82px;
   height: min(calc(70vw * 9 / 16), calc(100vh - 82px));
   background: #000;
+  position: relative;
+}
+.vhero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent 0%, #000 100%);
+  pointer-events: none;
+  z-index: 3;
 }
 
 /* ── Colonna sinistra ────────────────────────────────── */
