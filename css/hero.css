@@ -234,7 +234,7 @@ main { margin: 0; padding: 0; }
 
 /* heading: leggibile, peso bilanciato */
 .about-section__heading {
-  font-size: clamp(1.6rem, 3.2vw, 3.5rem) !important;
+  font-size: clamp(2rem, 4.5vw, 5.5rem) !important;
   font-weight: 800 !important;
   line-height: 1.05 !important;
   letter-spacing: -0.02em !important;
