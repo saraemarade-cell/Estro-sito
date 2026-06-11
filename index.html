@@ -80,34 +80,31 @@
 
   <main>
 
-    <!-- ══ HERO ══════════════════════════════════════════════ -->
-    <section class="hero-home" aria-labelledby="hero-title">
-
-      <!-- Video fullscreen sotto la nav, in loop automatico -->
-      <div class="hero-home__video-bg" aria-hidden="true">
+    <!-- ══ VIDEO HERO — fullscreen sotto la nav ════════════ -->
+    <section class="hero-video" aria-hidden="true">
+      <div class="hero-video__wrap">
         <iframe
-          src="https://www.youtube.com/embed/jBtAKjvbDo0?autoplay=1&mute=1&loop=1&playlist=jBtAKjvbDo0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1&enablejsapi=0"
+          src="https://www.youtube.com/embed/jBtAKjvbDo0?autoplay=1&mute=1&loop=1&playlist=jBtAKjvbDo0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1"
           allow="autoplay; encrypted-media"
           frameborder="0"
           loading="eager"
           title=""
         ></iframe>
       </div>
+    </section>
 
-      <!-- Panel slide-up: titolo + testi + CTA impilati verticalmente -->
-      <div class="hero-home__panel">
-        <h1 class="hero-home__title" id="hero-title">
-          <span class="line--solid">LE IDEE</span>
-          <span class="line--outline">PRENDONO</span>
-          <span class="line--pink">FORMA</span>
+    <!-- ══ HERO TITLE — visibile allo scroll ══════════════ -->
+    <section class="hero-title" aria-labelledby="hero-title-h1">
+      <div class="container hero-title__inner">
+        <h1 class="hero-title__heading" id="hero-title-h1">
+          <span>LE IDEE</span>
+          <span>PRENDONO</span>
+          <span>FORMA</span>
         </h1>
-        <div class="hero-home__info">
-          <p class="hero-home__tagline">SCOPRI LA CREATIVITÀ CHE LASCIA IL SEGNO</p>
-          <p class="hero-home__sub">Mettiamo lo zampino un po' ovunque!</p>
-          <a class="btn btn--primary hero-home__cta" href="contatti.html">CONTATTACI</a>
-        </div>
+        <p class="hero-title__tagline">SCOPRI LA CREATIVITÀ CHE LASCIA IL SEGNO</p>
+        <p class="hero-title__sub">Mettiamo lo zampino un po' ovunque!</p>
+        <a class="btn hero-title__cta" href="contatti.html">CONTATTACI</a>
       </div>
-
     </section>
 
     <!-- ══ SERVIZI GRID ══════════════════════════════════════ -->

@@ -3922,3 +3922,189 @@ body:has(.hero-home) .nav:not(.scrolled) .nav__hamburger span { background: var(
   .hero-home__cta { margin-left: 0; }
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   HERO REBUILD — due sezioni distinte
+   1. .hero-video  — video fullscreen sotto la nav
+   2. .hero-title  — titolo imponente + sub + CTA allo scroll
+═══════════════════════════════════════════════════════ */
+
+/* ── Variabile altezza nav (dichiarata anche sopra, ridefinita qui) */
+:root { --nav-h: 82px; }
+
+/* ─────────────────────────────────────────────────────
+   SEZIONE 1 — VIDEO
+   Inizia subito dopo la nav con 20px di margine.
+   Occupa esattamente il resto della viewport.
+   ───────────────────────────────────────────────────── */
+.hero-video {
+  /* Parte subito sotto la nav + 20px gap */
+  margin-top: calc(var(--nav-h) + 20px);
+  /* Altezza = viewport totale meno nav meno gap */
+  height: calc(100vh - var(--nav-h) - 20px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  /* Annulla qualsiasi .section o .hero-home precedente */
+  padding: 0;
+  display: block;
+}
+
+/* Wrapper iframe: riempie tutto il contenitore */
+.hero-video__wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Cover tecnica 16:9 — copre tutta la sezione senza bande nere */
+.hero-video__wrap iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Altezza = larghezza × 9/16 */
+  width: 100%;
+  height: calc(100% * 16 / 9);
+  /* Se l'altezza della section supera quello ratio, scala */
+  min-height: 100%;
+  min-width: calc(100% * 16 / 9);
+  transform: translate(-50%, -50%);
+  border: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────
+   SEZIONE 2 — TITOLO
+   Appare allo scroll down.
+   Sfondo nero (--black), testo bianco e rosa.
+   Tutto centrato, nessuna sovrapposizione.
+   ───────────────────────────────────────────────────── */
+.hero-title {
+  background: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(var(--space-20), 10vh, var(--space-40));
+  /* Nessun padding laterale: lo gestisce .container */
+}
+
+.hero-title__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+/* Titolo: grande, imponente, centrato */
+.hero-title__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-size: clamp(4.5rem, 15vw, 13rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  font-weight: 900;
+  margin: 0 0 clamp(var(--space-10), 4vh, var(--space-16)) 0;
+}
+
+/* Riga 1 "LE IDEE": bianco pieno */
+.hero-title__heading span:nth-child(1) {
+  color: var(--white);
+}
+
+/* Riga 2 "PRENDONO": outline bianco — nessuna clip, visibile per intero */
+.hero-title__heading span:nth-child(2) {
+  color: transparent;
+  -webkit-text-stroke: 3px var(--white);
+}
+
+/* Riga 3 "FORMA": rosa brand, colpo finale */
+.hero-title__heading span:nth-child(3) {
+  color: var(--primary);
+}
+
+/* Tagline: bianco, tracking largo, separatore decorativo sopra */
+.hero-title__tagline {
+  font-family: var(--font-secondary);
+  font-size: clamp(var(--text-xs), 1.2vw, var(--text-sm));
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 var(--space-3) 0;
+  /* Lineetta rosa decorativa sopra */
+  padding-top: var(--space-5);
+  position: relative;
+}
+.hero-title__tagline::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  margin: 0 auto var(--space-5);
+  border-radius: 2px;
+}
+
+/* Sottotitolo: bianco attenuato */
+.hero-title__sub {
+  font-family: var(--font-secondary);
+  font-size: clamp(var(--text-sm), 1.4vw, var(--text-base));
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+  margin: 0 0 clamp(var(--space-10), 4vh, var(--space-14)) 0;
+}
+
+/* CTA button: bianco su nero — contrasto invertito sul bg scuro */
+.hero-title__cta {
+  display: inline-block;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: var(--space-4) var(--space-14);
+  border: 2px solid var(--white);
+  border-radius: 0;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+  cursor: pointer;
+}
+/* Hover: inversione — sfondo rosa, testo bianco */
+.hero-title__cta:hover {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* ── Ripristina nav: colori normali (nav non è sopra il video) */
+body:has(.hero-video) .nav:not(.scrolled) {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--black-08);
+}
+body:has(.hero-video) .nav:not(.scrolled) .nav__link,
+body:has(.hero-video) .nav:not(.scrolled) .nav__dropdown-toggle { color: var(--black); }
+body:has(.hero-video) .nav:not(.scrolled) .nav__logo img { filter: none; }
+body:has(.hero-video) .nav:not(.scrolled) .nav__cta { background: var(--primary); color: var(--white); }
+body:has(.hero-video) .nav:not(.scrolled) .nav__hamburger span { background: var(--black); }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  :root { --nav-h: 72px; }
+  .hero-title__heading span:nth-child(2) { -webkit-text-stroke-width: 2.5px; }
+}
+@media (max-width: 640px) {
+  :root { --nav-h: 68px; }
+  .hero-title__heading span:nth-child(2) { -webkit-text-stroke-width: 2px; }
+  .hero-title__cta { padding: var(--space-4) var(--space-10); }
+}
