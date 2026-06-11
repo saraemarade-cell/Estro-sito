@@ -221,7 +221,7 @@ main { margin: 0; padding: 0; }
   font-size: clamp(10rem, 22vw, 22rem) !important;
   white-space: nowrap !important;
   position: absolute !important;
-  top: 0 !important;
+  top: 3rem !important;
   left: -2% !important;
   right: auto !important;
   transform: none !important;
