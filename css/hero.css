@@ -241,6 +241,27 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
 }
 
+/* coda: grande, incollata al bordo destro, sovrapposta al titolo */
+.about-section__right {
+  position: relative !important;
+  overflow: visible !important;
+}
+.about-section__tail {
+  position: absolute !important;
+  top: -2rem !important;
+  right: calc(-1 * var(--gutter)) !important;
+  width: clamp(200px, 32vw, 420px) !important;
+  height: auto !important;
+  opacity: 0.9 !important;
+  z-index: 2 !important;
+  pointer-events: none;
+  transform: none !important;
+}
+.about-section__tail:hover {
+  opacity: 1 !important;
+  transform: rotate(-4deg) !important;
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
   background: rgba(255,255,255,0.97) !important;
