@@ -4,14 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="ESTRO — Agenzia di comunicazione creativa. Trasformiamo idee in forma." />
-  <meta name="theme-color" content="#121212" />
+  <meta name="theme-color" content="#FFFFFF" />
   <title>ESTRO — Comunicazione Creativa</title>
   <meta property="og:title" content="ESTRO — Comunicazione Creativa" />
   <meta property="og:description" content="Trasformiamo idee in forma." />
   <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/hero.css" />
 </head>
 <body>
 
@@ -77,209 +81,323 @@
 
   <main>
 
-    <!-- ══ HERO ══════════════════════════════════════════════ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__bg">
-        <div class="hero__noise"></div>
-        <div class="hero__gradient"></div>
+    <!-- ══ HERO — testo sx 30% | video dx 70% ══════════════ -->
+    <section class="vhero" aria-labelledby="vhero-title">
+      <!-- Colonna sinistra: titolo, sottotitolo, CTA -->
+      <div class="vhero__left">
+        <h1 class="vhero__title" id="vhero-title">
+          <span>LE IDEE</span>
+          <span>PRENDONO</span>
+          <span>FORMA</span>
+        </h1>
+        <p class="vhero__tagline">SCOPRI LA CREATIVITÀ CHE LASCIA IL SEGNO</p>
+        <p class="vhero__sub">Mettiamo lo zampino un po' ovunque!</p>
+        <a class="btn btn--primary vhero__cta" href="contatti.html">CONTATTACI</a>
       </div>
 
-      <div class="container">
-        <div class="hero__content">
-          <p class="hero__eyebrow">Agenzia di comunicazione creativa</p>
-
-          <h1 class="hero__title" id="hero-title">
-            <span class="line"><span class="line-inner">Le idee</span></span>
-            <span class="line"><span class="line-inner">prendono <em>forma</em></span></span>
-            <span class="line"><span class="line-inner">qui.</span></span>
-          </h1>
-
-          <p class="hero__sub reveal">
-            ESTRO trasforma visioni in comunicazione autentica. Strategia, design, identità visiva per brand che vogliono lasciare il segno.
-          </p>
-
-          <div class="hero__actions reveal reveal-delay-1">
-            <a class="btn btn--primary" href="#lavori">Esplora i lavori</a>
-            <a class="btn btn--outline" href="contatti.html">Parlaci del tuo progetto</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="hero__footer">
-          <span class="hero__tag">Milano · IT</span>
-          <div class="hero__marquee-wrap" aria-hidden="true">
-            <div class="hero__marquee">
-              <span>Branding</span><span class="sep">✦</span>
-              <span>Visual Identity</span><span class="sep">✦</span>
-              <span>Campagne</span><span class="sep">✦</span>
-              <span>Digital</span><span class="sep">✦</span>
-              <span>Strategia</span><span class="sep">✦</span>
-              <span>Editoria</span><span class="sep">✦</span>
-              <span>Motion</span><span class="sep">✦</span>
-              <span>Branding</span><span class="sep">✦</span>
-              <span>Visual Identity</span><span class="sep">✦</span>
-              <span>Campagne</span><span class="sep">✦</span>
-              <span>Digital</span><span class="sep">✦</span>
-              <span>Strategia</span><span class="sep">✦</span>
-              <span>Editoria</span><span class="sep">✦</span>
-              <span>Motion</span><span class="sep">✦</span>
-            </div>
-          </div>
-          <div class="hero__scroll-hint">
-            <span class="hero__scroll-line"></span>
-            Scroll
-          </div>
+      <!-- Colonna destra: video centrato al 70% -->
+      <div class="vhero__right" aria-hidden="true">
+        <div class="vhero__video-box">
+          <iframe
+            class="vhero__iframe"
+            src="https://www.youtube.com/embed/jBtAKjvbDo0?autoplay=1&mute=1&loop=1&playlist=jBtAKjvbDo0&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&disablekb=1"
+            allow="autoplay; encrypted-media"
+            frameborder="0"
+            loading="eager"
+            title=""
+          ></iframe>
         </div>
       </div>
     </section>
 
-    <!-- ══ CHI SIAMO ══════════════════════════════════════════ -->
-    <section class="section about" id="chi-siamo" aria-labelledby="about-title">
+    <!-- ══ SERVIZI GRID ══════════════════════════════════════ -->
+    <section class="section svc-grid" id="servizi" aria-label="I nostri servizi">
       <div class="container">
-        <div class="about__grid">
-          <div class="about__text-col">
-            <p class="section__label reveal">Chi siamo</p>
-            <h2 class="section__heading reveal reveal-delay-1" id="about-title">
-              Creatività<br />come metodo,<br /><em>cultura</em> come<br />linguaggio.
-            </h2>
-            <p class="about__body reveal reveal-delay-2">
-              ESTRO è un'agenzia di comunicazione creativa nata dalla convinzione che <strong>ogni brand abbia una storia unica da raccontare</strong>. Il nostro lavoro è trovare la forma più autentica per raccontarla — con coerenza, visione e un'attenzione ossessiva ai dettagli.
-            </p>
-            <p class="about__body reveal reveal-delay-3" style="margin-top: var(--space-6);">
-              Siamo strateghi, designer, storyteller. Lavoriamo alla confluenza tra <strong>cultura visiva e comunicazione d'impresa</strong>, costruendo identità che durano.
-            </p>
-            <div class="about__stats">
-              <div class="stat reveal reveal-delay-1">
-                <div class="stat__number">8+</div>
-                <div class="stat__label">Anni di esperienza</div>
-              </div>
-              <div class="stat reveal reveal-delay-2">
-                <div class="stat__number">120</div>
-                <div class="stat__label">Progetti completati</div>
-              </div>
-              <div class="stat reveal reveal-delay-3">
-                <div class="stat__number">40+</div>
-                <div class="stat__label">Brand seguiti</div>
-              </div>
-              <div class="stat reveal reveal-delay-4">
-                <div class="stat__number">3</div>
-                <div class="stat__label">Premi internazionali</div>
-              </div>
-            </div>
+        <div class="svc-grid__list">
+
+          <div class="svc-item reveal">
+            <div class="svc-item__num">01.</div>
+            <h3 class="svc-item__name"><a href="servizi/strategia-digitale.html">STRATEGIA DIGITALE</a></h3>
+            <p class="svc-item__desc">Elaboriamo il piano migliore per far <strong>decollare il tuo brand</strong>.</p>
           </div>
 
-          <div class="about__visual reveal reveal-delay-2" aria-hidden="true">
-            <div class="about__visual-inner">
-              <div class="about__visual-grid"></div>
-              <div class="about__visual-accent">ESTRO</div>
-            </div>
+          <div class="svc-item reveal reveal-delay-1">
+            <div class="svc-item__num">02.</div>
+            <h3 class="svc-item__name"><a href="servizi/google-ads.html">GOOGLE ADS</a></h3>
+            <p class="svc-item__desc">Vuoi far <strong>crescere la tua attività</strong> con Google Ads? <strong>Sei nel posto giusto!</strong></p>
           </div>
+
+          <div class="svc-item reveal reveal-delay-2">
+            <div class="svc-item__num">03.</div>
+            <h3 class="svc-item__name"><a href="servizi/social-ads.html">SOCIAL ADV: META TIKTOK</a></h3>
+            <p class="svc-item__desc">Trova <strong>nuovi clienti</strong> grazie alle campagne pubblicitarie su Facebook e Instagram.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-3">
+            <div class="svc-item__num">04.</div>
+            <h3 class="svc-item__name"><a href="servizi/social-media-management.html">SOCIAL MEDIA MANAGEMENT</a></h3>
+            <p class="svc-item__desc">Costruisci insieme a noi la tua <strong>identità digitale</strong>.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-4">
+            <div class="svc-item__num">05.</div>
+            <h3 class="svc-item__name"><a href="servizi/influencer-marketing.html">INFLUENCER MARKETING</a></h3>
+            <p class="svc-item__desc">Selezioniamo per te i migliori <strong>storytellers digitali</strong>.</p>
+          </div>
+
+          <div class="svc-item reveal">
+            <div class="svc-item__num">06.</div>
+            <h3 class="svc-item__name"><a href="servizi/graphic-design.html">GRAPHIC DESIGN &amp; MOTION GRAPHIC</a></h3>
+            <p class="svc-item__desc">Anima i tuoi contenuti e <strong>crea esperienze uniche</strong>.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-1">
+            <div class="svc-item__num">07.</div>
+            <h3 class="svc-item__name"><a href="servizi/web-design.html">WEB DESIGN &amp; E.COMMERCE</a></h3>
+            <p class="svc-item__desc"><strong>Rivoluzionamo il tuo modo di vendere</strong> costruendo la tua vetrina digitale.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-2">
+            <div class="svc-item__num">08.</div>
+            <h3 class="svc-item__name"><a href="servizi/produzione-contenuti.html">PRODUZIONE CONTENUTI</a></h3>
+            <p class="svc-item__desc"><strong>Tutti i contenuti multimediali</strong> di cui hai bisogno.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-3">
+            <div class="svc-item__num">09.</div>
+            <h3 class="svc-item__name"><a href="servizi/modellazione-3d.html">MODELLAZIONE E RENDERIZZAZIONE 3D</a></h3>
+            <p class="svc-item__desc"><strong>Esperienze coinvolgenti</strong> che trasformano le visualizzazioni in vendite.</p>
+          </div>
+
+          <div class="svc-item reveal reveal-delay-4">
+            <div class="svc-item__num">10.</div>
+            <h3 class="svc-item__name"><a href="servizi/servizio-ai.html">SERVIZI AI PER MARKETING E CREATIVITÀ</a></h3>
+            <p class="svc-item__desc">Dalla creatività alla produzione: <strong>l'intelligenza artificiale al servizio del tuo brand</strong>.</p>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ══ LAVORI ══════════════════════════════════════════════ -->
-    <section class="section work" id="lavori" aria-labelledby="work-title">
+
+    <!-- ══ ABOUT ══════════════════════════════════════════════ -->
+    <section class="section about-section" id="chi-siamo" aria-labelledby="about-title">
       <div class="container">
-        <div class="work__header">
-          <div>
-            <p class="section__label reveal">Lavori selezionati</p>
-            <h2 class="section__heading reveal reveal-delay-1" id="work-title">
-              Progetti che<br />parlano da soli.
-            </h2>
+        <div class="about-section__grid">
+
+          <div class="about-section__left">
+            <div class="about-section__big" aria-hidden="true">ABOUT</div>
           </div>
-          <a class="work__link reveal reveal-delay-2" href="contatti.html">
-            Vedi tutti
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+
+          <div class="about-section__right">
+            <h2 class="about-section__heading reveal reveal-delay-1" id="about-title">
+              SIAMO CURIOSI, AGILI E PRONTI A COLPIRE!
+            </h2>
+            <p class="about-section__kicker reveal reveal-delay-1">AGENZIA DI COMUNICAZIONE CREATIVA A MILANO</p>
+            <div class="about-section__body reveal reveal-delay-2">
+              <p>Il nostro obiettivo è offrirti <strong>soluzioni innovative</strong> per raggiungere i <strong>tuoi obiettivi</strong>. Siamo specializzati nella <strong>creazione di campagne</strong> di vario tipo: devi aumentare l'<strong>awareness del tuo brand</strong>, creare <strong>strategie cross-channel innovative</strong> per vendere i tuoi prodotti, <strong>ingaggiare nuovi ambassador ed influencer</strong>? Mettici alla prova! Creiamo <strong>connessioni reali</strong> con i tuoi nuovi clienti attraverso progetti che lasciano il segno ottenendo <strong>risultati concreti e quantificabili</strong>, divertendoci nel farlo. Ogni nostro contenuto, che sia una foto, un video o una stories di 15 secondi nasce per <strong>coinvolgere le persone</strong>. Questo è il punto fermo attorno al quale orbita ogni nostra idea e strategia. Qui troverai innovazione, <strong>visione strategica, competenze progettuali e operative</strong>.</p>
+            </div>
+            <div class="reveal reveal-delay-3">
+              <a class="btn btn--primary" href="ESTRO_Visual identity_Corporate_V01 (5).pdf" target="_blank" rel="noopener">SCARICA LA BROCHURE</a>
+            </div>
+          </div>
+
         </div>
+      </div>
+    </section>
 
-        <div class="work__grid">
-          <article class="project-card reveal">
-            <div class="project-card__media">
-              <div class="project-card__placeholder">
-                <span class="project-card__placeholder-text">FORMA</span>
-              </div>
-              <div class="project-card__overlay">
-                <div class="project-card__overlay-inner">
-                  <p class="project-card__cat">Brand Identity</p>
-                </div>
-              </div>
+    <!-- ══ CLIENTI ════════════════════════════════════════════ -->
+    <section class="section clients-section" aria-label="I nostri clienti">
+      <div class="container">
+        <h2 class="clients__heading reveal">ALCUNI AMICI SODDISFATTI<br>CHE CI HANNO DATO FIDUCIA</h2>
+      </div>
+
+      <!-- Banda 1: sinistra → destra -->
+      <div class="clients__marquee" aria-hidden="true">
+        <div class="clients__track clients__track--fwd">
+          <span class="client-logo client-logo--xl">PRADA</span>
+          <span class="client-logo">Ariston Group</span>
+          <span class="client-logo client-logo--italic">miu miu</span>
+          <span class="client-logo client-logo--light">accenture</span>
+          <span class="client-logo client-logo--xl">GUCCI</span>
+          <span class="client-logo client-logo--light">plenitude</span>
+          <span class="client-logo">Bocconi</span>
+          <span class="client-logo">FANUC</span>
+          <span class="client-logo client-logo--italic">Cartier</span>
+          <span class="client-logo client-logo--bold">Red Bull</span>
+          <span class="client-logo">HUMANITAS</span>
+          <span class="client-logo client-logo--light">elmec</span>
+          <span class="client-logo">START7</span>
+          <span class="client-logo">COSWELL</span>
+          <span class="client-logo client-logo--sm">Tonino Lamborghini</span>
+          <span class="client-logo">Kawasaki</span>
+          <span class="client-logo client-logo--italic">aprilia</span>
+          <span class="client-logo client-logo--sm">Moto Guzzi</span>
+          <span class="client-logo client-logo--bold">SEAT</span>
+          <span class="client-logo">CUPRA</span>
+          <!-- duplicati per loop continuo -->
+          <span class="client-logo client-logo--xl">PRADA</span>
+          <span class="client-logo">Ariston Group</span>
+          <span class="client-logo client-logo--italic">miu miu</span>
+          <span class="client-logo client-logo--light">accenture</span>
+          <span class="client-logo client-logo--xl">GUCCI</span>
+          <span class="client-logo client-logo--light">plenitude</span>
+          <span class="client-logo">Bocconi</span>
+          <span class="client-logo">FANUC</span>
+          <span class="client-logo client-logo--italic">Cartier</span>
+          <span class="client-logo client-logo--bold">Red Bull</span>
+          <span class="client-logo">HUMANITAS</span>
+          <span class="client-logo client-logo--light">elmec</span>
+          <span class="client-logo">START7</span>
+          <span class="client-logo">COSWELL</span>
+          <span class="client-logo client-logo--sm">Tonino Lamborghini</span>
+          <span class="client-logo">Kawasaki</span>
+          <span class="client-logo client-logo--italic">aprilia</span>
+          <span class="client-logo client-logo--sm">Moto Guzzi</span>
+          <span class="client-logo client-logo--bold">SEAT</span>
+          <span class="client-logo">CUPRA</span>
+        </div>
+      </div>
+
+      <!-- Banda 2: destra → sinistra -->
+      <div class="clients__marquee" aria-hidden="true">
+        <div class="clients__track clients__track--rev">
+          <span class="client-logo">RE/MAX</span>
+          <span class="client-logo client-logo--green">Spotify</span>
+          <span class="client-logo client-logo--light">patagonia</span>
+          <span class="client-logo client-logo--bold">Rai</span>
+          <span class="client-logo">PANDORA</span>
+          <span class="client-logo">Biorepair</span>
+          <span class="client-logo client-logo--sm">CONDÉ NAST</span>
+          <span class="client-logo">TEDx</span>
+          <span class="client-logo client-logo--sm">ABC Tools</span>
+          <span class="client-logo client-logo--bold">WOLF</span>
+          <span class="client-logo">AW LAB</span>
+          <span class="client-logo">TERRANOVA</span>
+          <span class="client-logo client-logo--sm">L'Angelica</span>
+          <span class="client-logo client-logo--light">elco</span>
+          <span class="client-logo">Leolandia</span>
+          <span class="client-logo">PYREX</span>
+          <span class="client-logo">SECTOR</span>
+          <span class="client-logo">Wudy</span>
+          <span class="client-logo">7seven</span>
+          <span class="client-logo">SJ Gang</span>
+          <span class="client-logo client-logo--italic">Disclaimer</span>
+          <!-- duplicati per loop continuo -->
+          <span class="client-logo">RE/MAX</span>
+          <span class="client-logo client-logo--green">Spotify</span>
+          <span class="client-logo client-logo--light">patagonia</span>
+          <span class="client-logo client-logo--bold">Rai</span>
+          <span class="client-logo">PANDORA</span>
+          <span class="client-logo">Biorepair</span>
+          <span class="client-logo client-logo--sm">CONDÉ NAST</span>
+          <span class="client-logo">TEDx</span>
+          <span class="client-logo client-logo--sm">ABC Tools</span>
+          <span class="client-logo client-logo--bold">WOLF</span>
+          <span class="client-logo">AW LAB</span>
+          <span class="client-logo">TERRANOVA</span>
+          <span class="client-logo client-logo--sm">L'Angelica</span>
+          <span class="client-logo client-logo--light">elco</span>
+          <span class="client-logo">Leolandia</span>
+          <span class="client-logo">PYREX</span>
+          <span class="client-logo">SECTOR</span>
+          <span class="client-logo">Wudy</span>
+          <span class="client-logo">7seven</span>
+          <span class="client-logo">SJ Gang</span>
+          <span class="client-logo client-logo--italic">Disclaimer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CASE STUDIES ══════════════════════════════════════ -->
+    <section class="section case-studies" aria-label="Case studies">
+      <div class="container">
+        <h2 class="case-studies__heading reveal">CASE STUDIES</h2>
+        <div class="case-studies__grid reveal">
+          <span class="cs-logo">ABC Tools</span>
+          <span class="cs-logo cs-logo--serif">Artigli</span>
+          <span class="cs-logo cs-logo--tracked">CYBERGON</span>
+          <span class="cs-logo">cose<strong>A</strong>casa</span>
+          <span class="cs-logo cs-logo--light">dresso</span>
+          <span class="cs-logo">□life</span>
+          <span class="cs-logo cs-logo--grunge">Disclaimer</span>
+          <span class="cs-logo cs-logo--tracked">PYREX</span>
+          <span class="cs-logo cs-logo--bold">FRAGI</span>
+          <span class="cs-logo cs-logo--script">Come in una Favola</span>
+          <span class="cs-logo cs-logo--redbull">Red Bull</span>
+          <span class="cs-logo cs-logo--stacked">WOO<br>DOO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA PENNELLATA ═════════════════════════════════════ -->
+    <section class="cta-brush" aria-label="Contatti CTA">
+      <div class="cta-brush__wrap">
+        <img class="cta-brush__img" src="foto%20home/zampa-nera3.webp" alt="" aria-hidden="true" />
+        <div class="cta-brush__content reveal">
+          <h2 class="cta-brush__title">BEVIAMO UN CAFFÈ INSIEME E<br>PARLIAMO DI GRANDI IDEE</h2>
+          <a class="btn btn--primary" href="contatti.html">QUANDO CI VEDIAMO?</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TIPS & TRICKS ══════════════════════════════════════ -->
+    <section class="section tips-section" aria-label="Tips and tricks">
+      <div class="container">
+        <h2 class="tips-section__heading reveal">TIPS &amp; TRICKS</h2>
+        <div class="tips-grid reveal">
+          <article class="tip-card">
+            <div class="tip-card__img">
+              <img src="Foto%20tips%20and%20tricks/cover-tips-%E2%80%93-interactive-reels.webp" alt="Mai più link in bio? Ora i Reel diventano interattivi" loading="lazy" />
             </div>
-            <div class="project-card__info">
-              <h3 class="project-card__title">Cantina Meridionale</h3>
-              <div class="project-card__meta">
-                <span class="project-card__tag">Vino</span>
-                <span class="project-card__tag">Identity</span>
-                <span class="project-card__tag">Packaging</span>
-              </div>
-            </div>
+            <p class="tip-card__date">19 MARZO 2025</p>
+            <h3 class="tip-card__title">MAI PIÙ "LINK IN BIO"? ORA I REEL DIVENTANO INTERATTIVI</h3>
           </article>
-
-          <article class="project-card reveal reveal-delay-1">
-            <div class="project-card__media">
-              <div class="project-card__placeholder">
-                <span class="project-card__placeholder-text">IDEA</span>
-              </div>
-              <div class="project-card__overlay">
-                <div class="project-card__overlay-inner">
-                  <p class="project-card__cat">Campagna</p>
-                </div>
-              </div>
+          <article class="tip-card">
+            <div class="tip-card__img">
+              <img src="Foto%20tips%20and%20tricks/social-e-copy-copia.webp" alt="Il copywriter crea il messaggio, il Social Media Manager lo guida" loading="lazy" />
             </div>
-            <div class="project-card__info">
-              <h3 class="project-card__title">Istituto di Cultura</h3>
-              <div class="project-card__meta">
-                <span class="project-card__tag">Cultura</span>
-                <span class="project-card__tag">Campagna</span>
-              </div>
-            </div>
+            <p class="tip-card__date">19 MARZO 2025</p>
+            <h3 class="tip-card__title">IL COPYWRITER CREA IL MESSAGGIO, IL SOCIAL MEDIA MANAGER LO GUIDA: DUE PROFESSIONI, UN UNICO OBIETTIVO.</h3>
           </article>
-
-          <article class="project-card reveal reveal-delay-2">
-            <div class="project-card__media">
-              <div class="project-card__placeholder">
-                <span class="project-card__placeholder-text">MOTO</span>
-              </div>
-              <div class="project-card__overlay">
-                <div class="project-card__overlay-inner">
-                  <p class="project-card__cat">Motion</p>
-                </div>
-              </div>
+          <article class="tip-card">
+            <div class="tip-card__img">
+              <img src="Foto%20tips%20and%20tricks/happy-sito-v02.webp" alt="Core Web Vitals nel 2024: cosa cambia e come ottimizzare il tuo sito" loading="lazy" />
             </div>
-            <div class="project-card__info">
-              <h3 class="project-card__title">Studio Architettura RM</h3>
-              <div class="project-card__meta">
-                <span class="project-card__tag">Architettura</span>
-                <span class="project-card__tag">Motion</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal reveal-delay-1">
-            <div class="project-card__media">
-              <div class="project-card__placeholder">
-                <span class="project-card__placeholder-text">SEGNO</span>
-              </div>
-              <div class="project-card__overlay">
-                <div class="project-card__overlay-inner">
-                  <p class="project-card__cat">Digital</p>
-                </div>
-              </div>
-            </div>
-            <div class="project-card__info">
-              <h3 class="project-card__title">Fashion House Milano</h3>
-              <div class="project-card__meta">
-                <span class="project-card__tag">Moda</span>
-                <span class="project-card__tag">Digital</span>
-                <span class="project-card__tag">Social</span>
-              </div>
-            </div>
+            <p class="tip-card__date">26 AGOSTO 2024</p>
+            <h3 class="tip-card__title">CORE WEB VITALS NEL 2024: COSA CAMBIA E COME OTTIMIZZARE IL TUO SITO</h3>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTATTI HOME ════════════════════════════════════ -->
+    <section class="section contact-home" id="contatti" aria-label="Contatti">
+      <div class="container contact-home__inner">
+        <h2 class="contact-home__heading reveal">CONTATTI</h2>
+        <p class="contact-home__sub reveal">SCRIVICI, FACCI DOMANDE, FISSIAMO UN APPUNTAMENTO!</p>
+        <form class="contact-home__form reveal" action="contatti.html" method="get" novalidate>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="text" name="nome" placeholder="Nome*" required />
+            <input class="contact-home__field" type="text" name="cognome" placeholder="Cognome*" required />
+          </div>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="email" name="email" placeholder="Email*" required />
+            <input class="contact-home__field" type="tel" name="telefono" placeholder="Telefono" />
+          </div>
+          <div class="contact-home__row">
+            <input class="contact-home__field" type="text" name="azienda" placeholder="Azienda" />
+            <input class="contact-home__field" type="url" name="sito" placeholder="Sito Web" />
+          </div>
+          <textarea class="contact-home__field contact-home__textarea" name="messaggio" placeholder="Scrivi pure qui" rows="5"></textarea>
+          <label class="contact-home__privacy">
+            <input type="checkbox" required />
+            <span>Autorizzo il trattamento dei dati secondo la <a href="privacy.html">Privacy Policy</a></span>
+          </label>
+          <div class="contact-home__submit-wrap">
+            <button class="btn contact-home__submit" type="submit">Invia</button>
+          </div>
+        </form>
       </div>
     </section>
 
@@ -311,7 +429,6 @@
             <span class="clients__sep">✦</span>
             <span class="clients__logo">Alma Retail</span>
             <span class="clients__sep">✦</span>
-            <!-- duplicato per loop infinito -->
             <span class="clients__logo">Cantina Meridionale</span>
             <span class="clients__sep">✦</span>
             <span class="clients__logo">Studio RM</span>
@@ -350,7 +467,6 @@
             <span class="clients__sep">✦</span>
             <span class="clients__logo">Radice Brand</span>
             <span class="clients__sep">✦</span>
-            <!-- duplicato per loop infinito -->
             <span class="clients__logo">Nero Editions</span>
             <span class="clients__sep">✦</span>
             <span class="clients__logo">Forma Living</span>
@@ -372,23 +488,10 @@
       </div>
     </section>
 
-    <!-- ══ MANIFESTO ══════════════════════════════════════════ -->
-    <section class="manifesto section" aria-label="Manifesto">
-      <div class="manifesto__bg" aria-hidden="true"></div>
-      <div class="container">
-        <div class="manifesto__content">
-          <h2 class="manifesto__title reveal">
-            Hai un'idea.<br /><em>Noi</em> le<br />diamo forma.
-          </h2>
-          <p class="manifesto__sub reveal reveal-delay-1">
-            Ogni progetto inizia con un ascolto profondo. Poi viene la visione. Poi il lavoro — preciso, coraggioso, riconoscibile.
-          </p>
-          <div class="reveal reveal-delay-2">
-            <a class="btn btn--primary" href="contatti.html">Iniziamo insieme</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ══ GATTO PRE-FOOTER ════════════════════════════════════ -->
+    <div class="gatto-footer" aria-hidden="true">
+      <img src="foto home/gatto-pre-footer.webp" alt="" />
+    </div>
 
   </main>
 
