@@ -4108,3 +4108,169 @@ body:has(.hero-video) .nav:not(.scrolled) .nav__hamburger span { background: var
   .hero-title__heading span:nth-child(2) { -webkit-text-stroke-width: 2px; }
   .hero-title__cta { padding: var(--space-4) var(--space-10); }
 }
+
+/* ═══════════════════════════════════════════════════════
+   FIX PASS — video zoom, margine, titolo leggibile, CTA uniforme
+═══════════════════════════════════════════════════════ */
+
+/* ── 1. VIDEO: niente 20px, video adattato senza zoom ─── */
+.hero-video {
+  margin-top: var(--nav-h);              /* direttamente sotto la nav */
+  height: calc(100vh - var(--nav-h));    /* riempie il resto della viewport */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Wrapper 16:9: mostra il video per intero, nessun crop */
+.hero-video__wrap {
+  position: relative;
+  width: 100%;
+  /* aspect-ratio mantiene le proporzioni — nessuno zoom */
+  aspect-ratio: 16 / 9;
+  /* Non supera mai l'altezza disponibile */
+  max-height: 100%;
+}
+
+.hero-video__wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── 2. TITOLO SEZIONE: leggibile, centrato, meno pesante ─
+   Sfondo bianco per massima leggibilità e pulizia visiva
+   ─────────────────────────────────────────────────────── */
+.hero-title {
+  background: var(--white);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(var(--space-20), 12vh, var(--space-48));
+}
+
+.hero-title__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+/* Titolo: dimensione leggibile, peso bilanciato */
+.hero-title__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-size: clamp(3rem, 9.5vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin: 0 0 clamp(var(--space-10), 5vh, var(--space-16)) 0;
+}
+
+/* "LE IDEE": nero su bianco — massimo contrasto */
+.hero-title__heading span:nth-child(1) {
+  color: var(--black);
+}
+
+/* "PRENDONO": rosa pieno — nessuno stroke, nessun artificio tipografico */
+.hero-title__heading span:nth-child(2) {
+  color: var(--primary);
+  -webkit-text-stroke: 0;
+}
+
+/* "FORMA": nero — chiude il titolo in modo netto */
+.hero-title__heading span:nth-child(3) {
+  color: var(--black);
+}
+
+/* Separatore decorativo rosa */
+.hero-title__tagline::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--primary);
+  margin: 0 auto var(--space-5);
+  border-radius: 2px;
+}
+
+/* Tagline: nero leggibile su bianco */
+.hero-title__tagline {
+  font-family: var(--font-secondary);
+  font-size: clamp(var(--text-xs), 1.1vw, var(--text-sm));
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin: 0 0 var(--space-3) 0;
+  padding-top: 0;
+}
+
+/* Sottotitolo: grigio scuro — chiaramente leggibile */
+.hero-title__sub {
+  font-family: var(--font-secondary);
+  font-size: clamp(var(--text-sm), 1.3vw, var(--text-base));
+  color: var(--black-50);
+  letter-spacing: 0.02em;
+  margin: 0 0 clamp(var(--space-10), 4vh, var(--space-14)) 0;
+}
+
+/* ── 3. CTA: uniforme con il resto della pagina ──────────
+   Usa esattamente .btn--primary: rosa → hover nero
+   Nessun override, stesso comportamento di tutti i CTA
+   ─────────────────────────────────────────────────────── */
+.hero-title__cta {
+  /* Reset override precedente */
+  all: unset;
+  /* Replica btn base */
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: var(--space-4) var(--space-10);
+  /* Stile btn--primary: rosa, testo bianco */
+  background: var(--primary);
+  color: var(--white);
+  border: 2px solid var(--primary);
+  border-radius: 0;
+  isolation: isolate;
+  transition: background var(--dur-base), color var(--dur-base), transform var(--dur-base), border-color var(--dur-base);
+}
+.hero-title__cta:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  transform: translateY(-2px);
+}
+
+/* Nav: su sfondo bianco, stato normale */
+body:has(.hero-video) .nav:not(.scrolled) {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--black-08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title__heading { font-size: clamp(2.5rem, 13vw, 5rem); }
+}
+
