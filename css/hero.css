@@ -21,12 +21,16 @@ main { margin: 0; padding: 0; }
 
 /* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
-  /* Altezza automatica: si adatta al contenuto */
-  height: auto;
-  align-self: center;   /* centrata verticalmente nella riga grid */
+  /* Stessa altezza del video:
+     il video occupa il 70% della larghezza viewport (70vw)
+     con aspect-ratio 16:9 → altezza = 70vw × 9/16
+     Se il viewport è basso, si usa calc(100vh - 82px) */
+  height: min(calc(70vw * 9 / 16), calc(100vh - 82px));
+  align-self: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.25rem;
   padding: 2.5rem;
   background: #0a0a0a;
