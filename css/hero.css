@@ -241,21 +241,21 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
 }
 
-/* coda: grande, incollata al bordo destro, sovrapposta al titolo */
-.about-section__right {
+/* coda: posizionata rispetto alla sezione intera, flush al bordo dx */
+.about-section {
   position: relative !important;
-  overflow: visible !important;
 }
 .about-section__tail {
   position: absolute !important;
-  top: -8rem !important;
-  right: calc(-1 * var(--gutter) - 1vw) !important;
-  width: clamp(200px, 32vw, 420px) !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: clamp(200px, 28vw, 400px) !important;
   height: auto !important;
   opacity: 0.9 !important;
   z-index: 2 !important;
   pointer-events: none;
   transform: none !important;
+  align-self: unset !important;
 }
 .about-section__tail:hover {
   opacity: 1 !important;
