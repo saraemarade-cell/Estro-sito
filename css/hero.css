@@ -108,7 +108,10 @@ main { margin: 0; padding: 0; }
 .svc-grid {
   border-top: none !important;
   padding-block: clamp(4rem, 8vw, 7rem);
-  background: #fff;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #DB005A 0%, #ff2d78 35%, #c4004e 65%, #8b0033 100%);
+  background-blend-mode: overlay, normal;
 }
 
 .svc-grid__list {
@@ -122,57 +125,57 @@ main { margin: 0; padding: 0; }
 }
 
 .svc-item {
-  background: #f8f8f8 !important;
+  background: rgba(255,255,255,0.08) !important;
   padding: clamp(1.75rem, 2.5vw, 2.5rem) clamp(1.25rem, 2vw, 2rem) clamp(2.25rem, 3vw, 3rem) !important;
-  border-right: 2px solid #fff !important;
-  border-bottom: 2px solid #fff !important;
+  border-right: 1px solid rgba(255,255,255,0.12) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
   border-top: none !important;
   border-left: none !important;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  backdrop-filter: blur(4px);
   transition: background 220ms ease, transform 220ms ease !important;
 }
 .svc-item:nth-child(5n) { border-right: none !important; }
 .svc-item:hover {
-  background: #0a0a0a !important;
+  background: rgba(0,0,0,0.55) !important;
   transform: translateY(-3px);
 }
 
-/* Accent bar: sempre visibile, diventa più alta all'hover */
 .svc-item::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
-  background: rgba(219,0,90,0.18);
-  transition: background 200ms ease, height 180ms ease;
+  height: 2px;
+  background: rgba(255,255,255,0.25);
+  transition: background 200ms ease;
 }
 .svc-item::after { display: none !important; }
 .svc-item:hover::before {
-  height: 3px !important;
-  background: var(--primary) !important;
+  height: 2px !important;
+  background: #fff !important;
 }
 
-/* numero: rosa solido di default, più grande e leggibile */
+/* numero: bianco semitrasparente, pieno all'hover */
 .svc-item__num {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(3rem, 4.5vw, 5.5rem) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
-  color: var(--primary) !important;
-  -webkit-text-stroke: none !important;
-  opacity: 0.35 !important;
+  color: transparent !important;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.35) !important;
+  opacity: 1 !important;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
-  transition: opacity 200ms !important;
+  transition: -webkit-text-stroke-color 200ms !important;
   display: block;
 }
 .svc-item:hover .svc-item__num {
-  color: var(--primary) !important;
-  opacity: 1 !important;
+  color: transparent !important;
+  -webkit-text-stroke-color: rgba(255,255,255,0.9) !important;
 }
 
-/* nome servizio: più grande, alto contrasto di default */
+/* nome servizio */
 .svc-item__name {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(0.85rem, 1.05vw, 1.15rem) !important;
@@ -181,7 +184,7 @@ main { margin: 0; padding: 0; }
   line-height: 1.2 !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
-  color: #111 !important;
+  color: #fff !important;
   transition: color 200ms !important;
 }
 .svc-item__name a { color: inherit !important; }
@@ -191,14 +194,11 @@ main { margin: 0; padding: 0; }
 /* descrizione */
 .svc-item__desc {
   font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
-  color: rgba(0,0,0,0.55) !important;
+  color: rgba(255,255,255,0.6) !important;
   line-height: 1.65 !important;
   margin-top: auto;
-  transition: color 200ms;
 }
-.svc-item:hover .svc-item__desc { color: rgba(255,255,255,0.55) !important; }
-.svc-item__desc strong { color: rgba(0,0,0,0.8) !important; font-weight: 600 !important; font-style: normal !important; }
-.svc-item:hover .svc-item__desc strong { color: rgba(255,255,255,0.85) !important; }
+.svc-item__desc strong { color: rgba(255,255,255,0.9) !important; font-weight: 600 !important; font-style: normal !important; }
 
 /* responsive */
 @media (max-width: 1024px) {
