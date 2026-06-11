@@ -104,6 +104,109 @@ main { margin: 0; padding: 0; }
 
 .vhero__cta { align-self: flex-start; }
 
+/* ══ SERVICES GRID — scenico ════════════════════════════ */
+.svc-grid {
+  border-top: none !important;
+  padding-block: clamp(4rem, 8vw, 7rem);
+  background: #fff;
+}
+
+.svc-grid__list {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+  background: none !important;
+  border: none !important;
+}
+
+.svc-item {
+  background: transparent !important;
+  padding: clamp(1.75rem, 2.5vw, 2.5rem) clamp(1.25rem, 2vw, 2rem) clamp(2.25rem, 3vw, 3rem) !important;
+  border-right: 1px solid rgba(0,0,0,0.07) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+  border-top: none !important;
+  border-left: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 220ms ease, transform 220ms ease !important;
+}
+.svc-item:nth-child(5n) { border-right: none !important; }
+.svc-item:hover {
+  background: rgba(219,0,90,0.03) !important;
+  transform: translateY(-3px);
+}
+
+/* Accent bar on hover */
+.svc-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 0;
+  background: var(--primary);
+  transition: height 180ms ease;
+}
+.svc-item::after { display: none !important; }
+.svc-item:hover::before { height: 3px !important; }
+
+/* numero: grande, quasi trasparente, diventa primario all'hover */
+.svc-item__num {
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: clamp(3rem, 4.5vw, 5.5rem) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  color: transparent !important;
+  -webkit-text-stroke: 1px rgba(0,0,0,0.12) !important;
+  opacity: 1 !important;
+  margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
+  transition: -webkit-text-stroke-color 200ms, color 200ms !important;
+  display: block;
+}
+.svc-item:hover .svc-item__num {
+  color: transparent !important;
+  -webkit-text-stroke-color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+/* nome servizio */
+.svc-item__name {
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: clamp(0.7rem, 0.9vw, 1rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.25 !important;
+  margin-bottom: 0.5rem !important;
+  text-transform: uppercase;
+  color: var(--black) !important;
+  transition: color 200ms !important;
+}
+.svc-item:hover .svc-item__name,
+.svc-item:hover .svc-item__name a { color: var(--primary) !important; }
+
+/* descrizione */
+.svc-item__desc {
+  font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
+  color: rgba(0,0,0,0.45) !important;
+  line-height: 1.65 !important;
+  margin-top: auto;
+}
+.svc-item__desc strong { color: rgba(0,0,0,0.7) !important; font-weight: 600 !important; font-style: normal !important; }
+
+/* responsive */
+@media (max-width: 1024px) {
+  .svc-grid__list { grid-template-columns: repeat(3, 1fr) !important; }
+  .svc-item:nth-child(5n) { border-right: 1px solid rgba(0,0,0,0.07) !important; }
+  .svc-item:nth-child(3n) { border-right: none !important; }
+}
+@media (max-width: 640px) {
+  .svc-grid__list { grid-template-columns: repeat(2, 1fr) !important; }
+  .svc-item:nth-child(3n) { border-right: 1px solid rgba(0,0,0,0.07) !important; }
+  .svc-item:nth-child(2n) { border-right: none !important; }
+  .svc-item__num { font-size: clamp(2.5rem, 10vw, 3.5rem) !important; }
+}
+
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
   background: rgba(255,255,255,0.97) !important;
