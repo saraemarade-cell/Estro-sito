@@ -108,11 +108,22 @@ main { margin: 0; padding: 0; }
 .svc-grid {
   border-top: none !important;
   padding-block: clamp(4rem, 8vw, 7rem);
+  position: relative;
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E"),
     linear-gradient(150deg, #000 0%, #1a0010 25%, #DB005A 60%, #000 100%);
   background-blend-mode: soft-light, normal;
 }
+.svc-grid::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, #0a0a0a 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.svc-grid .container { position: relative; z-index: 2; }
 
 .svc-grid__list {
   display: grid !important;
