@@ -241,18 +241,24 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
 }
 
-/* coda: posizionata rispetto a about-section (full-width), flush al bordo dx */
+/* coda: flush al bordo destro viewport */
+.about-section,
+.about-section .container,
+.about-section__grid,
+.about-section__right {
+  overflow: visible !important;
+}
 .about-section {
   position: relative !important;
 }
 .about-section__tail {
   position: absolute !important;
   top: 2rem !important;
-  right: 0 !important;
+  right: calc(-1 * var(--gutter)) !important;
   width: clamp(200px, 28vw, 380px) !important;
   height: auto !important;
   opacity: 0.9 !important;
-  z-index: 2 !important;
+  z-index: 10 !important;
   pointer-events: none;
   transform: none !important;
 }
