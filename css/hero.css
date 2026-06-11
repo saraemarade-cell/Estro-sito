@@ -125,15 +125,6 @@ main { margin: 0; padding: 0; }
     linear-gradient(150deg, #000 0%, #1a0010 25%, #DB005A 60%, #000 100%);
   background-blend-mode: soft-light, normal;
 }
-.svc-grid::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, #000 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
-}
 .svc-grid .container { position: relative; z-index: 2; }
 
 .svc-grid__list {
