@@ -242,13 +242,17 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
 }
 
-/* cerchio decorativo: nascosto */
-.about-section__circle {
+/* cerchio decorativo: nascosto completamente */
+.about-section__circle,
+.about-section__img-wrap::before,
+.about-section__img-wrap::after,
+.about-section__left::before,
+.about-section__left::after {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
+  border: none !important;
+  background: none !important;
 }
 
 /* foto: sotto la parola ABOUT, sfondo bianco rimosso */
