@@ -3400,3 +3400,142 @@ body:has(.hero-home) .nav:not(.scrolled) .nav__hamburger span {
   .svc-grid { border-top-width: 2px; }
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   VIDEO HERO PASS — Video fullscreen background in loop
+   Titolo sopra video con contrasto massimo
+═══════════════════════════════════════════════════════ */
+
+/* ── Video background: copre tutto il hero ───────────── */
+.hero-home__video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Tecnica cover per iframe 16:9:
+   vw × 56.25% = altezza proporzionale 16:9
+   vh × 177.78% = larghezza proporzionale 16:9
+   Prendiamo il MAX per garantire copertura totale */
+.hero-home__video-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* copertura full-screen rispettando aspect ratio 16:9 */
+  width: max(100vw, calc(100vh * 16 / 9));
+  height: max(100vh, calc(100vw * 9 / 16));
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
+  /* Slight scale per eliminare bordi eventuali */
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+/* ── Overlay scuro: contrasto testo / video ──────────── */
+.hero-home__overlay {
+  position: absolute;
+  inset: 0;
+  /* Gradiente: più scuro in basso dove c'è il titolo */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.35) 0%,
+      rgba(0,0,0,0.42) 40%,
+      rgba(0,0,0,0.72) 80%,
+      rgba(0,0,0,0.85) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Hero: rimuove grain (non serve su video) ─────────── */
+.hero-home::before { display: none; }
+
+/* ── Container: testo centrato verticalmente nel hero ─── */
+.hero-home .container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 0;
+}
+
+/* ── Titolo: pieno contrasto su video ────────────────── */
+.hero-home__title {
+  z-index: 2;
+  position: relative;
+  /* Niente max-width: il testo occupa tutta la larghezza */
+  max-width: none;
+  /* Margine superiore per non toccare la nav */
+  padding-top: clamp(var(--space-16), 12vh, var(--space-32));
+}
+
+/* FIX "PRENDONO NON TAGLIATA":
+   Le .line hanno overflow:hidden per l'animazione di entrata.
+   Con font 18.5vw il font scende sotto la baseline — serve
+   padding-bottom sufficiente sulla riga per non clippare le
+   lettere che scendono. */
+.hero-home__title .line {
+  overflow: visible;   /* niente clip — il testo non viene tagliato */
+  display: block;
+  padding-bottom: 0.06em; /* respiro sotto le lettere discendenti */
+}
+
+/* Linee testo: su video usano shadow per leggibilità extra */
+.hero-home__title .line-inner {
+  text-shadow: 0 2px 32px rgba(0,0,0,0.4);
+}
+
+/* Solid: bianco su video (massimo contrasto), accento con rosa */
+.line--solid {
+  color: var(--white);
+  /* "LE IDEE" e "FORMA" sono bianche — pulite, esplosive */
+}
+
+/* Outline: stroke bianco nitido su video scuro */
+.line--outline {
+  color: transparent;
+  -webkit-text-stroke: 3px rgba(255,255,255,0.95);
+  text-shadow: none; /* no shadow sugli outline, sfuma il bordo */
+}
+
+/* "FORMA": ultima riga in rosa per il colpo finale */
+.hero-home__title .line:last-child .line-inner {
+  color: var(--primary);
+}
+
+/* ── Strip in basso: su overlay scuro ───────────────── */
+.hero-home__below {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-inline: var(--space-6);
+  margin-inline: calc(-1 * var(--space-6));
+}
+
+.hero-home__tagline { color: var(--primary); }
+.hero-home__sub { color: rgba(255,255,255,0.5); }
+
+/* ── Responsive video hero ──────────────────────────── */
+@media (max-width: 768px) {
+  .line--outline { -webkit-text-stroke-width: 2px; }
+  .hero-home__overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,0,0,0.55) 40%,
+        rgba(0,0,0,0.82) 80%,
+        rgba(0,0,0,0.92) 100%
+      );
+  }
+}
+@media (max-width: 480px) {
+  .line--outline { -webkit-text-stroke-width: 1.5px; }
+  .hero-home__title .line { padding-bottom: 0.04em; }
+}
+
