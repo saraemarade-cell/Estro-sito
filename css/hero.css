@@ -22,16 +22,10 @@ main { margin: 0; padding: 0; }
 .vhero::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0; left: 0;
+  width: 30%;
   height: 160px;
-  background: linear-gradient(to right,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,1) 30%,
-    rgba(26,0,16,0.85) 50%,
-    rgba(219,0,90,0.5) 100%
-  );
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  background: linear-gradient(to bottom, transparent 0%, #000 100%);
   pointer-events: none;
   z-index: 3;
 }
