@@ -210,48 +210,59 @@
     <section class="section clients-section" aria-label="I nostri clienti">
       <div class="container">
         <h2 class="clients__heading reveal">ALCUNI AMICI SODDISFATTI CHE CI HANNO DATO FIDUCIA</h2>
-        <div class="clients__logos reveal reveal-delay-1">
-          <span class="client-logo client-logo--xl">PRADA</span>
-          <span class="client-logo">Ariston Group</span>
-          <span class="client-logo client-logo--italic">miu miu</span>
-          <span class="client-logo client-logo--light">accenture</span>
-          <span class="client-logo client-logo--xl">GUCCI</span>
-          <span class="client-logo client-logo--light">plenitude</span>
-          <span class="client-logo">Bocconi</span>
-          <span class="client-logo">FANUC</span>
-          <span class="client-logo client-logo--italic">Cartier</span>
-          <span class="client-logo client-logo--bold">Red Bull</span>
-          <span class="client-logo">HUMANITAS</span>
-          <span class="client-logo client-logo--light">elmec</span>
-          <span class="client-logo">START7</span>
-          <span class="client-logo">COSWELL</span>
-          <span class="client-logo client-logo--sm">Tonino Lamborghini</span>
-          <span class="client-logo">Kawasaki</span>
-          <span class="client-logo client-logo--italic">aprilia</span>
-          <span class="client-logo client-logo--sm">Moto Guzzi</span>
-          <span class="client-logo client-logo--bold">SEAT</span>
-          <span class="client-logo">CUPRA</span>
-          <span class="client-logo">RE/MAX</span>
-          <span class="client-logo client-logo--green">Spotify</span>
-          <span class="client-logo client-logo--light">patagonia</span>
-          <span class="client-logo client-logo--bold">Rai</span>
-          <span class="client-logo">PANDORA</span>
-          <span class="client-logo">Biorepair</span>
-          <span class="client-logo client-logo--sm">CONDÉ NAST</span>
-          <span class="client-logo">TEDx</span>
-          <span class="client-logo client-logo--sm">ABC Tools</span>
-          <span class="client-logo client-logo--bold">WOLF</span>
-          <span class="client-logo">AW LAB</span>
-          <span class="client-logo">TERRANOVA</span>
-          <span class="client-logo client-logo--sm">L'Angelica</span>
-          <span class="client-logo client-logo--light">elco</span>
-          <span class="client-logo">Leolandia</span>
-          <span class="client-logo">PYREX</span>
-          <span class="client-logo">SECTOR</span>
-          <span class="client-logo">Wudy</span>
-          <span class="client-logo">7seven</span>
-          <span class="client-logo">SJ Gang</span>
-          <span class="client-logo client-logo--italic">Disclaimer</span>
+
+        <!-- Filtri categoria -->
+        <div class="clients__filters" role="group" aria-label="Filtra per categoria">
+          <button class="clients__filter active" data-filter="all">Tutti</button>
+          <button class="clients__filter" data-filter="fashion">Fashion &amp; Luxury</button>
+          <button class="clients__filter" data-filter="automotive">Automotive &amp; Sport</button>
+          <button class="clients__filter" data-filter="tech">Tech &amp; Business</button>
+          <button class="clients__filter" data-filter="media">Media &amp; Entertainment</button>
+          <button class="clients__filter" data-filter="health">Health &amp; Lifestyle</button>
+        </div>
+
+        <div class="clients__logos">
+          <span class="client-logo client-logo--xl" data-category="fashion">PRADA</span>
+          <span class="client-logo" data-category="tech">Ariston Group</span>
+          <span class="client-logo client-logo--italic" data-category="fashion">miu miu</span>
+          <span class="client-logo client-logo--light" data-category="tech">accenture</span>
+          <span class="client-logo client-logo--xl" data-category="fashion">GUCCI</span>
+          <span class="client-logo client-logo--light" data-category="tech">plenitude</span>
+          <span class="client-logo" data-category="tech">Bocconi</span>
+          <span class="client-logo" data-category="tech">FANUC</span>
+          <span class="client-logo client-logo--italic" data-category="fashion">Cartier</span>
+          <span class="client-logo client-logo--bold" data-category="media">Red Bull</span>
+          <span class="client-logo" data-category="health">HUMANITAS</span>
+          <span class="client-logo client-logo--light" data-category="tech">elmec</span>
+          <span class="client-logo" data-category="tech">START7</span>
+          <span class="client-logo" data-category="health">COSWELL</span>
+          <span class="client-logo client-logo--sm" data-category="fashion">Tonino Lamborghini</span>
+          <span class="client-logo" data-category="automotive">Kawasaki</span>
+          <span class="client-logo client-logo--italic" data-category="automotive">aprilia</span>
+          <span class="client-logo client-logo--sm" data-category="automotive">Moto Guzzi</span>
+          <span class="client-logo client-logo--bold" data-category="automotive">SEAT</span>
+          <span class="client-logo" data-category="automotive">CUPRA</span>
+          <span class="client-logo" data-category="tech">RE/MAX</span>
+          <span class="client-logo client-logo--green" data-category="media">Spotify</span>
+          <span class="client-logo client-logo--light" data-category="fashion">patagonia</span>
+          <span class="client-logo client-logo--bold" data-category="media">Rai</span>
+          <span class="client-logo" data-category="fashion">PANDORA</span>
+          <span class="client-logo" data-category="health">Biorepair</span>
+          <span class="client-logo client-logo--sm" data-category="media">CONDÉ NAST</span>
+          <span class="client-logo" data-category="media">TEDx</span>
+          <span class="client-logo client-logo--sm" data-category="tech">ABC Tools</span>
+          <span class="client-logo client-logo--bold" data-category="tech">WOLF</span>
+          <span class="client-logo" data-category="fashion">AW LAB</span>
+          <span class="client-logo" data-category="fashion">TERRANOVA</span>
+          <span class="client-logo client-logo--sm" data-category="health">L'Angelica</span>
+          <span class="client-logo client-logo--light" data-category="tech">elco</span>
+          <span class="client-logo" data-category="media">Leolandia</span>
+          <span class="client-logo" data-category="health">PYREX</span>
+          <span class="client-logo" data-category="fashion">SECTOR</span>
+          <span class="client-logo" data-category="health">Wudy</span>
+          <span class="client-logo" data-category="fashion">7seven</span>
+          <span class="client-logo" data-category="media">SJ Gang</span>
+          <span class="client-logo client-logo--italic" data-category="fashion">Disclaimer</span>
         </div>
       </div>
     </section>

@@ -161,3 +161,29 @@ if (window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches) {
   };
   tick();
 }
+
+// ─── Clients filter ───────────────────────────────────
+(function () {
+  const filters = document.querySelectorAll('.clients__filter');
+  const logos   = document.querySelectorAll('.client-logo[data-category]');
+  if (!filters.length) return;
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.dataset.filter;
+      logos.forEach(logo => {
+        const match = cat === 'all' || logo.dataset.category === cat;
+        if (match) {
+          logo.classList.remove('hidden');
+          logo.classList.add('visible');
+        } else {
+          logo.classList.add('hidden');
+          logo.classList.remove('visible');
+        }
+      });
+    });
+  });
+})();
