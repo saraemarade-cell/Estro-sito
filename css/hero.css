@@ -349,8 +349,8 @@ main { margin: 0; padding: 0; }
   width: max-content;
   will-change: transform;
 }
-.clients__track--fwd { animation: marquee-fwd 200s linear infinite; }
-.clients__track--rev { animation: marquee-rev 200s linear infinite; }
+.clients__track--fwd { animation: marquee-fwd 150s linear infinite; }
+.clients__track--rev { animation: marquee-rev 150s linear infinite; }
 
 @keyframes marquee-fwd {
   from { transform: translateX(0); }
