@@ -2,6 +2,13 @@
    hero.css — definitivo
 ═══════════════════════════════════════════════════════ */
 
+/* Azzera eventuali spazi sopra/sotto dalla hero */
+body { margin: 0; padding: 0; }
+main { margin: 0; padding: 0; }
+
+/* Assicura che nessun margin collassi sopra la hero */
+.vhero { margin-top: 82px; margin-bottom: 0; }
+
 /* ── Hero: griglia 30/70, altezza viewport ───────────── */
 .vhero {
   display: grid !important;
