@@ -243,7 +243,13 @@ main { margin: 0; padding: 0; }
 }
 
 /* cerchio decorativo: nascosto */
-.about-section__circle { display: none !important; }
+.about-section__circle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 
 /* foto: sotto la parola ABOUT, sfondo bianco rimosso */
 .about-section__img-wrap {
@@ -254,6 +260,8 @@ main { margin: 0; padding: 0; }
 .about-section__img-wrap img {
   clip-path: inset(10% round 0px) !important;
   mix-blend-mode: normal !important;
+  width: 130% !important;
+  max-width: none !important;
 }
 
 /* coda: flush al bordo destro viewport */
