@@ -21,17 +21,16 @@ main { margin: 0; padding: 0; }
 
 /* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
-  height: calc(100vh - 82px);
+  /* Altezza automatica: si adatta al contenuto */
+  height: auto;
+  align-self: center;   /* centrata verticalmente nella riga grid */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;  /* spazio uguale sopra e sotto il contenuto */
   gap: 1.25rem;
-  /* Solo padding orizzontale: il verticale lo gestisce justify-content */
-  padding: 0 2.5rem;
+  padding: 2.5rem;
   background: #0a0a0a;
   border-right: 1px solid rgba(255,255,255,0.07);
-  overflow: hidden;
 }
 
 /* ── Colonna destra: contenitore relativo ────────────── */
