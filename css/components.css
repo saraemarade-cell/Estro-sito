@@ -1392,3 +1392,80 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--spring-gree
   .hero__footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
   .service-row { padding-block: var(--space-6); }
 }
+
+/* ══ CLIENTS MARQUEE ══════════════════════════════════════════ */
+
+.clients {
+  padding-block: var(--space-24);
+  overflow: hidden;
+}
+
+.clients__track-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  overflow: hidden;
+}
+
+.clients__track {
+  overflow: hidden;
+  /* fade edges */
+  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.clients__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+  white-space: nowrap;
+  width: max-content;
+}
+
+.clients__track--fwd .clients__row {
+  animation: clients-fwd 28s linear infinite;
+}
+
+.clients__track--rev .clients__row {
+  animation: clients-rev 28s linear infinite;
+}
+
+.clients__logo {
+  font-family: var(--font-primary);
+  font-size: var(--text-xl);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white-40);
+  flex-shrink: 0;
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.clients__logo:hover {
+  color: var(--white);
+}
+
+.clients__sep {
+  color: var(--spring-green);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+@keyframes clients-fwd {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes clients-rev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* pause on hover */
+.clients__track:hover .clients__row {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clients__row { animation: none; }
+}
