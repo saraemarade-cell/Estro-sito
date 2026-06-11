@@ -4514,11 +4514,11 @@ body:has(.hero-video) .nav:not(.scrolled) {
 }
 
 .clients__track--fwd .clients__row {
-  animation: clients-fwd 90s linear infinite;
+  animation: clients-fwd 160s linear infinite;
 }
 
 .clients__track--rev .clients__row {
-  animation: clients-rev 90s linear infinite;
+  animation: clients-rev 160s linear infinite;
 }
 
 .clients__logo {
