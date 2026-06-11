@@ -1895,7 +1895,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .case-studies__heading {
   font-family: var(--font-primary);
-  font-size: clamp(var(--text-4xl), 10vw, var(--text-8xl));
+  font-size: 90px;
   font-weight: 800;
   text-align: center;
   color: transparent;
