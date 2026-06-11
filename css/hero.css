@@ -122,10 +122,10 @@ main { margin: 0; padding: 0; }
 }
 
 .svc-item {
-  background: transparent !important;
+  background: #f8f8f8 !important;
   padding: clamp(1.75rem, 2.5vw, 2.5rem) clamp(1.25rem, 2vw, 2rem) clamp(2.25rem, 3vw, 3rem) !important;
-  border-right: 1px solid rgba(0,0,0,0.07) !important;
-  border-bottom: 1px solid rgba(0,0,0,0.07) !important;
+  border-right: 2px solid #fff !important;
+  border-bottom: 2px solid #fff !important;
   border-top: none !important;
   border-left: none !important;
   display: flex;
@@ -135,64 +135,70 @@ main { margin: 0; padding: 0; }
 }
 .svc-item:nth-child(5n) { border-right: none !important; }
 .svc-item:hover {
-  background: rgba(219,0,90,0.03) !important;
+  background: #0a0a0a !important;
   transform: translateY(-3px);
 }
 
-/* Accent bar on hover */
+/* Accent bar: sempre visibile, diventa più alta all'hover */
 .svc-item::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 0;
-  background: var(--primary);
-  transition: height 180ms ease;
+  height: 3px;
+  background: rgba(219,0,90,0.18);
+  transition: background 200ms ease, height 180ms ease;
 }
 .svc-item::after { display: none !important; }
-.svc-item:hover::before { height: 3px !important; }
+.svc-item:hover::before {
+  height: 3px !important;
+  background: var(--primary) !important;
+}
 
-/* numero: grande, quasi trasparente, diventa primario all'hover */
+/* numero: rosa solido di default, più grande e leggibile */
 .svc-item__num {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(3rem, 4.5vw, 5.5rem) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
-  color: transparent !important;
-  -webkit-text-stroke: 1px rgba(0,0,0,0.12) !important;
-  opacity: 1 !important;
+  color: var(--primary) !important;
+  -webkit-text-stroke: none !important;
+  opacity: 0.35 !important;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
-  transition: -webkit-text-stroke-color 200ms, color 200ms !important;
+  transition: opacity 200ms !important;
   display: block;
 }
 .svc-item:hover .svc-item__num {
-  color: transparent !important;
-  -webkit-text-stroke-color: var(--primary) !important;
+  color: var(--primary) !important;
   opacity: 1 !important;
 }
 
-/* nome servizio */
+/* nome servizio: più grande, alto contrasto di default */
 .svc-item__name {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(0.7rem, 0.9vw, 1rem) !important;
+  font-size: clamp(0.85rem, 1.05vw, 1.15rem) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
-  line-height: 1.25 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.2 !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
-  color: var(--black) !important;
+  color: #111 !important;
   transition: color 200ms !important;
 }
+.svc-item__name a { color: inherit !important; }
 .svc-item:hover .svc-item__name,
-.svc-item:hover .svc-item__name a { color: var(--primary) !important; }
+.svc-item:hover .svc-item__name a { color: #fff !important; }
 
 /* descrizione */
 .svc-item__desc {
   font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
-  color: rgba(0,0,0,0.45) !important;
+  color: rgba(0,0,0,0.55) !important;
   line-height: 1.65 !important;
   margin-top: auto;
+  transition: color 200ms;
 }
-.svc-item__desc strong { color: rgba(0,0,0,0.7) !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item:hover .svc-item__desc { color: rgba(255,255,255,0.55) !important; }
+.svc-item__desc strong { color: rgba(0,0,0,0.8) !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item:hover .svc-item__desc strong { color: rgba(255,255,255,0.85) !important; }
 
 /* responsive */
 @media (max-width: 1024px) {
