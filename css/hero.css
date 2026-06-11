@@ -227,6 +227,7 @@ main { margin: 0; padding: 0; }
   transform: translateY(-50%) !important;
   color: transparent !important;
   -webkit-text-stroke: 1.5px rgba(219,0,90,0.18) !important;
+  letter-spacing: 0.05em !important;
   z-index: 0 !important;
   pointer-events: none;
   overflow: visible !important;
