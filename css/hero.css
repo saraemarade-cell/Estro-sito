@@ -248,8 +248,8 @@ main { margin: 0; padding: 0; }
 }
 .about-section__tail {
   position: absolute !important;
-  top: -2rem !important;
-  right: calc(-1 * var(--gutter)) !important;
+  top: -8rem !important;
+  right: calc(-1 * var(--gutter) - 1vw) !important;
   width: clamp(200px, 32vw, 420px) !important;
   height: auto !important;
   opacity: 0.9 !important;
