@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════════════
+   hero.css — layout hero definitivo
+   Carica dopo components.css, sovrascrive tutti i conflitti.
+═══════════════════════════════════════════════════════ */
+
+/* ── Layout hero: griglia 30% | 70% ─────────────────── */
+.vhero {
+  display: grid !important;
+  grid-template-columns: 30% 70% !important;
+  width: 100%;
+  /* Parte subito sotto la nav (82px) */
+  margin-top: 82px;
+  /* Riempie il resto della viewport */
+  height: calc(100vh - 82px);
+  background: #0a0a0a;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Colonna sinistra: testo centrato verticalmente ───── */
+.vhero__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 3rem 2.5rem;
+  background: #0a0a0a;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Titolo ─────────────────────────────────────────── */
+.vhero__title {
+  display: flex;
+  flex-direction: column;
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+  margin: 0;
+}
+
+.vhero__title span:nth-child(1) { color: #ffffff; }  /* LE IDEE */
+.vhero__title span:nth-child(2) { color: #DB005A; }  /* PRENDONO */
+.vhero__title span:nth-child(3) { color: #ffffff; }  /* FORMA */
+
+/* ── Tagline ─────────────────────────────────────────── */
+.vhero__tagline {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #DB005A;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Sottotitolo ─────────────────────────────────────── */
+.vhero__sub {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(0.65rem, 0.85vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── CTA: allineato al resto della pagina ────────────── */
+.vhero__cta {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+/* ── Colonna destra: video che riempie l'area ─────────── */
+.vhero__right {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Cover centrato: il video scala per riempire
+   il 70% della sezione senza bande nere */
+.vhero__iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Dimensioni cover 16:9 */
+  width: 100%;
+  height: 56.25vw;
+  min-height: 100%;
+  min-width: 177.78vh;
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Nav: sfondo bianco sopra la hero ───────────────── */
+.nav:not(.scrolled) {
+  background: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .vhero {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto;
+    min-height: calc(100vh - 82px);
+  }
+
+  .vhero__left {
+    padding: 2.5rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .vhero__title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .vhero__right {
+    height: 56vw;
+    flex-shrink: 0;
+  }
+
+  .vhero__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: unset;
+    min-height: unset;
+    transform: none;
+  }
+}
