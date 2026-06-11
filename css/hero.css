@@ -252,8 +252,12 @@ main { margin: 0; padding: 0; }
   z-index: 1;
 }
 .about-section__img-wrap img {
-  mix-blend-mode: multiply !important;
+  mix-blend-mode: darken !important;
   background: transparent !important;
+}
+.about-section__img-wrap,
+.about-section__left {
+  background: #fff !important;
 }
 
 /* coda: flush al bordo destro viewport */
