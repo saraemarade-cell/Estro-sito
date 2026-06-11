@@ -125,54 +125,51 @@ main { margin: 0; padding: 0; }
 }
 
 .svc-item {
-  background: rgba(255,255,255,0.08) !important;
+  background: #fff !important;
   padding: clamp(1.75rem, 2.5vw, 2.5rem) clamp(1.25rem, 2vw, 2rem) clamp(2.25rem, 3vw, 3rem) !important;
-  border-right: 1px solid rgba(255,255,255,0.12) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+  border-right: 3px solid transparent !important;
+  border-bottom: 3px solid transparent !important;
   border-top: none !important;
   border-left: none !important;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  backdrop-filter: blur(4px);
   transition: background 220ms ease, transform 220ms ease !important;
 }
 .svc-item:nth-child(5n) { border-right: none !important; }
 .svc-item:hover {
-  background: rgba(0,0,0,0.55) !important;
-  transform: translateY(-3px);
+  background: #0a0a0a !important;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
 }
 
 .svc-item::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
-  background: rgba(255,255,255,0.25);
-  transition: background 200ms ease;
+  height: 3px;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity 200ms ease;
 }
 .svc-item::after { display: none !important; }
-.svc-item:hover::before {
-  height: 2px !important;
-  background: #fff !important;
-}
+.svc-item:hover::before { opacity: 1 !important; }
 
-/* numero: bianco semitrasparente, pieno all'hover */
+/* numero */
 .svc-item__num {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
   font-size: clamp(3rem, 4.5vw, 5.5rem) !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   color: transparent !important;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,0.35) !important;
+  -webkit-text-stroke: 1.5px rgba(219,0,90,0.3) !important;
   opacity: 1 !important;
   margin-bottom: clamp(0.75rem, 1vw, 1.25rem) !important;
   transition: -webkit-text-stroke-color 200ms !important;
   display: block;
 }
 .svc-item:hover .svc-item__num {
-  color: transparent !important;
-  -webkit-text-stroke-color: rgba(255,255,255,0.9) !important;
+  -webkit-text-stroke-color: var(--primary) !important;
 }
 
 /* nome servizio */
@@ -184,7 +181,7 @@ main { margin: 0; padding: 0; }
   line-height: 1.2 !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
-  color: #fff !important;
+  color: #111 !important;
   transition: color 200ms !important;
 }
 .svc-item__name a { color: inherit !important; }
@@ -194,11 +191,14 @@ main { margin: 0; padding: 0; }
 /* descrizione */
 .svc-item__desc {
   font-size: clamp(0.6rem, 0.72vw, 0.75rem) !important;
-  color: rgba(255,255,255,0.6) !important;
+  color: rgba(0,0,0,0.5) !important;
   line-height: 1.65 !important;
   margin-top: auto;
+  transition: color 200ms;
 }
-.svc-item__desc strong { color: rgba(255,255,255,0.9) !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item:hover .svc-item__desc { color: rgba(255,255,255,0.55) !important; }
+.svc-item__desc strong { color: rgba(0,0,0,0.8) !important; font-weight: 600 !important; font-style: normal !important; }
+.svc-item:hover .svc-item__desc strong { color: rgba(255,255,255,0.85) !important; }
 
 /* responsive */
 @media (max-width: 1024px) {
