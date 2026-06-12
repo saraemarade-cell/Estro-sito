@@ -1544,10 +1544,11 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   font-size: var(--text-sm);
   letter-spacing: 0.06em;
   margin-top: var(--space-1);
-  text-align: center;
-  justify-content: center;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .svc-hero__right {
