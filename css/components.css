@@ -3402,16 +3402,6 @@ body:has(.hero-home) .nav:not(.scrolled) .nav__hamburger span {
   color: var(--black);
   -webkit-text-stroke: 0;
 }
-/* Accent: lineetta rosa prima */
-.tips-section__heading::before {
-  content: '';
-  display: block;
-  width: clamp(40px, 5vw, 64px);
-  height: 4px;
-  background: var(--primary);
-  margin-bottom: var(--space-5);
-  border-radius: 2px;
-}
 
 /* ── CONTACT: heading bianco solido, senza stroke ───── */
 .contact-home__heading {

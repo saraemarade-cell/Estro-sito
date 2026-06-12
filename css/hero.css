@@ -496,3 +496,61 @@ main { margin: 0; padding: 0; }
   .cta-coffee__title { font-size: clamp(1.5rem, 7vw, 2.25rem); }
   .cta-coffee__img { width: 140%; left: -40%; }
 }
+
+/* ══ TIPS & TRICKS: refinement ══════════════════════════ */
+.tips-section {
+  background:
+    linear-gradient(180deg, #fff 0%, #fdf4f8 100%);
+  border-top: none !important;
+  padding-block: clamp(4rem, 8vw, 7rem) !important;
+}
+
+/* titolo coerente con gli altri heading del sito */
+.tips-section__heading {
+  text-align: center !important;
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: 59px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+  color: #DB005A !important;
+  -webkit-text-stroke: 0 !important;
+  line-height: 1.05 !important;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
+.tips-section__heading::before { display: none !important; }
+
+/* card: superficie pulita, lift al hover */
+.tip-card {
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,0.07) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  padding: 0 0 1.5rem !important;
+  transition: transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms ease, border-color 320ms ease !important;
+}
+.tip-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(219,0,90,0.12);
+  border-color: rgba(219,0,90,0.25) !important;
+}
+
+.tip-card__img {
+  border-radius: 0 !important;
+  margin-bottom: 1.25rem !important;
+}
+.tip-card__img img { border-radius: 0 !important; }
+
+.tip-card__date {
+  color: #DB005A !important;
+  font-weight: 600 !important;
+  padding-inline: 1.25rem;
+}
+
+.tip-card__title {
+  padding-inline: 1.25rem;
+  border-bottom: none !important;
+}
+
+@media (max-width: 600px) {
+  .tips-section__heading { font-size: clamp(2rem, 9vw, 2.75rem) !important; }
+}
