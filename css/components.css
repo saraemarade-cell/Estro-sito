@@ -1660,7 +1660,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   font-family: var(--font-primary);
   font-size: 46px;
   font-weight: 900;
-  line-height: 1.0;
+  line-height: 1.1;
   text-transform: uppercase;
   color: var(--black);
   margin-bottom: var(--space-8);
