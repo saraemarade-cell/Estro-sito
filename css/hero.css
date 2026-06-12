@@ -479,7 +479,7 @@ main { margin: 0; padding: 0; }
 
 .cta-coffee__title {
   font-family: var(--font-primary);
-  font-size: clamp(2.75rem, 12.5vw, 176px);
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: 800;
   letter-spacing: -0.01em;
   line-height: 1.02;
