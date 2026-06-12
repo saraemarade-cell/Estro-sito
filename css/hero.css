@@ -262,8 +262,8 @@ main { margin: 0; padding: 0; }
 /* gatto: subito sotto la parola ABOUT */
 .about-section__cat {
   display: block;
-  margin-top: clamp(14rem, 28vw, 28rem);
-  width: clamp(160px, 19vw, 300px);
+  margin-top: clamp(12rem, 24.5vw, 25rem);
+  width: clamp(210px, 25vw, 400px);
   height: auto;
   position: relative;
   z-index: 1;
