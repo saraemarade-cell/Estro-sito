@@ -1988,161 +1988,79 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   text-align: center;
 }
 
-/* ── Bento grid ── */
-.cs2__grid {
+/* ── Logo wall — mosaico interattivo ── */
+.cs2__wall {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
   background: var(--black-10);
   border: 1px solid var(--black-10);
 }
 
-.cs2__card {
+.cs2__tile {
   background: var(--white);
-  padding: clamp(1.75rem, 3.5vw, 3rem);
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
-  transition: background 0.45s cubic-bezier(0.16,1,0.3,1);
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
+  cursor: default;
+  transition: background 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
-.cs2__card--feat { grid-column: 1 / 3; }
-.cs2__card--wide { grid-column: 1 / 3; }
-
-.cs2__card:hover {
-  background: var(--primary);
-}
-
-/* ── Card inner layout ── */
-.cs2__card-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  gap: var(--space-8);
-  position: relative;
-  z-index: 1;
-}
-
-.cs2__card-top {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.cs2__card-bottom {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-/* ── Number ── */
-.cs2__num {
-  font-family: var(--font-primary);
-  font-size: clamp(3rem, 5vw, 5rem);
-  font-weight: 900;
-  color: var(--primary);
-  line-height: 1;
-  transition: color 0.45s ease, opacity 0.45s ease;
-}
-
-.cs2__card:hover .cs2__num {
-  color: rgba(255,255,255,0.3);
-}
-
-/* ── Category + name ── */
-.cs2__cat {
-  font-family: var(--font-secondary);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--black-40);
-  transition: color 0.45s ease;
-}
-
-.cs2__card:hover .cs2__cat { color: rgba(255,255,255,0.75); }
-
-.cs2__name {
-  font-family: var(--font-primary);
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-  font-weight: 800;
-  color: var(--black);
-  transition: color 0.45s ease;
-  text-transform: uppercase;
-  line-height: 1.0;
-  letter-spacing: -0.01em;
-}
-
-.cs2__card--feat .cs2__name {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-}
-
-.cs2__card:hover .cs2__name { color: #fff; }
-
-/* ── Result metric ── */
-.cs2__result {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.cs2__result-val {
-  font-family: var(--font-primary);
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  font-weight: 900;
-  color: var(--primary);
-  line-height: 1;
-  transition: color 0.45s ease;
-}
-
-.cs2__card--feat .cs2__result-val {
-  font-size: clamp(3rem, 5vw, 5rem);
-}
-
-.cs2__card:hover .cs2__result-val { color: #fff; }
-
-.cs2__result-label {
-  font-family: var(--font-secondary);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--black-50);
-  transition: color 0.45s ease;
-}
-
-.cs2__card:hover .cs2__result-label { color: rgba(255,255,255,0.85); }
-
-/* ── Arrow ── */
-.cs2__arrow {
-  font-size: 1.5rem;
-  color: var(--black-20);
-  transform: translateX(0);
-  transition: color 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1);
-  line-height: 1;
-  align-self: flex-end;
-}
-
-.cs2__card:hover .cs2__arrow {
-  color: #fff;
-  transform: translateX(6px);
-}
-
-/* ── Decorative background element ── */
-.cs2__card-deco {
+.cs2__tile::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 110% 110%, rgba(219,0,90,0.07) 0%, transparent 60%);
-  pointer-events: none;
-  transition: opacity 0.45s ease;
-  z-index: 0;
+  background: var(--primary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
-.cs2__card:hover .cs2__card-deco { opacity: 0; }
+.cs2__tile:hover::after {
+  transform: scaleY(1);
+}
+
+.cs2__logo {
+  font-family: var(--font-secondary);
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  color: var(--black);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+.cs2__tile:hover .cs2__logo {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.cs2__logo strong {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  padding: 0 4px;
+  font-weight: 900;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.cs2__tile:hover .cs2__logo strong {
+  background: #fff;
+  color: var(--primary);
+}
+
+.cs2__logo--light   { font-weight: 300; letter-spacing: 0.06em; }
+.cs2__logo--tracked { letter-spacing: 0.14em; font-size: clamp(0.85rem, 1.3vw, 1.15rem); }
+.cs2__logo--grunge  { font-style: italic; font-weight: 900; text-transform: uppercase; }
+.cs2__logo--bold    { font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.cs2__logo--serif   { font-style: italic; font-weight: 400; }
+.cs2__logo--script  { font-style: italic; font-weight: 400; font-size: clamp(0.85rem, 1.2vw, 1.05rem); }
+.cs2__logo--stacked { line-height: 1.1; font-weight: 900; letter-spacing: 0.05em; }
 
 /* ── Footer CTA ── */
 .cs2__footer {
@@ -2174,19 +2092,13 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .cs2__grid { grid-template-columns: 1fr 1fr; }
-  .cs2__card--feat { grid-column: 1 / 3; }
-  .cs2__card--wide { grid-column: 1 / 3; }
+  .cs2__wall { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 600px) {
-  .cs2__grid {
-    grid-template-columns: 1fr;
-  }
+  .cs2__wall { grid-template-columns: repeat(2, 1fr); }
   .cs2__title { font-size: clamp(2.5rem, 12vw, 59px); }
-  .cs2__card--feat,
-  .cs2__card--wide { grid-column: 1; }
-  .cs2__card { min-height: 220px; }
+  .cs2__tile { aspect-ratio: 4 / 3; }
 }
 
 /* ─── CTA PENNELLATA ─────────────────────────────────── */
