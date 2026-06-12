@@ -1654,6 +1654,19 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 }
 
 /* ═══════════════════════════════════════════════════════
+   SVC-SECTION-TITLE — large section heading (46px)
+═══════════════════════════════════════════════════════ */
+.svc-section-title {
+  font-family: var(--font-primary);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.0;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: var(--space-8);
+}
+
+/* ═══════════════════════════════════════════════════════
    SVC-DIVIDER — full-width zampa image between sections
 ═══════════════════════════════════════════════════════ */
 .svc-divider {
