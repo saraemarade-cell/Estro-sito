@@ -1970,7 +1970,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .cs2__title {
   font-family: var(--font-primary);
-  font-size: 59px;
+  font-size: clamp(2.75rem, 12.5vw, 176px);
   font-weight: 800;
   color: var(--primary);
   line-height: 1.05;
