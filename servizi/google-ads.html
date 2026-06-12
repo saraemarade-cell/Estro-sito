@@ -78,26 +78,39 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="page-hero page-hero--services" aria-labelledby="page-title">
-      <div class="page-hero__bg">
-        <div class="page-hero__noise"></div>
-        <div class="page-hero__gradient" style="background: radial-gradient(ellipse 60% 70% at 100% 0%, rgba(219,0,90,0.15) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 0% 100%, rgba(219,0,90,0.06) 0%, transparent 50%);"></div>
-      </div>
-      <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="breadcrumb__sep">／</span>
-          <span class="breadcrumb__current">Google ADS</span>
-        </nav>
-        <div class="page-hero__inner">
-          <div>
-            <p class="page-hero__kicker">Servizio 01</p>
-            <h1 class="page-hero__title" id="page-title">Google<br /><em>ADS</em></h1>
-          </div>
-          <div>
-            <p class="page-hero__sub reveal">Vuoi far crescere la tua attività con Google Ads? Sei nel posto giusto. Estro è <strong>Google Partner</strong>: le nostre campagne rispecchiano i più alti standard qualitativi del settore.</p>
+    <section class="svc-hero" aria-labelledby="page-title">
+      <div class="container svc-hero__inner">
+
+        <!-- LEFT: titolo + form -->
+        <div class="svc-hero__left">
+          <p class="svc-hero__kicker">Google ADS</p>
+          <h1 class="svc-hero__title" id="page-title">
+            Vuoi<br/>
+            far crescere<br/>
+            la tua attività<br/>
+            con <em>Google ADS</em>?
+          </h1>
+          <p class="svc-hero__desc">Utilizziamo Google Ads come leva strategica per aumentare il traffico qualificato, generare contatti preziosi e far crescere il tuo business, mantenendo pieno controllo sul risultato finale.</p>
+          <p class="svc-hero__tagline"><strong>Sei nel posto giusto!</strong></p>
+          <form class="svc-hero__form" action="../contatti.html" method="get" novalidate>
+            <input class="svc-hero__field" type="text" name="nome" placeholder="Nome e Cognome*" required />
+            <input class="svc-hero__field" type="email" name="email" placeholder="Email*" required />
+            <input class="svc-hero__field" type="tel" name="telefono" placeholder="Telefono" />
+            <label class="svc-hero__privacy">
+              <input type="checkbox" required />
+              <span>Autorizzo il trattamento dei dati personali secondo la <a href="../privacy.html">Privacy Policy</a>.*</span>
+            </label>
+            <button class="btn btn--primary svc-hero__submit" type="submit">Contattaci</button>
+          </form>
+        </div>
+
+        <!-- RIGHT: immagine -->
+        <div class="svc-hero__right">
+          <div class="svc-hero__img-wrap">
+            <!-- inserire immagine hero Google ADS -->
           </div>
         </div>
+
       </div>
     </section>
 
