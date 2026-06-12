@@ -317,7 +317,7 @@ main { margin: 0; padding: 0; }
 .clients__heading {
   text-align: center !important;
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: 59px !important;
+  font-size: clamp(2.5rem, 6vw, 85px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.01em !important;
   color: #DB005A !important;
@@ -378,11 +378,11 @@ main { margin: 0; padding: 0; }
   align-items: center !important;
   white-space: nowrap !important;
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(0.85rem, 1.1vw, 1.1rem) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
+  font-size: clamp(1.5rem, 2.6vw, 2.6rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
-  color: rgba(255,255,255,0.3) !important;
+  color: rgba(255,255,255,0.92) !important;
   padding: clamp(1rem, 1.5vw, 1.4rem) clamp(1.5rem, 2.5vw, 2.5rem) !important;
   border: none !important;
   border-right: none !important;
@@ -392,13 +392,17 @@ main { margin: 0; padding: 0; }
 }
 /* separatore puntino */
 .client-logo::after {
-  content: '·';
+  content: '✦';
   position: absolute;
   right: 0;
-  color: rgba(255,255,255,0.12) !important;
-  font-size: 1.2em;
+  color: rgba(219,0,90,0.6) !important;
+  font-size: 0.55em;
 }
-.client-logo:hover { color: #DB005A !important; }
+.client-logo:hover {
+  color: #DB005A !important;
+  transform: scale(1.06);
+}
+.client-logo { transition: color 200ms ease, transform 250ms cubic-bezier(0.16,1,0.3,1) !important; }
 
 /* ── Nav ─────────────────────────────────────────────── */
 .nav:not(.scrolled) {
