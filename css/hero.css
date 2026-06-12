@@ -787,3 +787,46 @@ main { margin: 0; padding: 0; }
   position: relative;
   z-index: 1;
 }
+
+/* ═══════════════════════════════════════════════════════
+   SFONDI UNIFICATI PER FAMIGLIA DI SEZIONI
+═══════════════════════════════════════════════════════ */
+
+/* via l'elemento grafico in background dei case studies */
+.cs2::before { content: none !important; }
+
+/* ── SEZIONI CHIARE: stesso identico background ── */
+.about-section,
+.cs2,
+.cta-coffee,
+.tips-section,
+.gatto-footer {
+  background:
+    radial-gradient(ellipse 50% 40% at 85% 15%, rgba(219,0,90,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 8% 90%, rgba(219,0,90,0.06) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #fff 0%, #fdf0f5 40%, #fff5f9 70%, #fff 100%) !important;
+  background-size: auto, auto, auto, auto !important;
+  background-blend-mode: normal, normal, overlay, normal !important;
+}
+
+/* il gatto resta trasparente per sbucare dietro i contatti */
+.gatto-footer { background: transparent !important; }
+
+/* ── SEZIONI FUCSIA: stesso identico background ── */
+.svc-grid,
+.contact-home {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #3a0020 0%, #DB005A 45%, #DB005A 65%, #2a001a 100%) !important;
+  background-blend-mode: soft-light, normal !important;
+}
+
+/* ── SEZIONI NERE: stesso identico background ── */
+.clients-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, rgba(219,0,90,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(219,0,90,0.10) 0%, transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
+    #050505 !important;
+}
