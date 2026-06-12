@@ -463,25 +463,29 @@ main { margin: 0; padding: 0; }
   user-select: none;
 }
 
-/* testo + CTA sopra l'immagine */
+/* testo + CTA sovrapposti alla zampa (background) */
 .cta-coffee__inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   padding-inline: var(--gutter);
-  padding-top: clamp(4rem, 8vw, 7rem);
 }
 
 .cta-coffee__title {
   font-family: var(--font-primary);
-  font-size: 59px;
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: 800;
   letter-spacing: -0.01em;
-  line-height: 1.05;
+  line-height: 1.02;
   text-transform: uppercase;
-  color: var(--black);
+  color: var(--white);
+  text-shadow: 0 2px 28px rgba(0,0,0,0.6);
 }
 
 .cta-coffee__btn {
