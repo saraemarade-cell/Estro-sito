@@ -832,3 +832,20 @@ main { margin: 0; padding: 0; }
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
     #050505 !important;
 }
+
+/* ══ GATTO: trasparente, sovrapposto allo sfondo tips, tutto visibile ══ */
+.gatto-footer {
+  background: none !important;
+  margin-top: clamp(-180px, -12vw, -80px);
+  margin-bottom: 0 !important;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.gatto-footer img {
+  width: clamp(200px, 28vw, 380px);
+  height: auto;
+  display: block;
+}
+/* niente più sovrapposizione dei contatti sul gatto */
+.contact-home { z-index: 0 !important; }
