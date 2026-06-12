@@ -1988,13 +1988,11 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   text-align: center;
 }
 
-/* ── Logo wall — mosaico interattivo ── */
+/* ── Logo wall — mosaico creativo ── */
 .cs2__wall {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--black-10);
-  border: 1px solid var(--black-10);
+  gap: clamp(8px, 1vw, 14px);
 }
 
 .cs2__tile {
@@ -2007,9 +2005,58 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   position: relative;
   overflow: hidden;
   cursor: default;
-  transition: background 0.4s cubic-bezier(0.16,1,0.3,1);
+  border: 1.5px solid var(--black-10);
+  border-radius: 14px;
+  transition:
+    transform 0.4s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
 }
 
+/* accenti a scacchiera: alcune tile nei colori brand */
+.cs2__tile:nth-child(4),
+.cs2__tile:nth-child(5),
+.cs2__tile:nth-child(11) {
+  background: var(--black);
+  border-color: var(--black);
+}
+.cs2__tile:nth-child(4) .cs2__logo,
+.cs2__tile:nth-child(5) .cs2__logo,
+.cs2__tile:nth-child(11) .cs2__logo { color: var(--white); }
+
+.cs2__tile:nth-child(2),
+.cs2__tile:nth-child(7),
+.cs2__tile:nth-child(10) {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.cs2__tile:nth-child(2) .cs2__logo,
+.cs2__tile:nth-child(7) .cs2__logo,
+.cs2__tile:nth-child(10) .cs2__logo { color: var(--white); }
+
+/* stellina decorativa nell'angolo */
+.cs2__tile::before {
+  content: '✦';
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 0.7rem;
+  color: var(--primary);
+  opacity: 0;
+  transform: rotate(-90deg);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  z-index: 2;
+}
+.cs2__tile:nth-child(2)::before,
+.cs2__tile:nth-child(7)::before,
+.cs2__tile:nth-child(10)::before { color: #fff; }
+
+.cs2__tile:hover::before {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* riempimento fucsia dal basso al hover (solo tile chiare/nere) */
 .cs2__tile::after {
   content: '';
   position: absolute;
@@ -2019,9 +2066,18 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   transform-origin: bottom;
   transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
 }
+.cs2__tile:nth-child(2)::after,
+.cs2__tile:nth-child(7)::after,
+.cs2__tile:nth-child(10)::after { background: var(--black); }
 
 .cs2__tile:hover::after {
   transform: scaleY(1);
+}
+
+.cs2__tile:hover {
+  transform: translateY(-6px) rotate(-1.2deg);
+  box-shadow: 0 18px 40px rgba(219,0,90,0.22);
+  border-color: var(--primary);
 }
 
 .cs2__logo {
@@ -2037,7 +2093,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .cs2__tile:hover .cs2__logo {
   color: #fff;
-  transform: scale(1.1);
+  transform: scale(1.12) rotate(1.2deg);
 }
 
 .cs2__logo strong {
