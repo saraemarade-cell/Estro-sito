@@ -554,3 +554,63 @@ main { margin: 0; padding: 0; }
 @media (max-width: 600px) {
   .tips-section__heading { font-size: clamp(2rem, 9vw, 2.75rem) !important; }
 }
+
+/* ══ CONTATTI: form ben visibile ════════════════════════ */
+.contact-home__heading {
+  color: #fff !important;
+  -webkit-text-stroke: 0 !important;
+  font-size: 59px !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.05 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.contact-home__sub {
+  color: #fff !important;
+  font-size: 0.8125rem !important;
+}
+
+/* campi: bianchi, pieni, leggibili */
+.contact-home__field {
+  background: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: #000 !important;
+  padding: 0.9rem 1.1rem !important;
+  font-size: 0.875rem !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: box-shadow 180ms ease, transform 180ms ease !important;
+}
+.contact-home__field::placeholder {
+  color: rgba(0,0,0,0.45) !important;
+  font-size: 0.8125rem !important;
+}
+.contact-home__field:focus {
+  box-shadow: 0 0 0 2.5px #000, 0 2px 10px rgba(0,0,0,0.12) !important;
+  background: #fff !important;
+}
+
+.contact-home__textarea {
+  border: none !important;
+  min-height: 130px !important;
+  margin-top: 0 !important;
+}
+
+.contact-home__privacy {
+  opacity: 1 !important;
+  font-size: 0.6875rem !important;
+  color: #fff !important;
+}
+.contact-home__privacy a { color: #fff; text-decoration: underline; }
+
+.contact-home__submit {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  padding: 1rem 4rem !important;
+}
+.contact-home__submit:hover {
+  background: #fff !important;
+  color: #000 !important;
+  transform: translateY(-2px);
+}
