@@ -460,10 +460,13 @@ main { margin: 0; padding: 0; }
 .cta-brush__img {
   position: static !important;
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  max-height: 80vh;
   height: auto !important;
-  object-fit: unset !important;
-  object-position: unset !important;
+  margin-inline: auto;
+  object-fit: contain !important;
+  object-position: center !important;
 }
 
 /* overlay scuro sopra l'immagine per leggibilità */
