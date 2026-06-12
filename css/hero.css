@@ -763,3 +763,27 @@ main { margin: 0; padding: 0; }
 .gatto-footer {
   background: linear-gradient(180deg, #fff 0%, #fdf0f5 100%);
 }
+
+/* ══ GATTO: sbuca da dietro la sezione contatti ═════════ */
+.gatto-footer {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 !important;
+  margin-bottom: clamp(-110px, -9vw, -180px);
+  background: transparent !important;
+  border-top: none !important;
+  pointer-events: none;
+}
+.gatto-footer img {
+  width: clamp(200px, 28vw, 380px);
+  height: auto;
+  display: block;
+}
+
+/* la sezione contatti copre la parte bassa del gatto */
+.contact-home {
+  position: relative;
+  z-index: 1;
+}
