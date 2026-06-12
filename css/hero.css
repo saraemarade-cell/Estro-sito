@@ -133,21 +133,23 @@ main { margin: 0; padding: 0; }
 }
 
 .svc-item {
-  background: rgba(0,0,0,0.45) !important;
+  background: rgba(0,0,0,0.78) !important;
   padding: clamp(1.25rem, 1.8vw, 2rem) clamp(1rem, 1.5vw, 1.75rem) clamp(1.5rem, 2vw, 2.5rem) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  border-radius: 10px;
+  margin: 4px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background 220ms ease, transform 220ms ease !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  transition: background 220ms ease, transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease !important;
 }
-.svc-item:nth-child(5n) { border-right: 1px solid rgba(255,255,255,0.25) !important; }
+.svc-item:nth-child(5n) { border-right: 1px solid rgba(255,255,255,0.22) !important; }
 .svc-item:hover {
   background: #000 !important;
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255,255,255,0.6) !important;
+  box-shadow: 0 24px 56px rgba(0,0,0,0.5);
 }
 
 .svc-item::before { display: none !important; }
@@ -162,15 +164,16 @@ main { margin: 0; padding: 0; }
   -webkit-text-stroke: none !important;
   margin-bottom: clamp(0.5rem, 0.8vw, 1rem) !important;
   display: block;
-  color: rgba(255,255,255,0.55) !important;
+  color: #DB005A !important;
+  text-shadow: 0 0 24px rgba(219,0,90,0.35);
   transition: color 200ms !important;
 }
-.svc-item:hover .svc-item__num { color: rgba(255,255,255,0.85) !important; }
+.svc-item:hover .svc-item__num { color: #fff !important; }
 
 /* nome servizio: nero, alta leggibilità */
 .svc-item__name {
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(0.85rem, 1.05vw, 1.15rem) !important;
+  font-size: clamp(1rem, 1.3vw, 1.4rem) !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em !important;
   line-height: 1.2 !important;
