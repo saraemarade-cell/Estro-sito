@@ -810,8 +810,8 @@ main { margin: 0; padding: 0; }
   background-blend-mode: normal, normal, overlay, normal !important;
 }
 
-/* il gatto resta trasparente per sbucare dietro i contatti */
-.gatto-footer { background: transparent !important; }
+/* dietro il gatto continua lo stesso sfondo chiaro delle tips
+   (il gatto continua a sbucare dietro i contatti via z-index) */
 
 /* ── SEZIONI FUCSIA: stesso identico background ── */
 .svc-grid,
