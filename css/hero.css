@@ -836,7 +836,7 @@ main { margin: 0; padding: 0; }
 /* ══ GATTO: trasparente, sovrapposto allo sfondo tips, tutto visibile ══ */
 .gatto-footer {
   background: none !important;
-  margin-top: clamp(-180px, -12vw, -80px);
+  margin-top: clamp(1.5rem, 3vw, 3rem);
   margin-bottom: 0 !important;
   position: relative;
   z-index: 2;
