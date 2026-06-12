@@ -322,7 +322,7 @@ main { margin: 0; padding: 0; }
 .clients__heading {
   text-align: center !important;
   font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
-  font-size: clamp(2.75rem, 12.5vw, 176px) !important;
+  font-size: 59px !important;
   font-weight: 800 !important;
   letter-spacing: -0.01em !important;
   color: #DB005A !important;
