@@ -675,3 +675,91 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
   border-color: #fff !important;
 }
+
+/* ═══════════════════════════════════════════════════════
+   PROFONDITÀ SFONDI — da About in giù
+═══════════════════════════════════════════════════════ */
+
+/* ── ABOUT: grain + alone fucsia morbido + griglia di punti ── */
+.about-section {
+  background:
+    radial-gradient(ellipse 50% 40% at 85% 20%, rgba(219,0,90,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 10% 85%, rgba(219,0,90,0.06) 0%, transparent 70%),
+    radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1.5px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, #fff 0%, #fdf0f5 40%, #fff5f9 70%, #fff 100%) !important;
+  background-size: auto, auto, 26px 26px, auto, auto !important;
+  background-blend-mode: normal, normal, normal, overlay, normal !important;
+}
+
+/* ── CLIENTI (nero): bagliori fucsia profondi + grain ── */
+.clients-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 0%, rgba(219,0,90,0.22) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(99,0,255,0.12) 0%, transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"),
+    #050505 !important;
+}
+
+/* ── CASE STUDIES: griglia di punti + tinte radiali + watermark ── */
+.cs2 {
+  position: relative;
+  background:
+    radial-gradient(ellipse 45% 40% at 92% 8%, rgba(219,0,90,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 5% 95%, rgba(219,0,90,0.05) 0%, transparent 70%),
+    radial-gradient(rgba(0,0,0,0.055) 1px, transparent 1.5px),
+    #fff !important;
+  background-size: auto, auto, 24px 24px, auto !important;
+}
+/* stellina gigante outline in sottofondo */
+.cs2::before {
+  content: '✦';
+  position: absolute;
+  top: 4%;
+  left: -3%;
+  font-size: clamp(12rem, 26vw, 26rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(219,0,90,0.10);
+  pointer-events: none;
+  z-index: 0;
+}
+.cs2 > * { position: relative; z-index: 1; }
+
+/* ── CTA CAFFÈ: sfumatura calda + grain dietro la zampa ── */
+.cta-coffee {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(219,0,90,0.10) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #fff 0%, #fdf2f7 50%, #fff 100%) !important;
+}
+
+/* ── TIPS & TRICKS: gradiente rosato + blob sfocati + grain ── */
+.tips-section {
+  position: relative;
+  background:
+    radial-gradient(ellipse 50% 45% at 90% 15%, rgba(219,0,90,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 40% at 8% 80%, rgba(99,0,255,0.06) 0%, transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #fff 0%, #fbeef4 100%) !important;
+}
+/* le card guadagnano profondità sul fondo */
+.tip-card {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06) !important;
+}
+.tip-card:hover {
+  box-shadow: 0 28px 56px rgba(219,0,90,0.16) !important;
+}
+
+/* ── CONTATTI: fucsia profondo con vignettatura e glow ── */
+.contact-home {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 120% 80% at 50% 110%, rgba(0,0,0,0.35) 0%, transparent 60%),
+    linear-gradient(165deg, #DB005A 0%, #b00048 60%, #8a0040 100%) !important;
+}
+
+/* ── GATTO PRE-FOOTER: fascia con sfumatura di chiusura ── */
+.gatto-footer {
+  background: linear-gradient(180deg, #fff 0%, #fdf0f5 100%);
+}
