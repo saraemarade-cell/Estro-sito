@@ -262,12 +262,13 @@ main { margin: 0; padding: 0; }
 /* gatto: subito sotto la parola ABOUT */
 .about-section__cat {
   display: block;
-  margin-top: clamp(11rem, 23vw, 24rem);
-  width: clamp(220px, 26vw, 420px);
+  margin-top: clamp(14rem, 28vw, 28rem);
+  width: clamp(160px, 19vw, 300px);
   height: auto;
   position: relative;
   z-index: 1;
   pointer-events: none;
+  transform: scaleX(-1);
 }
 
 /* foto: sotto la parola ABOUT, sfondo bianco rimosso */
