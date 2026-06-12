@@ -1477,7 +1477,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .svc-hero__title {
   font-family: var(--font-primary);
-  font-size: clamp(3rem, 6.5vw, 7rem);
+  font-size: 92px;
   font-weight: 900;
   line-height: 0.95;
   text-transform: uppercase;
@@ -1544,6 +1544,10 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   font-size: var(--text-sm);
   letter-spacing: 0.06em;
   margin-top: var(--space-1);
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .svc-hero__right {
