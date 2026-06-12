@@ -660,3 +660,11 @@ main { margin: 0; padding: 0; }
   padding-left: 1rem;
   border-left: 4px solid #DB005A;
 }
+
+/* CTA hero: hover bianco con testo nero */
+.vhero__cta::before { background: #fff !important; }
+.vhero__cta:hover {
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+}
