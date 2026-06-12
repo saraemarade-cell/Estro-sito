@@ -1654,6 +1654,20 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 }
 
 /* ═══════════════════════════════════════════════════════
+   SVC-DIVIDER — full-width zampa image between sections
+═══════════════════════════════════════════════════════ */
+.svc-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.svc-divider__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════
    SVC-CLIENTS — logo grid section
 ═══════════════════════════════════════════════════════ */
 .svc-clients {
