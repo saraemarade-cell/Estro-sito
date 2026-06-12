@@ -849,3 +849,55 @@ main { margin: 0; padding: 0; }
 }
 /* niente più sovrapposizione dei contatti sul gatto */
 .contact-home { z-index: 0 !important; }
+
+/* ══ PAGINA CONTATTI: blocco social sotto il form ═══════ */
+.contact-social {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  text-align: center;
+}
+.contact-social__label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.25rem;
+}
+.contact-social__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  flex-wrap: wrap;
+}
+.contact-social__link {
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: color 200ms ease, transform 250ms cubic-bezier(0.16,1,0.3,1);
+}
+.contact-social__link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms cubic-bezier(0.16,1,0.3,1);
+}
+.contact-social__link:hover {
+  color: #000;
+  transform: translateY(-2px);
+}
+.contact-social__link:hover::after {
+  transform: scaleX(1);
+  background: #000;
+}
