@@ -442,3 +442,55 @@ main { margin: 0; padding: 0; }
   }
   .vhero__title { font-size: clamp(2rem, 10vw, 3rem); }
 }
+
+/* ══ CTA BRUSH: immagine intera + titolo leggibile ══════ */
+.cta-brush {
+  background: #000;
+  overflow: hidden;
+}
+
+.cta-brush__wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: auto !important;
+}
+
+.cta-brush__img {
+  position: static !important;
+  display: block;
+  width: 100%;
+  height: auto !important;
+  object-fit: unset !important;
+  object-position: unset !important;
+}
+
+/* overlay scuro sopra l'immagine per leggibilità */
+.cta-brush__wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cta-brush__content {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  text-align: center;
+}
+
+.cta-brush__title {
+  font-size: clamp(var(--text-2xl), 5vw, var(--text-5xl)) !important;
+  color: #fff !important;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.6) !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+}
