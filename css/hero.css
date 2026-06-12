@@ -617,3 +617,8 @@ main { margin: 0; padding: 0; }
   color: #000 !important;
   transform: translateY(-2px);
 }
+
+/* sezione contatti più compatta */
+.contact-home {
+  padding-block: clamp(3rem, 5vw, 4.5rem) !important;
+}
