@@ -1449,16 +1449,20 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
    SVC-HERO — split hero for service pages (form + image)
 ═══════════════════════════════════════════════════════ */
 .svc-hero {
-  padding-top: calc(82px + clamp(3rem, 6vw, 5rem));
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  padding-top: 82px;
   background: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .svc-hero__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .svc-hero__kicker {
@@ -1473,12 +1477,12 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .svc-hero__title {
   font-family: var(--font-primary);
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
   font-weight: 900;
   line-height: 1.0;
   text-transform: uppercase;
   color: var(--black);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 .svc-hero__title em {
   font-style: normal;
@@ -1487,28 +1491,28 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .svc-hero__desc {
   font-family: var(--font-secondary);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   color: var(--black-60);
-  line-height: 1.65;
-  margin-bottom: var(--space-5);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
 }
 
 .svc-hero__tagline {
   font-family: var(--font-secondary);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   color: var(--black);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 .svc-hero__form {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .svc-hero__field {
   width: 100%;
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-3) var(--space-4);
   border: 1px solid rgba(0,0,0,0.15);
   border-radius: 8px;
   font-family: var(--font-secondary);
@@ -1536,10 +1540,10 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .svc-hero__submit {
   width: 100%;
-  padding: var(--space-4);
-  font-size: var(--text-base);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
   letter-spacing: 0.06em;
-  margin-top: var(--space-2);
+  margin-top: var(--space-1);
 }
 
 .svc-hero__right {
