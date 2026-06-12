@@ -19,16 +19,7 @@ main { margin: 0; padding: 0; }
   background: #000;
   position: relative;
 }
-.vhero::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 30%;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(58,0,32,0.55) 55%, #3a0020 100%);
-  pointer-events: none;
-  z-index: 3;
-}
+.vhero::after { display: none; }
 
 /* ── Colonna sinistra ────────────────────────────────── */
 .vhero__left {
@@ -44,8 +35,12 @@ main { margin: 0; padding: 0; }
   justify-content: center;
   gap: 1.25rem;
   padding: 2.5rem;
-  background: linear-gradient(180deg, #000 0%, #000 55%, #1d0011 85%, #3a0020 100%);
-  border-right: 1px solid rgba(255,255,255,0.07);
+  /* stesso gradiente della sezione servizi sotto, con velatura
+     scura dietro il testo per leggibilità */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.6) 55%, rgba(0,0,0,0.25) 85%, rgba(0,0,0,0) 100%),
+    linear-gradient(150deg, #3a0020 0%, #DB005A 75%, #DB005A 100%);
+  border-right: none;
 }
 
 /* ── Colonna destra: contenitore relativo ────────────── */
