@@ -617,3 +617,46 @@ main { margin: 0; padding: 0; }
 .contact-home {
   padding-block: clamp(3rem, 5vw, 4.5rem) !important;
 }
+
+/* ══ ABOUT: esposizione migliorata ══════════════════════ */
+.about-section__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-section__kicker {
+  order: 0;
+  margin: 0 !important;
+}
+
+.about-section__heading em {
+  font-style: normal;
+  color: #DB005A;
+}
+
+.about-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 62ch;
+}
+.about-section__body p {
+  font-size: 0.95rem !important;
+  line-height: 1.85 !important;
+  color: rgba(0,0,0,0.6) !important;
+}
+.about-section__body strong { color: #000 !important; }
+
+/* frase in evidenza */
+.about-section__pull {
+  font-family: 'VanguardCF', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  color: #DB005A !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em;
+  padding-left: 1rem;
+  border-left: 4px solid #DB005A;
+}
