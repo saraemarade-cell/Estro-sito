@@ -1460,7 +1460,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: center;
+  align-items: stretch;
   padding-top: clamp(1.5rem, 3vw, 2.5rem);
   padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
@@ -1552,13 +1552,14 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 }
 
 .svc-hero__right {
-  position: sticky;
-  top: calc(82px + 2rem);
+  display: flex;
+  flex-direction: column;
 }
 
 .svc-hero__img-wrap {
   width: 100%;
-  aspect-ratio: 3/4;
+  height: 100%;
+  min-height: 300px;
   border-radius: 20px;
   background: #f4f4f4;
   overflow: hidden;
