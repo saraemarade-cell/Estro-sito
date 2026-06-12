@@ -1673,7 +1673,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  margin-bottom: -4rem;
+  margin-bottom: -8rem;
 }
 .svc-divider__img {
   width: 100%;
