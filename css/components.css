@@ -1477,7 +1477,7 @@ a.contact-info-block:hover .contact-info-block__value { color: var(--primary); }
 
 .svc-hero__title {
   font-family: var(--font-primary);
-  font-size: 92px;
+  font-size: clamp(2.5rem, 5.5vw, 68px);
   font-weight: 900;
   line-height: 0.95;
   text-transform: uppercase;
