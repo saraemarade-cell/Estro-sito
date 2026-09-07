@@ -762,8 +762,13 @@
       background: linear-gradient(to bottom, transparent, #0a0a0a);
     }
     /* il contenuto sta sopra al video */
-    .svc-clients > .container,
-    .svc-clients > .svc-clients__marquee-wrap {
+    /* Il contenuto sta sopra al video. Il selettore chiedeva il
+       figlio diretto della sezione, ma da quando il pannello
+       agganciato si e' messo in mezzo il titolo non lo era piu': il
+       video, assoluto e a z-index 0, gli passava davanti. */
+    .svc-clients .container,
+    .svc-clients .svc-clients__header,
+    .svc-clients .svc-clients__marquee-wrap {
       position: relative;
       z-index: 1;
     }
@@ -990,7 +995,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1059,7 +1064,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="svc-hero svc-hero--videobg" id="ai-hero" aria-labelledby="page-title">
+    <section class="svc-hero svc-hero--videobg" id="ai-hero" aria-labelledby="page-title" data-nav-theme="dark">
       <video class="svc-hero__bgvideo" autoplay muted loop playsinline aria-hidden="true">
         <source src="../foto servizi/estro_ai1_4,7MB.mp4" type="video/mp4" />
       </video>
@@ -1173,7 +1178,7 @@
                 <span class="svc-tabs__media-label">Il contesto</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Oggi la comunicazione richiede volumi sempre maggiori di contenuti, su canali differenti, con tempi sempre più compressi e aspettative qualitative elevate. L'intelligenza artificiale consente di ripensare radicalmente i flussi creativi e produttivi, rendendoli più rapidi, flessibili, scalabili e controllabili.</p>
+                <p class="svc-tabs__text">Oggi la comunicazione richiede volumi sempre maggiori di contenuti, su canali differenti, con tempi sempre più compressi e aspettative qualitative elevate. L'<strong>intelligenza artificiale</strong> consente di ripensare radicalmente i <strong>flussi creativi e produttivi</strong>, rendendoli più rapidi, flessibili, <strong>scalabili e controllabili</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Più rapidi</li>
                   <li>Più flessibili</li>
@@ -1188,7 +1193,7 @@
                 <span class="svc-tabs__media-label">E-commerce visual</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Partendo da semplici still life o fotografie, realizziamo contenuti in alta definizione su modelli virtuali, ambientazioni lifestyle, pronti per e-commerce, ADV e social.</p>
+                <p class="svc-tabs__text">Partendo da semplici still life o fotografie, realizziamo <strong>contenuti in alta definizione</strong> su <strong>modelli virtuali</strong>, ambientazioni lifestyle, pronti per <strong>e-commerce, ADV e social</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Tempi e costi di produzione ridotti</li>
                   <li>Coerenza visiva su tutta la gamma</li>
@@ -1203,7 +1208,7 @@
                 <span class="svc-tabs__media-label">Prototipazione</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">L'intelligenza artificiale consente di accelerare i processi di concept e prototipazione. Partendo da un unico prototipo base, sviluppiamo render avanzati che consentono ai brand di validare le scelte creative prima della produzione fisica.</p>
+                <p class="svc-tabs__text">L'intelligenza artificiale consente di accelerare i processi di <strong>concept e prototipazione</strong>. Partendo da un unico prototipo base, sviluppiamo <strong>render avanzati</strong> che consentono ai brand di <strong>validare le scelte creative</strong> prima della produzione fisica.</p>
                 <ul class="svc-tabs__points">
                   <li>Varianti colore</li>
                   <li>Materiali e finiture</li>
@@ -1217,7 +1222,7 @@
                 <span class="svc-tabs__media-label">Campagne AI</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Progettiamo campagne foto e video generate con AI per advertising, comunicazione digital, lancio prodotto e contenuti editoriali. Utilizziamo l'AI strategicamente per pre-visualizzare concept, costruire storyboard visivi e produrre contenuti finali ad alto impatto.</p>
+                <p class="svc-tabs__text">Progettiamo <strong>campagne foto e video generate con AI</strong> per advertising, comunicazione digital, lancio prodotto e contenuti editoriali. Utilizziamo l'AI strategicamente per <strong>pre-visualizzare concept</strong>, costruire <strong>storyboard visivi</strong> e produrre contenuti finali ad alto impatto.</p>
                 <ul class="svc-tabs__points">
                   <li>Advertising</li>
                   <li>Comunicazione digital</li>
@@ -1242,10 +1247,10 @@
           <h2 class="svc-ai-approccio__title">Un approccio trasparente</h2>
           <p class="svc-content-block__text">L'AI offre grandi opportunità, ma presenta ancora limiti tecnici, soprattutto nella produzione video ad altissimo realismo.</p>
           <p class="svc-content-block__text" style="margin-top:var(--space-4);">Quando il progetto richiede massimo realismo, integriamo l'AI con produzione tradizionale, attivando shooting fotografici, riprese video e crew specializzate.</p>
-          <a class="btn btn--primary" href="../contatti.html" style="margin-top:var(--space-8);display:inline-block;">Parliamo del tuo progetto</a>
+          <a class="btn btn--primary" href="../contatti.html" style="margin-top:var(--space-8);">Parliamo del tuo progetto</a>
         </div>
         <div class="svc-ai-approccio__right reveal reveal-delay-1">
-          <p class="svc-content-block__text" style="margin-bottom:var(--space-5);">Durante la fase di briefing definiamo con precisione:</p>
+          <p class="svc-content-block__text svc-ai-approccio__lead">Durante la fase di briefing definiamo con precisione:</p>
           <ol class="svc-ai-steps">
             <li class="svc-ai-step">
               <span class="svc-ai-step__num">1</span>
@@ -1360,7 +1365,7 @@
     </section>
 
     <!-- ══ CLIENTI ════════════════════════════════════════════════ -->
-    <section class="section svc-clients" id="ai-clienti">
+    <section class="section svc-clients" id="ai-clienti" data-nav-theme="dark">
       <!-- Pannello agganciato, come in homepage. -->
       <div class="svc-clients__sticky">
         <div class="container">
@@ -1542,7 +1547,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che cos'e il servizio AI di ESTRO?</button>
@@ -1691,7 +1696,9 @@
 
     var caffeExitOv = { style: { opacity: 0 } };
 
-    var clientiLetters = splitLetters(document.getElementById('ai-clienti-title'));
+    /* niente reveal lettera per lettera sul titolo clienti: su
+       quel titolo l'unico effetto e' l'acqua (waterLetters) */
+    var clientiLetters = [];
     var magicLetters   = splitLetters(magicEl  && magicEl.querySelector('.svc-magic__title'));
     var caffeLetters   = splitLetters(caffeEl  && caffeEl.querySelector('.svc-caffe__title'));
 
@@ -1766,8 +1773,10 @@
     var stackToApprOv = makeTransOv(stackEl, '#fff');
     var wfToCliOv     = makeTransOv(wfEl,    '#0a0a0a');
 
-    var apprLetters = splitLetters(apprEl && apprEl.querySelector('.svc-ai-approccio__title'));
-    var wfLetters   = splitLetters(wfEl   && wfEl.querySelector('.svc-ai-workflow__title'));
+    /* Anche questi due titoli hanno solo l'effetto acqua: erano
+       lettera per lettera, ora li muove waterLetters. */
+    var apprLetters = [];
+    var wfLetters   = [];
 
     var apprKicker = apprEl && apprEl.querySelector('.svc-ai-pill-kicker');
     var apprP1     = apprEl && apprEl.querySelectorAll('.svc-content-block__text')[0];
@@ -1837,7 +1846,29 @@
         var aK  = ease(c01((aP - 0.05) / 0.70)); if (apprKicker) { apprKicker.style.opacity = aK.toFixed(3);  apprKicker.style.transform = 'translateY(' + ((1-aK)*18).toFixed(1) + 'px)'; }
         var aT1 = ease(c01((aP - 0.15) / 0.70)); if (apprP1) { apprP1.style.opacity = aT1.toFixed(3); apprP1.style.transform = 'translateY(' + ((1-aT1)*16).toFixed(1) + 'px)'; }
         var aT2 = ease(c01((aP - 0.22) / 0.65)); if (apprP2) { apprP2.style.opacity = aT2.toFixed(3); apprP2.style.transform = 'translateY(' + ((1-aT2)*16).toFixed(1) + 'px)'; }
-        var aBt = ease(c01((aP - 0.30) / 0.60)); if (apprBtn)   { apprBtn.style.opacity   = aBt.toFixed(3);  apprBtn.style.transform   = 'translateY(' + ((1-aBt)*14).toFixed(1) + 'px)'; }
+        /* Il pulsante viene liberato del tutto a rivelazione
+           finita. Due cose inline lo tenevano fermo in hover:
+           il transform, riscritto a ogni frame, che vinceva sulla
+           regola di hover, e soprattutto transition: none, messo
+           da initHide per non animare l'entrata e mai piu' tolto.
+           Con transition: none l'hover cambiava valori di colpo,
+           senza easing: il salto di 2px era impercettibile e i
+           colori scattavano, quindi sembrava che l'effetto non ci
+           fosse. Tolte le proprieta' inline, il pulsante torna a
+           usare la transizione dichiarata su .btn, la stessa di
+           tutti gli altri. */
+        var aBt = ease(c01((aP - 0.30) / 0.60));
+        if (apprBtn) {
+          apprBtn.style.opacity = aBt.toFixed(3);
+          if (aBt > 0.999) {
+            apprBtn.style.removeProperty("transform");
+            apprBtn.style.removeProperty("transition");
+            apprBtn.style.removeProperty("will-change");
+          } else {
+            apprBtn.style.transition = "none";
+            apprBtn.style.transform = "translateY(" + ((1-aBt)*14).toFixed(1) + "px)";
+          }
+        }
         var aRt = ease(c01((aP - 0.12) / 0.72)); if (apprRight) { apprRight.style.opacity  = aRt.toFixed(3); apprRight.style.transform  = 'translateY(' + ((1-aRt)*18).toFixed(1) + 'px)'; }
       }
 
@@ -1899,7 +1930,7 @@
         }
 
         var isDark = luma(base) < 140;
-        if (isDark !== prevDark) { prevDark = isDark; navEl.classList.toggle('nav--on-dark', isDark); }
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
     }
     requestAnimationFrame(tick);
@@ -2026,7 +2057,7 @@
   </script>
 
   <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -2096,8 +2127,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -2221,7 +2251,8 @@
     document.querySelectorAll(
       '.smm-panel__big-title, .svc-clients__title, .svc-caffe__title, ' +
       '.page-faq__title, .svc-section-title, .svc-tools__title, ' +
-      '.svc-process__title, .svc-channels__title, .sf-ghost')
+      '.svc-process__title, .svc-channels__title, .sf-ghost, ' +
+      '.svc-ai-approccio__title, .svc-ai-workflow__title')
       .forEach(el => {
         const io = new IntersectionObserver(es => {
           es.forEach(e => { if (e.isIntersecting) { waterLetters(el, 900); io.disconnect(); } });
@@ -2239,6 +2270,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {

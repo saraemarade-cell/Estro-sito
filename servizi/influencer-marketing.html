@@ -964,7 +964,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1110,42 +1110,26 @@
       </div>
     </section>
 
-    <!-- ══ INSTAGRAM: il mercato, il video e il dato ══ -->
+    <!-- ══ INSTAGRAM ══════════════════════════════════════════════
+         Due meta': a sinistra il ritratto, a destra il discorso —
+         occhiello, titolo, il dato che apre (e' la prova di quello
+         che il testo dice) e i tre paragrafi.
+         La sezione prende altezza e blocco dallo stesso meccanismo
+         delle altre: corsa di 118dvh con dentro un pannello alto
+         una schermata. Il contenuto e' misurato per starci. -->
     <section class="imk-intro" id="imkIntro">
-      <!-- Una griglia sola per tutta la sezione: a sinistra il testo
-           con la foto, a destra il video con il dato. Serviva un
-           contenitore comune perche' le due meta' stessero sulla
-           stessa riga e la sezione entrasse in una schermata. -->
       <div class="container imk-intro__grid">
-      <div class="imk-intro__inner">
-        <div class="imk-intro__text reveal">
+
+        <div class="imk-intro__media">
+          <div class="imk-intro__photo reveal">
+            <img src="../Foto%20influencer%20marketing/Rita-Ora-newpost11.webp" alt="Influencer marketing" />
+          </div>
+        </div>
+
+        <div class="imk-intro__text reveal reveal-delay-1">
           <p class="imk-intro__kicker">Influencer Marketing</p>
           <h2 class="imk-intro__title" id="imkIntroTitle">Instagram</h2>
-          <p>Da qualche anno si sta facendo strada il mercato dell'<strong>influencer marketing</strong>, ormai parte integrante di qualsiasi strategia di digital marketing, con un budget di spesa media del 10% sulle campagne.</p>
-          <p>Quello degli influencers è un <strong>mercato in espansione</strong>, che sta crescendo rapidamente.</p>
-          <p>Nell'industria dell'influencer marketing gli influencer possono essere categorizzati in base al numero di followers, il <strong>tasso di coinvolgimento</strong> risulta migliore per quelli minori rispetto a quelli definiti "macro influencers".</p>
-          <img class="imk-intro__tail" src="../foto%20home/coda-gatto-oshxjrx6o18ghy7peuh9v296dlx7kj6p8c1c09eiv4-1.webp" alt="" aria-hidden="true" />
-        </div>
-        <div class="imk-intro__photo reveal reveal-delay-1">
-          <img src="../Foto%20influencer%20marketing/Rita-Ora-newpost11.webp" alt="Influencer marketing" />
-        </div>
-      </div>
-      <!-- Il dato e il video stavano in una sezione loro: due elementi
-           in mezzo a una schermata vuota. Sono la prova di quello che
-           il testo qui sopra racconta, quindi stanno nella stessa
-           sezione. -->
-      <div class="svc-stat-video" id="imkStat">
-        <div class="svc-stat-video__inner">
-          <div class="svc-stat-video__video reveal">
-            <iframe
-              src="https://www.youtube.com/embed/sOF8RorxYgw"
-              title="ESTRO Agency — Influencer Marketing"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="svc-stat-video__stat reveal reveal-delay-1">
+          <div class="svc-stat-video__stat imk-intro__stat">
             <span class="svc-stat-video__num" id="imkStatNum">87<span class="svc-stat-video__pct">%</span></span>
             <p class="svc-stat-video__desc svc-stat-video__desc--nowrap">
               <span>degli utenti di Instagram sostiene</span>
@@ -1155,8 +1139,11 @@
             </p>
             <div class="svc-stat-video__line" aria-hidden="true"></div>
           </div>
+          <p>Da qualche anno si sta facendo strada il mercato dell'<strong>influencer marketing</strong>, ormai parte integrante di qualsiasi strategia di digital marketing, con un budget di spesa media del 10% sulle campagne.</p>
+          <p>Quello degli influencers è un <strong>mercato in espansione</strong>, che sta crescendo rapidamente.</p>
+          <p>Nell'industria dell'influencer marketing gli influencer possono essere categorizzati in base al numero di followers, il <strong>tasso di coinvolgimento</strong> risulta migliore per quelli minori rispetto a quelli definiti "macro influencers".</p>
         </div>
-      </div>
+
       </div>
     </section>
 
@@ -1361,48 +1348,17 @@
         </div>
         <div class="svc-talent-pronti__content">
           <h2 class="svc-talent-pronti__title" id="imkTalentTitle">I talent pronti a comunicare<br/>il tuo business</h2>
-          <!-- Tre schede al posto di tre blocchi impilati. Tre
-               paragrafi lunghi uno sotto l'altro, con la foto a
-               fianco e la fascia in coda, non entravano in una
-               schermata per quanto si stringessero i respiri: e'
-               la quantita' di testo a occhio a essere troppa, non
-               la spaziatura. Aprendone uno alla volta l'altezza
-               della sezione la decide il paragrafo piu' lungo,
-               non la somma dei tre. Stessa meccanica dei servizi
-               qui sopra. Nessuna parola tolta: le etichette sono
-               i titoli delle schede, i paragrafi il contenuto. -->
-          <div class="svc-tabs talent-tabs">
-            <div class="svc-tabs__strip" role="tablist" aria-label="I talent">
-              <button class="svc-tabs__tab is-active" type="button" role="tab" id="imk-tal-tab-1" aria-controls="imk-tal-pan-1" aria-selected="true" tabindex="0">
-                <span class="svc-tabs__num" aria-hidden="true">01</span>
-                <span class="svc-tabs__title">– Influencer Verificati</span>
-              </button>
-              <button class="svc-tabs__tab" type="button" role="tab" id="imk-tal-tab-2" aria-controls="imk-tal-pan-2" aria-selected="false" tabindex="-1">
-                <span class="svc-tabs__num" aria-hidden="true">02</span>
-                <span class="svc-tabs__title">– Influencer Competenti</span>
-              </button>
-              <button class="svc-tabs__tab" type="button" role="tab" id="imk-tal-tab-3" aria-controls="imk-tal-pan-3" aria-selected="false" tabindex="-1">
-                <span class="svc-tabs__num" aria-hidden="true">03</span>
-                <span class="svc-tabs__title">– Influencer Professionali</span>
-              </button>
-            </div>
-            <div class="svc-tabs__panels">
-              <div class="svc-tabs__panel is-active" role="tabpanel" id="imk-tal-pan-1" aria-labelledby="imk-tal-tab-1">
-                <div class="svc-tabs__copy">
-                  <p class="svc-tabs__text">Ci occupiamo di <strong>selezionare e verificare tutti i talent</strong> per ogni tipo di attivazione. Prima di proporti un ambassador deve passare una nostra accurata selezione e rispettare i nostri parametri qualitativi.</p>
-                </div>
-              </div>
-              <div class="svc-tabs__panel" role="tabpanel" id="imk-tal-pan-2" aria-labelledby="imk-tal-tab-2" hidden>
-                <div class="svc-tabs__copy">
-                  <p class="svc-tabs__text">Le competenze sono essenziali per realizzare contenuti di qualità. Selezioniamo i nostri talent in base alle loro <strong>competenze per settore merceologico</strong>, in modo da garantirti la massima qualità possibile.</p>
-                </div>
-              </div>
-              <div class="svc-tabs__panel" role="tabpanel" id="imk-tal-pan-3" aria-labelledby="imk-tal-tab-3" hidden>
-                <div class="svc-tabs__copy">
-                  <p class="svc-tabs__text">I nostri influencer sono in grado di realizzare campagne all'avanguardia capaci di <strong>aumentare la tua brand reputation</strong>. Tutti i nostri influencer sono autentici e sviluppano relazioni autentiche con la community di riferimento.</p>
-                </div>
-              </div>
-            </div>
+          <div class="svc-talent-pronti__item reveal reveal-delay-1">
+            <h4 class="svc-talent-pronti__label">Influencer Verificati</h4>
+            <p>Ci occupiamo di <strong>selezionare e verificare tutti i talent</strong> per ogni tipo di attivazione. Prima di proporti un ambassador deve passare una nostra accurata selezione e rispettare i nostri parametri qualitativi.</p>
+          </div>
+          <div class="svc-talent-pronti__item reveal reveal-delay-2">
+            <h4 class="svc-talent-pronti__label">Influencer Competenti</h4>
+            <p>Le competenze sono essenziali per realizzare contenuti di qualità. Selezioniamo i nostri talent in base alle loro <strong>competenze per settore merceologico</strong>, in modo da garantirti la massima qualità possibile.</p>
+          </div>
+          <div class="svc-talent-pronti__item reveal reveal-delay-3">
+            <h4 class="svc-talent-pronti__label">Influencer Professionali</h4>
+            <p>I nostri influencer sono in grado di realizzare campagne all'avanguardia capaci di <strong>aumentare la tua brand reputation</strong>. Tutti i nostri influencer sono autentici e sviluppano relazioni autentiche con la community di riferimento.</p>
           </div>
         </div>
       </div>
@@ -1541,7 +1497,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Cos'e l'influencer marketing?</button>
@@ -1681,7 +1637,7 @@
   </script>
   <script src="../js/main.js"></script>
       <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -1751,8 +1707,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -1897,6 +1852,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {

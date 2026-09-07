@@ -42,13 +42,60 @@
   });
 })();
 
+// ─── Nav: stato iniziale prima del primo paint ───────
+/* Il flash al caricamento (MENU e simbolo fucsia per un istante,
+   poi bianchi) nasceva dal fatto che nav--on-dark veniva applicato
+   solo al DOMContentLoaded: la nav aveva gia' dipinto un frame nel
+   suo colore di default e la transition di 0.35s rendeva visibile
+   il passaggio. Qui lo stato corretto viene calcolato subito —
+   main.js sta dopo la hero, quindi la sezione sotto la nav esiste
+   gia' — e le transizioni restano congelate per due frame. */
+(function () {
+  var navEl = document.querySelector('.nav');
+  if (!navEl) return;
+  navEl.classList.add('nav--boot');
+
+  function bootTheme() {
+    var navH = navEl.getBoundingClientRect().height || 80;
+    var dark = false;
+    document.querySelectorAll('[data-nav-theme="dark"]').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < navH && r.bottom > 0) dark = true;
+    });
+    navEl.classList.toggle('nav--on-dark', dark);
+  }
+  bootTheme();
+
+  requestAnimationFrame(function () {
+    /* seconda passata: se la hero ha appena preso la sua altezza
+       definitiva la misura del primo frame poteva essere parziale */
+    bootTheme();
+    requestAnimationFrame(function () { navEl.classList.remove('nav--boot'); });
+  });
+})();
 // ─── Nav auto-contrast (dark sections) ───────────────
+// Su fondo scuro o fucsia "MENU" e il suo simbolo diventano bianchi:
+// lo fa la classe nav--on-dark, che il foglio traduce in colore.
+//
+// Quali sezioni contano come scure: quelle che lo dichiarano nel
+// markup (data-nav-theme="dark") piu' quelle che lo diventano a
+// pagina caricata. Sulle pagine servizi il colore di fondo lo
+// assegna uno script di alternanza, che aggiunge .svc-bg-dark
+// dopo il load: se si osservassero solo le sezioni dichiarate, su
+// quelle il MENU restava fucsia sopra il nero. Per questo l'insieme
+// viene ricostruito al load, e la sezione fucsia e il footer
+// entrano per classe.
 document.addEventListener('DOMContentLoaded', function () {
   const navEl = document.querySelector('.nav');
   if (!navEl) return;
 
-  const darkSections = document.querySelectorAll('[data-nav-theme="dark"]');
-  if (!darkSections.length) return;
+  /* Sezioni scure o fucsia. La sezione fucsia dei vantaggi su
+     Social ADS resta fuori dall'alternanza degli sfondi, quindi non
+     prende .svc-bg-dark: e' marcata nel markup, come tutte le altre
+     sezioni che dichiarano il tema. .svc-process entra anche per
+     classe perche' il suo fondo e' il fucsia di brand per disegno. */
+  const DARK_SEL = '[data-nav-theme="dark"], main > section.svc-bg-dark,' +
+                   'main > section.svc-process, .svc-caffe, footer.site-footer';
 
   // Insieme delle sezioni scure attualmente sotto la nav.
   // Un Set invece di un contatore: con il contatore le callback
@@ -57,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // check sincrono e lo mandavano fuori sincrono, lasciando la nav
   // nello stato sbagliato sopra le sezioni scure.
   const darkNow = new Set();
+  let obs = null;
 
   function updateNav() {
     navEl.classList.toggle('nav--on-dark', darkNow.size > 0);
@@ -77,34 +125,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Check sincrono: applica lo stato corretto prima del primo frame
-  // (evita il flickering tra colore di default e nav--on-dark)
-  (function () {
+  function setup() {
+    const darkSections = document.querySelectorAll(DARK_SEL);
+    if (obs) obs.disconnect();
+    darkNow.clear();
+    // Check sincrono: applica lo stato corretto prima del primo
+    // frame (evita il flickering tra il colore di default e
+    // nav--on-dark)
     const navH = navEl.getBoundingClientRect().height || 80;
     darkSections.forEach(function (el) {
       const r = el.getBoundingClientRect();
       if (r.top < navH && r.bottom > 0) darkNow.add(el);
     });
     updateNav();
-  })();
-
-  let obs = makeObserver();
-  darkSections.forEach(function (el) { obs.observe(el); });
-
-  window.addEventListener('resize', function () {
-    obs.disconnect();
-    darkNow.clear();
+    if (!darkSections.length) return;
     obs = makeObserver();
     darkSections.forEach(function (el) { obs.observe(el); });
-    updateNav();
-  }, { passive: true });
+  }
+
+  setup();
+
+  // L'alternanza degli sfondi gira al load: da lì in poi ci sono
+  // sezioni scure in piu' da osservare.
+  window.addEventListener('load', function () {
+    setup();
+    setTimeout(setup, 300);
+  });
+  window.addEventListener('resize', setup, { passive: true });
 });
 
 // ─── Nav .scrolled (logo black → color) ──────────────
 (function () {
   const navEl = document.querySelector('.nav');
   if (!navEl) return;
-  const hero = document.querySelector('.hero-svc-scene, .hero-video');
+  const hero = document.querySelector('.hero-svc-scene, .hero-video, .svc-hero, .d24-hero');
   if (hero) {
     const io = new IntersectionObserver(function (entries) {
       navEl.classList.toggle('scrolled', !entries[0].isIntersecting);

@@ -935,7 +935,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1085,11 +1085,11 @@
          Sezione ripristinata: era stata rimossa in una sessione
          precedente. Le classi .reveal sono state tolte perché
          dipendono da uno script che qui non le sblocca. -->
-    <section class="section service-detail">
+    <section class="section service-detail" id="gads-detail">
       <div class="container">
         <div class="service-detail__grid">
           <div>
-            <h2 class="svc-section-title" style="font-size:79px;line-height:1.05;">GOOGLE ADS<br/>PER IL TUO BUSINESS!</h2>
+            <h2 class="svc-section-title" id="gads-detail-title" style="line-height:1.05;">GOOGLE ADS<br/>PER IL TUO BUSINESS!</h2>
             <div class="service-detail__body" style="font-size:15.2px;">
               <p>Ti capita di sentir parlare di <strong>traffico al sito, campagne Google Ads, lead generation, B2B, B2C</strong>, senza capire di cosa si sta effettivamente parlando? Non preoccuparti, sei arrivato nel posto giusto.</p>
               <p>Google Ads è uno <strong>strumento fondamentale per il tuo business</strong>, sia per vendere un prodotto o un servizio, che per ottenere contatti preziosi o aumentare la tua brand awareness. Noi siamo un team di esperti, MA quello che vogliamo fare è lavorare <strong>INSIEME a te</strong> per raggiungere i tuoi obiettivi, coinvolgendoti nei passi operativi e spiegandoti perché investire e come farlo.</p>
@@ -1210,7 +1210,7 @@
                 <span class="svc-tabs__media-label">Analisi & Strategia</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Studiamo il tuo mercato d'interesse per capire il target di riferimento e i trend di ricerca necessari per realizzare un piano pubblicitario efficace.</p>
+                <p class="svc-tabs__text">Studiamo il tuo mercato d'interesse per capire il <strong>target di riferimento</strong> e i <strong>trend di ricerca</strong> necessari per realizzare un <strong>piano pubblicitario efficace</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Analisi tramite Google Analytics e Trends</li>
                   <li>Studio dei competitors e della UX del sito</li>
@@ -1225,7 +1225,7 @@
                 <span class="svc-tabs__media-label">Piano Pubblicitario</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Sulla base dell'analisi realizzata, forniamo un piano pubblicitario volto a raggiungere l'obiettivo del tuo business. Creiamo la struttura delle campagne e definiamo il budget ottimale.</p>
+                <p class="svc-tabs__text">Sulla base dell'analisi realizzata, forniamo un piano pubblicitario volto a raggiungere l'obiettivo del tuo business. Creiamo la <strong>struttura delle campagne</strong> e definiamo il <strong>budget ottimale</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Struttura delle campagne personalizzata</li>
                   <li>Budget giornaliero consono al mercato</li>
@@ -1240,7 +1240,7 @@
                 <span class="svc-tabs__media-label">Campagne Google Ads</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Gestiamo ogni tipologia di campagna Google Ads, scegliendo il formato più adatto al tuo obiettivo: vendite, lead, brand awareness o traffico al sito.</p>
+                <p class="svc-tabs__text">Gestiamo ogni tipologia di <strong>campagna Google Ads</strong>, scegliendo il formato più adatto al tuo obiettivo: <strong>vendite, lead, brand awareness o traffico al sito</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Campagne di Ricerca e Discovery</li>
                   <li>Campagne Display e YouTube</li>
@@ -1255,7 +1255,7 @@
                 <span class="svc-tabs__media-label">Ottimizzazione</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Ogni settimana controlliamo l'andamento delle campagne per aumentare il ROI attraverso keyword, strategie di offerta e segmenti di pubblico mirati.</p>
+                <p class="svc-tabs__text">Ogni settimana controlliamo l'andamento delle campagne per <strong>aumentare il ROI</strong> attraverso <strong>keyword</strong>, <strong>strategie di offerta</strong> e segmenti di pubblico mirati.</p>
                 <ul class="svc-tabs__points">
                   <li>Monitoraggio settimanale delle campagne</li>
                   <li>A/B test su annunci e landing page</li>
@@ -1270,7 +1270,7 @@
                 <span class="svc-tabs__media-label">Report & Analytics</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">La trasparenza è fondamentale. Ti forniamo report periodici chiari e leggibili che mostrano esattamente dove vanno i tuoi investimenti e quali risultati stanno generando.</p>
+                <p class="svc-tabs__text">La trasparenza è fondamentale. Ti forniamo <strong>report periodici</strong> chiari e leggibili che mostrano esattamente dove vanno i tuoi investimenti e quali risultati stanno generando.</p>
                 <ul class="svc-tabs__points">
                   <li>Report mensili con Google Data Studio</li>
                   <li>Tracciamento conversioni con Tag Manager</li>
@@ -1399,7 +1399,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Cos'e Google Ads e come funziona?</button>
@@ -1555,28 +1555,9 @@
       requestAnimationFrame(tick);
     })();
 
-    /* ── clienti title: split-letter reveal ─────────────────────── */
-    (function () {
-      const titleEl = document.getElementById('gadsClientiTitle');
-      const section = document.getElementById('gadsClienti');
-      if (!titleEl || !section) return;
-      const letters = splitLetters(titleEl);
-      let _vh = window.innerHeight;
-      window.addEventListener('resize', () => { _vh = window.innerHeight; }, { passive: true });
-      function rafLoop() {
-        requestAnimationFrame(rafLoop);
-        _vh = window.innerHeight;
-        const sR    = section.getBoundingClientRect();
-        const ENTRY = _vh * 0.70;
-        const p     = c01((ENTRY - sR.top) / ENTRY);
-        letters.forEach((el, i) => {
-          const lP = ease(c01((p - i * 0.012) / 0.08));
-          el.style.opacity   = lP.toFixed(3);
-          el.style.transform = `translateY(${((1 - lP) * 0.8).toFixed(3)}em)`;
-        });
-      }
-      requestAnimationFrame(rafLoop);
-    })();
+    /* Il titolo dei clienti ha un solo effetto: l'acqua.
+       Il reveal lettera per lettera che stava qui si sommava
+       all'acqua sullo stesso titolo: rimosso. */
 
     /* ── Transizioni: clienti → magic → caffe ───────────────────── */
     (function () {
@@ -1851,21 +1832,21 @@
       const isDark = luma(base) < 140;
       if (isDark !== prevDark) {
         prevDark = isDark;
-        navEl.classList.toggle('nav--on-dark', isDark);
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
 
       /* 4. .scrolled: come in homepage segna l'uscita dalla scena
          della hero. Senza, restava sempre la formula del vetro
          chiaro e il MENU nero anche sulle sezioni scure. */
       const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
-      navEl.classList.toggle('scrolled', heroBottom <= navMid);
+      /* .scrolled: gestito da js/main.js sulla .svc-hero, come in homepage */
     }
     requestAnimationFrame(navTick);
   })();
   </script>
 
   <!-- ══ FOOTER ══════════════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -1935,8 +1916,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -2057,7 +2037,12 @@
     // il titolo della hero e gia in vista al caricamento
     requestAnimationFrame(() => waterLetters(document.querySelector('.svc-hero__title'), 1000));
     // gli altri titoli di sezione ondeggiano quando entrano
-    document.querySelectorAll('.smm-panel__big-title, .svc-clients__title, .svc-magic__title, .svc-caffe__title, .page-faq__title, .sf-ghost')
+    document.querySelectorAll(
+      '.smm-panel__big-title, .svc-clients__title, .svc-magic__title, ' +
+      '.svc-caffe__title, .page-faq__title, ' +
+      /* mancavano: il titolo dell'intro e quello dei tools */
+      '.svc-section-title, .svc-tools__title, ' +
+      '.sf-ghost')
       .forEach(el => {
         const io = new IntersectionObserver(es => {
           es.forEach(e => { if (e.isIntersecting) { waterLetters(el, 900); io.disconnect(); } });
@@ -2076,6 +2061,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {
@@ -2104,6 +2100,10 @@
       '.svc-tabs__text, .svc-tabs__points, .svc-tabs__tab, ' +
       '.smm-panel__statement-sub, .svc-caffe__sub, .svc-caffe__form, .page-faq__item, ' +
       '.svc-magic__pill, ' +
+      /* mancavano: i paragrafi dell'intro, le voci del pannello
+         delle campagne e i tool */
+      '.service-detail__body p, .service-detail__item, ' +
+      '.service-detail__cta-box, .svc-tools__item, ' +
       '.svc-clients__logo'
     );
     if (RM) {
@@ -2142,6 +2142,69 @@
       sec.classList.add('svc-bg-' + tone);
       light = (tone !== 'light');
     });
+  }());
+  </script>
+  <script>
+  /* ── Sezioni a piena schermata con blocco leggero ─────────────
+     Come in homepage: ogni sezione del corpo diventa una corsa poco
+     piu' alta della finestra, con dentro un pannello che resta
+     fermo per una schermata e poi lascia il posto.
+     Si decide qui e non nel CSS perche' la regola vale solo se il
+     contenuto ci sta davvero: se non ci sta, il pannello lo
+     taglierebbe, quindi la sezione resta libera. La verifica e'
+     fatta dopo il caricamento, quando immagini e font hanno gia'
+     la loro altezza definitiva. */
+  (function () {
+    /* La sezione di apertura torna fra quelle agganciate. L'avevo
+       esclusa perche' il pannello, avendo un fondo proprio e gli
+       stessi angoli della sezione, disegnava un secondo riquadro
+       appena si sganciava; ora i pannelli sono trasparenti e il
+       fondo lo dipinge solo la sezione, quindi il problema non
+       c'e' piu' e il blocco si puo' avere senza rompere la salita. */
+    /* I tool restano fuori: sono nove icone in fila con una
+       didascalia, un blocco alto poche centinaia di pixel. Dentro un
+       pannello da una schermata diventavano una fila di icone in
+       mezzo al vuoto. */
+    const SKIP = ['svc-hero', 'svc-caffe', 'svc-path', 'svc-clients', 'page-faq', 'svc-tools-section'];
+
+    function wrap(sec) {
+      const panel = document.createElement('div');
+      panel.className = 'svc-generic-sticky';
+      while (sec.firstChild) panel.appendChild(sec.firstChild);
+      sec.appendChild(panel);
+      sec.classList.add('svc-generic-runway');
+      return panel;
+    }
+    function unwrap(sec, panel) {
+      sec.classList.remove('svc-generic-runway');
+      while (panel.firstChild) sec.insertBefore(panel.firstChild, panel);
+      panel.remove();
+    }
+
+    function pass() {
+      document.querySelectorAll('main > section').forEach(sec => {
+        if (SKIP.some(c => sec.classList.contains(c))) return;
+        if (sec.querySelector(':scope > .svc-generic-sticky')) return;
+        const panel = wrap(sec);
+        /* se il contenuto sfora il pannello si torna indietro:
+           meglio una sezione libera che una tagliata */
+        if (panel.scrollHeight > panel.clientHeight + 2) unwrap(sec, panel);
+      });
+    }
+
+    if (document.readyState === 'complete') pass();
+    else addEventListener('load', pass);
+
+    let t = null;
+    addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        document.querySelectorAll('main > section > .svc-generic-sticky').forEach(p => {
+          if (p.scrollHeight > p.clientHeight + 2) unwrap(p.parentElement, p);
+        });
+        pass();
+      }, 200);
+    }, { passive: true });
   }());
   </script>
   <script>

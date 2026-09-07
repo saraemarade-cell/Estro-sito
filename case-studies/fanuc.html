@@ -526,7 +526,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: la hero e' scura. Lo stato lo ricalcola js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -593,7 +593,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════ -->
-    <section class="d24-hero">
+    <section class="d24-hero" data-nav-theme="dark">
       <div class="d24-hero__bg" aria-hidden="true"></div>
       <div class="d24-hero__photo" aria-hidden="true"></div>
       <div class="d24-hero__inner">
@@ -628,7 +628,7 @@
     </section>
 
     <!-- ══ BLOCCO 1 — testo sx, visual dx ════════════════ -->
-    <section class="d24-block d24-block--dark">
+    <section class="d24-block d24-block--dark" data-nav-theme="dark">
       <div class="d24-block__grid reveal">
         <div>
           <span class="d24-block__eyebrow">01 — La visione</span>
@@ -692,7 +692,7 @@
     </section>
 
     <!-- ══ NUMERI ══════════════════════════════════════════ -->
-    <section class="d24-numbers">
+    <section class="d24-numbers" data-nav-theme="dark">
       <span class="d24-numbers__label reveal">I numeri del Roadshow</span>
       <h2 class="d24-numbers__title reveal">I numeri del Roadshow</h2>
       <p class="d24-numbers__intro reveal">Tra maggio e luglio 2025, le campagne digitali a supporto delle quattro tappe italiane del CRX Roadshow hanno generato risultati concreti su tutti i canali.</p>
@@ -730,7 +730,7 @@
     </section>
 
     <!-- ══ QUOTE ══════════════════════════════════════════ -->
-    <section class="d24-quote">
+    <section class="d24-quote" data-nav-theme="dark">
       <span class="d24-quote__mark" aria-hidden="true">"</span>
       <p class="d24-quote__text reveal">
         L'eccellenza tecnica merita una narrazione che sappia distinguersi e generare valore: facciamo squadra.
@@ -739,7 +739,7 @@
     </section>
 
     <!-- ══ FORM CONTATTI ═════════════════════════════════ -->
-    <section class="d24-contact">
+    <section class="d24-contact" data-nav-theme="dark">
       <span class="d24-contact__label reveal">Parliamoci</span>
       <h2 class="d24-contact__title reveal">Il tuo brand ha bisogno<br/>di una visione che convinca?</h2>
       <form class="contact-home__form reveal" action="#" method="post" novalidate>
@@ -872,8 +872,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>

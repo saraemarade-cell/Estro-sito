@@ -204,7 +204,15 @@
     #smmClienti .svc-clients__logo--xl img { max-height: clamp(95px, 13.5vw, 166px) !important; }
     #smmClienti .svc-clients__logo--xxl img { max-height: clamp(140px, 20vw, 250px) !important; }
 
-    .svc-hero { position: relative; overflow: hidden; }
+    /* Il tetto di una schermata, come su Google Ads. Senza, la hero
+       cresce con il suo contenuto — qui ci sono sette icone di
+       piattaforma e un form da sette campi — e il bordo dove
+       comincia la sezione seguente finisce sotto la piega: la
+       salita si consuma fuori vista e non si vede mai partire. Con
+       il tetto il raccordo bianco arrotondato affaccia esattamente
+       al bordo basso della finestra, ed e' il comportamento che si
+       vede su Google Ads. */
+    .svc-hero { position: relative; overflow: hidden; max-height: 100dvh; }
 
     /* ── Statement section autonoma (hero → stack) ─────────── */
     .smm-statement {
@@ -1046,7 +1054,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1139,6 +1147,7 @@
             <a href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok"><img src="../Social%20ads/tiktok2.svg" alt="TikTok" width="40" height="40" /></a>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="../Social%20ads/linkedin2.svg" alt="LinkedIn" width="40" height="40" /></a>
             <a href="https://www.spotify.com" target="_blank" rel="noopener" aria-label="Spotify"><img src="../Social%20ads/Font_Awesome_5_brands_spotify.svg" alt="Spotify" width="40" height="40" /></a>
+            <a href="#" aria-label="Pornhub"><img src="../Social%20ads/phub2.svg" alt="Pornhub" width="40" height="40" /></a>
           </div>
           <p class="svc-hero__sub">Se la tua attività non è presente sui social network, allora non esiste! Costruisci insieme a noi la tua immagine social un post alla volta, comunicando quotidianamente con il tuo pubblico reale.</p>
           <p class="svc-hero__tagline"><strong>Sei nel posto giusto!</strong></p>
@@ -1253,7 +1262,7 @@
                 <span class="svc-tabs__media-label">Piano Editoriale</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Una corretta strategia viene sempre supportata da un piano editoriale, con uno storytelling in grado di coinvolgere il tuo pubblico e costruire un legame sempre più forte nel tempo.</p>
+                <p class="svc-tabs__text">Una corretta strategia viene sempre supportata da un <strong>piano editoriale</strong>, con uno <strong>storytelling</strong> in grado di coinvolgere il tuo pubblico e costruire un legame sempre più forte nel tempo.</p>
                 <ul class="svc-tabs__points">
                   <li>Piano editoriale mensile su misura</li>
                   <li>Tono di voce e identità narrativa del brand</li>
@@ -1268,7 +1277,7 @@
                 <span class="svc-tabs__media-label">Social Identity</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Il valore di un prodotto o servizio è sempre più legato a come gestiamo il nostro mondo di relazioni sui social. La tua credibilità è un castello da costruire mattone dopo mattone.</p>
+                <p class="svc-tabs__text">Il valore di un prodotto o servizio è sempre più legato a come gestiamo il nostro mondo di <strong>relazioni sui social</strong>. La tua <strong>credibilità</strong> è un castello da costruire mattone dopo mattone.</p>
                 <ul class="svc-tabs__points">
                   <li>Definizione del posizionamento social</li>
                   <li>Coerenza visiva tra tutti i canali</li>
@@ -1283,7 +1292,7 @@
                 <span class="svc-tabs__media-label">Contenuti Social</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Ogni formato racconta una storia diversa. Creiamo e gestiamo contenuti su misura per mantenere il tuo profilo attivo e capace di convertire il pubblico in clienti.</p>
+                <p class="svc-tabs__text">Ogni formato racconta una storia diversa. Creiamo e gestiamo <strong>contenuti su misura</strong> per mantenere il tuo <strong>profilo attivo</strong> e capace di <strong>convertire il pubblico in clienti</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Produzione foto e video per social</li>
                   <li>Copywriting e caption ottimizzate</li>
@@ -1298,7 +1307,7 @@
                 <span class="svc-tabs__media-label">Community</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Ascoltare e parlare alla tua community è la strada per il successo che stavi cercando. Progettiamo, gestiamo e coltiviamo la tua community.</p>
+                <p class="svc-tabs__text">Ascoltare e parlare alla tua <strong>community</strong> è la strada per il successo che stavi cercando. <strong>Progettiamo, gestiamo e coltiviamo</strong> la tua community.</p>
                 <ul class="svc-tabs__points">
                   <li>Moderazione commenti e messaggi</li>
                   <li>Gestione degli utenti e dei follower</li>
@@ -1313,7 +1322,7 @@
                 <span class="svc-tabs__media-label">Content Marketing</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Crea una relazione virtuosa e duratura con il tuo target, regalando consigli utili oppure un sorriso, innesca il passaparola e aumenta le tue vendite.</p>
+                <p class="svc-tabs__text">Crea una relazione virtuosa e duratura con il tuo <strong>target</strong>, regalando consigli utili oppure un sorriso, innesca il <strong>passaparola</strong> e <strong>aumenta le tue vendite</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Contenuti educativi e di valore</li>
                   <li>Campagne di awareness organica</li>
@@ -1328,7 +1337,7 @@
                 <span class="svc-tabs__media-label">Face Filters AR</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Sviluppiamo il tuo filtro facciale Instagram per promuovere il tuo brand e far divertire la tua community.</p>
+                <p class="svc-tabs__text">Sviluppiamo il tuo <strong>filtro facciale Instagram</strong> per promuovere il tuo <strong>brand</strong> e far divertire la tua community.</p>
                 <ul class="svc-tabs__points">
                   <li>Filtri AR su misura per il tuo brand</li>
                   <li>Pubblicazione su Instagram e Facebook</li>
@@ -1459,7 +1468,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Cos'e il social media management?</button>
@@ -1601,30 +1610,9 @@
        visibile, e il raccordo fra le due sezioni ora lo fa la
        salita condivisa con le altre pagine. */
 
-/* ── clienti title: split-letter reveal (identico a tips title home) ── */
-    (function () {
-      const titleEl  = document.getElementById('smmClientiTitle');
-      const section  = document.getElementById('smmClienti');
-      if (!titleEl || !section) return;
-      const letters = splitLetters(titleEl);
-
-      let _vh = window.innerHeight;
-      window.addEventListener('resize', () => { _vh = window.innerHeight; }, { passive: true });
-
-      function rafLoop() {
-        requestAnimationFrame(rafLoop);
-        _vh = window.innerHeight;
-        const sR    = section.getBoundingClientRect();
-        const ENTRY = _vh * 0.70;
-        const p     = c01((ENTRY - sR.top) / ENTRY);
-        letters.forEach((el, i) => {
-          const lP = ease(c01((p - i * 0.012) / 0.08));
-          el.style.opacity   = lP.toFixed(3);
-          el.style.transform = `translateY(${((1 - lP) * 0.8).toFixed(3)}em)`;
-        });
-      }
-      requestAnimationFrame(rafLoop);
-    })();
+/* Il titolo dei clienti ha un solo effetto: l'acqua.
+   Qui c'era anche un reveal lettera per lettera, quindi i due
+   effetti si sommavano sullo stesso titolo. Rimosso il reveal. */
 
     /* ═══════════════════════════════════════════════════════════
        SCROLL-DRIVEN FADE + REVEAL: smmClienti → smmMagic → smmCaffe
@@ -2014,7 +2002,7 @@
 
       if (isDark !== prevDark) {
         prevDark = isDark;
-        navEl.classList.toggle('nav--on-dark', isDark);
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
 
       /* 4. .scrolled: come in homepage segna l'uscita dalla scena
@@ -2022,12 +2010,12 @@
          vetro chiaro pensata per la hero e il MENU restava nero
          anche sopra le sezioni scure. */
       const heroBottom = heroEl ? heroEl.getBoundingClientRect().bottom : 0;
-      navEl.classList.toggle('scrolled', heroBottom <= navMid);
+      /* .scrolled: gestito da js/main.js sulla .svc-hero, come in homepage */
     }
     requestAnimationFrame(navTick);
   })();
   </script>
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -2050,8 +2038,8 @@
             <a href="graphic-design.html">Graphic design</a>
             <a href="web-design.html">Web design</a>
             <a href="produzione-contenuti.html">Produzione contenuti</a>
-            <a href="servizio-ai.html">AI</a>
             <a href="modellazione-3d.html">Modellazione 3D</a>
+            <a href="servizio-ai.html">AI</a>
           </nav>
         </div>
 
@@ -2097,8 +2085,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -2236,6 +2223,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {

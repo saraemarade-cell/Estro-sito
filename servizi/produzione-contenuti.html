@@ -35,9 +35,14 @@
       display: inline-block; opacity: 0; transform: translateY(0.8em);
     }
     /* Clienti */
+    /* La sezione e' la corsa del pannello, come nelle altre pagine:
+       senza padding e senza taglio. Con i respiri di sezione sommati
+       al pannello da 100dvh restava un mare di vuoto sopra e sotto
+       ai loghi. E il titolo non parte piu' nascosto: lo riaccendeva
+       un RAF legato allo scroll che non c'e' piu'. */
     #pc-clienti { background: #000 !important; color: #fff !important;
-      padding-block: clamp(4rem,8vw,7rem) clamp(4rem,8vw,6rem) !important; overflow: hidden !important; }
-    #pc-clienti .svc-clients__title { opacity:0; transform:translateY(30px); transition:none !important; }
+      min-height: 0 !important; height: 118dvh !important; display: block !important;
+      padding: 0 !important; overflow: visible !important; }
     #pc-clienti .svc-clients__marquee-wrap { display:flex !important; flex-direction:column !important; gap:2rem !important; }
     #pc-clienti .svc-clients__track { animation: pc-marquee 110s linear infinite !important; }
     #pc-clienti .svc-clients__track--rev { animation-direction: reverse !important; }
@@ -155,17 +160,33 @@
       cursor: pointer; user-select: none;
     }
 
+    /* I numeri erano lettere vuote col solo contorno, in corpo
+       grande: sfilacciate e senza peso. Diventano il segno che il
+       sito usa gia' nelle schede dei servizi — un cerchio col
+       numero dentro, vuoto da chiuso e pieno di fucsia da aperto. */
     .pc-acc__num {
-      font-size: clamp(2rem,4.5vw,3.5rem); font-weight: 900; line-height: 1;
-      font-family: var(--font-primary);
-      color: transparent; -webkit-text-stroke: 1.5px rgba(0,0,0,0.15);
-      min-width: clamp(2.6rem,5vw,4.2rem); flex-shrink: 0; display: inline-block;
-      transition: -webkit-text-stroke-color 0.35s, transform 0.35s cubic-bezier(.34,1.56,.64,1);
+      width: clamp(38px,3.4vw,46px); height: clamp(38px,3.4vw,46px);
+      flex-shrink: 0;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.12);
+      background: transparent;
+      font-family: var(--font-secondary);
+      font-size: 14px; font-weight: 700; line-height: 1;
+      letter-spacing: 0.02em;
+      color: rgba(0,0,0,0.45);
+      -webkit-text-stroke: 0;
+      transition: background 0.35s ease, border-color 0.35s ease,
+                  color 0.35s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1);
     }
-    .pc-acc__item:hover .pc-acc__num,
+    .pc-acc__item:hover .pc-acc__num {
+      border-color: #DB005A; color: #DB005A;
+      transform: translateY(-2px);
+    }
     .pc-acc__item.is-open .pc-acc__num {
-      -webkit-text-stroke-color: #DB005A;
-      transform: scale(1.08);
+      background: #DB005A; border-color: #DB005A; color: #fff;
+      transform: scale(1.06);
+      box-shadow: 0 0 0 5px rgba(219,0,90,0.14);
     }
 
     .pc-acc__name {
@@ -224,19 +245,39 @@
 
     @media (max-width: 640px) {
       .pc-acc__text { padding-left: 0.5rem; }
-      .pc-acc__num  { font-size: 2rem; }
+      .pc-acc__num  { width: 34px; height: 34px; font-size: 13px; }
       .pc-acc__eye  { width: 34px; height: 34px; }
       .pc-acc__eye-svg { width: 20px; height: 20px; }
     }
 
-    /* ── scroll dots ── */
-    #pc-scroll-dots {
-      position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 9px;
-      z-index: 9999; pointer-events: none;
-      opacity: 0; transition: opacity 0.5s;
+    /* ── Indicatore di avanzamento, uno per sezione ──────
+       La colonnina occupa tutta l'altezza della lista ma il
+       contenuto e' agganciato a meta' schermo: scorre con la
+       pagina e si ferma sull'ultimo numero della lista, senza
+       bisogno di accenderla e spegnerla a mano. Comincia sul primo
+       numero perche' e' agganciata alla lista, non alla sezione:
+       prima di li' e dopo l'ultima voce non esiste. */
+    /* fuori dalla lista, nel margine del contenitore: dentro
+       finirebbe addosso all'occhio di ogni riga. La sezione taglia
+       l'eccedenza senza creare barre di scorrimento. */
+    .pc-prod { overflow-x: clip; }
+    .pc-acc { position: relative; }
+    .pc-rail {
+      position: absolute;
+      top: 0; bottom: 0;
+      right: calc(-1 * clamp(1.1rem, 2.4vw, 2.6rem));
+      width: 12px;
+      pointer-events: none;
+      z-index: 3;
     }
-    #pc-scroll-dots.pc-dots--visible { opacity: 1; }
+    .pc-rail__inner {
+      position: sticky;
+      top: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+    }
     .pc-sd {
       width: 5px; height: 5px; border-radius: 50%;
       background: transparent;
@@ -246,9 +287,10 @@
     }
     .pc-sd.pc-sd--on {
       background: #DB005A; border-color: #DB005A;
-      transform: scale(1.5); opacity: 1;
+      transform: scale(1.6); opacity: 1;
+      box-shadow: 0 0 0 4px rgba(219,0,90,0.14);
     }
-    @media (max-width: 768px) { #pc-scroll-dots { right: 10px; } }
+    @media (max-width: 768px) { .pc-rail { display: none; } }
 
 
 
@@ -755,8 +797,13 @@
       background: linear-gradient(to bottom, transparent, #0a0a0a);
     }
     /* il contenuto sta sopra al video */
-    .svc-clients > .container,
-    .svc-clients > .svc-clients__marquee-wrap {
+    /* Il contenuto sta sopra al video. Il selettore chiedeva il
+       figlio diretto della sezione, ma da quando il pannello
+       agganciato si e' messo in mezzo il titolo non lo era piu': il
+       video, assoluto e a z-index 0, gli passava davanti. */
+    .svc-clients .container,
+    .svc-clients .svc-clients__header,
+    .svc-clients .svc-clients__marquee-wrap {
       position: relative;
       z-index: 1;
     }
@@ -983,7 +1030,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1052,7 +1099,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="svc-hero svc-hero--videobg" id="pc-hero" aria-labelledby="page-title">
+    <section class="svc-hero svc-hero--videobg" id="pc-hero" aria-labelledby="page-title" data-nav-theme="dark">
       <video class="svc-hero__bgvideo" autoplay muted loop playsinline aria-hidden="true"></video>
       <div class="svc-hero__ph" aria-hidden="true">
         <span class="svc-hero__ph-label">
@@ -1183,7 +1230,7 @@
                 <span class="svc-tabs__media-label">Moodboard</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Mostriamo la tua idea attraverso collage di foto che comunicano emozioni, colori, stati d'animo. Gli stessi che desideri trasmettere con il tuo brand.</p>
+                <p class="svc-tabs__text">Mostriamo la tua idea attraverso <strong>collage di foto</strong> che <strong>comunicano emozioni</strong>, colori, stati d'animo. Gli stessi che desideri trasmettere con il tuo brand.</p>
                 <ul class="svc-tabs__points">
                   <li>Fai parlare le tue immagini</li>
                   <li>Emozioni, colori e stati d'animo</li>
@@ -1197,7 +1244,7 @@
                 <span class="svc-tabs__media-label">Casting</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Ricerchiamo e selezioniamo attori e modelli in grado di valorizzare i tuoi contenuti foto e video. Li cerchiamo, li troviamo e li riprendiamo.</p>
+                <p class="svc-tabs__text">Ricerchiamo e selezioniamo <strong>attori e modelli</strong> in grado di valorizzare i tuoi <strong>contenuti foto e video</strong>. Li cerchiamo, li troviamo e li riprendiamo.</p>
                 <ul class="svc-tabs__points">
                   <li>Selezione professionale di talenti</li>
                   <li>Attori e modelli per ogni esigenza</li>
@@ -1211,7 +1258,7 @@
                 <span class="svc-tabs__media-label">Location</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Prima di ogni produzione andiamo a caccia dei luoghi più adatti alle riprese del tuo film. Luoghi che valorizzano le tue immagini.</p>
+                <p class="svc-tabs__text">Prima di ogni produzione andiamo a caccia dei <strong>luoghi più adatti alle riprese</strong> del tuo film. Luoghi che valorizzano le tue immagini.</p>
                 <ul class="svc-tabs__points">
                   <li>Ricerca delle location perfette</li>
                   <li>Sopralluoghi e permessi inclusi</li>
@@ -1225,7 +1272,7 @@
                 <span class="svc-tabs__media-label">Set design</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">I nostri set sono studiati da scenografi e designers professionisti, che doneranno al tuo video un tocco di pura magia. Non c'è oggetto di scena che non siamo in grado di trovare o realizzare.</p>
+                <p class="svc-tabs__text">I nostri set sono studiati da <strong>scenografi e designers professionisti</strong>, che doneranno al tuo video un tocco di pura magia. Non c'è <strong>oggetto di scena</strong> che non siamo in grado di trovare o realizzare.</p>
                 <ul class="svc-tabs__points">
                   <li>I dettagli fanno la differenza</li>
                   <li>Scenografi e designer professionisti</li>
@@ -1239,7 +1286,7 @@
                 <span class="svc-tabs__media-label">Lighting</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">La vera atmosfera di un video o di una foto si ottiene sfruttando la luce solare o la luce artificiale. Siamo maestri di entrambe queste fonti luminose.</p>
+                <p class="svc-tabs__text">La vera atmosfera di un video o di una foto si ottiene sfruttando la <strong>luce solare o la luce artificiale</strong>. Siamo maestri di entrambe queste fonti luminose.</p>
                 <ul class="svc-tabs__points">
                   <li>Luce naturale e artificiale</li>
                   <li>Atmosfera che racconta il brand</li>
@@ -1253,7 +1300,7 @@
                 <span class="svc-tabs__media-label">Stylist</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">I nostri stylist ti consiglieranno abbinamenti di capi e accessori per lasciare il segno in passerella o in una campagna pubblicitaria.</p>
+                <p class="svc-tabs__text">I nostri stylist ti consiglieranno <strong>abbinamenti di capi e accessori</strong> per lasciare il segno in passerella o in una <strong>campagna pubblicitaria</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Outfit sempre al top</li>
                   <li>Capi e accessori selezionati ad hoc</li>
@@ -1267,7 +1314,7 @@
                 <span class="svc-tabs__media-label">Makeup</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Un look iconico passa anche dal trucco. Trova il tuo face look ideale per ogni occasione. I veri colori della tua personalità.</p>
+                <p class="svc-tabs__text">Un look iconico passa anche dal trucco. Trova il tuo <strong>face look ideale</strong> per ogni occasione. I veri colori della tua personalità.</p>
                 <ul class="svc-tabs__points">
                   <li>Trucco professionale per foto e video</li>
                   <li>Look personalizzati per ogni esigenza</li>
@@ -1281,7 +1328,7 @@
                 <span class="svc-tabs__media-label">Regia</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">La direzione artistica e organizzativa di uno spot non è uno scherzo. Lo sappiamo bene. Si va in scena con professionalità e visione.</p>
+                <p class="svc-tabs__text">La <strong>direzione artistica e organizzativa</strong> di uno spot non è uno scherzo. Lo sappiamo bene. Si va in scena con professionalità e visione.</p>
                 <ul class="svc-tabs__points">
                   <li>Direzione artistica completa</li>
                   <li>Gestione set e crew professionale</li>
@@ -1325,7 +1372,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Servizi fotografici professionali per prodotti, persone e ambienti. Ogni scatto è pensato per trasmettere la giusta emozione e valorizzare il tuo brand.</p>
+              <p class="pc-acc__text"><strong>Servizi fotografici professionali</strong> per prodotti, persone e ambienti. Ogni scatto è pensato per trasmettere la giusta emozione e <strong>valorizzare il tuo brand</strong>.</p>
             </div></div>
           </div>
 
@@ -1347,7 +1394,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Realizziamo lookbook e cataloghi fotografici che esaltano i tuoi prodotti e costruiscono un'identità visiva coerente e raffinata.</p>
+              <p class="pc-acc__text">Realizziamo <strong>lookbook e cataloghi fotografici</strong> che esaltano i tuoi prodotti e costruiscono un'<strong>identità visiva coerente</strong> e raffinata.</p>
             </div></div>
           </div>
 
@@ -1369,7 +1416,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Post-produzione professionale: ritocco, color grading e ottimizzazione delle immagini per ogni canale di comunicazione.</p>
+              <p class="pc-acc__text"><strong>Post-produzione professionale</strong>: ritocco, <strong>color grading</strong> e ottimizzazione delle immagini per ogni canale di comunicazione.</p>
             </div></div>
           </div>
 
@@ -1391,7 +1438,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Valorizzazione fotografica per e-commerce e advertising, reportage eventi e campagne visive che catturano l'essenza del brand e convertono.</p>
+              <p class="pc-acc__text">Valorizzazione fotografica per <strong>e-commerce e advertising</strong>, <strong>reportage eventi</strong> e campagne visive che catturano l'essenza del brand e convertono.</p>
             </div></div>
           </div>
 
@@ -1427,7 +1474,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Riprese video professionali con attrezzatura top di gamma: cinema camera, ottiche anamorfiche, rig completo per ogni tipo di produzione.</p>
+              <p class="pc-acc__text"><strong>Riprese video professionali</strong> con attrezzatura top di gamma: <strong>cinema camera</strong>, ottiche anamorfiche, rig completo per ogni tipo di produzione.</p>
             </div></div>
           </div>
 
@@ -1449,7 +1496,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Montaggio professionale, color grading cinematografico e sound design per un risultato finale impeccabile.</p>
+              <p class="pc-acc__text"><strong>Montaggio professionale</strong>, <strong>color grading cinematografico</strong> e <strong>sound design</strong> per un risultato finale impeccabile.</p>
             </div></div>
           </div>
 
@@ -1471,7 +1518,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Creiamo spot che catturano l'attenzione e convertono: dalla sceneggiatura alle riprese fino alla distribuzione multicanale.</p>
+              <p class="pc-acc__text">Creiamo <strong>spot che catturano l'attenzione e convertono</strong>: dalla sceneggiatura alle riprese fino alla <strong>distribuzione multicanale</strong>.</p>
             </div></div>
           </div>
 
@@ -1493,7 +1540,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Documentiamo i tuoi eventi e creiamo aftermovie emozionanti che rivivono i momenti migliori.</p>
+              <p class="pc-acc__text">Documentiamo i tuoi eventi e creiamo <strong>aftermovie emozionanti</strong> che rivivono i momenti migliori.</p>
             </div></div>
           </div>
 
@@ -1515,7 +1562,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Effetti visivi speciali e animazioni 2D/3D che trasformano la tua idea in qualcosa di straordinario.</p>
+              <p class="pc-acc__text"><strong>Effetti visivi speciali e animazioni 2D/3D</strong> che trasformano la tua idea in qualcosa di straordinario.</p>
             </div></div>
           </div>
 
@@ -1537,7 +1584,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Ottimizziamo e distribuiamo i tuoi contenuti video per tutti i canali digitali, social e televisivi.</p>
+              <p class="pc-acc__text">Ottimizziamo e distribuiamo i tuoi contenuti video per tutti i <strong>canali digitali, social e televisivi</strong>.</p>
             </div></div>
           </div>
 
@@ -1559,7 +1606,7 @@
               </span>
             </div>
             <div class="pc-acc__body"><div class="pc-acc__body-inner">
-              <p class="pc-acc__text">Riprese aeree con drone professionale per prospettive uniche e spettacolari che valorizzano location, eventi e architetture.</p>
+              <p class="pc-acc__text"><strong>Riprese aeree con drone professionale</strong> per prospettive uniche e spettacolari che valorizzano location, eventi e architetture.</p>
             </div></div>
           </div>
 
@@ -1568,7 +1615,7 @@
     </section>
 
     <!-- ══ CLIENTI ════════════════════════════════════════════════ -->
-    <section class="section svc-clients" id="pc-clienti">
+    <section class="section svc-clients" id="pc-clienti" data-nav-theme="dark">
       <!-- Pannello agganciato, come in homepage. -->
       <div class="svc-clients__sticky">
         <div class="container">
@@ -1751,7 +1798,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che tipo di contenuti produce ESTRO?</button>
@@ -2104,48 +2151,62 @@
         }
 
         var isDark = luma(base) < 140;
-        if (isDark !== prevDark) { prevDark = isDark; navEl.classList.toggle('nav--on-dark', isDark); }
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
     }
     requestAnimationFrame(tick);
   })();
   </script>
-  <div id="pc-scroll-dots" aria-hidden="true"></div>
-
   <script>
-  /* ── scroll dots per accordion items ── */
+  /* ── Indicatore di avanzamento, uno per sezione ────────────────
+     Prima era un pannello unico fisso a meta' schermo, con un
+     pallino per ogni voce delle due sezioni messe insieme, e si
+     accendeva al passaggio nella viewport. Ora ogni sezione ha la
+     sua colonnina: i pallini sono quelli delle sue voci e si
+     accendono quando la voce viene aperta, non quando passa. La
+     colonnina e' agganciata a meta' schermo e resta li' finche'
+     dura la sezione, poi se ne va con lei.
+     L'accensione la guarda un MutationObserver sulla classe
+     is-open: cosi' vale comunque, che l'apertura arrivi dal
+     click, dalla tastiera o da chiunque altro. */
   (function () {
-    var wrap = document.getElementById('pc-scroll-dots');
-    var items = Array.from(document.querySelectorAll('.pc-acc__item'));
-    if (!items.length) return;
+    document.querySelectorAll('.pc-acc').forEach(function (acc) {
+      var items = Array.from(acc.querySelectorAll('.pc-acc__item'));
+      if (!items.length) return;
 
-    /* crea un dot per ogni item */
-    items.forEach(function () {
-      var d = document.createElement('span');
-      d.className = 'pc-sd';
-      wrap.appendChild(d);
+      /* La colonnina sta dentro la lista, non dentro la sezione:
+         cosi' comincia al primo numero e finisce sull'ultimo, senza
+         proseguire sopra al titolo o oltre la fine dell'elenco. */
+      var host = acc;
+      if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+
+      var rail = document.createElement('div');
+      rail.className = 'pc-rail';
+      rail.setAttribute('aria-hidden', 'true');
+      var inner = document.createElement('div');
+      inner.className = 'pc-rail__inner';
+      rail.appendChild(inner);
+      host.appendChild(rail);
+
+      var dots = items.map(function () {
+        var d = document.createElement('span');
+        d.className = 'pc-sd';
+        inner.appendChild(d);
+        return d;
+      });
+
+      function sync() {
+        items.forEach(function (it, i) {
+          dots[i].classList.toggle('pc-sd--on', it.classList.contains('is-open'));
+        });
+      }
+      sync();
+
+      var mo = new MutationObserver(sync);
+      items.forEach(function (it) {
+        mo.observe(it, { attributes: true, attributeFilter: ['class'] });
+      });
     });
-    var dots = Array.from(wrap.querySelectorAll('.pc-sd'));
-
-    /* mostra/nascondi il pannello quando le sezioni accordion sono in viewport */
-    var sections = Array.from(document.querySelectorAll('.pc-acc'));
-    var secObs = new IntersectionObserver(function () {
-      var anyIn = sections.some(function (s) {
-        var r = s.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-      });
-      wrap.classList.toggle('pc-dots--visible', anyIn);
-    }, { threshold: 0 });
-    sections.forEach(function (s) { secObs.observe(s); });
-
-    /* accende il dot quando l'item entra in viewport */
-    var itemObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var idx = items.indexOf(entry.target);
-        if (idx >= 0) dots[idx].classList.toggle('pc-sd--on', entry.isIntersecting);
-      });
-    }, { threshold: 0.25 });
-    items.forEach(function (item) { itemObs.observe(item); });
   })();
   </script>
 
@@ -2193,7 +2254,7 @@
   </script>
 
       <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -2263,8 +2324,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -2406,6 +2466,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {

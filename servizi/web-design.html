@@ -590,8 +590,13 @@
       background: linear-gradient(to bottom, transparent, #0a0a0a);
     }
     /* il contenuto sta sopra al video */
-    .svc-clients > .container,
-    .svc-clients > .svc-clients__marquee-wrap {
+    /* Il contenuto sta sopra al video. Il selettore chiedeva il
+       figlio diretto della sezione, ma da quando il pannello
+       agganciato si e' messo in mezzo il titolo non lo era piu': il
+       video, assoluto e a z-index 0, gli passava davanti. */
+    .svc-clients .container,
+    .svc-clients .svc-clients__header,
+    .svc-clients .svc-clients__marquee-wrap {
       position: relative;
       z-index: 1;
     }
@@ -818,7 +823,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -887,7 +892,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="svc-hero svc-hero--videobg" id="wd-hero" aria-labelledby="page-title">
+    <section class="svc-hero svc-hero--videobg" id="wd-hero" aria-labelledby="page-title" data-nav-theme="dark">
       <video class="svc-hero__bgvideo" autoplay muted loop playsinline aria-hidden="true"></video>
       <div class="svc-hero__ph" aria-hidden="true">
         <span class="svc-hero__ph-label">
@@ -965,7 +970,12 @@
 
 
 
-    <!-- ══ SERVIZI — galleria a fisarmonica ═══════════════════════ -->
+    <!-- ══ SERVIZI — la timeline ══════════════════════════════════
+         Prima sezione dopo la hero, su carta bianca. Ogni voce ha il
+         suo placeholder dentro una finestra di browser, il discorso
+         a fianco e l'elenco delle caratteristiche a chiudere. I
+         pannelli si scambiano con i tab: quello attivo e' l'unico
+         visibile. -->
     <section class="svc-path" id="wd-stack" aria-label="I servizi">
       <div class="svc-path__sticky">
       <div class="container">
@@ -992,60 +1002,127 @@
             </button>
           </div>
           <div class="svc-tabs__panels">
-            <div class="svc-tabs__panel is-active" role="tabpanel" id="wd-pan-1" aria-labelledby="wd-tab-1">
-              <div class="svc-tabs__media">
-                <span class="svc-tabs__media-label">Siti Web</span>
-              </div>
-              <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Il tuo sito web è il tuo biglietto da visita. Creiamo siti con personalità da vendere: racconta chi sei veramente e raggiungi i tuoi obiettivi con un design innovativo su misura.</p>
-                <ul class="svc-tabs__points">
-                  <li>Blog, calendari ed eventi integrati</li>
-                  <li>WordPress, Elementor e tecnologia CMS</li>
-                  <li>Google Maps e integrazioni avanzate</li>
-                  <li>Design innovativo che esprime il tuo brand</li>
+
+            <div class="svc-tabs__panel wd-pan" role="tabpanel" id="wd-pan-1" aria-labelledby="wd-tab-1">
+              <figure class="svc-tabs__media wd-shot">
+                <span class="wd-shot__chrome" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="wd-shot__ph" aria-hidden="true">
+                  <span class="wd-shot__ph-row"></span>
+                  <span class="wd-shot__ph-row wd-shot__ph-row--short"></span>
+                  <span class="wd-shot__ph-block"></span>
+                  <span class="wd-shot__ph-grid"><i></i><i></i><i></i></span>
+                </span>
+              </figure>
+              <div class="svc-tabs__copy wd-tabs__copy">
+                <p class="svc-tabs__text">Il tuo <strong>sito web</strong> è il tuo biglietto da visita. Creiamo <strong>siti con personalità da vendere</strong>: racconta chi sei veramente e raggiungi i tuoi obiettivi con un <strong>design innovativo su misura</strong>.</p>
+                <div class="wd-tabs__prose">
+                  <p>Quali sono le tue esigenze? Dalla redazione di un blog alla gestione di calendari ed eventi, dalla gestione di Google Maps alla vendita dei tuoi prodotti: grazie alla nostra esperienza con <strong>WordPress, Elementor</strong> e della più aggiornata <strong>tecnologia CMS</strong> (Content Management System) avrai modo di esprimere la personalità del tuo brand, con un <strong>design innovativo</strong> per il tuo sito web.</p>
+                  <p>Tutti i siti che progettiamo sono <strong>mobile responsive</strong>, per avere la certezza che il tuo sito web venga visualizzato perfettamente su qualsiasi dispositivo migliorando il tuo <strong>posizionamento sui motori di ricerca</strong> come Google.</p>
+                </div>
+                <ul class="svc-tabs__points wd-tabs__list">
+                  <li>Design pulito e moderno</li>
+                  <li>Responsive</li>
+                  <li>Sito veloce</li>
+                  <li>Facilità di utilizzo</li>
+                  <li>Ottimizzazione seo</li>
+                  <li>Conforme gdpr</li>
                 </ul>
                 <a class="btn btn--primary svc-tabs__cta" href="../contatti.html">Scopri di più</a>
               </div>
             </div>
-            <div class="svc-tabs__panel" role="tabpanel" id="wd-pan-2" aria-labelledby="wd-tab-2" hidden>
-              <div class="svc-tabs__media">
-                <span class="svc-tabs__media-label">SEO</span>
-              </div>
-              <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Quando qualcuno cerca su Google, l'algoritmo scansiona il web. Per rafforzare la tua strategia digitale è fondamentale aumentare il traffico organico al tuo sito web.</p>
-                <ul class="svc-tabs__points">
-                  <li>Ottimizzazione on-page e tecnica</li>
-                  <li>Ricerca e analisi delle parole chiave</li>
-                  <li>Link building e autorevolezza del dominio</li>
-                  <li>Traffico organico crescente nel tempo</li>
+
+            <div class="svc-tabs__panel wd-pan" role="tabpanel" id="wd-pan-2" aria-labelledby="wd-tab-2" hidden>
+              <figure class="svc-tabs__media wd-shot">
+                <span class="wd-shot__chrome" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="wd-shot__ph" aria-hidden="true">
+                  <span class="wd-shot__ph-row"></span>
+                  <span class="wd-shot__ph-row wd-shot__ph-row--short"></span>
+                  <span class="wd-shot__ph-block"></span>
+                  <span class="wd-shot__ph-grid"><i></i><i></i><i></i></span>
+                </span>
+              </figure>
+              <div class="svc-tabs__copy wd-tabs__copy">
+                <p class="svc-tabs__text"><strong>SEO: search engine optimization</strong>, ossia l'ottimizzazione per i motori di ricerca di ciò che scrivi nel tuo sito web.</p>
+                <div class="wd-tabs__prose">
+                  <p>Quando qualcuno fa una ricerca su Google o altri motori di ricerca, l'algoritmo passa al setaccio il web, cercando le informazioni che risultano più importanti e pertinenti.</p>
+                  <p>Ottimizzare un sito significa renderlo, nella forma e nei contenuti, più chiaro, e ciò aiuta i motori di ricerca a capire cosa c'è sul tuo sito web, il valore della tua attività e quali sono le <strong>keywords</strong> che la identificano.</p>
+                  <p>Per rafforzare la tua <strong>strategia di marketing digitale</strong> è fondamentale partire dalla basi, indirizzando e <strong>aumentando il traffico organico</strong> al tuo sito web, e mantenendo una strategia di ottimizzazione sostenibile capace di adattarsi alla continua evoluzione degli algoritmi e strategie dei motori di ricerca.</p>
+                </div>
+                <ul class="svc-tabs__points wd-tabs__list">
+                  <li>Analisi e strategia</li>
+                  <li>on - page seo</li>
+                  <li>Technical seo</li>
+                  <li>Link building</li>
+                  <li>Creazione di contenuti</li>
+                  <li>Geolocalizzazione</li>
                 </ul>
                 <a class="btn btn--primary svc-tabs__cta" href="../contatti.html">Scopri di più</a>
               </div>
             </div>
-            <div class="svc-tabs__panel" role="tabpanel" id="wd-pan-3" aria-labelledby="wd-tab-3" hidden>
-              <div class="svc-tabs__media">
-                <span class="svc-tabs__media-label">E-Commerce</span>
-              </div>
-              <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Avere uno shop online è fondamentale. Creiamo la tua vetrina digitale per esporre i prodotti, raggiungere il massimo numero di clienti e risparmiare tempo ed energia.</p>
-                <ul class="svc-tabs__points">
-                  <li>Vetrina online professionale e scalabile</li>
-                  <li>Gestione catalogo prodotti semplice</li>
-                  <li>Pagamenti sicuri e integrati</li>
-                  <li>Comunicazione diretta con i clienti</li>
+
+            <div class="svc-tabs__panel wd-pan" role="tabpanel" id="wd-pan-3" aria-labelledby="wd-tab-3" hidden>
+              <figure class="svc-tabs__media wd-shot">
+                <span class="wd-shot__chrome" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="wd-shot__ph" aria-hidden="true">
+                  <span class="wd-shot__ph-row"></span>
+                  <span class="wd-shot__ph-row wd-shot__ph-row--short"></span>
+                  <span class="wd-shot__ph-block"></span>
+                  <span class="wd-shot__ph-grid"><i></i><i></i><i></i></span>
+                </span>
+              </figure>
+              <div class="svc-tabs__copy wd-tabs__copy">
+                <p class="svc-tabs__text">Avere uno <strong>shop online</strong> ormai è fondamentale, il <strong>commercio elettronico</strong> è la strada da percorrere per tutte le aziende che vogliano rimanere aggiornate, in linea con i tempi e competitive.</p>
+                <div class="wd-tabs__prose">
+                  <p>Non si tratta del commercio del futuro, ma di una realtà concreta e presente.</p>
+                  <p>E noi creiamo la tua <strong>vetrina online</strong>, che ti permetta di esporre i tuoi prodotti e raggiungere il più alto numero di clienti possibile, per <strong>rafforzare le vendite</strong> ed espandere le operazioni commerciali, acquisendo un'autorità significativa nel mercato.</p>
+                  <p>Un e-commerce ti permette di comunicare direttamente con i tuoi clienti, ascoltare i loro feedback e migliorando la loro soddisfazione finale, ti consente di fornire informazioni sui prodotti e fare pubblicità.</p>
+                  <p>E tutto questo risparmiando tempo ed energia!</p>
+                </div>
+                <ul class="svc-tabs__points wd-tabs__list">
+                  <li>Supera i limiti geografici</li>
+                  <li>Acquisisci nuovi clienti</li>
+                  <li>Individuare il prodotto più rapidamente</li>
+                  <li>Fornire informazioni dettagliate</li>
+                  <li>Rimani sempre aperto</li>
+                  <li>Crea mercati per prodotti di nicchia</li>
                 </ul>
                 <a class="btn btn--primary svc-tabs__cta" href="../contatti.html">Scopri di più</a>
               </div>
             </div>
+
           </div>
         </div>
       </div>
       </div><!-- /.svc-path__sticky -->
     </section>
 
+    <!-- ══ COME LAVORIAMO ════════════════════════════════════════
+         Chiude la timeline, su fondo nero. I tre passaggi hanno lo
+         stesso peso: nessuno e' in evidenza, sono tre schede sfalsate
+         con il numero in trasparenza. Testo del sito, nemmeno una
+         parola cambiata — svista "racconare" inclusa. -->
+    <section class="wd-deep" id="wd-deep" aria-labelledby="wd-deep-title">
+      <div class="wd-deep__glow" aria-hidden="true"></div>
+      <div class="container wd-deep__grid">
+
+        <header class="wd-deep__aside">
+          <p class="svc-section-header__eyebrow">Come lavoriamo</p>
+          <h2 class="svc-section-title" id="wd-deep-title">Un sito cucito<br>su misura</h2>
+        </header>
+
+        <div class="wd-deep__lead">
+          <p class="wd-deep__p"><span class="wd-deep__idx" aria-hidden="true">01</span>Nel nostro lavoro creatività e praticità vanno a braccetto, creiamo per te un sito web cucito su misura, in grado di raccontare il tuo brand e raggiungere gli obiettivi prefissati: aumentare i profitti, fornire supporto, vendere prodotti.</p>
+          <p class="wd-deep__p"><span class="wd-deep__idx" aria-hidden="true">02</span>Con noi puoi star certo che ogni parola, foto o video sarà scelto con cura, per trovare i giusti elementi in grado di trasmettere chi sei e il valore aggiunto del tuo marchio.</p>
+          <p class="wd-deep__p"><span class="wd-deep__idx" aria-hidden="true">03</span>Un sito deve saper racconare l'anima del tuo brand..caricandosi velocemente. La user experience è la chiave di volta del nostro lavoro. Ma un sito deve anche essere in grado di raggiungere il maggior numero di utenti possibile, ed è qui che entra in gioco l'ottimizzazione SEO.</p>
+        </div>
+
+      </div>
+    </section>
+
+
 
     <!-- ══ CLIENTI ════════════════════════════════════════════════ -->
-    <section class="section svc-clients" id="wd-clienti">
+    <section class="section svc-clients" id="wd-clienti" data-nav-theme="dark">
       <!-- Pannello agganciato, come in homepage. -->
       <div class="svc-clients__sticky">
         <div class="container">
@@ -1227,7 +1304,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che tipo di siti web realizza ESTRO?</button>
@@ -1376,7 +1453,9 @@
 
     var caffeExitOv = { style: { opacity: 0 } };
 
-    var clientiLetters = splitLetters(document.getElementById('wd-clienti-title'));
+    /* niente reveal lettera per lettera sul titolo clienti: su
+       quel titolo l'unico effetto e' l'acqua (waterLetters) */
+    var clientiLetters = [];
     var magicLetters   = splitLetters(magicEl  && magicEl.querySelector('.svc-magic__title'));
     var caffeLetters   = splitLetters(caffeEl  && caffeEl.querySelector('.svc-caffe__title'));
 
@@ -1574,14 +1653,14 @@
         }
 
         var isDark = luma(base) < 140;
-        if (isDark !== prevDark) { prevDark = isDark; navEl.classList.toggle('nav--on-dark', isDark); }
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
     }
     requestAnimationFrame(tick);
   })();
   </script>
       <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -1651,8 +1730,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -1794,6 +1872,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {
@@ -1852,7 +1941,10 @@
      fatta dopo il caricamento, quando immagini e font hanno gia'
      la loro altezza definitiva. */
   (function () {
-    const SKIP = ['svc-hero', 'svc-caffe', 'svc-path', 'svc-clients', 'page-faq'];
+    /* L'approfondimento resta fuori dal blocco a piena schermata:
+       porta quattordici paragrafi e tre elenchi, non ci starebbe in
+       una schermata e verrebbe tagliato. Scorre. */
+    const SKIP = ['svc-hero', 'svc-caffe', 'svc-path', 'svc-clients', 'page-faq', 'wd-deep'];
 
     function wrap(sec) {
       const panel = document.createElement('div');
@@ -1925,7 +2017,12 @@
      Hero, sezione fucsia e footer restano quello che sono. */
   (function () {
     const SKIP = ['svc-hero', 'svc-caffe'];
-    const PINNED = { 'svc-clients': 'dark', 'page-faq': 'light' };
+    /* Ordine dei toni: la timeline sta su carta bianca subito dopo
+       la hero, "Come lavoriamo" sul nero, i clienti restano neri (il
+       video dietro lo richiede) e le FAQ su carta bianca. Fra le due
+       sezioni scure di fila il salto si vede comunque: la prima e'
+       nero con alone fucsia, la seconda nero pieno con il video. */
+    const PINNED = { "svc-path": "light", "wd-deep": "dark", "svc-clients": "dark", "page-faq": "light" };
     let light = true;
     document.querySelectorAll('main > section').forEach(sec => {
       if (SKIP.some(c => sec.classList.contains(c))) return;

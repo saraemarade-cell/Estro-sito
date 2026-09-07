@@ -1286,6 +1286,20 @@
     .svc-card__title {
       text-wrap: balance;   /* i titoli lunghi vanno a capo, non si comprimono */
       height: 2.44em;       /* 2 righe a line-height 1.22 */
+      /* La misura in caratteri e' quella che decide dove si va a
+         capo. Senza, il capoverso arrivava solo se il titolo non
+         stava nella larghezza della card: "Social Media Management"
+         andava su due righe, mentre "Influencer Marketing",
+         "Graphic Design & Motion", "Produzione Contenuti" e
+         "Servizi AI per il Marketing" restavano schiacciati su una
+         riga sola, con la seconda riga riservata vuota sotto.
+         A 16ch vanno a capo tutti e, con text-wrap: balance, le due
+         righe vengono bilanciate: nessuno arriva alla terza.
+         Le parole non si spezzano mai a meta'. */
+      max-width: 16ch;
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
     }
     /* L'area riservata al body è espressa come numero di righe per
        l'interlinea reale: così altezza e line-height non possono più
@@ -1520,7 +1534,18 @@
       grid-template-columns: 1.28fr 1fr !important;
       grid-template-rows: 1fr 1fr !important;
       gap: clamp(0.75rem, 1.5vw, 1.5rem) !important;
-      height: clamp(260px, 40vh, 440px) !important;
+      /* Le tre foto sono quadrate (1500x1500, 1080x1080, 800x800) e
+         i riquadri sono molto piu' larghi che alti: con object-fit
+         cover, che e' l'unico modo per non lasciare vuoti, il
+         ritaglio verticale si mangiava quasi due terzi
+         dell'immagine. L'unica leva per recuperarne un pezzo, a
+         parita' di larghezza, e' alzare le card: il riquadro si
+         avvicina al quadrato e cover ha meno da tagliare.
+         Da 40vh (360px su una finestra da 900) a 50vh (450px): la
+         card grande passa dal 52 al 66% di immagine visibile, le due
+         piccole dal 32 al 40%. Il tetto e' 520px, che e' quanto il
+         pannello puo' dare senza spingere il titolo sotto la nav. */
+      height: clamp(300px, 50vh, 520px) !important;
     }
     .tip-card--feature { grid-row: 1 / span 2; }
     /* Le due card piccole restano immagine sopra e testo sotto, ma
@@ -1550,6 +1575,12 @@
       height: 100% !important;
       max-height: none !important;
       object-fit: cover;
+      /* Il ritaglio non parte dal centro ma un po' piu' in alto: il
+         testo sta sopra la foto, nella metà bassa, quindi la parte
+         utile dell'immagine e' quella superiore. Non recupera
+         dettaglio — quello lo da' solo l'altezza della card — ma
+         sceglie meglio cosa resta dentro. */
+      object-position: 50% 38%;
     }
     /* Card grande: l'immagine è tutta la card e il testo ci sta
        sopra. */
@@ -2392,7 +2423,15 @@
          l'inchiostro parte a 95px, con 7px di margine. */
       padding-block: 92px 48px;
     }
-    @media (min-width: 820px) and (min-height: 560px) {
+    /* La soglia in altezza sale da 560 a 820px. Il titolo e' passato
+       da "FAQ" a "Domande Frequenti", che a 150px sta su due righe:
+       il contenuto della sezione ora misura ~850px, e in un pannello
+       alto una schermata su una finestra piu' bassa di 820 il fondo
+       dell'elenco verrebbe tagliato. Sotto quella soglia la sezione
+       resta libera e si legge tutta, scorrendo; sopra si aggancia
+       come le altre. Meglio senza blocco che con una domanda
+       nascosta. */
+    @media (min-width: 820px) and (min-height: 820px) {
       .page-faq { height: 145dvh !important; }
       .page-faq__inner {
         position: sticky !important;
@@ -3002,7 +3041,8 @@
        16px la scala continua a lavorare come prima.
        ═══════════════════════════════════════════════════════════ */
     .svc-card__btn-label,
-    .cst-info__sector,
+    /* .cst-info__sector non e' piu' qui: e' la tagline della card e
+       sta nell'elenco delle eccezioni a 14px, poco piu' sotto. */
     .cst-info__text,
     .cst-tab,
     .tip-card__date,
@@ -3029,12 +3069,13 @@
     .sf-legal__copy,
     .sf-legal__copy * { font-size: max(16px, var(--text-min, 1rem)) !important; }
 
-    /* Le tre eccezioni al minimo: tagline, tag e CTA restano a 14px.
+    /* Le eccezioni al minimo: tagline, tag e CTA restano a 14px.
        Sono etichette, non testo di lettura: portarle a 16 le avrebbe
        fatte pesare quanto i contenuti. */
     .sf-tagline,
     .about-section__kicker,
     .svc-card__tag,
+    .cst-info__sector,
     .cst-info__tags span,
     .tip-card__date { font-size: 14px !important; }
     /* .btn ha una regola con !important più a valle: qui serve una
@@ -3262,7 +3303,7 @@
 </svg>
 
   <!-- ══ NAV ══════════════════════════════════════════════ -->
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -3817,7 +3858,7 @@
         <div class="faq-video__fade faq-video__fade--bottom"></div>
       </div>
       <div class="page-faq__inner">
-        <h2 class="page-faq__title" id="faqTitle">FAQ</h2>
+        <h2 class="page-faq__title" id="faqTitle">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che tipo di agenzia e ESTRO?</button>
@@ -3942,6 +3983,43 @@
     const services   = document.getElementById('ht-services');
     const content    = hero && hero.querySelector('.sr-content');
     const hint       = hero && hero.querySelector('.sr-scroll-hint');
+    // Le parti del contenuto hero e quanto corre ognuna, in frazione
+    // della corsa piena. Il titolo sale di tutto, il resto lo segue
+    // con un filo di ritardo: è quel divario a far leggere il
+    // movimento come un distacco e non come un blocco unico che
+    // traslata.
+    const heroExitParts = content ? [
+      { el: content.querySelector('.vhero__title'),   k: 1.00 },
+      { el: content.querySelector('.vhero__tagline'), k: 0.94 },
+      { el: content.querySelector('.vhero__sub'),     k: 0.90 },
+      { el: content.querySelector('.vhero__cta'),     k: 0.86 },
+    ].filter(p => p.el) : [];
+
+    // Quanto puo' salire il contenuto senza che nulla venga tagliato.
+    // Non e' un numero fisso: e' lo spazio che c'e' davvero fra il
+    // bordo alto utile — il bordo basso della nav, o quello della
+    // hero se la nav e' piu' in alto — e la cima del titolo quando
+    // il contenuto e' fermo. Con una corsa fissa in vh, su una
+    // finestra bassa il titolo finiva sotto il ritaglio della hero e
+    // in uno screenshot mancava un pezzo.
+    // Si misura a contenuto fermo, quindi solo quando la corsa e'
+    // ancora a zero, e si azzera al resize.
+    let heroSlidePx = null;
+    function heroSlideRoom() {
+      if (heroSlidePx != null) return heroSlidePx;
+      if (!hero || !heroExitParts.length) return 0;
+      const hr = hero.getBoundingClientRect();
+      const tr = heroExitParts[0].el.getBoundingClientRect();
+      /* la nav si cerca qui e non dalla costante piu' sotto: questa
+         funzione viene definita prima di quella dichiarazione */
+      const navEl = document.querySelector('.nav');
+      const navBottom = navEl ? navEl.getBoundingClientRect().bottom : 0;
+      const ceiling = Math.max(hr.top, navBottom);
+      // 10px di margine: il titolo si accosta alla nav, non la tocca
+      heroSlidePx = Math.max(0, tr.top - ceiling - 10);
+      return heroSlidePx;
+    }
+    addEventListener('resize', () => { heroSlidePx = null; }, { passive: true });
     const svcHeader  = services && services.querySelector('.svc-header');
     const svcCardsWrap = document.getElementById('svcCardsWrap');
 
@@ -4054,10 +4132,18 @@
         return;
       }
 
-      // rifrazione a campana: nasce, monta e si spegne. Ampiezza
-      // contenuta: oltre i ~14px le lettere si sfaldano e l'effetto
-      // non legge più come acqua.
-      const wave = Math.sin(clamp(q, 0, 1) * Math.PI);
+      // Rifrazione in decadenza, non a campana. Con il seno la
+      // deformazione partiva da zero, montava a metà corsa e si
+      // spegneva: il titolo compariva quindi nitido, poi si
+      // deformava, poi tornava nitido — ed era proprio il difetto
+      // che si vedeva.
+      // Qui l'acqua è al massimo dal primo fotogramma in cui il
+      // titolo esiste e si placa via via che si assesta. L'esponente
+      // sotto 1 tiene la deformazione alta un po' più a lungo
+      // all'inizio, così si legge come acqua che si calma e non
+      // come un interruttore. Ampiezza contenuta: oltre i ~14px le
+      // lettere si sfaldano e l'effetto non legge più come acqua.
+      const wave = Math.pow(1 - clamp(q, 0, 1), 0.65);
       if (ttDisp) {
         ttDisp.setAttribute('scale', (wave * 14).toFixed(2));
         ttTurb.setAttribute('baseFrequency',
@@ -4242,15 +4328,42 @@
 
       // I testi della hero se ne vanno solo dopo lo zoom, cioè quando
       // la sezione ha cominciato davvero a scorrere via.
+      //
+      // Il contenuto fa uno slide up: sale finché "LE IDEE PRENDONO
+      // FORMA" attraversa l'header e ci si infila sotto. La hero ha
+      // overflow: hidden, quindi da lì in su il titolo è ritagliato
+      // dal suo bordo e sembra uscito dallo schermo — ma non è
+      // andato da nessuna parte: è fermo lì, opaco, dentro la hero.
+      // La corsa è 34vh, non una schermata intera: alla fine del
+      // movimento tagline, sottotitolo e CTA sono ancora in vista
+      // nella parte alta. Nessuna dissolvenza e nessuna opacità a
+      // zero — l'opacità la riscrivo a 1 a ogni frame perché non
+      // possa rientrare da altre regole.
+      // Le quattro parti salgono a velocità appena diverse, il
+      // titolo per primo e la CTA per ultima: è quel divario a far
+      // leggere il gesto come un distacco.
       if (content) {
-        const out = phase(pOut, 0, 0.55);
-        content.style.opacity   = (1 - out).toFixed(3);
-        content.style.transform = `translateY(${(out * -34).toFixed(1)}px)`;
+        // La corsa è distesa su tutta la fase d'uscita, non sul suo
+        // primo 55%: il movimento è lento e accompagna lo scroll
+        // invece di scattare.
+        const out = phase(pOut, 0, 1);
+        content.style.opacity = '1';
+        content.style.transform = 'none';
+        if (out <= 0.002) heroSlidePx = null;   // rimisura a riposo
+        const room = heroSlideRoom();
+        heroExitParts.forEach(({ el, k }) => {
+          el.style.transform = out <= 0.002
+            ? 'none'
+            : `translate3d(0, ${(out * -room * k).toFixed(1)}px, 0)`;
+          el.style.opacity = '1';
+        });
       }
 
-      // Titolo hero: si disperde nell'acqua con la curva delicata
-      // approvata, in coda all'assestamento del video.
-      heroTitleOut(phase(pOut, 0, 0.70));
+      // Titolo hero: la dispersione nell'acqua era una dissolvenza —
+      // una maschera che lo cancellava progressivamente. Esce con
+      // il resto del contenuto, salendo. Qui si chiama con 0 solo
+      // per ripulire la maschera se e' rimasta appesa.
+      heroTitleOut(0);
 
       // ── Titolo SERVIZI: si mette a fuoco, non appare ───────────
       // Nessuna opacità a zero e nessuna maschera che lo nasconda:
@@ -5484,7 +5597,15 @@
       if (video) video.style.transform = 'none';
 
       const content = document.querySelector('.sr-content');
-      if (content) { content.style.opacity = '1'; content.style.transform = 'none'; }
+      if (content) {
+        content.style.opacity = '1';
+        content.style.transform = 'none';
+        /* l'uscita del contenuto hero e' sui singoli pezzi, non sul
+           contenitore: nello scatto statico vanno riportati a posto
+           uno per uno */
+        content.querySelectorAll('.vhero__title, .vhero__tagline, .vhero__sub, .vhero__cta')
+          .forEach(el => { el.style.transform = 'none'; el.style.opacity = '1'; });
+      }
 
       const services = document.getElementById('ht-services');
       if (services) {
@@ -5718,6 +5839,118 @@
     }
     if (document.readyState === 'complete') pass();
     else addEventListener('load', pass);
+  }());
+  </script>
+
+  <script>
+  /* ── Il gatto di About si ferma a saluto finito ─────────────────
+     Il video e' in loop: lasciato correre, il soggetto saluta e
+     ricomincia da capo. Qui, quando la sezione copre la schermata e
+     lo scroll si e' fermato, il video si ferma sul fotogramma in cui
+     il saluto e' concluso — il secondo 4 — e resta li'. Al primo
+     movimento, in su o in giu', riprende.
+
+     Mentre si scorre il video non viene toccato: gira alla sua
+     velocita' naturale. La pausa non arriva mai durante lo
+     scorrimento, e questo era il difetto delle versioni prima —
+     scattava al primo frame in cui la sezione superava la soglia,
+     cioe' con lo scroll ancora in corso, e l'evento successivo la
+     annullava. La condizione non e' "la sezione e' in scena" ma
+     "la sezione e' in scena E lo scroll si e' fermato": serve un
+     tempo di quiete.
+
+     A scroll fermo non si mette in pausa subito: si arma un'attesa
+     e si lascia correre il video fino al secondo 4. Cosi' il saluto
+     si completa e il fermo immagine e' sempre lo stesso fotogramma,
+     invece di dipendere da quanto tempo hai passato a scorrere.
+     L'attesa gira in requestAnimationFrame e non su timeupdate,
+     che scatta quattro volte al secondo e sbaglierebbe il punto di
+     un quarto di secondo.
+
+     La frazione visibile la calcolo dal rettangolo e non con un
+     IntersectionObserver: la sezione e' agganciata, e con un
+     elemento sticky i rapporti riportati dall'osservatore non
+     corrispondono a quanto la sezione e' davvero in scena. */
+  (function () {
+    const sticky = document.querySelector('.about-sticky');
+    const video  = document.querySelector('.about-section__cat');
+    if (!sticky || !video) return;
+    if (window.__STATIC_CAPTURE__) return;
+
+    /* Il punto del fermo immagine. Il saluto finisce a 4s e la clip
+       dura 5.04: 4.5 lascia mezzo secondo di respiro dopo il saluto
+       e altrettanto prima che il loop riparta. */
+    const HOLD_AT = 4.5;
+    const FULL    = 0.9;   /* quanta schermata deve coprire la sezione */
+    const IDLE    = 260;   /* quiete dopo l'ultimo scroll, in ms */
+
+    let idleTimer = null;
+    let waiting   = false; /* attesa del secondo 4 in corso */
+    let rafId     = null;
+
+    function visible() {
+      const r = sticky.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      if (r.bottom <= 0 || r.top >= vh) return 0;
+      return Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)) / vh;
+    }
+
+    function stopWaiting() {
+      waiting = false;
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    function watch() {
+      rafId = null;
+      if (!waiting) return;
+      /* la sezione se ne e' andata mentre aspettavamo */
+      if (visible() < FULL) { stopWaiting(); return; }
+      /* Il punto di fermo non puo' cadere oltre la fine della clip:
+         il loop ripartirebbe prima di raggiungerlo e la pausa non
+         scatterebbe mai. Se la durata non e' ancora nota si usa il
+         valore cosi' com'e'. */
+      const holdAt = video.duration
+        ? Math.min(HOLD_AT, video.duration - 0.08)
+        : HOLD_AT;
+      if (video.currentTime >= holdAt) {
+        /* prima ferma, poi porta al tempo esatto: nell'ordine
+           inverso si vedrebbe un fotogramma oltre il punto cercato.
+           Il tempo lo fisso io e non lo lascio a quello del frame in
+           cui mi accorgo, cosi' il fermo immagine e' sempre lo
+           stesso. */
+        video.pause();
+        video.currentTime = holdAt;
+        stopWaiting();
+        return;
+      }
+      rafId = requestAnimationFrame(watch);
+    }
+
+    function settle() {
+      idleTimer = null;
+      if (visible() < FULL) return;
+      if (waiting) return;
+      waiting = true;
+      if (!rafId) rafId = requestAnimationFrame(watch);
+    }
+
+    function onScroll() {
+      stopWaiting();
+      /* si chiama play soltanto se serve: chiamarlo a ogni evento di
+         scroll su un video che sta gia' andando lo fa singhiozzare */
+      if (video.paused) {
+        const p = video.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(settle, IDLE);
+    }
+
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    /* caso "pagina aperta gia' su About": nessuno scroll da cui
+       partire, quindi il primo controllo lo si programma qui */
+    idleTimer = setTimeout(settle, IDLE);
   }());
   </script>
 </body>

@@ -15,10 +15,22 @@
   <link rel="stylesheet" href="../css/hero.css" />
   <style>
     /* ── Hero: esattamente 100dvh ── */
+    /* La hero era inchiodata a una schermata esatta — height e
+       max-height a 100dvh, piu' overflow hidden — mentre su Google
+       Ads, dove la transizione si legge bene, puo' crescere. Con
+       un'altezza massima e il taglio attivo il contenuto che non ci
+       stava veniva tagliato in basso, cioe' proprio dove la sezione
+       seguente sale sopra: il raccordo si appoggiava su contenuto
+       reciso e l'insieme sembrava rotto. E questa hero ha di che
+       sforare: occhiello, titolo su tre righe, sette icone di
+       piattaforma e un form da dieci controlli.
+       Ora il minimo e' una schermata e da li' cresce. Il taglio
+       resta, serve al video di sfondo, ma non ha piu' nulla da
+       tagliare. */
     .svc-hero--videobg {
-      height: 100dvh !important;
-      min-height: unset !important;
-      max-height: 100dvh !important;
+      min-height: 100dvh !important;
+      height: auto !important;
+      max-height: none !important;
       overflow: hidden !important;
     }
 .svc-hero__kicker,
@@ -60,27 +72,35 @@
     }
     #ads-detail .svc-section-title .tl { overflow-wrap: normal !important; }
 
-    /* ── Split-letter: .tl span per titoli grandi ── */
-    .svc-section-title .tl,
-    .svc-process__title .tl,
-    .svc-channels__title .tl,
-    .svc-clients__title .tl,
-    .svc-magic__title .tl,
-    .svc-caffe__title .tl { display: inline-block; opacity: 0; transform: translateY(0.8em); }
+    /* Il fondo del documento e' scuro, come su SMM e Google Ads:
+       negli angoli arrotondati dalla salita fra sezioni si vede la
+       tela della pagina, e sul bianco di sistema sembrava spuntare
+       un'altra sezione chiara. */
+    html, body { background-color: #050505; }
+
+    /* I titoli non partono piu' nascosti: li riaccendeva lettera
+       per lettera un RAF legato allo scroll, ora rimosso. L'effetto
+       acqua lavora sul titolo intero. */
 
     /* ── Hero platform links (come SMM) ── */
     .svc-hero__platforms a { display: inline-flex; opacity: 0.8; transition: opacity 0.2s, transform 0.2s; }
     .svc-hero__platforms a:hover { opacity: 1; transform: scale(1.12); }
 
     /* ── Clienti: dark bg, marquee identico a SMM (regola 15) ── */
+    /* La sezione e' la corsa del pannello, come nelle altre pagine:
+       senza padding e senza taglio. Con i respiri di sezione sommati
+       al pannello da 100dvh restava un mare di vuoto sopra e sotto
+       ai loghi. */
     #ads-clienti {
       background: #000 !important;
       color: #fff !important;
-      padding-block: clamp(4rem,8vw,7rem) clamp(4rem,8vw,6rem) !important;
-      overflow: hidden !important;
+      min-height: 0 !important;
+      height: 118dvh !important;
+      display: block !important;
+      padding: 0 !important;
+      overflow: visible !important;
     }
     #ads-clienti .svc-clients__title {
-      opacity: 0; transform: translateY(30px); will-change: opacity,transform;
       color: #fff !important; text-align: center; margin-bottom: clamp(2.5rem,5vw,4rem);
     }
     #ads-clienti .svc-clients__marquee-wrap {
@@ -628,8 +648,13 @@
       background: linear-gradient(to bottom, transparent, #0a0a0a);
     }
     /* il contenuto sta sopra al video */
-    .svc-clients > .container,
-    .svc-clients > .svc-clients__marquee-wrap {
+    /* Il contenuto sta sopra al video. Il selettore chiedeva il
+       figlio diretto della sezione, ma da quando il pannello
+       agganciato si e' messo in mezzo il titolo non lo era piu': il
+       video, assoluto e a z-index 0, gli passava davanti. */
+    .svc-clients .container,
+    .svc-clients .svc-clients__header,
+    .svc-clients .svc-clients__marquee-wrap {
       position: relative;
       z-index: 1;
     }
@@ -856,7 +881,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -925,7 +950,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="svc-hero svc-hero--videobg" aria-labelledby="page-title">
+    <section class="svc-hero svc-hero--videobg" aria-labelledby="page-title" data-nav-theme="dark">
       <video class="svc-hero__bgvideo" autoplay muted loop playsinline aria-hidden="true"></video>
       <div class="svc-hero__ph" aria-hidden="true">
         <span class="svc-hero__ph-label">
@@ -950,6 +975,7 @@
             <a href="https://www.linkedin.com/company/estro-agency" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="../Social%20ads/linkedin2.svg" alt="LinkedIn" width="40" height="40" /></a>
             <a href="#" aria-label="Sky"><img src="../Social%20ads/sky2.svg" alt="Sky" width="40" height="40" /></a>
             <a href="https://open.spotify.com" target="_blank" rel="noopener" aria-label="Spotify"><img src="../Social%20ads/Font_Awesome_5_brands_spotify.svg" alt="Spotify" width="40" height="40" /></a>
+            <a href="#" aria-label="Pornhub"><img src="../Social%20ads/phub2.svg" alt="Pornhub" width="40" height="40" /></a>
           </div>
           <p class="svc-hero__sub">Raggiungi migliaia di persone grazie alla pubblicità su Facebook, Instagram e tanti altri canali ed aumenta i ricavi della tua azienda facilmente e nel minor tempo possibile.</p>
           <p class="svc-hero__tagline"><strong>Sei nel posto giusto!</strong></p>
@@ -1016,7 +1042,7 @@
       <div class="container">
         <div class="service-detail__grid">
           <div>
-            <h2 class="svc-section-title" id="ads-detail-title"><span style="white-space:nowrap">I tuoi</span> <span style="white-space:nowrap">obiettivi,</span><br/><span style="white-space:nowrap">le nostre</span><br/><em style="white-space:nowrap">Social ADS.</em></h2>
+            <h2 class="svc-section-title" id="ads-detail-title" style="line-height:1.05;">I tuoi obiettivi,<br/>le nostre <em>Social ADS.</em></h2>
             <div class="service-detail__body reveal reveal-delay-1" style="font-size:15.2px;">
               <p>Hai un <strong>e-commerce</strong> e vuoi iniziare ad ottenere risultati concreti o migliorare le tue conversioni? Vuoi creare delle campagne di <strong>lead generation</strong> che funzionano? Vuoi far conoscere il tuo brand a migliaia di persone grazie ai social network?</p>
               <p>Estro non è una semplice agenzia. <strong>Estro è un collettivo di professionisti e consulenti certificati</strong> che ti aiuta a perseguire i tuoi obiettivi coinvolgendoti nei passi operativi e consigliandoti sul perché e come investire per ottenere il massimo dalle campagne social. Perché da soli siamo bravi, <strong>ma insieme siamo imbattibili</strong>.</p>
@@ -1045,120 +1071,59 @@
     </section>
 
     <!-- ══ VANTAGGI ═══════════════════════════════════════════════ -->
-    <section class="section svc-process" id="ads-vantaggi">
+    <section class="section svc-process" id="ads-vantaggi" data-nav-theme="dark">
       <div class="container">
         <h2 class="svc-process__title" id="ads-vantaggi-title">ESTRO È IL TUO COMPAGNO IDEALE,<br/>GUARDA QUANTI VANTAGGI!</h2>
         <div class="svc-process__grid">
 
           <div class="svc-process__card reveal">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Scudo con spunta: protezione dalle spese inutili -->
-                <path d="M32 5 L56 14 L56 34 C56 47 45 57 32 60 C19 57 8 47 8 34 L8 14 Z" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round"/>
-                <polyline points="20,32 28,42 44,24" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8 20.2 6v6.2c0 4.4-3.4 7.8-8.2 9.4-4.8-1.6-8.2-5-8.2-9.4V6z"/><path d="M8.5 12.1 11.1 14.9l4.4-5.2"/></svg>
             </div>
             <h3 class="svc-process__card-title">Stop agli sprechi di denaro</h3>
-            <p class="svc-process__card-text">Creiamo insieme campagne pubblicitarie efficaci che evitino le spese inutili e portino <strong>risultati concreti nel minor tempo possibile</strong>.</p>
+            <p class="svc-process__card-text">Creiamo insieme <strong>campagne pubblicitarie efficaci</strong> che evitino le <strong>spese inutili</strong> e portino <strong>risultati concreti nel minor tempo possibile</strong>.</p>
           </div>
 
           <div class="svc-process__card reveal reveal-delay-1">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Grafico a linea crescente con assi e freccia -->
-                <line x1="6" y1="58" x2="6" y2="8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-                <line x1="6" y1="58" x2="58" y2="58" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/>
-                <polyline points="14,46 26,32 38,40 58,14" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="48" y1="14" x2="58" y2="14" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-                <line x1="58" y1="14" x2="58" y2="24" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20h18"/><path d="M4.4 15.9 9.6 10.4l3.4 3.2 6.6-7"/><path d="M15 6.6h4.6v4.6"/></svg>
             </div>
             <h3 class="svc-process__card-title">Aumentiamo i profitti</h3>
-            <p class="svc-process__card-text">Per aumentare le vendite un e-commerce ha bisogno di <strong>traffico di qualità</strong> ed i social possono essere un bacino perfetto dove trovare potenziali clienti con costanza e precisione.</p>
+            <p class="svc-process__card-text">Per <strong>aumentare le vendite</strong> un <strong>e-commerce</strong> ha bisogno di <strong>traffico di qualità</strong> ed i social possono essere un bacino perfetto dove trovare <strong>potenziali clienti</strong> con costanza e precisione.</p>
           </div>
 
           <div class="svc-process__card reveal">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Corona: leadership e autorità -->
-                <polyline points="6,52 6,18 21,36 32,10 43,36 58,18 58,52" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="6" y1="52" x2="58" y2="52" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.8 7.4 7.2 10.8 12 3.8l4.8 7 4.4-3.4-1.9 10.8H4.7z"/><path d="M4.7 21.2h14.6"/></svg>
             </div>
             <h3 class="svc-process__card-title">Diventa un leader</h3>
-            <p class="svc-process__card-text">Avere una forte identità social per una azienda è importantissimo. <strong>Fatti vedere da migliaia di utenti</strong> e posizionati come uno dei brand di riferimento.</p>
+            <p class="svc-process__card-text">Avere una forte <strong>identità social</strong> per una azienda è importantissimo. <strong>Fatti vedere da migliaia di utenti</strong> e posizionati come uno dei <strong>brand di riferimento</strong>.</p>
           </div>
 
           <div class="svc-process__card reveal reveal-delay-1">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Imbuto/filtro: targeting del pubblico giusto -->
-                <path d="M8 10 L56 10 L38 30 L38 54 L26 48 L26 30 Z" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.8"/><circle cx="12" cy="12" r="3.6"/></svg>
             </div>
             <h3 class="svc-process__card-title">Il pubblico migliore al momento giusto</h3>
-            <p class="svc-process__card-text">Individuiamo il target più efficace a cui mostrare i tuoi prodotti o servizi e costruiamo insieme una strategia <strong>per mostrarti al pubblico giusto nel momento migliore</strong>.</p>
+            <p class="svc-process__card-text">Individuiamo il <strong>target più efficace</strong> a cui mostrare i tuoi prodotti o servizi e costruiamo insieme una strategia <strong>per mostrarti al pubblico giusto nel momento migliore</strong>.</p>
           </div>
 
           <div class="svc-process__card reveal">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Barre piene crescenti: dati e numeri -->
-                <rect x="4" y="44" width="14" height="16" rx="3" fill="currentColor"/>
-                <rect x="24" y="28" width="14" height="32" rx="3" fill="currentColor"/>
-                <rect x="44" y="12" width="14" height="48" rx="3" fill="currentColor"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 3.4v17.2h16.6"/><path d="M8.7 20.6v-5.8"/><path d="M13.2 20.6V10.9"/><path d="M17.7 20.6V6.6"/></svg>
             </div>
             <h3 class="svc-process__card-title">Sono i numeri a parlare per noi</h3>
-            <p class="svc-process__card-text">I nostri tecnici compiono <strong>analisi meticolose e costanti</strong> basate su dati effettivi per ottenere sempre migliori risultati seguendo le più avanzate tecniche di scaling e di ottimizzazione.</p>
+            <p class="svc-process__card-text">I nostri tecnici compiono <strong>analisi meticolose e costanti</strong> basate su <strong>dati effettivi</strong> per ottenere sempre migliori risultati seguendo le più avanzate <strong>tecniche di scaling e di ottimizzazione</strong>.</p>
           </div>
 
           <div class="svc-process__card reveal reveal-delay-1">
             <div class="svc-process__icon" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Magnete: attrae lead e clienti -->
-                <path d="M12 8 L12 36 C12 50 52 50 52 36 L52 8" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                <line x1="6" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                <line x1="46" y1="8" x2="58" y2="8" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.6 6.4h11"/><path d="M9.6 12h11"/><path d="M9.6 17.6h11"/><circle cx="4.6" cy="6.4" r="1.5" fill="currentColor"/><circle cx="4.6" cy="12" r="1.5" fill="currentColor"/><circle cx="4.6" cy="17.6" r="1.5" fill="currentColor"/></svg>
             </div>
             <h3 class="svc-process__card-title">I soldi sono nelle liste</h3>
-            <p class="svc-process__card-text">Grazie alla lead generation potrai avere <strong>contatti di qualità</strong> di persone reali pronte ad essere ricontattate ed interessate ad ascoltarti.</p>
+            <p class="svc-process__card-text">Grazie alla <strong>lead generation</strong> potrai avere <strong>contatti di qualità</strong> di persone reali pronte ad essere ricontattate ed interessate ad ascoltarti.</p>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ══ CANALI ══════════════════════════════════════════════════ -->
-    <section class="section svc-channels" id="ads-canali">
-      <div class="container">
-        <h2 class="svc-channels__title" id="ads-canali-title">TANTI CANALI PER RAGGIUNGERE<br/>UN UNICO OBIETTIVO: IL TUO</h2>
-        <div class="svc-channels__grid reveal reveal-delay-1">
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/2021_Facebook_icon.svg" alt="Facebook" />
-            <span>Facebook</span>
-          </div>
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/instagram2.svg" alt="Instagram" />
-            <span>Instagram</span>
-          </div>
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/tiktok2.svg" alt="TikTok" />
-            <span>TikTok</span>
-          </div>
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/linkedin2.svg" alt="LinkedIn" />
-            <span>LinkedIn</span>
-          </div>
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/sky2.svg" alt="Sky" />
-            <span>Sky</span>
-          </div>
-          <div class="svc-channels__item">
-            <img src="../Social%20ads/Font_Awesome_5_brands_spotify.svg" alt="Spotify" />
-            <span>Spotify</span>
-          </div>
         </div>
       </div>
     </section>
@@ -1281,7 +1246,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Cosa sono i Social Ads?</button>
@@ -1379,301 +1344,42 @@
   </script>
   <script src="../js/main.js"></script>
   <script>
-  /* ── Social ADS: scroll-driven motion — parametri identici a SMM ── */
+  /* ── Tema della nav ────────────────────────────────────────────
+     Qui c'era l'impianto di effetti vecchio: i titoli scritti
+     lettera per lettera al passare dello scroll, con la fase di
+     uscita che li ri-cancellava, e overlay che sfumavano un colore
+     sull'altro fra una sezione e l'altra. Sostituito da quello
+     condiviso — acqua sui titoli, entrata del corpo di About sui
+     testi, salita .sx-rise fra le sezioni — come sulle altre
+     pagine servizi. Di quel blocco resta solo il tema della nav. */
   (function () {
     'use strict';
-
-    /* helpers: copie esatte da main.js */
-    function c01(v) { return Math.max(0, Math.min(1, v)); }
-    function ease(t) { return 0.5 - Math.cos(Math.PI * t) / 2; }
-
-    var heroEl     = document.querySelector('.svc-hero');
-    var detailEl   = document.getElementById('ads-detail');
-    var vantaggiEl = document.getElementById('ads-vantaggi');
-    var canaliEl   = document.getElementById('ads-canali');
-    var clientiEl  = document.getElementById('ads-clienti');
-    var magicEl    = document.getElementById('ads-magic');
-    var caffeEl    = document.getElementById('ads-caffe');
-    var navEl      = document.querySelector('.nav');
-
-    /* splitLetters: identico a SMM */
-    function splitLetters(el) {
-      if (!el) return [];
-      var raw = el.innerHTML, out = '', i = 0;
-      while (i < raw.length) {
-        if (raw[i] === '<') {
-          var j = raw.indexOf('>', i); out += raw.slice(i, j + 1); i = j + 1;
-        } else if (raw[i] === '&') {
-          var k2 = raw.indexOf(';', i); out += '<span class="tl">' + raw.slice(i, k2 + 1) + '</span>'; i = k2 + 1;
-        } else if (raw[i] === ' ') {
-          out += ' '; i++;
-        } else {
-          out += '<span class="tl">' + raw[i] + '</span>'; i++;
-        }
-      }
-      el.innerHTML = out;
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-      return Array.from(el.querySelectorAll('.tl'));
-    }
-
-    /* revLetters: identico a SMM (stagger 0.012, dur 0.08) */
-    function revLetters(letters, p) {
-      letters.forEach(function (el, i) {
-        var lP = ease(c01((p - i * 0.012) / 0.08));
-        el.style.opacity   = lP.toFixed(3);
-        el.style.transform = 'translateY(' + ((1 - lP) * 0.8).toFixed(3) + 'em)';
+    const navEl = document.querySelector('.nav');
+    if (!navEl) return;
+    let prevDark = null;
+    function navTick() {
+      requestAnimationFrame(navTick);
+      const navMid = (navEl.getBoundingClientRect().height || 80) / 2;
+      /* la hero e' scura: e' il punto di partenza */
+      let dark = true;
+      document.querySelectorAll('main > section, footer.site-footer').forEach(sec => {
+        const r = sec.getBoundingClientRect();
+        if (r.top > navMid || r.bottom <= navMid) return;
+        dark = sec.dataset.navTheme === 'dark'
+            || sec.classList.contains('svc-bg-dark')
+            || sec.classList.contains('svc-caffe')
+            || sec.classList.contains('site-footer');
       });
-    }
-
-    /* makeTransOv: identico a SMM makeTransOv */
-    /* Le dissolvenze fra sezioni sono state rimosse: il passaggio
-       lo fa la salita con il raccordo arrotondato, nessun contenuto
-       deve sparire per far entrare quello dopo. La funzione resta
-       come guscio inerte perche' il resto dello script la chiama. */
-    function makeTransOv() { return { style: { opacity: 0 } }; }
-
-    /* ── Overlays transizione: colore = sfondo della sezione successiva ── */
-    var heroOv          = makeTransOv(heroEl,     '#fff');      /* hero(dark)    → detail(bianco)   */
-    var detToVantaggiOv = makeTransOv(detailEl,   '#DB005A');   /* detail(bianco)→ vantaggi(fucsia) */
-    var vanToCanaliOv   = makeTransOv(vantaggiEl, '#fff');      /* vantaggi(fucsia)→canali(bianco)  */
-    var canToClientiOv  = makeTransOv(canaliEl,   '#000');      /* canali(bianco)→ clienti(nero)    */
-    var cliToMagicOv    = makeTransOv(clientiEl,  '#fff');      /* clienti(nero) → magic(bianco)    */
-    var magicToCaffeOv  = makeTransOv(magicEl,    '#DB005A');   /* magic(bianco) → caffe(fucsia)    */
-
-    /* Caffe exit: overlay fisso identico a SMM */
-    /* niente velatura a tutto schermo in uscita */
-
-    var caffeExitOv = { style: { opacity: 0 } };
-
-    /* split titoli */
-    var detailLetters   = splitLetters(document.getElementById('ads-detail-title'));
-    var vantaggiLetters = splitLetters(document.getElementById('ads-vantaggi-title'));
-    var canaliLetters   = splitLetters(document.getElementById('ads-canali-title'));
-    var clientiLetters  = splitLetters(document.getElementById('ads-clienti-title'));
-    var magicLetters    = splitLetters(magicEl && magicEl.querySelector('.svc-magic__title'));
-    var caffeLetters    = splitLetters(caffeEl && caffeEl.querySelector('.svc-caffe__title'));
-
-    /* elementi da gestire individualmente */
-    var detailBody   = detailEl  && detailEl.querySelector('.service-detail__body');
-    var detailCtaDiv = detailEl  && detailEl.querySelector('.reveal.reveal-delay-2');
-    var detailPanel  = detailEl  && detailEl.querySelector('.service-detail__panel');
-    var detailCtaBox = detailEl  && detailEl.querySelector('.service-detail__cta-box');
-    var vantaggiCards = vantaggiEl ? Array.from(vantaggiEl.querySelectorAll('.svc-process__card')) : [];
-    var vantaggiGrid  = vantaggiEl && vantaggiEl.querySelector('.svc-process__grid');
-    var canaliGrid   = canaliEl  && canaliEl.querySelector('.svc-channels__grid');
-    var magicContent = magicEl   && magicEl.querySelector('.svc-magic__content');
-    var magicCat     = magicEl   && magicEl.querySelector('.svc-magic__cat');
-    var magicLinks   = magicEl   && magicEl.querySelector('.svc-magic__links');
-    var caffeLeft    = caffeEl   && caffeEl.querySelector('.svc-caffe__left');
-    var caffeSub     = caffeEl   && caffeEl.querySelector('.svc-caffe__sub');
-    var caffeForm    = caffeEl   && caffeEl.querySelector('.svc-caffe__form');
-
-    /* unlockContainer: identico a SMM */
-    function unlockContainer(el) {
-      if (!el) return;
-      el.style.cssText += ';opacity:1!important;transform:none!important;transition:none!important';
-    }
-    unlockContainer(magicContent);
-    unlockContainer(caffeLeft);
-
-    /* initHide: identico a SMM initHide */
-    function initHide(el) {
-      if (!el) return;
-      Object.assign(el.style, { opacity:'0', transform:'translateY(20px)', willChange:'opacity,transform', transition:'none' });
-    }
-    initHide(detailBody);
-    initHide(detailCtaDiv);
-    initHide(detailPanel);
-    initHide(detailCtaBox);
-    vantaggiCards.forEach(function(el) {
-      if (!el) return;
-      Object.assign(el.style, { opacity:'0', willChange:'opacity,transform', transition:'none' });
-    });
-    initHide(canaliGrid);
-    initHide(magicCat);
-    initHide(magicLinks);
-    initHide(caffeSub);
-    initHide(caffeForm);
-
-    /* impedisce conflitti con main.js IntersectionObserver */
-    document.querySelectorAll(
-      '#ads-detail .reveal,#ads-vantaggi .reveal,#ads-canali .reveal,' +
-      '#ads-magic .reveal,#ads-caffe .reveal,#ads-clienti .reveal'
-    ).forEach(function (el) { el.style.transition = 'none'; });
-
-    /* ── Colori nav ── */
-    var C_DARK = [5,5,5], C_WHITE = [255,255,255], C_FUCHSIA = [219,0,90];
-    function luma(c) { return 0.299*c[0] + 0.587*c[1] + 0.114*c[2]; }
-    function blend(a,b,t) { return [a[0]*(1-t)+b[0]*t, a[1]*(1-t)+b[1]*t, a[2]*(1-t)+b[2]*t]; }
-    var prevDark = null;
-
-    /* helper reveal elemento singolo (translateY 20px identico a SMM initHide) */
-    function revEl(el, p, base, dur, ty) {
-      if (!el) return;
-      var t = ease(c01((p - base) / dur));
-      el.style.opacity   = t.toFixed(3);
-      el.style.transform = 'translateY(' + ((1-t)*(ty||20)).toFixed(1) + 'px)';
-    }
-
-    /* secP: formula identica a SMM clienti (ENTRY = vh × 0.70) */
-    function secP(el) {
-      if (!el) return 0;
-      var sR = el.getBoundingClientRect();
-      var ENTRY = window.innerHeight * 0.70;
-      return c01((ENTRY - sR.top) / ENTRY);
-    }
-
-    /* p_enter: formula identica a SMM transitionTick
-       p=0 quando section.top = vh, p=1 quando section.top = 0 */
-    function p_enter(el) {
-      if (!el) return 0;
-      return ease(c01((window.innerHeight - el.getBoundingClientRect().top) / window.innerHeight));
-    }
-
-    /* variabili opacity overlay: accessibili sia in tick che nel nav theme */
-    var heroOvOp = 0, detToVOp = 0, vanToCanOp = 0,
-        canToCliOp = 0, cliToMagOp = 0, magToCafOp = 0;
-
-    /* ══ RAF LOOP ══════════════════════════════════════════════ */
-    function tick() {
-      requestAnimationFrame(tick);
-      var vh = window.innerHeight;
-
-      /* ── Transizione overlays: formula identica a SMM (base 0.25, dur 0.75) ──
-         Ogni overlay è guidato dall'ingresso della sezione SUCCESSIVA            */
-      heroOvOp   = p_enter(detailEl);
-      detToVOp   = ease(c01((p_enter(vantaggiEl) - 0.25) / 0.75));
-      vanToCanOp = ease(c01((p_enter(canaliEl)   - 0.25) / 0.75));
-      canToCliOp = ease(c01((p_enter(clientiEl)  - 0.25) / 0.75));
-      cliToMagOp = ease(c01((p_enter(magicEl)    - 0.25) / 0.75));
-      magToCafOp = ease(c01((p_enter(caffeEl)    - 0.25) / 0.75));
-
-      if (heroOv)          heroOv.style.opacity          = heroOvOp.toFixed(3);
-      if (detToVantaggiOv) detToVantaggiOv.style.opacity = detToVOp.toFixed(3);
-      if (vanToCanaliOv)   vanToCanaliOv.style.opacity   = vanToCanOp.toFixed(3);
-      if (canToClientiOv)  canToClientiOv.style.opacity  = canToCliOp.toFixed(3);
-      if (cliToMagicOv)    cliToMagicOv.style.opacity    = cliToMagOp.toFixed(3);
-      if (magicToCaffeOv)  magicToCaffeOv.style.opacity  = magToCafOp.toFixed(3);
-
-      /* ── DETAIL: reveal con secP(0.70), titolo split-letter ── */
-      var pd = secP(detailEl);
-      revLetters(detailLetters, pd);
-      revEl(detailBody,   pd, 0.10, 0.50);
-      revEl(detailPanel,  pd, 0.15, 0.45);
-      revEl(detailCtaDiv, pd, 0.20, 0.40);
-      revEl(detailCtaBox, pd, 0.16, 0.44);
-
-      /* ── VANTAGGI: scatter → snap ── ogni card parte sparsa e ruotata,
-         poi scatta in posizione (trigger sulla griglia, non sulla sezione) */
-      var pv      = secP(vantaggiEl);
-      var pvCards = secP(vantaggiGrid || vantaggiEl);
-      revLetters(vantaggiLetters, pv);
-      var CARD_SCATTER = [
-        { r: -11, x: -40, y: 80,  s: 0.80 },
-        { r:   7, x:  10, y: 110, s: 0.78 },
-        { r:  -5, x:  50, y: 70,  s: 0.83 },
-        { r:  13, x: -30, y: 95,  s: 0.76 },
-        { r:  -8, x:  35, y: 85,  s: 0.81 },
-        { r:   6, x: -15, y: 100, s: 0.79 }
-      ];
-      vantaggiCards.forEach(function (card, ci) {
-        var sc0 = CARD_SCATTER[ci] || { r: 0, x: 0, y: 80, s: 0.82 };
-        var col = ci % 3, row = Math.floor(ci / 3);
-        var base = col * 0.08 + row * 0.14;
-        var tIn = ease(c01((pvCards - base) / 0.28));
-        card.style.opacity   = tIn.toFixed(3);
-        card.style.transform =
-          'translateX(' + (sc0.x * (1 - tIn)).toFixed(1) + 'px) ' +
-          'translateY(' + (sc0.y * (1 - tIn)).toFixed(1) + 'px) ' +
-          'rotate('     + (sc0.r * (1 - tIn)).toFixed(2)  + 'deg) ' +
-          'scale('      + (sc0.s + (1 - sc0.s) * tIn).toFixed(4) + ')';
-      });
-
-      /* ── CANALI: titolo split-letter + grid ── */
-      var pc = secP(canaliEl);
-      revLetters(canaliLetters, pc);
-      revEl(canaliGrid, pc, 0.10, 0.50);
-
-      /* ── CLIENTI: titolo split-letter (identico a SMM rafLoop) ── */
-      revLetters(clientiLetters, secP(clientiEl));
-
-      /* ── MAGIC: identico a SMM transitionTick ── */
-      var mR = magicEl ? magicEl.getBoundingClientRect() : null;
-      if (mR) {
-        var p1 = ease(c01((vh - mR.top) / vh));
-        revLetters(magicLetters, ease(c01(p1 / 0.85)));
-        var catP = ease(c01((p1 - 0.05) / 0.80));
-        if (magicCat) { magicCat.style.opacity = catP.toFixed(3); magicCat.style.transform = 'translateY(' + ((1-catP)*24).toFixed(1) + 'px)'; }
-        var linksP = ease(c01((p1 - 0.20) / 0.70));
-        if (magicLinks) { magicLinks.style.opacity = linksP.toFixed(3); magicLinks.style.transform = 'translateY(' + ((1-linksP)*20).toFixed(1) + 'px)'; }
-      }
-
-      /* ── CAFFE: identico a SMM transitionTick ── */
-      var cR = caffeEl ? caffeEl.getBoundingClientRect() : null;
-      if (cR) {
-        var p2 = ease(c01((vh - cR.top) / vh));
-        revLetters(caffeLetters, ease(c01(p2 / 0.85)));
-        var subP = ease(c01((p2 - 0.10) / 0.75));
-        if (caffeSub) { caffeSub.style.opacity = subP.toFixed(3); caffeSub.style.transform = 'translateY(' + ((1-subP)*16).toFixed(1) + 'px)'; }
-        var formP = ease(c01((p2 - 0.20) / 0.70));
-        if (caffeForm) { caffeForm.style.opacity = formP.toFixed(3); caffeForm.style.transform = 'translateY(' + ((1-formP)*20).toFixed(1) + 'px)'; }
-      }
-
-      /* ── Caffè exit: identico a SMM caffeTick ── */
-      var maxS = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      caffeExitOv.style.opacity = ease(c01(1 - (maxS - window.scrollY) / 120)).toFixed(3);
-
-      /* ── NAV THEME: identico a SMM navTick ──────────────────────────────────
-         1. Colore base dalla sezione sotto il centro della nav
-         2. Blend con overlay di transizione (usa opacity corrente)
-         3. Luma < 140 → nav--on-dark
-      ─────────────────────────────────────────────────────────────────────── */
-      if (navEl) {
-        var navH   = navEl.getBoundingClientRect().height || 80;
-        var navMid = navH / 2;
-        var base   = C_DARK; /* default: hero è scuro */
-
-        var sectionColors = [
-          { el: heroEl,     col: C_DARK    },
-          { el: detailEl,   col: C_WHITE   },
-          { el: vantaggiEl, col: C_FUCHSIA },
-          { el: canaliEl,   col: C_WHITE   },
-          { el: clientiEl,  col: C_DARK    },
-          { el: magicEl,    col: C_WHITE   },
-          { el: caffeEl,    col: C_FUCHSIA },
-        ];
-        sectionColors.forEach(function (s) {
-          if (!s.el) return;
-          var r = s.el.getBoundingClientRect();
-          if (r.top <= navMid && r.bottom > navMid) base = s.col;
-        });
-
-        /* blend con overlays: usa opacity calcolate nel frame corrente */
-        var overlayBlends = [
-          { el: heroEl,     op: heroOvOp,   from: C_DARK,    to: C_WHITE   },
-          { el: detailEl,   op: detToVOp,   from: C_WHITE,   to: C_FUCHSIA },
-          { el: vantaggiEl, op: vanToCanOp, from: C_FUCHSIA, to: C_WHITE   },
-          { el: canaliEl,   op: canToCliOp, from: C_WHITE,   to: C_DARK    },
-          { el: clientiEl,  op: cliToMagOp, from: C_DARK,    to: C_WHITE   },
-          { el: magicEl,    op: magToCafOp, from: C_WHITE,   to: C_FUCHSIA },
-        ];
-        overlayBlends.forEach(function (ob) {
-          if (!ob.el || ob.op <= 0) return;
-          var r = ob.el.getBoundingClientRect();
-          if (r.top <= navMid && r.bottom > navMid) base = blend(ob.from, ob.to, ob.op);
-        });
-
-        var isDark = luma(base) < 140;
-        if (isDark !== prevDark) { prevDark = isDark; navEl.classList.toggle('nav--on-dark', isDark); }
+      if (dark !== prevDark) {
+        prevDark = dark;
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
     }
-
-    requestAnimationFrame(tick);
+    requestAnimationFrame(navTick);
   })();
   </script>
       <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -1743,8 +1449,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -1886,6 +1591,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {
@@ -1915,7 +1631,7 @@
       '.svc-caffe__sub, .svc-caffe__form, .page-faq__item, ' +
       '.smm-panel__statement-sub, .svc-clients__logo, ' +
       '.service-detail__body p, .service-detail__item, ' +
-      '.svc-tools__item, .svc-process__card-text, ' +
+      '.svc-tools__item, .svc-process__card, ' +
       '.imk-intro p, .svc-channels p, .svc-prod p, .pc-prod p'
     );
     if (RM) {
@@ -1944,6 +1660,12 @@
      fatta dopo il caricamento, quando immagini e font hanno gia'
      la loro altezza definitiva. */
   (function () {
+    /* La sezione di apertura torna fra quelle agganciate. L'avevo
+       esclusa perche' il pannello, avendo un fondo proprio e gli
+       stessi angoli della sezione, disegnava un secondo riquadro
+       appena si sganciava; ora i pannelli sono trasparenti e il
+       fondo lo dipinge solo la sezione, quindi il problema non
+       c'e' piu' e il blocco si puo' avere senza rompere la salita. */
     const SKIP = ['svc-hero', 'svc-caffe', 'svc-path', 'svc-clients', 'page-faq'];
 
     function wrap(sec) {
@@ -2016,7 +1738,12 @@
      hanno, così non si accavallano due sezioni uguali di seguito.
      Hero, sezione fucsia e footer restano quello che sono. */
   (function () {
-    const SKIP = ['svc-hero', 'svc-caffe'];
+    /* La sezione dei vantaggi non entra nel turno: e' fucsia per
+       disegno, con le card bianche sopra. Dipinta di bianco
+       dall'alternanza lasciava il titolo bianco su bianco. Con lei
+       fuori il ritmo resta comunque alternato: intro chiara,
+       vantaggi fucsia, clienti nera, FAQ bianca. */
+    const SKIP = ['svc-hero', 'svc-caffe', 'svc-process'];
     const PINNED = { 'svc-clients': 'dark', 'page-faq': 'light' };
     let light = true;
     document.querySelectorAll('main > section').forEach(sec => {

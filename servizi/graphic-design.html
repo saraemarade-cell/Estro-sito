@@ -34,9 +34,14 @@
       display: inline-block; opacity: 0; transform: translateY(0.8em);
     }
     /* Clienti */
+    /* La sezione e' la corsa del pannello, come nelle altre pagine:
+       senza padding e senza taglio. Con i respiri di sezione sommati
+       al pannello da 100dvh restava un mare di vuoto sopra e sotto
+       ai loghi. E il titolo non parte piu' nascosto: lo riaccendeva
+       un RAF legato allo scroll che non c'e' piu'. */
     #gd-clienti { background: #000 !important; color: #fff !important;
-      padding-block: clamp(4rem,8vw,7rem) clamp(4rem,8vw,6rem) !important; overflow: hidden !important; }
-    #gd-clienti .svc-clients__title { opacity:0; transform:translateY(30px); transition:none !important; }
+      min-height: 0 !important; height: 118dvh !important; display: block !important;
+      padding: 0 !important; overflow: visible !important; }
     #gd-clienti .svc-clients__marquee-wrap { display:flex !important; flex-direction:column !important; gap:2rem !important; }
     #gd-clienti .svc-clients__track { animation: gd-marquee 110s linear infinite !important; }
     #gd-clienti .svc-clients__track--rev { animation-direction: reverse !important; }
@@ -610,8 +615,13 @@
       background: linear-gradient(to bottom, transparent, #0a0a0a);
     }
     /* il contenuto sta sopra al video */
-    .svc-clients > .container,
-    .svc-clients > .svc-clients__marquee-wrap {
+    /* Il contenuto sta sopra al video. Il selettore chiedeva il
+       figlio diretto della sezione, ma da quando il pannello
+       agganciato si e' messo in mezzo il titolo non lo era piu': il
+       video, assoluto e a z-index 0, gli passava davanti. */
+    .svc-clients .container,
+    .svc-clients .svc-clients__header,
+    .svc-clients .svc-clients__marquee-wrap {
       position: relative;
       z-index: 1;
     }
@@ -838,7 +848,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: sotto la nav c'e' la hero scura, quindi MENU e simbolo nascono bianchi e non c'e' nessun cambio di colore al primo frame. Lo stato viene poi ricalcolato da js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -907,7 +917,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════════ -->
-    <section class="svc-hero svc-hero--videobg" id="gd-hero" aria-labelledby="page-title">
+    <section class="svc-hero svc-hero--videobg" id="gd-hero" aria-labelledby="page-title" data-nav-theme="dark">
       <video class="svc-hero__bgvideo" autoplay muted loop playsinline aria-hidden="true"></video>
       <div class="svc-hero__ph" aria-hidden="true">
         <span class="svc-hero__ph-label">
@@ -986,7 +996,7 @@
       <div class="svc-path__sticky">
       <div class="container">
         <div class="svc-path__head">
-          <h2 class="smm-panel__big-title" id="gd-path-title">DIAMO FORMA ALLA TUA IDENTITÃ VISIVA.</h2>
+          <h2 class="smm-panel__big-title" id="gd-path-title">DIAMO FORMA ALLA TUA IDENTITÀ VISIVA.</h2>
           <p class="smm-panel__statement-sub">Cinque tappe, dal nome del marchio ai materiali stampati.</p>
         </div>
         <div class="svc-tabs">
@@ -1023,7 +1033,7 @@
                 <span class="svc-tabs__media-label">Naming e Logo</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Il nome e il logo sono il primo punto di contatto con il tuo pubblico. Un'identità visiva forte e coerente comunica chi sei prima ancora che tu apra bocca. Ti aiutiamo a costruire un'immagine unica, riconoscibile e difficile da dimenticare.</p>
+                <p class="svc-tabs__text">Il nome e il logo sono il primo punto di contatto con il tuo pubblico. <strong>Un'identità visiva forte e coerente</strong> comunica chi sei prima ancora che tu apra bocca. Ti aiutiamo a costruire <strong>un'immagine unica, riconoscibile</strong> e difficile da dimenticare.</p>
                 <ul class="svc-tabs__points">
                   <li>Naming strategico e memorabile</li>
                   <li>Logo design unico e scalabile</li>
@@ -1038,7 +1048,7 @@
                 <span class="svc-tabs__media-label">Brochure</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Una brochure ben realizzata racconta la tua azienda meglio di mille parole. Progettiamo materiali editoriali che comunicano professionalità, coerenza e qualità in ogni dettaglio.</p>
+                <p class="svc-tabs__text"><strong>Una brochure ben realizzata</strong> racconta la tua azienda meglio di mille parole. Progettiamo <strong>materiali editoriali</strong> che comunicano professionalità, coerenza e qualità in ogni dettaglio.</p>
                 <ul class="svc-tabs__points">
                   <li>Cataloghi e folder su misura</li>
                   <li>Presentazioni aziendali curate</li>
@@ -1053,7 +1063,7 @@
                 <span class="svc-tabs__media-label">Grafica eventi</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Dal banner alla scenografia, dai pass agli allestimenti stand: ogni evento è un'opportunità per lasciare il segno. Creiamo materiali grafici che rendono ogni presenza sul territorio un'esperienza memorabile.</p>
+                <p class="svc-tabs__text">Dal banner alla scenografia, dai pass agli <strong>allestimenti stand</strong>: ogni evento è un'opportunità per lasciare il segno. Creiamo <strong>materiali grafici</strong> che rendono ogni presenza sul territorio un'esperienza memorabile.</p>
                 <ul class="svc-tabs__points">
                   <li>Banner, totem e scenografie</li>
                   <li>Pass, badge e materiali evento</li>
@@ -1068,7 +1078,7 @@
                 <span class="svc-tabs__media-label">Packaging</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Il packaging è il primo contatto fisico tra il cliente e il tuo prodotto. Un design curato aumenta il valore percepito, genera desiderio e stimola l'acquisto.</p>
+                <p class="svc-tabs__text">Il <strong>packaging</strong> è il primo contatto fisico tra il cliente e il tuo prodotto. <strong>Un design curato</strong> aumenta il <strong>valore percepito</strong>, genera desiderio e stimola l'acquisto.</p>
                 <ul class="svc-tabs__points">
                   <li>Design packaging che genera desiderio</li>
                   <li>Valore percepito elevato al primo sguardo</li>
@@ -1083,7 +1093,7 @@
                 <span class="svc-tabs__media-label">Affissione</span>
               </div>
               <div class="svc-tabs__copy">
-                <p class="svc-tabs__text">Il mondo fisico è ancora pieno di opportunità. Cartelloni, poster, locandine e volantini progettati con cura colpiscono, attirano l'attenzione e convertono.</p>
+                <p class="svc-tabs__text">Il mondo fisico è ancora pieno di opportunità. <strong>Cartelloni, poster, locandine e volantini</strong> progettati con cura colpiscono, <strong>attirano l'attenzione e convertono</strong>.</p>
                 <ul class="svc-tabs__points">
                   <li>Cartelloni, poster e locandine</li>
                   <li>Volantini e materiali distributivi</li>
@@ -1101,7 +1111,7 @@
 
 
     <!-- ══ CLIENTI ════════════════════════════════════════════════ -->
-    <section class="section svc-clients" id="gd-clienti">
+    <section class="section svc-clients" id="gd-clienti" data-nav-theme="dark">
       <!-- Pannello agganciato, come in homepage. -->
       <div class="svc-clients__sticky">
         <div class="container">
@@ -1284,7 +1294,7 @@
     <section class="page-faq">
       <div class="page-faq__sticky">
         <div class="page-faq__inner">
-        <h2 class="page-faq__title">FAQ</h2>
+        <h2 class="page-faq__title">Domande Frequenti</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che servizi di graphic design offre ESTRO?</button>
@@ -1631,14 +1641,14 @@
         }
 
         var isDark = luma(base) < 140;
-        if (isDark !== prevDark) { prevDark = isDark; navEl.classList.toggle('nav--on-dark', isDark); }
+        /* nav--on-dark: unica autorita = data-nav-theme in js/main.js (identico alla homepage) */
       }
     }
     requestAnimationFrame(tick);
   })();
   </script>
       <!-- ══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
     <div class="sf-ghost" aria-hidden="true">ESTRO</div>
     <div class="sf-inner">
       <div class="sf-cols">
@@ -1708,8 +1718,7 @@
             <a href="https://www.youtube.com/@estroagency" aria-label="YouTube" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.5a3 3 0 0 0-2.12-2.12C19.5 3.87 12 3.87 12 3.87s-7.5 0-9.38.51A3 3 0 0 0 .5 6.5C0 8.38 0 12 0 12s0 3.62.5 5.5a3 3 0 0 0 2.12 2.12c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51A3 3 0 0 0 23.5 17.5C24 15.62 24 12 24 12s0-3.62-.5-5.5zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
             </a>
-      </div>
-    </div>
+          </div>
         </div>
 
       </div>
@@ -1851,6 +1860,17 @@
     const secs = [];
     RISE.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('sx-rise');
+      /* Si parte da 0, cioe' "sollevata e con gli angoli tondi", non
+         dal valore di ripiego 1 che vale "in piano".
+         Il ciclo di disegno aggiorna solo le sezioni vicine alla
+         finestra: una sezione ancora lontana non veniva toccata e
+         restava sul ripiego, quindi piatta. Quando poi entrava nel
+         raggio d'azione il valore passava da 1 a 0 in un fotogramma:
+         il raccordo non si vedeva arrivare, compariva squadrato e
+         scattava. Partendo da 0 la sezione e' gia' pronta prima di
+         essere in scena, e la salita si legge da quando affaccia dal
+         basso. */
+      el.style.setProperty('--sxi', '0');
       secs.push(el);
     }));
     if (secs.length && !RM) {

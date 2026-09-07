@@ -1225,7 +1225,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: la prima sezione e' scura, quindi MENU e simbolo nascono bianchi e non cambiano colore al primo frame. Lo stato lo ricalcola js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1575,6 +1575,11 @@
 
     <!-- ══ LAVORI — anello 3D / griglia ═══════════════════════ -->
     <div class="cs-works" id="cs-works" data-nav-theme="dark">
+      <!-- Pannello agganciato: la sezione fa da corsa, questo si
+           ferma per una schermata. Il wrapper sta nel markup e non
+           lo crea uno script, cosi' l'anello 3D misura da subito il
+           contenitore definitivo. -->
+      <div class="cs-works__sticky">
       <div class="cs-works__head" data-cascade>
         <div>
           <p class="cs-works__kicker">I lavori</p>
@@ -1596,13 +1601,14 @@
       <section class="cs-grid-section" id="cs-grid-section" aria-label="Tutti i case studies" hidden>
         <div class="cs-grid-all" id="cs-grid-all"></div>
       </section>
+      </div><!-- /.cs-works__sticky -->
     </div>
     <!-- ══ CTA + FORM ═════════════════════════════════════════ -->
     <section class="cs-cta" data-nav-theme="dark">
       <div class="cs-cta__inner" data-cascade>
         <div class="cs-cta__left">
           <span class="cs-cta__label">Parliamoci</span>
-          <h2 class="cs-cta__title">Il prossimo caso<br/>di successo è il tuo</h2>
+          <h2 class="cs-cta__title cs-cta__title--ladder"><span>Il prossimo</span><span>caso di successo</span><span>è il tuo</span></h2>
           <p class="cs-cta__sub">Raccontaci il tuo progetto.<br/>Troveremo insieme la strategia giusta per farlo crescere.</p>
         </div>
         <div class="cs-cta__right">

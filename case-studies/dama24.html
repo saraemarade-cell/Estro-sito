@@ -450,16 +450,23 @@
       box-shadow: 0 12px 36px rgba(0,0,0,0.32) !important;
     }
     .nav--on-dark .nav__menu-btn { color: #fff !important; }
-    /* La pagina è chiara fin dall'atterraggio: vetro chiaro e MENU
-       nero già senza .scrolled — l'opposto della pagina news. */
+    /* Sopra la hero il vetro e' quello della homepage: stessi
+       valori, cosi' l'header si comporta e si legge allo stesso
+       modo. Qui c'erano un velo piu' denso (0.62) e una formula
+       diversa, nati quando la pagina non aveva la hero scura. */
     .nav:not(.scrolled) .nav__inner {
-      background: rgba(255,255,255,0.62) !important;
-      backdrop-filter: blur(28px) saturate(170%) !important;
-      -webkit-backdrop-filter: blur(28px) saturate(170%) !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.10) !important;
+      background: rgba(255,255,255,0.30) !important;
+      backdrop-filter: blur(30px) saturate(70%) brightness(1.35) !important;
+      -webkit-backdrop-filter: blur(30px) saturate(70%) brightness(1.35) !important;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.12) !important;
     }
     .nav:not(.scrolled) .nav__menu-btn { color: #111 !important; text-shadow: none !important; }
-    .nav .nav__menu-icon span { background: var(--primary) !important; filter: none !important; }
+    .nav:not(.scrolled) .nav__menu-icon span { background: var(--primary) !important; filter: none !important; }
+    .nav:not(.scrolled) .nav__logo img { filter: none !important; }
+    .nav--on-dark .nav__menu-icon span {
+      background: var(--primary) !important;
+      filter: drop-shadow(0 0 1.5px rgba(255,255,255,0.5));
+    }
     .nav .nav__logo img { filter: none !important; }
     .nav__menu-btn,
     .nav__menu-icon span {
@@ -1007,7 +1014,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: la hero e' scura, quindi MENU e simbolo nascono bianchi e non cambiano colore al primo frame. Lo stato lo ricalcola js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1076,7 +1083,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════ -->
-    <section class="d24-hero" id="d24-hero">
+    <section class="d24-hero" id="d24-hero" data-nav-theme="dark">
       <div class="d24-hero__bg" aria-hidden="true"></div>
       <div class="d24-hero__video" aria-hidden="true">
         <img src="../Dama/catering.webp" alt="" />
@@ -1119,14 +1126,14 @@
           </video>
         </figure>
 
-        <h2 class="cs2-h2">01 — Digital Identity: il sito web, un atelier digitale</h2>
+        <h2 class="cs2-h2 cs2-h2--num"><span class="cs2-h2__num">01</span><span class="cs2-h2__text">Digital Identity: il sito web, un atelier digitale</span></h2>
 
         <ul class="cs2-list">
           <li><strong>Design immersivo:</strong> un'interfaccia pulita, dove il bianco e gli spazi vuoti danno respiro alle immagini di alta qualità. Ogni pagina è pensata per far vivere all'utente l'atmosfera di un evento firmato Dama24 prima ancora di averlo prenotato.</li>
           <li><strong>Narrazione sensoriale:</strong> i testi e i visual non descrivono solo i piatti, ma l'emozione dell'accoglienza. Abbiamo trasformato la navigazione in un percorso che riflette la «visione del mondo» del target: colta, raffinata e mai scontata.</li>
         </ul>
 
-        <h2 class="cs2-h2">02 — Social &amp; eventi: il racconto dell'effimero</h2>
+        <h2 class="cs2-h2 cs2-h2--num"><span class="cs2-h2__num">02</span><span class="cs2-h2__text">Social &amp; eventi: il racconto dell'effimero</span></h2>
 
         <ul class="cs2-list">
           <li><strong>Social storytelling:</strong> abbiamo trasformato Instagram nella vetrina del «dietro le quinte» del lusso. Non mostriamo solo il risultato finale, ma la cura meticolosa nella scelta delle materie prime, la precisione dei gesti e l'arte del banqueting in movimento.</li>
@@ -1139,7 +1146,7 @@
           </video>
         </figure>
 
-        <h2 class="cs2-h2">03 — Advertising di precisione: intercettare l'eccellenza</h2>
+        <h2 class="cs2-h2 cs2-h2--num"><span class="cs2-h2__num">03</span><span class="cs2-h2__text">Advertising di precisione: intercettare l'eccellenza</span></h2>
 
         <p class="cs2-p">Per un brand di lusso, la massa è il nemico. Abbiamo progettato una strategia di Advertising &amp; Performance chirurgica:</p>
 
@@ -1237,7 +1244,7 @@
     </section>
 
     <!-- ══ FORM CONTATTI ═════════════════════════════════ -->
-    <section class="cs2-contact">
+    <section class="cs2-contact" data-nav-theme="dark">
       <div class="cs2-contact__inner">
         <div class="cs2-contact__left">
           <span class="cs2-contact__label reveal">Parliamoci</span>
@@ -1452,8 +1459,11 @@
     if (nav) {
       const sync = () => {
         const onDark = heroDark ? (heroDark.getBoundingClientRect().bottom > 64) : true;
-        nav.classList.toggle('nav--on-dark', onDark);
-        nav.classList.toggle('scrolled', scrollY > 8);
+        /* nav--on-dark e .scrolled: unica autorita in js/main.js,
+           come in homepage. Qui restavano due toggle locali che
+           decidevano con criteri propri (bordo della hero a 64px e
+           scrollY > 8), quindi l'header si comportava in modo
+           diverso dal resto del sito. */
       };
       addEventListener('scroll', sync, { passive: true });
       addEventListener('resize', sync, { passive: true });
