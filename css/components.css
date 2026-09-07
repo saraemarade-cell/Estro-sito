@@ -12575,41 +12575,41 @@ html body .svc-hero__kicker {
    titolo (300 meno i due margini negativi che togliono lo spazio
    interno della riga) + 9 righe da ~52px = 848 su 900. */
 html body main > section.page-faq > .page-faq__sticky .page-faq__title {
-  font-size: 72px !important;
+  font-size: min(60px, 11vw) !important;
 }
 html body main > section.page-faq > .page-faq__inner .page-faq__title {
-  /* 150px e' il valore che conta, ed e' quello che si vede su
-     qualunque finestra normale. I due limiti dopo servono solo
-     dove 150 non entrerebbe: 26vw per la larghezza, 17vh per
-     l'altezza. Su una finestra bassa il titolo scende invece di
-     far tagliare il fondo dell'elenco. */
-  font-size: min(150px, 26vw, 17vh) !important;
+  /* Il titolo e' tornato "FAQ": tre lettere, una riga sola. I 150px
+     sono quindi il valore pieno e non hanno piu' bisogno del limite
+     in altezza (17vh) che serviva quando "Domande Frequenti" ne
+     occupava due e rischiava di far tagliare il fondo dell'elenco.
+     Resta un limite in larghezza per i telefoni molto stretti. */
+  font-size: min(150px, 40vw) !important;
   line-height: 0.92 !important;
   /* Lo stacco fra titolo e contenuto, come nelle altre sezioni
-     della homepage: Tips usa --space-16, cioe' 4rem. Qui lo stesso
-     valore, con un limite in altezza di schermo perche' questo
-     pannello e' alto una schermata e non puo' crescere.
-     Il -0.14em non e' un capriccio: il font si porta dietro dello
-     spazio sotto la linea di base — su un corpo di 150px sono una
-     ventina di pixel — e senza sottrarlo lo stacco che si vede
-     sarebbe piu' grande di quello dichiarato. Cosi' il valore
-     scritto e quello percepito coincidono. */
+     della homepage: Tips usa --space-16, cioe' 4rem. Il -0.14em non
+     e' un capriccio: il font si porta dietro dello spazio sotto la
+     linea di base — su un corpo di 150px sono una ventina di pixel
+     — e senza sottrarlo lo stacco che si vede sarebbe piu' grande
+     di quello dichiarato. Cosi' il valore scritto e quello
+     percepito coincidono. */
   margin-bottom: calc(clamp(2rem, 5.5vh, 4rem) - 0.14em) !important;
 }
-/* le righe si stringono quanto serve al titolo su due righe */
+/* Con il titolo su una riga tornano ~140px di spazio nel pannello:
+   le righe delle domande e il cerchio dell'occhio riprendono il
+   respiro che avevano prima della stretta. */
 html body main > section.page-faq > .page-faq__inner .page-faq__question {
-  padding-block: clamp(0.25rem, 0.85vh, 0.55rem) !important;
+  padding-block: clamp(0.7rem, 1.6vh, 1.1rem) !important;
 }
 html body main > section.page-faq > .page-faq__inner .page-faq__eye {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
 }
 html body main > section.page-faq > .page-faq__inner .page-faq__eye svg {
   width: 16px;
   height: 16px;
 }
 html body .svc-caffe .svc-caffe__title {
-  font-size: 72px !important;
+  font-size: min(60px, 11vw) !important;
 }
 
 /* ── Il form della sezione fucsia: etichette e placeholder ──────
@@ -13460,11 +13460,13 @@ html body main #cs-works > .cs-works__sticky {
   top: 0;
   height: auto;
   min-height: 100dvh;
-  /* L'allineamento resta quello che la pagina aveva: la testata e
-     i lavori partono dall'alto, non centrati nel pannello. Il
-     pannello aggiunge solo il blocco. */
-  justify-content: flex-start;
-  padding: clamp(2rem, 4vh, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+  /* Centrato nel pannello, ma con la nav messa in conto: la nav e'
+     fissa e alta un centinaio di pixel, e con il contenuto
+     appoggiato in alto la testata "I lavori / Progetti" le finiva
+     sotto. Il respiro alto vale nav + un respiro, cosi' il centro
+     ottico cade sotto l'header. */
+  justify-content: center;
+  padding: max(calc(var(--nav-h, 100px) + clamp(1rem, 2.5vh, 2rem)), 7rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 4vh, 3.5rem);
 }
 /* dentro il pannello l'anello segue l'altezza della finestra: con
    i suoi 540px minimi, su una finestra bassa non ci sarebbe stato
@@ -13496,12 +13498,30 @@ html body main .cs-cta__title--ladder > span {
   overflow-wrap: normal;
   hyphens: none;
 }
-html body main .cs-cta__title--ladder > span:nth-child(2) { padding-left: 0.9ch; }
-html body main .cs-cta__title--ladder > span:nth-child(3) { padding-left: 1.8ch; }
-/* Su case studies l'unica cosa che non deve andare a capo e'
-   "(facoltativo)": la riga intera resta libera di impaginarsi,
-   perche' tenerla su un rigo solo avrebbe voluto dire allargare la
-   colonna del form e spostare un allineamento che va bene. */
+/* Il titolo e' allineato a sinistra, tutte le righe a filo: lo
+   scalettamento con i rientri progressivi non serve. */
+html body main .cs-cta__title--ladder { text-align: left; align-items: flex-start; }
+html body main .cs-cta__title--ladder > span { padding-left: 0 !important; }
+/* Il consenso alla newsletter resta su una riga: la colonna del
+   form si allarga (la frase a 16px chiede circa 720px) e il
+   respiro laterale della sezione scende da 80 a 40px. Il titolo e
+   il sottotitolo restano allineati a sinistra come prima: cambia
+   la larghezza della colonna, non il loro allineamento. */
+html body main > section.cs-cta {
+  /* respiro laterale: vedi il blocco dell'allineamento al footer */
+}
+html body main > section.cs-cta > .cs-cta__inner {
+  /* colonne e respiro laterale: decide il blocco in fondo al foglio, quello dell'allineamento al footer */
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+@media (min-width: 1400px) {
+  html body main .cs-cta .svc-caffe__privacy span,
+  html body main .cs2-contact .svc-caffe__privacy span,
+  html body main .faq-contact .svc-caffe__privacy span,
+  html body main .nw-contact .svc-caffe__privacy span {
+    white-space: nowrap;
+  }
+}
 @media (max-width: 900px) {
   html body main > section.cs-cta > .cs-cta__inner {
     grid-template-columns: 1fr;
@@ -13553,30 +13573,23 @@ html body main .cs2-h2--num {
   column-gap: clamp(0.85rem, 1.6vw, 1.25rem);
 }
 html body main .cs2-h2__num {
+  /* Cifra piena, non in contorno, e senza filetto sotto: e' un
+     numero che si legge come un dato, non un elemento decorativo.
+     Resta piu' grande del titolo e in fucsia, cosi' l'indice si
+     vede subito senza rubare la scena alla frase. */
   font-family: var(--font-primary);
-  font-size: 1.65em;
+  font-size: 1.5em;
   font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: -0.04em;
-  color: transparent;
-  -webkit-text-stroke: 1.4px var(--primary, #DB005A);
-  /* la cifra e il titolo condividono la linea di base alta */
-  margin-top: -0.06em;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--primary, #DB005A);
+  font-variant-numeric: tabular-nums;
+  margin-top: -0.04em;
   user-select: none;
 }
 html body main .cs2-h2__text {
   display: block;
   min-width: 0;
-}
-/* il filo fucsia che chiude l'indice, al posto del trattino */
-html body main .cs2-h2--num .cs2-h2__num::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 2px;
-  margin-top: 0.22em;
-  background: var(--primary, #DB005A);
-  opacity: 0.55;
 }
 @media (max-width: 640px) {
   html body main .cs2-h2 { font-size: 26px !important; }
@@ -13588,22 +13601,806 @@ html body main .cs2-h2--num .cs2-h2__num::after {
    40px. La colonna del titolo resta larga quanto serve alle sue
    tre parole a 60px. */
 html body main > section.cs2-contact {
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  /* respiro laterale: vedi il blocco dell'allineamento al footer */
 }
 html body main > section.cs2-contact > .cs2-contact__inner {
-  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  /* colonne e respiro laterale: decide il blocco in fondo al foglio, quello dell'allineamento al footer */
   gap: clamp(1.5rem, 3vw, 3rem);
 }
 html body main .cs2-contact .svc-caffe__privacy em {
   white-space: nowrap;
 }
-@media (min-width: 1200px) {
-  html body main .cs2-contact .svc-caffe__privacy span {
-    white-space: nowrap;
-  }
-}
+/* La soglia sta a 1400px (vedi il blocco di case studies): sotto,
+   nessuna larghezza di colonna basta a tenere la frase su un rigo
+   e forzarla sfonderebbe la colonna. */
 @media (max-width: 900px) {
   html body main > section.cs2-contact > .cs2-contact__inner {
     grid-template-columns: 1fr;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTATTI — il claim della sezione hub
+   ═══════════════════════════════════════════════════════════════ */
+html body main .contact-hub__claim-big {
+  font-size: min(60px, 11vw) !important;
+  line-height: 1.02 !important;
+}
+html body main .contact-hub__claim-intro {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FAQ e NEWS — il consenso alla newsletter su una riga sola
+   La frase a 16px chiede circa 700px: in mezza griglia non ci
+   stava. La colonna del form si allarga e il respiro laterale
+   della sezione scende da 80 a 40px, come su Dama24. Sotto i
+   1200px nessuna larghezza basta e la riga torna libera.
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.faq-contact,
+html body main > section.nw-contact {
+  /* respiro laterale: vedi il blocco dell'allineamento al footer */
+}
+html body main > section.faq-contact > .faq-contact__inner,
+html body main > section.nw-contact > .nw-contact__inner {
+  /* colonne e respiro laterale: decide il blocco in fondo al foglio, quello dell'allineamento al footer */
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+html body main .faq-contact .svc-caffe__privacy em,
+html body main .nw-contact .svc-caffe__privacy em {
+  white-space: nowrap;
+}
+/* soglia unica a 1400px, dichiarata nel blocco di case studies */
+@media (max-width: 900px) {
+  html body main > section.faq-contact > .faq-contact__inner,
+  html body main > section.nw-contact > .nw-contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LAVORA CON NOI — hero e form della candidatura
+   ═══════════════════════════════════════════════════════════════ */
+html body main .lcn-hero__title {
+  font-size: min(60px, 11vw) !important;
+  line-height: 1.05 !important;
+}
+html body main .lcn-hero__sub,
+html body main .lcn-hero__sub strong {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+/* Stessa inversione degli altri form del sito: l'etichetta e'
+   l'informazione che resta e sale a 16px, il placeholder e' un
+   suggerimento che sparisce appena scrivi e scende a 14. */
+html body .lcn-apply__form .f-label {
+  font-size: 16px !important;
+}
+html body .lcn-apply__form .lcn-apply__input::placeholder,
+html body .lcn-apply__form .lcn-apply__textarea::placeholder,
+html body .lcn-apply__form input::placeholder,
+html body .lcn-apply__form textarea::placeholder {
+  font-size: 14px !important;
+}
+html body .lcn-apply__form input::-webkit-input-placeholder,
+html body .lcn-apply__form textarea::-webkit-input-placeholder {
+  font-size: 14px !important;
+}
+/* il menu a tendina non e' un placeholder ma la sua prima voce:
+   segue la stessa misura */
+html body .lcn-apply__form .lcn-apply__select {
+  font-size: 14px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NEWS — card, invito del form, etichette
+   ═══════════════════════════════════════════════════════════════ */
+/* I titoli delle card news tornano alla misura della pagina: a
+   32px la card cresceva e la griglia perdeva il passo. Nessuna
+   regola qui, decide lo stile della pagina. */
+html body main .nw-contact__sub {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+html body .nw-contact .hc-form .f-label {
+  font-size: 16px !important;
+}
+html body .nw-contact .hc-form .svc-caffe__field::placeholder,
+html body .faq-contact .hc-form .svc-caffe__field::placeholder {
+  font-size: 14px !important;
+}
+html body .nw-contact .hc-form .svc-caffe__field::-webkit-input-placeholder,
+html body .faq-contact .hc-form .svc-caffe__field::-webkit-input-placeholder {
+  font-size: 14px !important;
+}
+/* La data dell'articolo: microcopy sotto la categoria, mai in
+   grassetto e mai in maiuscolo — e' un dato, non un'etichetta. */
+html body main .nw-card__date {
+  display: block;
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: rgba(0,0,0,0.42);
+  margin: -0.35rem 0 0.7rem;
+}
+html body main .art-hero__date {
+  font-family: var(--font-secondary);
+  font-size: 14px !important;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.55) !important;
+}
+
+/* ── Etichette dei form a 16px ──────────────────────────────────
+   Stessa inversione degli altri form del sito: l'etichetta e'
+   l'informazione che resta e sale a 16px, il placeholder e' un
+   suggerimento che sparisce appena scrivi e resta a 14.
+   Vale per il form della CTA di case studies, per quello dei due
+   case study e per quello delle FAQ. */
+html body main .cs-cta .f-label,
+html body main .cs2-contact .f-label,
+html body main .faq-contact .f-label {
+  font-size: 16px !important;
+}
+html body main .cs-cta .svc-caffe__field::placeholder,
+html body main .cs2-contact .svc-caffe__field::placeholder,
+html body main .faq-contact .svc-caffe__field::placeholder {
+  font-size: 14px !important;
+}
+html body main .cs-cta .svc-caffe__field::-webkit-input-placeholder,
+html body main .cs2-contact .svc-caffe__field::-webkit-input-placeholder,
+html body main .faq-contact .svc-caffe__field::-webkit-input-placeholder {
+  font-size: 14px !important;
+}
+
+/* ── Lavora con noi: il blocco della hero al centro ─────────────
+   La sezione era "space-between": il testo si appoggiava sotto la
+   nav e i numeri in fondo, quindi l'aria restava tutta in mezzo e
+   il blocco sembrava schiacciato in alto. Ora il testo e' centrato
+   nello spazio libero e i numeri restano ancorati in basso. */
+html body main > section.lcn-hero {
+  justify-content: center !important;
+}
+html body main > section.lcn-hero > .lcn-hero__stats {
+  margin-top: auto;
+}
+html body main > section.lcn-hero > .lcn-hero__top {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ARTICOLI (news e tips&tricks) — una sola gerarchia di testo
+   Le due pagine interne avevano una ventina di misure diverse
+   scritte a mano, da 0.6rem a 2.8rem, senza una scala. Qui la
+   scala e' una e vale per entrambe:
+     - corpo di lettura            16px
+     - occhielli e tagline          14px
+     - tag ed etichette            14px
+     - CTA e link di ritorno       14px
+     - titoli importanti (h2)      32px
+     - titoli secondari            24px
+   Il titolo della pagina (h1) resta fuori dalla scala: e' l'unico
+   elemento che deve dominare, e ha la sua misura.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Titoli importanti: le testate di sezione ─────────────────── */
+html body main .art-h2,
+html body main .art-pricing__title,
+html body main .art-timeline__title,
+html body main .art-results__title,
+html body main .art-faq__title,
+html body main .tt-h2 {
+  font-size: 32px !important;
+  line-height: 1.15 !important;
+}
+/* il prezzo e' una cifra display: sta alla misura dei titoli
+   importanti, non sopra */
+html body main .art-pkg__price {
+  font-size: 32px !important;
+  line-height: 1.05 !important;
+}
+/* ── Titoli secondari ─────────────────────────────────────────── */
+html body main .art-step__title,
+html body main .art-result-card__period,
+html body main .art-callout__title,
+html body main .tt-callout__title {
+  font-size: 24px !important;
+  line-height: 1.25 !important;
+}
+
+/* ── Corpo di lettura ─────────────────────────────────────────── */
+html body main .art-p,
+html body main .art-list li,
+html body main .art-callout p,
+html body main .art-answer__text,
+html body main .art-faq__a,
+html body main .art-step__text,
+html body main .art-result-card__text,
+html body main .art-pkg__checklist li,
+html body main .art-hero__intro,
+html body main .art-contact__sub,
+html body main .art-hero__sidebar-list a,
+html body main .tt-p,
+html body main .tt-list li,
+html body main .tt-callout p,
+html body main .tt-cta-block p,
+html body main .tt-hero__intro,
+html body main .tt-contact__sub,
+html body main .tt-sidebar__title {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Occhielli, tag, date, tempi: microcopy a 14px ────────────── */
+html body main .art-hero__cat,
+html body main .art-hero__date,
+html body main .art-hero__sidebar-label,
+html body main .art-step__time,
+html body main .art-pkg__name,
+html body main .art-pkg__badge,
+html body main .art-contact__label,
+html body main .tt-hero__cat,
+html body main .tt-hero__date,
+html body main .tt-sidebar__label,
+html body main .tt-contact__label {
+  font-size: 14px !important;
+}
+
+/* ── CTA e link di ritorno ────────────────────────────────────── */
+html body main .art-back,
+html body main .tt-back,
+html body main .art-contact .btn,
+html body main .tt-contact .btn,
+html body main .art-cta,
+html body main .tt-cta-block .btn {
+  font-size: 14px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TIPS&TRICKS, pagina interna — il form prima del footer
+   Stesso trattamento degli altri form del sito: etichette a 16px,
+   placeholder a 14px, e il consenso alla newsletter su una riga
+   sola (colonna del form piu' larga, respiro laterale ridotto).
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.tt-contact {
+  /* respiro laterale: vedi il blocco dell'allineamento al footer */
+}
+html body main > section.tt-contact > .tt-contact__inner {
+  /* colonne e respiro laterale: decide il blocco in fondo al foglio, quello dell'allineamento al footer */
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+html body main .tt-contact .f-label {
+  font-size: 16px !important;
+}
+html body main .tt-contact .svc-caffe__field::placeholder {
+  font-size: 14px !important;
+}
+html body main .tt-contact .svc-caffe__field::-webkit-input-placeholder {
+  font-size: 14px !important;
+}
+html body main .tt-contact .svc-caffe__privacy em {
+  white-space: nowrap;
+}
+@media (min-width: 1400px) {
+  html body main .tt-contact .svc-caffe__privacy span {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  html body main > section.tt-contact > .tt-contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TIPS&TRICKS, pagina interna — fucsia sul chiaro, bianco sul
+   fucsia. Cioe' il comportamento standard del sito: sulle sezioni
+   fucsia (hero e form) MENU e simbolo diventano bianchi, sul corpo
+   su carta bianca tornano fucsia. Le sezioni fucsia sono marcate
+   nel markup, quindi decide l'osservatore condiviso e non serve
+   nessuna eccezione di pagina.
+   ═══════════════════════════════════════════════════════════════ */
+/* il titolo del form: 60px, la misura di riferimento del sito */
+html body main .tt-contact__title,
+html body main .art-contact__title {
+  font-size: min(60px, 11vw) !important;
+  line-height: 1.05 !important;
+}
+/* Le domande delle FAQ dell'articolo prendono la misura e il peso
+   delle domande frequenti di tutto il sito: 20px, peso 600. */
+html body main .art-faq__q,
+html body main .tt-faq__q {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+/* le etichette del form dell'articolo a 16px, i placeholder a 14 */
+html body main .art-contact .f-label {
+  font-size: 16px !important;
+}
+html body main .art-contact .svc-caffe__field::placeholder,
+html body main .art-contact .svc-caffe__field::-webkit-input-placeholder {
+  font-size: 14px !important;
+}
+
+/* Le due liste laterali sono elenchi compatti, non testo corrente:
+   restano al corpo di lettura ma con interlinea chiusa, altrimenti
+   a 1.7 le voci sfondano il riquadro. */
+html body main .tt-sidebar__title,
+html body main .art-hero__sidebar-list a {
+  line-height: 1.35 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LE SEZIONI FUCSIA PRIMA DEL FOOTER, ALLINEATE AL FOOTER
+   Il footer non ha una larghezza massima: il suo contenuto parte e
+   finisce a clamp(1.5rem, 6vw, 7rem) dai bordi della finestra. Le
+   sezioni fucsia invece usavano .container, che ha max-width 1440
+   centrata, gutter a sinistra e — questo era il difetto piu'
+   visibile — padding-inline-end: 0, quindi a destra il contenuto
+   arrivava al bordo. Da qui nasceva il disallineamento sui due
+   lati insieme.
+   La regola vale per tutte: il respiro laterale lo porta la
+   sezione, con la stessa misura del footer, e il contenitore
+   interno smette di stringere e di centrare.
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.svc-caffe,
+html body main > section.cs-cta,
+html body main > section.cs2-contact,
+html body main > section.faq-contact,
+html body main > section.nw-contact,
+html body main > section.tt-contact,
+html body main > section.art-contact {
+  padding-inline: clamp(1.5rem, 6vw, 7rem) !important;
+}
+html body main > section.svc-caffe > .container,
+html body main > section.svc-caffe > .svc-generic-sticky > .container,
+html body main > section.cs-cta > .cs-cta__inner,
+html body main > section.cs2-contact > .cs2-contact__inner,
+html body main > section.faq-contact > .faq-contact__inner,
+html body main > section.nw-contact > .nw-contact__inner,
+html body main > section.tt-contact > .tt-contact__inner,
+html body main > section.art-contact > .art-contact__inner,
+html body main > section.lcn-apply > .lcn-apply__layout {
+  max-width: none !important;
+  width: 100% !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+}
+
+/* Con il respiro del footer (fino a 112px per lato) la colonna del
+   form si stringe, e la riga della newsletter a 16px chiede circa
+   725px. Le colonne diventano 0.38/0.62: sopra i 1400px di
+   finestra la riga sta su un rigo solo, sotto va a capo — nessuna
+   larghezza possibile la terrebbe, e forzarla sfonderebbe il
+   riquadro. */
+html body main > section.cs-cta > .cs-cta__inner,
+html body main > section.cs2-contact > .cs2-contact__inner,
+html body main > section.faq-contact > .faq-contact__inner,
+html body main > section.nw-contact > .nw-contact__inner,
+html body main > section.tt-contact > .tt-contact__inner,
+html body main > section.art-contact > .art-contact__inner {
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+html body main .art-contact .svc-caffe__privacy em {
+  white-space: nowrap;
+}
+@media (min-width: 1400px) {
+  html body main .art-contact .svc-caffe__privacy span {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  html body main > section.cs-cta > .cs-cta__inner,
+  html body main > section.cs2-contact > .cs2-contact__inner,
+  html body main > section.faq-contact > .faq-contact__inner,
+  html body main > section.nw-contact > .nw-contact__inner,
+  html body main > section.tt-contact > .tt-contact__inner,
+  html body main > section.art-contact > .art-contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ROBUSTEZZA — browser, zoom, schermi
+   Due cose che possono rompere il sito fuori dal browser di casa,
+   piu' il rispetto del movimento ridotto.
+   Qui sono chiuse tutte e tre con dichiarazioni che non toccano il
+   disegno dove tutto funziona.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. Unita' dvh. Tutto l'impianto delle sezioni agganciate misura
+      in dvh (100dvh il pannello, 118 la corsa). Sui browser che
+      non la conoscono — Safari sotto la 15.4, Chrome sotto la 108,
+      i WebView vecchi — la dichiarazione viene semplicemente
+      scartata: la sezione perde l'altezza e il pannello si
+      accartoccia. Qui, e solo li', si torna a vh: qualche pixel di
+      differenza quando la barra del browser compare, ma la pagina
+      resta in piedi. */
+@supports not (height: 100dvh) {
+  html body main > section.svc-clients,
+  html body main > section.page-faq,
+  html body main > section.svc-path,
+  html body main > section.svc-caffe,
+  html body main > section.svc-generic-runway,
+  html body main > section.cs-cta,
+  html body main > div#cs-works {
+    min-height: 118vh;
+  }
+  html body .svc-clients__sticky,
+  html body .page-faq__sticky,
+  html body .svc-path__sticky,
+  html body .svc-generic-sticky,
+  html body .cs-works__sticky,
+  html body .cs-cta__inner {
+    min-height: 100vh;
+  }
+  html body main > section.svc-hero,
+  html body main > section.lcn-hero,
+  html body main > section.cs-hero {
+    min-height: 100vh;
+  }
+}
+
+/* 3. Movimento ridotto. Chi lo chiede nelle impostazioni di
+      sistema non deve vedere ne' salite di sezione, ne' pannelli
+      che si sollevano, ne' immagini che si ingrandiscono. Le
+      transizioni restano solo sui colori, che non danno malessere
+      e servono a capire dove sei. */
+@media (prefers-reduced-motion: reduce) {
+  html body .wd-deep__p,
+  html body #wd-stack .svc-tabs__media-img,
+  html body #wd-stack .wd-pan:hover .svc-tabs__media-img,
+  html body .cs2-h2__num {
+    transition: none !important;
+    transform: none !important;
+  }
+  html body .wd-deep__p:nth-child(1):hover,
+  html body .wd-deep__p:nth-child(2):hover,
+  html body .wd-deep__p:nth-child(3):hover,
+  html body .svc-ai-approccio .btn--primary:hover,
+  html body .btn--primary:hover {
+    transform: none !important;
+  }
+  html body .wd-deep__p::before { transform: scaleX(1) !important; }
+}
+
+/* ── Mobile: le sezioni agganciate si sciolgono ──────────────────
+   Sotto i 900px di larghezza, o su una finestra bassa, un pannello
+   alto una schermata dentro una corsa piu' alta diventa una
+   trappola: il contenuto non ci sta e il blocco fa perdere il
+   filo. Le sezioni tornano a scorrere normali, con il loro
+   respiro. Le regole di colore e tipografia restano tutte.
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px), (max-height: 620px) {
+  html body main > section.svc-path,
+  html body main > section.svc-clients,
+  html body main > section.page-faq,
+  html body main > section.svc-generic-runway,
+  html body main > section#wd-stack,
+  html body main > section#ads-detail,
+  html body main > section#ads-vantaggi,
+  html body main > section#ai-clienti,
+  html body main > section#wd-clienti,
+  html body main > section#smmClienti,
+  html body main > section#gadsClienti,
+  html body main > section#sd-clienti,
+  html body main > section#gd-clienti,
+  html body main > section#md-clienti,
+  html body main > section#pc-clienti,
+  html body main > section#imkClienti,
+  html body main > section#ads-clienti,
+  html body main > section#amici-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  html body .svc-path__sticky,
+  html body .svc-clients__sticky,
+  html body .page-faq__sticky,
+  html body .svc-generic-sticky,
+  html body main > section#wd-stack > .svc-path__sticky {
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-block: clamp(3rem, 8vw, 4.5rem) !important;
+  }
+  /* la timeline di web design torna in colonna e il placeholder
+     prende un'altezza sua invece di seguire la schermata */
+  html body #wd-stack .svc-tabs__panel.wd-pan { grid-template-columns: 1fr !important; }
+  html body #wd-stack .wd-shot { min-height: 180px !important; }
+  /* i respiri laterali delle sezioni fucsia seguono il footer
+     anche qui: il footer su mobile sta a 1.5rem dai bordi */
+  html body main > section.svc-caffe,
+  html body main > section.cs-cta,
+  html body main > section.cs2-contact,
+  html body main > section.faq-contact,
+  html body main > section.nw-contact,
+  html body main > section.tt-contact,
+  html body main > section.art-contact {
+    padding-inline: 1.5rem !important;
+  }
+}
+
+/* ── Schermi stretti veri (telefono) ────────────────────────────
+   Titoli e numeri scendono di misura solo qui, dove 60px su 360px
+   di larghezza vorrebbero dire tre parole per riga. Le parole non
+   si spezzano mai: e' la regola del sito.
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 560px) {
+  html body main .art-h2,
+  html body main .art-pricing__title,
+  html body main .art-timeline__title,
+  html body main .art-results__title,
+  html body main .art-faq__title,
+  html body main .tt-h2 {
+    font-size: 26px !important;
+  }
+  html body main .art-step__title,
+  html body main .art-result-card__period {
+    font-size: 20px !important;
+  }
+  html body main .cs2-h2 { font-size: 24px !important; }
+  html body main .wd-deep__p { font-size: 16px !important; }
+  html body main .nw-card__date { margin-top: 0 !important; }
+  /* niente scorrimento orizzontale: le griglie a colonne fisse
+     tornano tutte a una colonna */
+  html body main .wd-deep__lead,
+  html body main .wd-tabs__list.svc-tabs__points,
+  html body main #wd-stack .wd-tabs__list.svc-tabs__points {
+    grid-template-columns: 1fr !important;
+  }
+  html body main :is(h1, h2, h3, h4) {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER — una sola misura per "Menu" e il suo simbolo
+   La parola stava a tre misure diverse: 11px in homepage (il
+   valore di --text-xs che eredita dal pulsante), 14px su case
+   studies, news, tips&tricks, FAQ, lavora-con-noi, i due articoli
+   e Dama24, 16px sulle pagine servizi. Cambiando il corpo cambia
+   anche l'altezza della pill, ed e' per questo che l'header
+   sembrava di dimensioni diverse da pagina a pagina.
+   Qui la misura e' una: 16px. La classe e' ripetuta perche' quelle
+   dichiarazioni di pagina hanno !important e vanno superate senza
+   andare a toccarne dieci.
+   ═══════════════════════════════════════════════════════════════ */
+html body .nav.nav .nav__menu-btn,
+html body .nav.nav .nav__menu-label-close,
+html body .nav.nav .nav__menu-label-open {
+  font-size: 16px !important;
+  letter-spacing: 0.10em !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ZOOM E FINESTRE BASSE — la via d'uscita, non il compromesso
+   Il problema, per intero. Con lo zoom il viewport misurato in
+   pixel CSS si restringe (a 125% una finestra da 900px diventa
+   720), mentre i testi sono in px e restano quelli. Le sezioni
+   agganciate sono tarate su una schermata esatta: quando il
+   contenuto non entra piu', o viene tagliato dove il pannello
+   ritaglia, o esce dalla sezione e finisce sopra quella seguente.
+   Il primo tentativo era stato rendere automatica l'altezza dei
+   pannelli. Funzionava contro i tagli, ma costava il blocco: un
+   pannello piu' alto della finestra non si aggancia piu', e le
+   sezioni — clienti, domande frequenti, prendiamoci un caffe' —
+   perdevano la loro sosta. Che e' esattamente quello che nel
+   disegno del sito deve restare.
+   Quindi si tiene il disegno e si cambia strada: le sezioni
+   restano alte una schermata con il loro blocco, e c'e' UNA via
+   d'uscita — quando la finestra e' davvero troppo bassa o troppo
+   stretta per contenerle, il blocco si scioglie e tutto torna a
+   scorrere. Lo zoom forte ricade in quel caso da solo, perche'
+   riduce l'altezza utile: a 150% su un portatile si e' sotto i
+   700px e la via d'uscita scatta.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. Le hero non hanno un tetto: con lo zoom il testo cresceva
+      dentro un max-height fisso e veniva tagliato. Restano alte
+      almeno una schermata e crescono se serve. */
+html body main > section.svc-hero,
+html body main > section.lcn-hero,
+html body main > section.tt-hero,
+html body main > section.art-hero,
+html body main > section.cs-hero,
+html body main > section.d24-hero {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 100dvh;
+}
+html body main > section.svc-hero { overflow: clip; }
+
+/* 2. La via d'uscita. Sotto queste soglie nessun pannello resta
+      agganciato: niente tagli, niente sovrapposizioni, si scorre.
+      560px di altezza e' la soglia sotto cui una schermata non
+      contiene piu' un pannello con titolo, contenuto e CTA. */
+@media (max-width: 900px), (max-height: 700px) {
+  html body main > section.svc-path,
+  html body main > section.svc-clients,
+  html body main > section.page-faq,
+  html body main > section.svc-caffe,
+  html body main > section.svc-caffe-runway,
+  html body main > section.svc-generic-runway,
+  html body main > section.cs-cta,
+  html body main > section#ai-clienti,
+  html body main > section#wd-clienti,
+  html body main > section#smmClienti,
+  html body main > section#gadsClienti,
+  html body main > section#sd-clienti,
+  html body main > section#gd-clienti,
+  html body main > section#md-clienti,
+  html body main > section#pc-clienti,
+  html body main > section#imkClienti,
+  html body main > section#ads-clienti,
+  html body main > section#amici-section,
+  html body main > section#ads-detail,
+  html body main > section#ads-vantaggi,
+  html body main > section#wd-stack,
+  html body main > section.page-faq#faq,
+  html body main > div#cs-works {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  html body .svc-path__sticky,
+  html body .svc-clients__sticky,
+  html body .page-faq__sticky,
+  html body .page-faq__inner,
+  html body .svc-generic-sticky,
+  html body .amici-sticky,
+  html body .cs-works__sticky,
+  html body .cs-cta__inner {
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HOMEPAGE — la sezione contatti fucsia a pagina piena
+   Qui il fucsia non sta sulla sezione ma sul pannello agganciato:
+   la sezione e' nera e fa da corsa. Quando ho allineato al footer
+   il respiro laterale delle sezioni fucsia, quel respiro e' finito
+   sulla sezione — e siccome il colore sta sul pannello dentro, il
+   fucsia si e' ritirato di 112px per lato lasciando due bande nere
+   ai fianchi. Inoltre il pannello era alto esattamente una
+   schermata e ritagliava: il form veniva tagliato in basso.
+   Qui le due cose si rimettono a posto insieme: il respiro passa
+   al contenuto del pannello — quindi il fucsia arriva ai bordi e i
+   testi restano allineati al footer — e il pannello cresce se il
+   contenuto lo chiede, invece di tagliarlo.
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.svc-caffe.hc-section {
+  padding-inline: 0 !important;
+}
+html body main > section.svc-caffe.hc-section > .hc-inner {
+  max-width: none !important;
+  width: 100% !important;
+  margin-inline: 0 !important;
+  padding-inline: clamp(1.5rem, 6vw, 7rem) !important;
+  height: auto !important;
+  min-height: 100dvh;
+  overflow: visible !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PLACEHOLDER DEI FORM FUCSIA — una sola opacita'
+   Sei pagine (FAQ, news, tips&tricks, case studies, Dama24 e i due
+   articoli) portavano il placeholder a bianco 72%; la regola
+   condivisa, che vale per la homepage e per le dieci pagine
+   servizi, lo teneva a bianco 35% — su fondo fucsia si legge
+   appena, ed e' quello che si vede nella schermata dei contatti.
+   Misura unica: 72%. Resta chiaramente un suggerimento, non un
+   valore inserito, ma si legge.
+   ═══════════════════════════════════════════════════════════════ */
+html body .svc-caffe .svc-caffe__field::placeholder,
+html body .cs-cta .svc-caffe__field::placeholder,
+html body .cs2-contact .svc-caffe__field::placeholder,
+html body .faq-contact .svc-caffe__field::placeholder,
+html body .nw-contact .svc-caffe__field::placeholder,
+html body .tt-contact .svc-caffe__field::placeholder,
+html body .art-contact .svc-caffe__field::placeholder {
+  color: rgba(255,255,255,0.72) !important;
+}
+html body .svc-caffe .svc-caffe__field::-webkit-input-placeholder,
+html body .cs-cta .svc-caffe__field::-webkit-input-placeholder,
+html body .cs2-contact .svc-caffe__field::-webkit-input-placeholder,
+html body .faq-contact .svc-caffe__field::-webkit-input-placeholder,
+html body .nw-contact .svc-caffe__field::-webkit-input-placeholder,
+html body .tt-contact .svc-caffe__field::-webkit-input-placeholder,
+html body .art-contact .svc-caffe__field::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CASE STUDIES — la hero allineata alla sezione dei progetti
+   Il riferimento non e' il respiro del pannello dei progetti, come
+   avevo fatto la prima volta: dentro quel respiro c'e' una colonna
+   da 1400px centrata (.cs-works__head e .cs-grid-all), ed e' lei a
+   decidere dove comincia "PROGETTI". Su una finestra da 1900px
+   quella colonna parte a ~254px, mentre la hero — che stava sul
+   solo respiro — partiva a 48. Ecco perche' i due titoli non erano
+   incolonnati.
+   Qui la hero prende la stessa geometria: respiro della sezione
+   piu' colonna da 1400px centrata. Cosi' il filo sinistro del
+   titolo, dei numeri, del testo e di "PROGETTI" e' lo stesso, a
+   qualunque larghezza.
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.cs-hero {
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+html body main > section.cs-hero > .container.cs-hero__inner {
+  max-width: 1400px !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+/* Le domande frequenti in homepage restano come erano: la sezione
+   e' la corsa da 145dvh tarata su quel pannello, e la regola
+   generale qui sopra — che rende l'altezza automatica per non
+   tagliare nulla sotto zoom — le toglieva la corsa e con essa il
+   ritmo del blocco. Sulla homepage il caso non si pone: il
+   pannello ha il suo ritaglio e la sua media query che scioglie il
+   blocco quando lo spazio non basta. */
+/* Stessa soglia della pagina: il blocco vale dove c'e' spazio per
+   tenerlo — almeno 820px di larghezza e 560 di altezza, la soglia
+   tornata praticabile ora che il titolo e' "FAQ" su una riga sola.
+   Sotto, la sezione resta libera e si legge tutta scorrendo. */
+@media (min-width: 820px) and (min-height: 560px) {
+  html body main > section.page-faq#faq {
+    height: 145dvh !important;
+    min-height: 0 !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LAVORA CON NOI — la hero respira
+   Lo stile di pagina aveva tre passate sovrapposte che stringevano
+   sempre di piu' gli stessi respiri, fino a clamp(0.75rem, 1.5vh,
+   1.25rem) fra una riga e l'altra: servivano a far stare tutto in
+   una schermata esatta, perche' la sezione aveva un'altezza fissa
+   e ritagliava. Quel vincolo non c'e' piu' — la hero parte da una
+   schermata e cresce se serve — quindi i respiri tornano a misura
+   di lettura. Il blocco di testo resta centrato e i numeri
+   ancorati in basso.
+   ═══════════════════════════════════════════════════════════════ */
+html body main > section.lcn-hero {
+  padding-top: calc(var(--nav-h, 88px) + clamp(2rem, 5vh, 4rem)) !important;
+  padding-bottom: clamp(2.5rem, 5vh, 4rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__kicker {
+  margin-bottom: clamp(1.25rem, 2.6vh, 1.9rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__title {
+  /* 60px: la misura chiesta per questo titolo. Qui resta solo lo
+     stacco sotto, che e' la parte che serviva alla hero meno
+     compatta — il corpo non si tocca. */
+  font-size: min(60px, 11vw) !important;
+  line-height: 1.05 !important;
+  margin-bottom: clamp(1.75rem, 3.6vh, 3rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__bottom {
+  padding-top: clamp(1.5rem, 3vh, 2.5rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__sub {
+  margin-bottom: clamp(1.5rem, 3vh, 2.25rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__stats {
+  padding-top: clamp(2rem, 4vh, 3.25rem) !important;
+  gap: clamp(2rem, 5vw, 5rem) !important;
+  margin-bottom: clamp(1rem, 3vh, 2.5rem) !important;
+}
+html body main > section.lcn-hero .lcn-hero__stat {
+  gap: 0.35rem !important;
+}
+html body main > section.lcn-hero .lcn-hero__stat-num {
+  font-size: min(150px, 26vw, 7.5vh) !important;
 }

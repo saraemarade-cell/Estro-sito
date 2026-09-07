@@ -466,8 +466,7 @@
       transition: color 0.35s ease, background 0.35s ease, filter 0.35s ease;
     }
     .nav__mega-label { font-size: 16px !important; }
-    .nav__menu-label-open,
-    .nav__menu-label-close { font-size: 14px !important; }
+/* la misura di "Menu" e' una sola per tutto il sito: 16px,       dichiarata in css/components.css. Qui c'erano 14px !important       ed era la ragione per cui questo header risultava piu' basso       di quello della homepage. */
     a.nav__joinus, .nav__joinus.nav__joinus { font-size: 14px !important; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -869,7 +868,7 @@
       <div class="tt-hero__inner">
         <div class="tt-hero__meta">
           <span class="tt-hero__cat">Social &amp; Video</span>
-          <span class="tt-hero__date">19 Marzo 2026</span>
+          <time class="tt-hero__date" datetime="2026-03-19">19 Marzo 2026</time>
         </div>
         <h1 class="tt-hero__title">Mai più "Link in Bio"?<br>Ora i Reel diventano<br>interattivi</h1>
         <p class="tt-hero__intro">Il montaggio video non è più solo una questione di estetica: è una questione di connessioni.</p>
@@ -997,7 +996,7 @@
     </section>
 
     <!-- ══ FORM CONTATTI ═════════════════════════════════ -->
-    <section class="tt-contact">
+    <section class="tt-contact" data-nav-theme="dark">
       <div class="tt-contact__inner">
         <div class="tt-contact__left">
           <span class="tt-contact__label reveal">Parliamo</span>
@@ -1204,8 +1203,10 @@
     const nav = document.querySelector('.nav');
     if (nav) {
       const sync = () => {
-        nav.classList.add('nav--on-dark');   // l'articolo è tutto scuro
-        nav.classList.toggle('scrolled', scrollY > 8);
+        /* nav--on-dark e .scrolled: unica autorita in js/main.js.
+           Le due sezioni fucsia — hero e form — sono marcate nel
+           markup, quindi MENU e simbolo diventano bianchi la' e
+           tornano fucsia sul corpo su carta bianca. */
       };
       addEventListener('scroll', sync, { passive: true });
       sync();

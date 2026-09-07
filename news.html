@@ -419,8 +419,7 @@
       transition: color 0.35s ease, background 0.35s ease, filter 0.35s ease;
     }
     .nav__mega-label { font-size: 16px !important; }
-    .nav__menu-label-open,
-    .nav__menu-label-close { font-size: 14px !important; }
+/* la misura di "Menu" e' una sola per tutto il sito: 16px,       dichiarata in css/components.css. Qui c'erano 14px !important       ed era la ragione per cui questo header risultava piu' basso       di quello della homepage. */
     a.nav__joinus, .nav__joinus.nav__joinus { font-size: 14px !important; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -925,6 +924,7 @@
           </div>
           <div class="nw-featured__body">
             <span class="nw-featured__cat">Agenzia &amp; Collaborazione</span>
+            <time class="nw-card__date" datetime="2026-08-21">21 agosto 2026</time>
             <h2 class="nw-featured__title">Come funziona iniziare a lavorare con un'agenzia di comunicazione digitale</h2>
             <p class="nw-featured__excerpt">Dalla prima call alla strategia operativa: cosa succede davvero nelle prime settimane.</p>
             <span class="nw-featured__cta">Leggi l'articolo &nbsp;→</span>
@@ -1035,7 +1035,7 @@
     </div>
 
     <!-- ══ FORM CONTATTI ═════════════════════════════════════ -->
-    <section class="nw-contact">
+    <section class="nw-contact" data-nav-theme="dark">
       <div class="nw-contact__inner" data-cascade>
         <div class="nw-contact__left">
           <span class="nw-contact__label">Parliamoci</span>
@@ -1284,8 +1284,8 @@
           const r = m.getBoundingClientRect();
           if (r.top <= probe && r.bottom >= probe) dark = m.dataset.navTheme === 'dark';
         });
-        if (dark !== wasDark) { wasDark = dark; nav.classList.toggle('nav--on-dark', dark); }
-        nav.classList.toggle('scrolled', scrollY > 8);
+        /* nav--on-dark e .scrolled: unica autorita in js/main.js,
+           come in homepage. */
       };
       addEventListener('scroll', sync, { passive: true });
       addEventListener('resize', sync, { passive: true });

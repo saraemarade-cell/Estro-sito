@@ -487,8 +487,7 @@
       transition: color 0.35s ease, background 0.35s ease, filter 0.35s ease;
     }
     .nav__mega-label { font-size: 16px !important; }
-    .nav__menu-label-open,
-    .nav__menu-label-close { font-size: 14px !important; }
+/* la misura di "Menu" e' una sola per tutto il sito: 16px,       dichiarata in css/components.css. Qui c'erano 14px !important       ed era la ragione per cui questo header risultava piu' basso       di quello della homepage. */
     a.nav__joinus, .nav__joinus.nav__joinus { font-size: 14px !important; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -1135,7 +1134,7 @@
 </head>
 <body>
 
-  <header class="nav" role="banner">
+  <header class="nav nav--on-dark" role="banner"><!-- nav--on-dark di partenza: la hero e' scura. Lo stato lo ricalcola js/main.js. -->
     <div class="nav__inner">
       <button class="nav__menu-btn" aria-label="Apri menu" aria-expanded="false">
         <span class="nav__menu-icon"><span></span><span></span><span></span></span>
@@ -1204,7 +1203,7 @@
   <main>
 
     <!-- ══ HERO ══════════════════════════════════════════════ -->
-    <section class="lcn-hero">
+    <section class="lcn-hero" data-nav-theme="dark">
       <div class="lcn-hero__top">
         <span class="lcn-hero__kicker">Unisciti al team</span>
         <h1 class="lcn-hero__title">La nostra ricerca<br>di nuovi talenti<br>non si ferma mai</h1>
@@ -1238,10 +1237,10 @@
       <div class="lcn-about__left">
         <span class="lcn-about__label reveal">Chi siamo</span>
         <div class="lcn-about__text">
-          <p class="reveal">Estro è un collettivo di professionisti dove il lavoro viene affrontato con creatività e passione.</p>
-          <p class="reveal" style="transition-delay:0.12s">Un collettivo dove sono le persone e le loro idee a fare la differenza e dove anche chi ha poca esperienza può mettersi in gioco e dove la sua passione può essere trasformato in una professione.</p>
-          <p class="reveal" style="transition-delay:0.24s">Se sei creativo, hai passione per il mondo del marketing o del digitale, che tu sia un esordiente o un professionista affermato in estro c'è sempre bisogno di nuove idee.</p>
-          <p class="reveal" style="transition-delay:0.36s">Qui sotto trovi le figure che stiamo cercando ma se non vedi una categoria a te affine non disperare, mandaci comunque il tuo CV specificando per che posizione ti stai candidando e saremo felici di valutarlo.</p>
+          <p class="reveal">Estro è un collettivo di professionisti dove il lavoro viene affrontato con <strong>creatività e passione</strong>.</p>
+          <p class="reveal" style="transition-delay:0.12s">Un collettivo dove sono <strong>le persone e le loro idee a fare la differenza</strong> e dove anche chi ha poca esperienza può mettersi in gioco e dove la sua <strong>passione può essere trasformato in una professione</strong>.</p>
+          <p class="reveal" style="transition-delay:0.24s">Se sei creativo, hai <strong>passione per il mondo del marketing o del digitale</strong>, che tu sia un esordiente o un professionista affermato in estro c'è sempre bisogno di nuove idee.</p>
+          <p class="reveal" style="transition-delay:0.36s">Qui sotto trovi le figure che stiamo cercando ma se non vedi una categoria a te affine non disperare, <strong>mandaci comunque il tuo CV</strong> specificando per che posizione ti stai candidando e saremo felici di valutarlo.</p>
         </div>
       </div>
       <div class="lcn-about__right reveal">
@@ -1260,7 +1259,7 @@
     </section>
 
     <!-- ══ POSIZIONI ══════════════════════════════════════════ -->
-    <section class="lcn-positions">
+    <section class="lcn-positions" data-nav-theme="dark">
       <div class="lcn-positions__header reveal">
         <span class="lcn-positions__kicker">Figure ricercate</span>
         <span class="lcn-positions__line"></span>
@@ -1341,7 +1340,7 @@
     </section>
 
     <!-- ══ FORM CANDIDATURA ══════════════════════════════════ -->
-    <section class="lcn-apply" id="candidatura">
+    <section class="lcn-apply" id="candidatura" data-nav-theme="dark">
       <!-- Struttura come le altre sezioni con un form: testo a
            sinistra, campi a destra. Le caselle restano quelle di
            questa pagina, cambia solo l'impaginazione. -->
@@ -1410,7 +1409,6 @@
     </section>
 
   </main>
-  </div>
 
   <!-- â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
   <footer class="site-footer" role="contentinfo" data-nav-theme="dark">
@@ -1646,8 +1644,8 @@
           const r = el.getBoundingClientRect();
           if (r.top <= probe && r.bottom >= probe) dark = false;
         }));
-        if (dark !== wasDark) { wasDark = dark; nav.classList.toggle('nav--on-dark', dark); }
-        nav.classList.toggle('scrolled', scrollY > 8);
+        /* nav--on-dark e .scrolled: unica autorita in js/main.js,
+           come in homepage. */
       };
       addEventListener('scroll', sync, { passive: true });
       addEventListener('resize', sync, { passive: true });

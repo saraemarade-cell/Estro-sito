@@ -2317,7 +2317,7 @@
       display: flex;
       flex-direction: column;
       gap: clamp(0.8rem, 1.6vw, 1.4rem);
-      animation: wall-scroll var(--wall-dur, 46s) linear infinite;
+      animation: wall-scroll var(--wall-dur, 78s) linear infinite;
       will-change: transform;
     }
     .wall__col:nth-child(2) .wall__track { animation-direction: reverse; }
@@ -2423,15 +2423,11 @@
          l'inchiostro parte a 95px, con 7px di margine. */
       padding-block: 92px 48px;
     }
-    /* La soglia in altezza sale da 560 a 820px. Il titolo e' passato
-       da "FAQ" a "Domande Frequenti", che a 150px sta su due righe:
-       il contenuto della sezione ora misura ~850px, e in un pannello
-       alto una schermata su una finestra piu' bassa di 820 il fondo
-       dell'elenco verrebbe tagliato. Sotto quella soglia la sezione
-       resta libera e si legge tutta, scorrendo; sopra si aggancia
-       come le altre. Meglio senza blocco che con una domanda
-       nascosta. */
-    @media (min-width: 820px) and (min-height: 820px) {
+    /* Il titolo e' "FAQ": tre lettere su una riga sola, quindi il
+       contenuto della sezione sta in una schermata e la soglia in
+       altezza torna a 560px. Con "Domande Frequenti" su due righe
+       serviva 820, altrimenti il fondo dell'elenco veniva tagliato. */
+    @media (min-width: 820px) and (min-height: 560px) {
       .page-faq { height: 145dvh !important; }
       .page-faq__inner {
         position: sticky !important;
@@ -3858,7 +3854,7 @@
         <div class="faq-video__fade faq-video__fade--bottom"></div>
       </div>
       <div class="page-faq__inner">
-        <h2 class="page-faq__title" id="faqTitle">Domande Frequenti</h2>
+        <h2 class="page-faq__title" id="faqTitle">FAQ</h2>
         <dl class="page-faq__list">
           <div class="page-faq__item">
             <button class="page-faq__question" aria-expanded="false">Che tipo di agenzia e ESTRO?</button>
@@ -4500,7 +4496,11 @@
     ];
 
     const COLS = 3;
-    const DUR = ['32s', '26s', '38s'];   // velocità diverse per colonna, ~30% più svelte
+    /* Velocita: piu lente di prima (erano 32/26/38s). La colonna
+       centrale resta la piu svelta, cosi le tre non vanno mai a
+       tempo fra loro, ma il passo e da lettura: una recensione si
+       legge senza dover fermare il muro col mouse. */
+    const DUR = ["72s", "58s", "86s"];
 
     const card = ([quote, name, role]) => {
       const el = document.createElement('article');

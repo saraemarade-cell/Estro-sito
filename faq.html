@@ -379,8 +379,7 @@
     /* In home l'etichetta del mega menu è a 16px: qui stava a 11 e
        il pannello risultava 8px più basso. */
     .nav__mega-label { font-size: 16px !important; }
-    .nav__menu-label-open,
-    .nav__menu-label-close { font-size: 14px !important; }
+/* la misura di "Menu" e' una sola per tutto il sito: 16px,       dichiarata in css/components.css. Qui c'erano 14px !important       ed era la ragione per cui questo header risultava piu' basso       di quello della homepage. */
     a.nav__joinus, .nav__joinus.nav__joinus { font-size: 14px !important; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -1335,7 +1334,7 @@
     </section>
 
     <!-- ══ FORM CONTATTI ═════════════════════════════════════ -->
-    <section class="faq-contact">
+    <section class="faq-contact" data-nav-theme="dark">
       <div class="faq-contact__inner" data-cascade>
         <div class="faq-contact__left">
           <span class="faq-contact__label">Hai ancora domande?</span>
@@ -1396,7 +1395,6 @@
       </div>
     </section>
   </main>
-  </div>
 
   <script>
     (function () {
@@ -1662,8 +1660,8 @@
         const r = m.getBoundingClientRect();
         if (r.top <= probe && r.bottom >= probe) dark = m.dataset.navTheme === 'dark';
       });
-      if (dark !== wasDark) { wasDark = dark; nav.classList.toggle('nav--on-dark', dark); }
-      nav.classList.toggle('scrolled', scrollY > 8);
+      /* nav--on-dark e .scrolled: unica autorita in js/main.js,
+         come in homepage. */
     };
     addEventListener('scroll', sync, { passive: true });
     addEventListener('resize', sync, { passive: true });

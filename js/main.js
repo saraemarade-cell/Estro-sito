@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   const navEl = document.querySelector('.nav');
   if (!navEl) return;
-  const hero = document.querySelector('.hero-svc-scene, .hero-video, .svc-hero, .d24-hero');
+  const hero = document.querySelector('.hero-svc-scene, .hero-video, .svc-hero, .d24-hero, .cs-hero, .faq-hero, .nw-hero, .lcn-hero, .art-hero, .tt-hero, .ct-section');
   if (hero) {
     const io = new IntersectionObserver(function (entries) {
       navEl.classList.toggle('scrolled', !entries[0].isIntersecting);
@@ -424,9 +424,25 @@ if (!window.__STATIC_CAPTURE__ &&
 
 // (Video about gestito dal blocco scroll-scrubbed sopra)
 
-// ─── Nav: scompare sul footer, riappare su scroll-up ─────────
+// ─── Nav sul footer: comportamento allineato alla homepage ───
+/* Questo blocco nasconde la nav quando il footer entra in vista.
+   In homepage non e' MAI entrato in funzione, e non per scelta: lo
+   script e' incluso a meta' pagina, quindi quando gira il footer
+   non esiste ancora nel DOM, querySelector torna null e la funzione
+   esce subito. Su lavora-con-noi e FAQ, dove lo script sta dopo il
+   footer, invece funzionava — e faceva due danni:
+     - la nav volava via prima della fine della pagina, mentre in
+       homepage resta fino in fondo;
+     - .nav--footer-hidden porta pointer-events: none, quindi sopra
+       la sezione fucsia prima del footer il pulsante MENU non si
+       poteva piu' cliccare.
+   Il comportamento di riferimento e' quello della homepage: la nav
+   resta. Qui viene disattivato in modo esplicito, cosi' non dipende
+   piu' da dove il tag <script> capita nella pagina. */
 (function () {
   var navEl    = document.querySelector('.nav');
+  if (navEl) navEl.classList.remove('nav--footer-hidden');
+  if (true) return;
   var footerEl = document.querySelector('.site-footer');
   if (!navEl || !footerEl) return;
 

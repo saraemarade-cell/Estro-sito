@@ -1099,8 +1099,7 @@
       transition: color 0.35s ease, background 0.35s ease, filter 0.35s ease;
     }
     .nav__mega-label { font-size: 16px !important; }
-    .nav__menu-label-open,
-    .nav__menu-label-close { font-size: 14px !important; }
+/* la misura di "Menu" e' una sola per tutto il sito: 16px,       dichiarata in css/components.css. Qui c'erano 14px !important       ed era la ragione per cui questo header risultava piu' basso       di quello della homepage. */
     a.nav__joinus, .nav__joinus.nav__joinus { font-size: 14px !important; }
 
     /* ═══════════════════════════════════════════════════════════
@@ -1754,6 +1753,13 @@
       { cat:'strategia', client:'Ariston',           tags:['Strategia','Social Ads'],           cover:'case-studies/ARISTON.webp',                logo:'case-studies/loghicasestudy/ARISTON.png' }
     ];
 
+    /* In pagina se ne mostrano quindici, gli stessi nelle due
+       viste: l'anello e la griglia leggono entrambi da qui. La
+       lista completa resta sopra, quindi per cambiare quali
+       compaiono basta riordinarla. */
+    var MAX_CASI = 15;
+    var shown = data.slice(0, MAX_CASI);
+
     function esc(s) {
       return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
     }
@@ -1776,7 +1782,7 @@
     }
 
     /* ── L'anello ──────────────────────────────────────────── */
-    var n = data.length;
+    var n = shown.length;
     var CARD_W = 360;
     var GAP    = 40;
     /* raggio del cilindro: la circonferenza deve contenere tutte
@@ -1784,7 +1790,7 @@
     var radius = Math.round((CARD_W + GAP) / (2 * Math.tan(Math.PI / n)));
     var step   = 360 / n;
 
-    data.forEach(function(d, i) {
+    shown.forEach(function(d, i) {
       var cell = document.createElement('div');
       cell.className = 'cs-ring__cell';
       /* il translate finale agisce nel piano della card, già
@@ -1864,7 +1870,7 @@
     }, true);
 
     /* ── La griglia: tutti i lavori, con i loro tag ─────────── */
-    grid.innerHTML = data.map(function(d) {
+    grid.innerHTML = shown.map(function(d) {
       return '<div class="cs-gitem">' +
         '<' + (d.url ? 'a href="' + esc(d.url) + '"' : 'div') + ' class="cs-cardv cs-cardv--grid">' +
           cardInner(d) +

@@ -153,10 +153,33 @@ button { font-family: var(--font-secondary); cursor: pointer; border: none; back
 }
 
 /* ─── SCROLLBAR ───────────────────────────────────────── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--white); }
-::-webkit-scrollbar-thumb { background: var(--black-10); }
-::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+/* Era larga 3px con il pollice al 10% di nero: si vedeva appena e
+   non si riusciva ad afferrarla per scorrere in fretta. Ora e' una
+   barra vera — 12px, pollice fucsia arrotondato con un bordo che
+   la stacca dal fondo — e resta discreta finche' non ci passi
+   sopra. Vale per tutta la pagina, non solo per i riquadri. */
+html {
+  scrollbar-width: thin;                       /* Firefox */
+  scrollbar-color: var(--primary) rgba(0,0,0,0.06);
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.06);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  min-height: 48px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #080808;
+  background-clip: content-box;
+}
 
 /* ═══════════════════════════════════════════════════════
    DARK MODE — token-driven, component-scoped
